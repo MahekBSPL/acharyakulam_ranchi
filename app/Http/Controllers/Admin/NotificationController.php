@@ -47,6 +47,7 @@ class NotificationController extends Controller
                 'title' => 'Required',
                 'notificationtype' => 'Required',
                 'menutype' => 'Required',
+
             ]);
 
             if (isset($request->menutype)) {
@@ -63,6 +64,7 @@ class NotificationController extends Controller
                 } else if ($request->menutype == 'Url') {
                     $menutypeValidation = $request->validate([
                         'url' => 'Required|url',
+
                     ]);
                 }
             }
@@ -135,6 +137,7 @@ class NotificationController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
         //dd($request->all());
 
         if (isset($request->submit)) {
