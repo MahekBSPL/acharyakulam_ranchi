@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\EventController;
 
 //use App\http\Controllers\Admin\DashboardController;
 /*
@@ -67,5 +68,6 @@ Route::middleware(['auth','IsAdmin'])->group(function () {
     Route::resource('/admin/slider',SliderController::class);
     //Route::post('/addslider', [SliderController::class, 'store'])->name('addslider');
     Route::resource('/admin/notification',NotificationController::class);
+    Route::resource('/admin/event',EventController::class);
 });
 

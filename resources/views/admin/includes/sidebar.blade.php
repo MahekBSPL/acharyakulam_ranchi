@@ -20,32 +20,9 @@
                 <a href="{{ url('/admin/slider')}}" class="nav-link"><i class="bi bi-sliders" aria-hidden="true"></i><span>Slider</span></a>
             </li>
             <li class="">
-                <a href="{{ url('/admin/photoGallery')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Photo Gallery</span></a>
+                <a href="{{ url('/admin/event')}}" class="nav-link"><i class="bi bi-sliders" aria-hidden="true"></i><span>Event</span></a>
             </li>
-            <li class="">
-                <a href="{{ url('/admin/homework')}}" class="nav-link"><i class="bi bi-speedometer"></i><span>Home Work</span></a>
-            </li>
-            <li class="">
-                <a href="{{ url('/admin/faculty')}}" class="nav-link"><i class="bi bi-people-fill"></i><span>Faculty</span></a>
-            </li>
-            <li class="">
-                <a href="{{ url('/admin/council')}}" class="nav-link"><i class="bi bi-file-person-fill"></i><span> Student Council</span></a>
-            </li>
-            <li class="">
-                <a href="{{ url('/admin/syllabus')}}" class="nav-link"><i class="bi bi-book-fill"></i><span> Syllabus</span></a>
-            </li>
-            <li class="">
-                <a href="{{ url('/admin/certificate')}}" class="nav-link"><i class="bi bi-cloud-arrow-down-fill"></i><span> Certificate</span></a>
-            </li>
-            <li class="">
-                <a href="{{ url('/admin/achievement')}}" class="nav-link"><i class="bi bi-trophy-fill"></i><span> Achievements</span></a>
-            </li>
-            <li class="birthday">
-                <a href="{{ url('/admin/birthday')}}" class="nav-link"><i class="bi bi-trophy-fill"></i><span> Birthday</span></a>
-            </li>
-            <li class="">
-                <a href="{{ url('/admin/result')}}" class="nav-link"><i class="bi bi-trophy-fill"></i><span>Result</span></a>
-            </li>
+        
         </ul>
 
     </aside>
