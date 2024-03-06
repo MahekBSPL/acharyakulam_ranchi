@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\admin\PhotoGallery as photoGallery;
+use App\Http\Controllers\admin\AjaxRequestController;
 
 //use App\http\Controllers\Admin\DashboardController;
 /*
@@ -69,5 +71,7 @@ Route::middleware(['auth','IsAdmin'])->group(function () {
     //Route::post('/addslider', [SliderController::class, 'store'])->name('addslider');
     Route::resource('/admin/notification',NotificationController::class);
     Route::resource('/admin/event',EventController::class);
+    Route::resource('/admin/photoGallery', photoGallery::class);
+    Route::any('/admin/delete_images', [AjaxRequestController::class,'delete_images'])->name('/admin/delete_images');
 });
 

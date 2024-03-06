@@ -71,7 +71,9 @@ class EventController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title = "Edit Event";
+        $data = Event::find($id);
+        return view('admin/event/edit', ['events' => $data], compact('title'));
     }
 
     /**
@@ -79,7 +81,40 @@ class EventController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if (isset($request->cmdsubmit)) {
+           
+            $request->validate([
+                'title' => 'Required',
+                'date' => 'Required',
+                'location' => 'Required', 
+                'description' => 'Required',
+                //'image' => 'Required | image | mimes:jpeg,jpg,png,webp | max:2048'
+            ]);
+            $event = Event::find($id);
+            
+            //check if event is available or not
+            if (!$event) {
+                return redirect('/admin/event')->with('error', 'Event not found.');
+            }
+             $event->title = $request->title;
+            $event->sub_title = $request->sub_title;
+            $event->date = $request->date;
+            $event->location = $request->location;
+            $event->description = $request->description;
+            // Validate and store the new image
+            if (isset($request->image)) {
+                $image = $request->file('image');
+                $newImageName = time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('/admin/upload/event/'), $newImageName);
+                $destination = public_path('/admin/upload/event/') . $event->image;
+                if (file_exists($destination)) {
+                    unlink($destination);
+                }
+                $event->image = $newImageName;
+            }
+           $result =  $event->save();
+            return redirect('/admin/event')->withSuccess('Event detail updated Successfully!!!');
+        }
     }
 
     /**
@@ -87,6 +122,16 @@ class EventController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $event = Event::find($id);
+        if (!$event) {
+            return redirect('/admin/event')->withError('Event not found.');
+        }        
+        $event->delete();
+        
+        return redirect('/admin/event')->withSuccess('Event detail deleted Successfully!!!');
     }
 }
+
+
+    
+
