@@ -89,9 +89,9 @@
                                                 </td> 
                                                 <td>
                                                     <?php echo $row->cat_postion??0; ?> <i id="{{$row->id}}" onclick="editcatpos(this);"  class="far editbut fa-edit"></i>
-                                                    <span  id="cat_postion_{{$row->id}}" style="display:none" >
+                                                    <span  id="gallery_postion_{{$row->id}}" style="display:none" >
                                                     <input class="w-25" type="number"
-                                                    onchange="savedata(this);" id="{{$row->id}}" name="cat_postion" value="" /></span>
+                                                    onchange="savedata(this);" id="{{$row->id}}" name="gallery_postion" value="" /></span>
                                                     <p class="text-success" id="success_{{$row->id}}"></p>
                                                </td>
                                             <td>
@@ -147,11 +147,39 @@
     <!-- /.row -->
 </div>
 <!-- Button trigger modal -->
+
+
 <script src="{{ URL::asset('/public/assets/modules/jquery.min.js')}}"></script>
 <script>
      function editcatpos(data) {
-        $("#cat_postion_"+data.id).toggle();
+       // alert(data);
+        $("#gallery_postion_"+data.id).toggle();
      }
-    // 
+     function savedata(data) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        var gallery_postion =  data.value;
+        var id =  data.id;
+        var linkurl = "{{ url('/admin/update_gallery_orders')}}";
+        jQuery.ajax({
+            url: linkurl,
+            type: "POST",
+            data: {id: id,gallery_postion:gallery_postion,update_gallery_orders:'update_gallery_orders'},
+            cache: false,
+            success: function (html) {
+               // location.reload();
+                setTimeout(function(){
+                    location.reload();
+                },); 
+                $("#gallery_postion_"+data.id).hide();
+                $("#success_"+data.id).html('This Postion is Updated');
+            },
+        });
+       
+        
+     }
 </script>
 @endsection;

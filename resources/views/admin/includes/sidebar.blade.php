@@ -25,6 +25,9 @@
             <li class="">
                 <a href="{{ url('/admin/photoGallery')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Photo Gallery</span></a>
             </li>
+            <li class="">
+                <a href="{{ url('/admin/rule')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Rule</span></a>
+            </li>
         
         </ul>
 

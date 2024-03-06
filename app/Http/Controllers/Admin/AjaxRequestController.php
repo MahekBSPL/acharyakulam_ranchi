@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\admin\Menu;
-use App\Models\admin\PhotoGallery;
-use App\Models\admin\PhotoCategory;
+use App\Models\Admin\PhotoGallery;
+use App\Models\Admin\PhotoCategory;
+use App\Models\Admin\Rule;
+use App\Models\Admin\Slider;
 use App;
 class AjaxRequestController extends Controller
 {
@@ -124,5 +126,76 @@ class AjaxRequestController extends Controller
          Photogallery::where('id',  $geid)->delete();
        die();
     }
-   
+    public function update_rules_orders(Request $request)
+    {
+        $msg=array();
+        if($request->ajax())
+        {
+            $id= clean_single_input( $request->id);
+               $pArray['order'] =clean_single_input($request->rule_postion);
+               $data = Rule::where('id', $id)->first();
+               if($data->rule_postion!==$request->rule_postion){
+                   $create 	= Rule::where('id', $id)->update($pArray);
+                   $msg['success']='This Postion is Updated';
+               }else{
+                   $msg['error']='This Postion Alredy Taken';
+               }
+            $lastInsertID = $id;
+            $user_login_id=Auth()->user()->id;
+            if($create > 0){
+                echo json_encode($msg);
+                die();
+                        
+            }
+        }
+        
+    }
+    public function update_slider_orders(Request $request)
+    {
+        $msg=array();
+        if($request->ajax())
+        {
+            $id= clean_single_input( $request->id);
+               $pArray['order'] =clean_single_input($request->slider_postion);
+               $data = Slider::where('id', $id)->first();
+               if($data->order!==$request->slider_postion){
+                   $create 	= Slider::where('id', $id)->update($pArray);
+                   $msg['success']='This Postion is Updated';
+               }else{
+                   $msg['error']='This Postion Alredy Taken';
+               }
+            $lastInsertID = $id;
+            $user_login_id=Auth()->user()->id;
+            if($create > 0){
+                echo json_encode($msg);
+                die();
+                        
+            }
+        }
+        
+    }
+    public function update_gallery_orders(Request $request)
+    {
+        $msg=array();
+        if($request->ajax())
+        {
+            $id= clean_single_input( $request->id);
+               $pArray['cat_postion'] =clean_single_input($request->gallery_postion);
+               $data = PhotoCategory::where('id', $id)->first();
+               if($data->cat_postion!==$request->gallery_postion){
+                   $create 	= PhotoCategory::where('id', $id)->update($pArray);
+                   $msg['success']='This Postion is Updated';
+               }else{
+                   $msg['error']='This Postion Alredy Taken';
+               }
+            $lastInsertID = $id;
+            $user_login_id=Auth()->user()->id;
+            if($create > 0){
+                echo json_encode($msg);
+                die();
+                        
+            }
+        }
+        
+    }
 }

@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
-@section('title', 'slider')
+@section('title', 'rule')
 
 
 <div class="card">
@@ -8,8 +8,9 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-12">
-                    <a style="float: right;" href="{{URL::to('/admin/slider/create')}}" class="btn btn-primary pull-right">
-                        Add Slider</a>
+                    <a style="float: right;" href="{{URL::to('/admin/rule/create')}}"
+                        class="btn btn-primary pull-right">
+                        Add Rule</a>
                 </div>
             </div>
 
@@ -30,59 +31,43 @@
                         @endif
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table id="slidertable" name="slidertable" class="table table-striped table-bordered table-hover">
+                                <table id="slidertable" name="slidertable"
+                                    class="table table-striped table-bordered table-hover">
 
                                     <thead>
                                         <tr>
                                             <th>Sr. No.</th>
-                                            <th>Slider Title</th>
-                                            <th>URL</th>
+                                            <th>Description</th>
                                             <th>Order</th>
-                                            <th>Image</th>
-                                            <th>View Image</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody id="slider">
-                                        @if(count($sliders) > 0)
+                                        @if(count($rules) > 0)
                                         @php $count = 1; @endphp
-                                        @foreach($sliders as $slider)
+                                        @foreach($rules as $rule)
                                         <tr>
                                             <td>{{$count++}}</td>
-                                            <td>{{$slider->title}}</td>
-                                            <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;">
-                                                @if(!empty($slider->url))
-                                                {{$slider->url}}
-                                                @else
-                                                -
-                                                @endif
-                                            </td>
-                                            <td><?php echo $slider->order??0; ?> <i id="{{$slider->id}}"
+                                            <td>{{$rule->description}}</td>
+                                            <td><?php echo $rule->order??0; ?> <i id="{{$rule->id}}"
                                                     onclick="editcatpos(this);" class="far editbut fa-edit"></i>
-                                                <span id="slider_postion_{{$slider->id}}" style="display:none">
+                                                <span id="rule_postion_{{$rule->id}}" style="display:none">
                                                     <input class="w-25" type="number" onchange="savedata(this);"
-                                                        id="{{$slider->id}}" name="slider_postion" value="" /></span>
-                                                <p class="text-success" id="success_{{$slider->id}}"></p>
+                                                        id="{{$rule->id}}" name="rule_postion" value="" /></span>
+                                                <p class="text-success" id="success_{{$rule->id}}"></p>
                                             </td>
                                             <td>
-                                                @if(!empty($slider->image))
-                                                <img src="{{ URL::asset('admin/upload/slider/'.$slider->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
-                                                @else
-                                                _____
-                                                @endif
-                                            </td>
-                                            <td><a href="{{ URL::asset('/admin/upload/slider/'.$slider->image)}}" target="_blank"><i class="fas fa-eye"></i></a></td>
-                                            <td>
-                                                <form action="{{ route('slider.destroy',$slider->id) }}" method="POST">
-                                                    <!-- <a class="btn btn-primary" href="{{ route('slider.edit',$slider->id) }}">Edit</a> -->
-                                                    <a class="btn btn-primary" href="{{ route('slider.edit', $slider->id) }}">
+                                                <form action="{{ route('rule.destroy',$rule->id) }}" method="POST">
+                                                    <a class="btn btn-primary"
+                                                        href="{{ route('rule.edit', $rule->id) }}">
                                                         <i class="fas fa-edit" style="font-size: 17px;"></i>
                                                     </a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <!-- <a><button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete slider?')">Delete</button></a> -->
-                                                    <a><button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete slider?')">
-                                                            <i class="fas fa-trash-alt" style="font-size: 17px;"></i></button>
+                                                    <a><button type="submit" class="btn btn-danger"
+                                                            onclick="return confirm('Are you sure you want to delete Rule?')">
+                                                            <i class="fas fa-trash-alt"
+                                                                style="font-size: 17px;"></i></button>
                                                     </a>
                                                 </form>
                                             </td>
@@ -110,16 +95,14 @@
     </div>
 </div>
 <script>
-    $(document).ready(function() {
-        new DataTable('#slidertable');
-    });
+$(document).ready(function() {
+    new DataTable('#slidertable');
+});
 </script>
-
 <script src="{{ URL::asset('/public/assets/modules/jquery.min.js')}}"></script>
 <script>
      function editcatpos(data) {
-       // alert(data);
-        $("#slider_postion_"+data.id).toggle();
+        $("#rule_postion_"+data.id).toggle();
      }
      function savedata(data) {
         $.ajaxSetup({
@@ -127,20 +110,20 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        var slider_postion =  data.value;
+        var rule_postion =  data.value;
         var id =  data.id;
-        var linkurl = "{{ url('/admin/update_slider_orders')}}";
+        var linkurl = "{{ url('/admin/update_rules_orders')}}";
         jQuery.ajax({
             url: linkurl,
             type: "POST",
-            data: {id: id,slider_postion:slider_postion,update_slider_orders:'update_slider_orders'},
+            data: {id: id,rule_postion:rule_postion ,update_rules_orders:'update_rules_orders'},
             cache: false,
             success: function (html) {
                // location.reload();
                 setTimeout(function(){
                     location.reload();
                 },); 
-                $("#slider_postion_"+data.id).hide();
+                $("#rule_postion_"+data.id).hide();
                 $("#success_"+data.id).html('This Postion is Updated');
             },
         });

@@ -15,6 +15,10 @@ use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\admin\PhotoGallery as photoGallery;
 use App\Http\Controllers\admin\AjaxRequestController;
+// use App\Http\Controllers\admin\ClassNameController;
+// use App\Http\Controllers\admin\SectionController;
+// use App\Http\Controllers\admin\StudentCouncilController;
+use App\Http\Controllers\admin\RuleController;
 
 //use App\http\Controllers\Admin\DashboardController;
 /*
@@ -72,6 +76,15 @@ Route::middleware(['auth','IsAdmin'])->group(function () {
     Route::resource('/admin/notification',NotificationController::class);
     Route::resource('/admin/event',EventController::class);
     Route::resource('/admin/photoGallery', photoGallery::class);
+    Route::any('/admin/update_rules_orders', [AjaxRequestController::class,'update_rules_orders'])->name('/admin/update_rules_orders');
+    Route::any('/admin/update_gallery_orders', [AjaxRequestController::class,'update_gallery_orders'])->name('/admin/update_gallery_orders');
+    Route::any('/admin/update_slider_orders', [AjaxRequestController::class,'update_slider_orders'])->name('/admin/update_slider_orders');
+    Route::resource('/admin/rule', RuleController::class);
+
+    // Route::resource('/admin/studentcouncil', StudentCouncilController::class);
+    // Route::resource('/admin/classname', ClassNameController::class);
+    // Route::resource('/admin/section', SectionController::class);
+ 
     Route::any('/admin/delete_images', [AjaxRequestController::class,'delete_images'])->name('/admin/delete_images');
 });
 
