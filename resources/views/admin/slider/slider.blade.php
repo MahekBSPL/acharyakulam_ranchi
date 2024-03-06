@@ -57,7 +57,13 @@
                                                 -
                                                 @endif
                                             </td>
-                                            <td></td>
+                                            <td><?php echo $slider->order??0; ?> <i id="{{$slider->id}}"
+                                                    onclick="editcatpos(this);" class="far editbut fa-edit"></i>
+                                                <span id="slider_postion_{{$slider->id}}" style="display:none">
+                                                    <input class="w-25" type="number" onchange="savedata(this);"
+                                                        id="{{$slider->id}}" name="slider_postion" value="" /></span>
+                                                <p class="text-success" id="success_{{$slider->id}}"></p>
+                                            </td>
                                             <td>
                                                 @if(!empty($slider->image))
                                                 <img src="{{ URL::asset('admin/upload/slider/'.$slider->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
@@ -107,5 +113,39 @@
     $(document).ready(function() {
         new DataTable('#slidertable');
     });
+</script>
+
+<script src="{{ URL::asset('/public/assets/modules/jquery.min.js')}}"></script>
+<script>
+     function editcatpos(data) {
+       // alert(data);
+        $("#slider_postion_"+data.id).toggle();
+     }
+     function savedata(data) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        var slider_postion =  data.value;
+        var id =  data.id;
+        var linkurl = "{{ url('/admin/update_slider_orders')}}";
+        jQuery.ajax({
+            url: linkurl,
+            type: "POST",
+            data: {id: id,slider_postion:slider_postion,update_slider_orders:'update_slider_orders'},
+            cache: false,
+            success: function (html) {
+               // location.reload();
+                setTimeout(function(){
+                    location.reload();
+                },); 
+                $("#slider_postion_"+data.id).hide();
+                $("#success_"+data.id).html('This Postion is Updated');
+            },
+        });
+       
+        
+     }
 </script>
 @endsection

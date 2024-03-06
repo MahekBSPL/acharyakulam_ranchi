@@ -30,7 +30,7 @@
                             </div>
                             <div class="col-12 col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <input name="title" maxlength="36" minlength="2" autocomplete="off" type="text" class="input_class form-control" id="title" value="{{old('title')}}" />
+                                    <input name="title" autocomplete="off" type="text" class="input_class form-control" id="title" value="{{old('title')}}" />
                                     <span class="text-danger">
                                         @error('title')
                                         {{$message}}
@@ -47,7 +47,7 @@
                             </div>
                             <div class="col-12 col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <input name="sub_title" maxlength="36" minlength="2" autocomplete="off" type="text" class="input_class form-control" id="sub_title" value="{{old('sub_title')}}" />
+                                    <input name="sub_title"  autocomplete="off" type="text" class="input_class form-control" id="sub_title" value="{{old('sub_title')}}" />
                                     <span class="text-danger">
                                         @error('sub_title')
                                         {{$message}}
@@ -65,7 +65,7 @@
                             </div>
                             <div class="col-12 col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <input name="date" maxlength="36" minlength="2" autocomplete="off" type="text" class="input_class form-control" id="date" value="{{old('date')}}" />
+                                    <input name="date" autocomplete="off" type="text" class="input_class form-control" id="date" value="{{old('date')}}" />
                                     <span class="text-danger">
                                         @error('date')
                                         {{$message}}
