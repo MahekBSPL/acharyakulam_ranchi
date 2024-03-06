@@ -50,13 +50,13 @@
                                         @php $count = 1; @endphp
                                         @foreach($notifications as $notification)
                                         <tr>
-                                            <td>{{$count++}}</td>
+                                            <td> @if(count($notifications) > 0){{$count++}}@endif</td>
                                             <td>{{$notification->language}}</td>
                                             <td>{{$notification->title}}</td>
                                             <td>{{$notification->notificationtype}}</td>
                                             <td>{{$notification->menutype}}</td>
                                             <td>@if(!empty($notification->keyword)){{$notification->keyword}} @else - @endif</td>
-                                            <td>@if(!empty($notification->description)){{$notification->keyword}} @else - @endif</td>
+                                            <td>@if(!empty($notification->description)){{strip_tags($notification->description)}} @else - @endif</td>
                                             <td>@if(!empty($notification->url)){{$notification->url}} @else - @endif</td>
                                             <td style='display:inline-flex'>
                                                 <a class="btn btn-primary" style='margin-right:5px;' href="{{ route('notification.edit', $notification->id) }}">
@@ -66,7 +66,7 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <a><button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete notification?')">
-                                                            <i class="fas fa-trash-alt" style="font-size: 15px;"></i></button>
+                                                        <i class="fas fa-trash-alt" style="font-size: 15px;"></i></button>
                                                     </a>
                                                 </form>
                                             </td>
