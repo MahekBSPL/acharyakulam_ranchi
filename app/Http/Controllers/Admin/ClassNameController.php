@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin\ClassName;
 
 class ClassNameController extends Controller
 {
@@ -13,6 +14,9 @@ class ClassNameController extends Controller
     public function index()
     {
         //
+        $title='Class List';
+        $data=ClassName::all();
+        return view('admin.class.class',['classes'=>$data,'title'=>$title]);
     }
 
     /**
@@ -20,7 +24,8 @@ class ClassNameController extends Controller
      */
     public function create()
     {
-        //
+        $title = "Add Class";
+        return view('admin.class.create', compact('title'));
     }
 
     /**
@@ -28,7 +33,18 @@ class ClassNameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
+        $validator = $request->validate([
+            'title' => 'Required',
+        ]);
+        $class = new ClassName;
+        $class->title = $request->title;
+        $result = $class->save();
+        if ($result) {
+            return redirect('/admin/class')->withSuccess('Class added Successfully!!!');
+        } else {
+            return redirect('/admin/class')->withError('Unable to add class');
+        }
     }
 
     /**
@@ -44,7 +60,9 @@ class ClassNameController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title='Edit Class';
+        $data=ClassName::find($id);
+        return view('admin.class.edit',['classes'=>$data,'title'=>$title]);
     }
 
     /**
@@ -52,7 +70,18 @@ class ClassNameController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if (isset($request->cmdsubmit)) {
+            $request->validate([
+                'title' => 'Required',
+            ]);
+            $class = ClassName::find($id);
+            if (!$class) {
+                return redirect('/admin/class')->with('error', 'Class not found.');
+            }
+            $class->title = $request->title;
+           $result =  $class->save();
+            return redirect('/admin/class')->withSuccess('Class updated Successfully!!!');
+        }
     }
 
     /**
@@ -60,6 +89,11 @@ class ClassNameController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+    $class=ClassName::find($id);
+    if(!$class){
+        return redirect('/admin/class')->withError('Class not found.');
+    }
+    $class->delete();
+    return redirect('/admin/class')->withSuccess('Class deleted successfully!!!');
     }
 }

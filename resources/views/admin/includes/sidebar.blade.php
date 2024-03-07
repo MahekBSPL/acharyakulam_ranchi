@@ -28,7 +28,15 @@
             <li class="">
                 <a href="{{ url('/admin/rule')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Rule</span></a>
             </li>
-        
+            <li class="">
+                <a href="{{ url('/admin/class')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Class</span></a>
+            </li>
+            <li class="">
+                <a href="{{ url('/admin/section')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Section</span></a>
+            </li>
+            <li class="">
+                <a href="{{ url('/admin/council')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Student Council</span></a>
+            </li>
         </ul>
 
     </aside>
