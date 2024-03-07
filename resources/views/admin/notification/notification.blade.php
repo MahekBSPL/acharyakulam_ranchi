@@ -1,7 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
-@section('title', 'notification')
-
+@section('title', 'Notification')
 <div class="card">
     <div class="card-body">
         <div id="page-wrapper">

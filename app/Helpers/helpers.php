@@ -4,6 +4,7 @@ use Carbon\Carbon;
 use App\Models\Admin\WebLogs;
 use App\Models\Admin\Menu;
 use App\Models\Admin\PhotoGallery;
+use App\Models\Admin\StudentCouncil;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -828,5 +829,35 @@ if ( ! function_exists('primary_category'))
 						</div>';
 
 		return $returnValue;
+	}
+}
+if (!function_exists('get_studentclass')) {
+	function get_studentclass()
+	{
+			$fetchResult = DB::table('class_names')->get();
+			return $fetchResult;
+	}
+}
+if (!function_exists('get_classname')) {
+	function get_classname($class_id)
+	{
+		$fetchResult = DB::table('class_names')->where('id', $class_id)->first();
+			return $fetchResult;
+			
+	}
+}
+if (!function_exists('get_studentsection')) {
+	function get_studentsection()
+	{
+			$fetchResult = DB::table('sections')->get();
+			return $fetchResult;
+	}
+}
+if (!function_exists('get_studentsection_name')) {
+	function get_studentsection_name($section_id)
+	{
+		$fetchResult = DB::table('sections')->where('id', $section_id)->first();
+			return $fetchResult;
+			
 	}
 }
