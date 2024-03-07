@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Admin\Menu;
 use Illuminate\Http\Request;
+use App\Models\Admin\SelectType;
+use App\Http\Controllers\Controller;
 
 class MenuController extends Controller
 {
@@ -13,8 +15,11 @@ class MenuController extends Controller
     public function index()
     {
         //
-        $title="Menu List";
-        return view('admin.menu.menu');
+        $title = "Menu";
+        //return view('admin.notification.notification');
+        //$data = Notification::all();
+        $data = Menu::orderBy('created_at', 'desc')->get();
+        return view('admin.menu.menu', ['menus' => $data], compact('title'));
     }
 
     /**
@@ -23,6 +28,9 @@ class MenuController extends Controller
     public function create()
     {
         //
+        $title = "Add Menu";
+        $SelectType = SelectType::select('value')->pluck('value');
+        return view('admin.menu.create', ['SelectType' => $SelectType], compact('title'));
     }
 
     /**

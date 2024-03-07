@@ -47,7 +47,13 @@ class NotificationController extends Controller
                 'title' => 'Required',
                 'notificationtype' => 'Required',
                 'menutype' => 'Required',
+                'startdate' => 'Required',
+                'enddate' => 'Required|after_or_equal:startdate',
+                'status' => 'Required',
 
+            ],
+            [
+                'enddate.after_or_equal' => 'The end date must be greater than or equal to the start date.',
             ]);
 
             if (isset($request->menutype)) {
@@ -82,6 +88,7 @@ class NotificationController extends Controller
         $notification->url =  $request->url;
         $notification->startdate =  $request->startdate;
         $notification->enddate =  $request->enddate;
+        $notification->status =  $request->status;
 
         //image upload
         if (isset($request->image)) {
@@ -147,7 +154,14 @@ class NotificationController extends Controller
                 'title' => 'Required',
                 'notificationtype' => 'Required',
                 'menutype' => 'Required',
+                'startdate' => 'Required',
+                'enddate' => 'Required|after_or_equal:startdate',
+                'status' => 'Required',
+            ],
+            [
+                'enddate.after_or_equal' => 'The end date must be greater than or equal to the start date.',
             ]);
+        
 
             // if (isset($request->menutype)) {
             if ($request->menutype == 'Content') {
@@ -181,6 +195,7 @@ class NotificationController extends Controller
             $notification->notificationtype = $request->notificationtype;
             $notification->startdate =  $request->startdate;
             $notification->enddate =  $request->enddate;
+            $notification->status =  $request->status;
 
             if ($request->menutype == $notification->menutype) {
                 $notification->menutype =  $request->menutype;
@@ -256,7 +271,6 @@ class NotificationController extends Controller
                     $notification->menutype =  $request->menutype;
                     
                 }else if($request->menutype == 'File upload')  {
-              
                     $imagedestination = public_path('admin/upload/notification/') . $notification->image;
                     if (file_exists($imagedestination) && is_file($imagedestination)) {
                         unlink($imagedestination);
@@ -300,25 +314,11 @@ class NotificationController extends Controller
             // Check if the save operation was successful
             if ($result) {
                 return redirect('/admin/notification')->withSuccess('Notification detail updated successfully!');
+            }else{
+                return redirect('/admin/notification')->withError('Notification detail not updated successfully!');
             }
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -334,7 +334,6 @@ class NotificationController extends Controller
         if (!$notification) {
             return redirect('/admin/notification')->withError('Notification detail not found.');
         }
-
 
         $image_path = public_path('admin/upload/notification/') . $notification->image;
         if (file_exists($image_path) && is_file($image_path)) {

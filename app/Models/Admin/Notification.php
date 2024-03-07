@@ -20,7 +20,8 @@ class Notification extends Model
         'fileupload',
         'url',
         'startdate',
-        'enddate'
+        'enddate',
+        'status'
     ];
 }
 

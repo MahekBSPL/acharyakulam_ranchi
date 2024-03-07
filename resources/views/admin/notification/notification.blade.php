@@ -42,6 +42,7 @@
                                             <th>Keyword</th>
                                             <th>Description</th>
                                             <th>url</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -58,6 +59,7 @@
                                             <td>@if(!empty($notification->keyword)){{$notification->keyword}} @else - @endif</td>
                                             <td>@if(!empty($notification->description)){{strip_tags($notification->description)}} @else - @endif</td>
                                             <td>@if(!empty($notification->url)){{$notification->url}} @else - @endif</td>
+                                            <td>{{$notification->status}}</td>
                                             <td style='display:inline-flex'>
                                                 <a class="btn btn-primary" style='margin-right:5px;' href="{{ route('notification.edit', $notification->id) }}">
                                                     <i class="fas fa-edit" style="font-size: 15px;"></i>

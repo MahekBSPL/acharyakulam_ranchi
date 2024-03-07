@@ -1,12 +1,9 @@
 @extends('admin.layouts.master')
 @section('content')
-@section('title', 'Add Notification')
+@section('title', 'Add Menu')
 
 <script>
- function handleSelectChange(select) {
-            // document.getElementById('ContentBlock').style.display = "none";
-            // document.getElementById('fileuploadBlock').style.display = "none";
-            // document.getElementById('urlBlock').style.display = "none";
+    function handleSelectChange(select) {
         if (select.value === 'Content') {
             document.getElementById('ContentBlock').style.display = "block";
             document.getElementById('fileuploadBlock').style.display = "none";
@@ -25,7 +22,7 @@
             document.getElementById('urlBlock').style.display = "none";
         }
     }
-    </script>
+</script>
 <div class="row">
     <div class="col-12 col-md-12 col-lg-12">
         <div class="card">
@@ -43,23 +40,8 @@
                 </div>
                 @endif
 
-                <form name="form1" action="{{URL::to('/admin/notification')}}" id="form1" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+                <form name="form1" action="{{URL::to('/admin/menu')}}" id="form1" method="post" enctype="multipart/form-data" accept-charset="utf-8">
                     @csrf
-                    <div class="row">
-                        <div class="col-12 col-md-3 col-lg-3">
-                            <div class="form-group">
-                                <label>Page Language:</label>
-                                <span class="star">*</span>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6">
-                            <div class="input_class form-group">
-                                <input type="radio" name="language" autocomplete="off" id="language" value="1" @if(old('language')==1) checked @endif />English &nbsp;
-                                <input type="radio" name="language" autocomplete="off" id="language" value="2" @if(old('language')==2) checked @endif />Hindi &nbsp;
-                                <span class="text-danger"> @error('language'){{$message}} @enderror</span>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="row">
                         <div class="col-12 col-md-3 col-lg-3">
@@ -79,29 +61,6 @@
                     <div class="row">
                         <div class="col-12 col-md-3 col-lg-3">
                             <div class="form-group">
-                                <label>Notification Type:</label>
-                                <span class="star">*</span>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6">
-                            <div class="form-group">
-                                <select name="notificationtype" class="input_class form-control" id="notificationtype" autocomplete="off">
-                                    <option value="" selected="" disabled=""> Select </option>
-                                    <?php
-                                    $notificatioTypeArray = ["1" => "Important Notice", "2" => "Latest News"];
-                                    foreach ($notificatioTypeArray as $key => $value) {
-                                    ?>
-                                        <option value="{{ $value }}" @if(old('notificationtype') == $value) selected @endif>{{ $value }}</option>
-                                    <?php  } ?>
-                                </select>
-                                <span class="text-danger">@error('notificationtype'){{$message}} @enderror</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-12 col-md-3 col-lg-3">
-                            <div class="form-group">
                                 <label>Menu Type:</label>
                                 <span class="star">*</span>
                             </div>
@@ -112,7 +71,7 @@
                                 <select name="menutype" id="menutype" class="form-control" autocomplete="off" onchange="handleSelectChange(this)">
                                     <option value="" selected="" disabled="">Select</option>
                                     @foreach ($SelectType as $id => $value)
-                                    <option value="{{ $value }}" @if(old('menutype') == $value) selected @endif>{{ $value }}</option>
+                                    <option value="{{ $value }}" @if(old('menutype')==$value) selected @endif>{{ $value }}</option>
                                     @endforeach
                                 </select>
                                 <span class="text-danger">@error('menutype'){{$message}} @enderror</span>
@@ -120,8 +79,8 @@
                         </div>
                     </div>
 
-                     <!-- <div id="ContentBlock">   -->
-                     <div class="" id="ContentBlock" style="display: none;">
+                    <!-- <div id="ContentBlock">   -->
+                    <div class="" id="ContentBlock" style="display: none;">
                         <div class="row">
                             <div class="col-12 col-md-3 col-lg-3">
                                 <div class="form-group">
@@ -136,7 +95,7 @@
                                 </div>
                             </div>
                         </div>
-                
+
                         <div class="row">
                             <div class="col-12 col-md-3 col-lg-3">
                                 <div class="form-group">
@@ -151,7 +110,7 @@
                                 </div>
                             </div>
                         </div>
-                    
+
                         <div class="row">
                             <div class="col-12 col-md-3 col-lg-3">
                                 <div class="form-group">
@@ -167,7 +126,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- <div id="fileuploadBlock" > -->
                     <div class="" id="fileuploadBlock" style="display: none;">
                         <div class="row">
@@ -185,7 +144,7 @@
                             </div>
                         </div>
                     </div>
-            
+
                     <!-- <div id="urlBlock"> -->
                     <div class="" id="urlBlock" style="display: none;">
                         <div class="row">
@@ -203,32 +162,41 @@
                             </div>
                         </div>
                     </div>
-                
 
                     <div class="row">
                         <div class="col-12 col-md-3 col-lg-3">
                             <div class="form-group">
-                                <label>Start Date:</label>
+                                <label>Menu position:</label>
+                                <span class="star">*</span>
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
-                                <input type="date" name="startdate" class="input_class form-control" autocomplete="off" value="{{old('startdate')}}">
-                                <span class="text-danger">@error('startdate'){{$message}} @enderror</span>
+                                <select name="menu_position" class="input_class form-control" id="menu_position" autocomplete="off">
+                                    <option value="" selected="" disabled=""> Select </option>
+                                    <?php
+                                    $menupositionArray = ["1" => "Header Menu", "2" => "Footer Menu"];
+                                    foreach ($menupositionArray as $key => $value) {
+                                    ?>
+                                        <option value="{{ $value }}" @if(old('menu_position')==$value) selected @endif>{{ $value }}</option>
+                                    <?php  } ?>
+                                </select>
+                                <span class="text-danger">@error('menu_position'){{$message}} @enderror</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-xm-3">
+                        <div class="col-12 col-md-3 col-lg-3">
                             <div class="form-group">
-                                <label>End Date:</label>
+                                <label>Banner image :</label>
+                                <span class="star">*</span>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-xm-6">
+                        <div class="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
-                                <input type="date" name="enddate" class="input_class form-control" autocomplete="off" value="{{old('enddate')}}">
-                                <span class="text-danger">@error('enddate'){{$message}} @enderror</span>
+                                <input type="file" name="banner_image" class="input_class inline-block" id="banner_image" autocomplete="off" value="{{old('banner_image')}}" />
+                                <span class="text-danger">@error('banner_image'){{$message}} @enderror</span>
                             </div>
                         </div>
                     </div>
@@ -248,7 +216,7 @@
                                     $statusArray = ["1" => "Draft", "2" => "Publish"];
                                     foreach ($statusArray as $key => $value) {
                                     ?>
-                                        <option value="{{ $value }}" @if(old('status') == $value) selected @endif>{{ $value }}</option>
+                                        <option value="{{ $value }}" @if(old('status')==$value) selected @endif>{{ $value }}</option>
                                     <?php  } ?>
                                 </select>
                                 <span class="text-danger">@error('status'){{$message}} @enderror</span>
@@ -273,32 +241,30 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    $(document).ready(function() {
+        var oldMenutype = "{{ old('menutype') }}";
+        document.getElementById('ContentBlock').style.display = 'none';
+        document.getElementById('fileuploadBlock').style.display = 'none';
+        document.getElementById('urlBlock').style.display = 'none';
 
-$(document).ready(function() {
-    var oldMenutype =   "{{ old('menutype') }}";
-    document.getElementById('ContentBlock').style.display = 'none';
-    document.getElementById('fileuploadBlock').style.display = 'none';
-    document.getElementById('urlBlock').style.display = 'none';
+        if (oldMenutype == 'Content') {
+            document.getElementById('ContentBlock').style.display = 'block';
+            document.getElementById('fileuploadBlock').style.display = 'none';
+            document.getElementById('urlBlock').style.display = 'none';
+        } else if (oldMenutype == 'File upload') {
+            document.getElementById('ContentBlock').style.display = 'none';
+            document.getElementById('fileuploadBlock').style.display = 'block';
+            document.getElementById('urlBlock').style.display = 'none';
+        } else if (oldMenutype == 'Url') {
+            document.getElementById('ContentBlock').style.display = 'none';
+            document.getElementById('fileuploadBlock').style.display = 'none';
+            document.getElementById('urlBlock').style.display = 'block';
+        } else {
+            document.getElementById('ContentBlock').style.display = 'none';
+            document.getElementById('fileuploadBlock').style.display = 'none';
+            document.getElementById('urlBlock').style.display = 'none';
+        }
 
-if (oldMenutype == 'Content') {
-    document.getElementById('ContentBlock').style.display = 'block';
-    document.getElementById('fileuploadBlock').style.display = 'none';
-    document.getElementById('urlBlock').style.display = 'none';
-} else if (oldMenutype == 'File upload') {
-    document.getElementById('ContentBlock').style.display = 'none';
-    document.getElementById('fileuploadBlock').style.display = 'block';
-    document.getElementById('urlBlock').style.display = 'none';
-} else if (oldMenutype == 'Url') {
-    document.getElementById('ContentBlock').style.display = 'none';
-    document.getElementById('fileuploadBlock').style.display = 'none';
-    document.getElementById('urlBlock').style.display = 'block';
-} else {
-    document.getElementById('ContentBlock').style.display = 'none';
-    document.getElementById('fileuploadBlock').style.display = 'none';
-    document.getElementById('urlBlock').style.display = 'none';
-}
-
-});  
-
+    });
 </script>
 @endsection

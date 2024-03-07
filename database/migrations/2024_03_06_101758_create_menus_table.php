@@ -11,20 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('notifications', function (Blueprint $table) {
+        Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->integer('language');
             $table->string('title');    
-            $table->string('notificationtype');
             $table->string('menutype');
             $table->string('keyword')->nullable();
             $table->longtext('description')->nullable();
             $table->string('image')->nullable();
             $table->string('fileupload')->nullable();
             $table->string('url')->nullable();
-            $table->date('startdate')->nullable();
-            $table->date('enddate')->nullable();
-            $table->string('status');
+            $table->string('menu_position');
+            $table->string('banner_image');
+            $table->integer('admin_id');
             $table->timestamps();
         });
     }
@@ -34,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('notifications');
+        Schema::dropIfExists('menus');
     }
 };
