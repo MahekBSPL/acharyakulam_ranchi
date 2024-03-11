@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
-@section('title', 'rule')
+@section('title', 'Section')
 
 
 <div class="card">
@@ -8,9 +8,9 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-12">
-                    <a style="float: right;" href="{{URL::to('/admin/rule/create')}}"
+                    <a style="float: right;" href="{{URL::to('/admin/section/create')}}"
                         class="btn btn-primary pull-right">
-                        Add Rule</a>
+                        Add Section</a>
                 </div>
             </div>
 
@@ -31,41 +31,34 @@
                         @endif
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table id="ruletable" name="ruletable"
+                                <table id="sectiontable" name="sectiontable"
                                     class="table table-striped table-bordered table-hover">
 
                                     <thead>
                                         <tr>
                                             <th>Sr. No.</th>
-                                            <th>Description</th>
-                                            <th>Order</th>
+                                            <th>Section ame</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="rule">
-                                        @if(count($rules) > 0)
+                                    <tbody id="class">
+                                        @if(count($sections) > 0)
                                         @php $count = 1; @endphp
-                                        @foreach($rules as $rule)
+                                        @foreach($sections as $section)
                                         <tr>
                                             <td>{{$count++}}</td>
-                                            <td>{{$rule->description}}</td>
-                                            <td><?php echo $rule->order??0; ?> <i id="{{$rule->id}}"
-                                                    onclick="editcatpos(this);" class="far editbut fa-edit"></i>
-                                                <span id="rule_postion_{{$rule->id}}" style="display:none">
-                                                    <input class="w-25" type="number" onchange="savedata(this);"
-                                                        id="{{$rule->id}}" name="rule_postion" value="" /></span>
-                                                <p class="text-success" id="success_{{$rule->id}}"></p>
-                                            </td>
+                                            <td>{{$section->title}}</td>
+                                           
                                             <td>
-                                                <form action="{{ route('rule.destroy',$rule->id) }}" method="POST">
+                                                <form action="{{ route('section.destroy',$section->id) }}" method="POST">
                                                     <a class="btn btn-primary"
-                                                        href="{{ route('rule.edit', $rule->id) }}">
+                                                        href="{{ route('section.edit', $section->id) }}">
                                                         <i class="fas fa-edit" style="font-size: 17px;"></i>
                                                     </a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <a><button type="submit" class="btn btn-danger"
-                                                            onclick="return confirm('Are you sure you want to delete Rule?')">
+                                                            onclick="return confirm('Are you sure you want to delete Section?')">
                                                             <i class="fas fa-trash-alt"
                                                                 style="font-size: 17px;"></i></button>
                                                     </a>
@@ -98,38 +91,8 @@
 <script src="{{ URL::asset('/public/assets/modules/jquery.min.js')}}"></script>
 <script>
 $(document).ready(function() {
-    new DataTable('#ruletable');
+    new DataTable('#classtable');
 });
 </script>
-<script>
-     function editcatpos(data) {
-        $("#rule_postion_"+data.id).toggle();
-     }
-     function savedata(data) {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        var rule_postion =  data.value;
-        var id =  data.id;
-        var linkurl = "{{ url('/admin/update_rules_orders')}}";
-        jQuery.ajax({
-            url: linkurl,
-            type: "POST",
-            data: {id: id,rule_postion:rule_postion ,update_rules_orders:'update_rules_orders'},
-            cache: false,
-            success: function (html) {
-               // location.reload();
-                setTimeout(function(){
-                    location.reload();
-                },); 
-                $("#rule_postion_"+data.id).hide();
-                $("#success_"+data.id).html('This Postion is Updated');
-            },
-        });
-       
-        
-     }
-</script>
+
 @endsection
