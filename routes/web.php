@@ -20,6 +20,8 @@ use App\Http\Controllers\admin\SectionController;
 use App\Http\Controllers\admin\StudentCouncilController;
 use App\Http\Controllers\admin\RuleController;
 use App\Http\Controllers\admin\WinnerController;
+use App\Http\Controllers\admin\PopupController;
+use App\Http\Controllers\admin\ProspectusController;
 
 
 //use App\http\Controllers\Admin\DashboardController;
@@ -81,11 +83,14 @@ Route::middleware(['auth', 'IsAdmin'])->group(function () {
     Route::any('/admin/update_rules_orders', [AjaxRequestController::class, 'update_rules_orders'])->name('/admin/update_rules_orders');
     Route::any('/admin/update_gallery_orders', [AjaxRequestController::class, 'update_gallery_orders'])->name('/admin/update_gallery_orders');
     Route::any('/admin/update_slider_orders', [AjaxRequestController::class, 'update_slider_orders'])->name('/admin/update_slider_orders');
+    Route::any('/admin/update_winner_orders', [AjaxRequestController::class, 'update_winner_orders'])->name('/admin/update_winner_orders');
     Route::resource('/admin/rule', RuleController::class);
     Route::resource('/admin/council', StudentCouncilController::class);
     Route::resource('/admin/class', ClassNameController::class);
     Route::resource('/admin/section', SectionController::class);
     Route::resource('/admin/winner', WinnerController::class);
+    Route::resource('/admin/popup', PopupController::class);
+    Route::resource('/admin/prospectus', ProspectusController::class);
     Route::any('/admin/delete_images', [AjaxRequestController::class, 'delete_images'])->name('/admin/delete_images');
 });
 
