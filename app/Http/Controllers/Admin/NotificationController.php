@@ -42,7 +42,7 @@ class NotificationController extends Controller
         // print_r($request->all());
         // exit;
         if (isset($request->submit)) {
-            $menutypeValidation = $request->validate([
+            $Validation = [
                 'language' => 'Required',
                 'title' => 'Required',
                 'notificationtype' => 'Required',
@@ -50,72 +50,71 @@ class NotificationController extends Controller
                 'startdate' => 'Required',
                 'enddate' => 'Required|after_or_equal:startdate',
                 'status' => 'Required',
-
-            ],
-            [
+            ];
+            $customMessages = [
                 'enddate.after_or_equal' => 'The end date must be greater than or equal to the start date.',
-            ]);
+            ];
 
-            if (isset($request->menutype)) {
+            // Add validation based on menu type conditionally
+            if ($request->has('menutype')) {
                 if ($request->menutype == 'Content') {
-                    $menutypeValidation = $request->validate([
-                        'keyword' => 'Required',
-                        'description' => 'Required',
-                        'image' => 'Required | mimes:pdf,jpeg,jpg,png,webp | max:2048',
-                    ]);
-                } else if ($request->menutype == 'File upload') {
-                    $menutypeValidation = $request->validate([
-                        'fileupload' => 'Required | mimes:pdf,jpeg,jpg,png,webp | max:2048',
-                    ]);
-                } else if ($request->menutype == 'Url') {
-                    $menutypeValidation = $request->validate([
-                        'url' => 'Required|url',
-
-                    ]);
+                    $Validation['keyword'] = 'required';
+                    $Validation['description'] = 'required';
+                    $Validation['image'] = 'required|mimes:pdf,jpeg,jpg,png,webp|max:2048';
+                } elseif ($request->menutype == 'File upload') {
+                    $Validation['fileupload'] = 'required|mimes:pdf,jpeg,jpg,png,webp|max:2048';
+                } elseif ($request->menutype == 'Url') {
+                    $Validation['url'] = 'required|url';
                 }
             }
-        }
 
-        $validator = Validator::make($request->all(), $menutypeValidation);
+            $validator = Validator::make($request->all(), $Validation, $customMessages);
 
-        $notification = new Notification;
-        $notification->language = $request->language;
-        $notification->title = $request->title;
-        $notification->notificationtype = $request->notificationtype;
-        $notification->menutype =  $request->menutype;
-        $notification->keyword =  $request->keyword;
-        $notification->description =  $request->description;
-        $notification->url =  $request->url;
-        $notification->startdate =  $request->startdate;
-        $notification->enddate =  $request->enddate;
-        $notification->status =  $request->status;
+            if ($validator->fails()) {
+                // Handle validation failure manually, e.g., return back with errors
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
 
-        //image upload
-        if (isset($request->image)) {
-            $image = time() . '.' . $request->image->getClientOriginalExtension();
-            $request->image->move(public_path('admin/upload/notification'), $image);
-            $notification->image =  $image;
-        }
 
-        //file upload 
-        if (isset($request->fileupload)) {
-            $fileupload = time() . '.' . $request->fileupload->getClientOriginalExtension();
-            $request->fileupload->move(public_path('admin/upload/notification'), $fileupload);
-            //dd($x);
-            $notification->fileupload =  $fileupload;
-        }
+            $notification = new Notification;
+            $notification->language = $request->language;
+            $notification->title = $request->title;
+            $notification->notificationtype = $request->notificationtype;
+            $notification->menutype =  $request->menutype;
+            $notification->keyword =  $request->keyword;
+            $notification->description =  $request->description;
+            $notification->url =  $request->url;
+            $notification->startdate =  $request->startdate;
+            $notification->enddate =  $request->enddate;
+            $notification->status =  $request->status;
 
-        // print("hi");
-        //dd( $notification->fileupload);
-        $result = $notification->save();
-        //dd($result);
-        // print("hi");
+            //image upload
+            if (isset($request->image)) {
+                $image = time() . '.' . $request->image->getClientOriginalExtension();
+                $request->image->move(public_path('admin/upload/notification'), $image);
+                $notification->image =  $image;
+            }
 
-        // Check if the save operation was successful
-        if ($result) {
-            return redirect('/admin/notification')->withSuccess('Notification detail added successfully!');
-        } else {
-            return redirect('/admin/notification')->withError('Notification detail not added successfully!');
+            //file upload 
+            if (isset($request->fileupload)) {
+                $fileupload = time() . '.' . $request->fileupload->getClientOriginalExtension();
+                $request->fileupload->move(public_path('admin/upload/notification'), $fileupload);
+                //dd($x);
+                $notification->fileupload =  $fileupload;
+            }
+
+            // print("hi");
+            //dd( $notification->fileupload);
+            $result = $notification->save();
+            //dd($result);
+            // print("hi");
+
+            // Check if the save operation was successful
+            if ($result) {
+                return redirect('/admin/notification')->withSuccess('Notification detail added successfully!');
+            } else {
+                return redirect('/admin/notification')->withError('Notification detail not added successfully!');
+            }
         }
     }
 
@@ -149,7 +148,7 @@ class NotificationController extends Controller
 
         if (isset($request->submit)) {
             //print_r($request->menutype);exit;
-            $menutypeValidation = $request->validate([
+            $Validation = [
                 'language' => 'Required',
                 'title' => 'Required',
                 'notificationtype' => 'Required',
@@ -157,31 +156,30 @@ class NotificationController extends Controller
                 'startdate' => 'Required',
                 'enddate' => 'Required|after_or_equal:startdate',
                 'status' => 'Required',
-            ],
-            [
+            ];
+            $customMessages = [
                 'enddate.after_or_equal' => 'The end date must be greater than or equal to the start date.',
-            ]);
-        
+            ];
 
-            // if (isset($request->menutype)) {
-            if ($request->menutype == 'Content') {
-                $menutypeValidation = $request->validate([
-                    'keyword' => 'Required',
-                    'description' => 'Required',
-                    'image' => 'nullable | mimes:pdf,jpeg,jpg,png,webp | max:2048',
-                ]);
-            } else if ($request->menutype == 'File upload') {
-                $menutypeValidation = $request->validate([
-                    'fileupload' => 'nullable | mimes:pdf,jpeg,jpg,png,webp | max:2048',
-                ]);
-            } else if ($request->menutype == 'Url') {
-                $menutypeValidation = $request->validate([
-                    'url' => 'Required|url',
-                ]);
+            // Add validation based on menu type conditionally
+            if ($request->has('menutype')) {
+                if ($request->menutype == 'Content') {
+                    $Validation['keyword'] = 'required';
+                    $Validation['description'] = 'required';
+                    $Validation['image'] = 'required|mimes:pdf,jpeg,jpg,png,webp|max:2048';
+                } elseif ($request->menutype == 'File upload') {
+                    $Validation['fileupload'] = 'required|mimes:pdf,jpeg,jpg,png,webp|max:2048';
+                } elseif ($request->menutype == 'Url') {
+                    $Validation['url'] = 'required|url';
+                }
             }
-            //}
 
-            $validator = Validator::make($request->all(), $menutypeValidation);
+            $validator = Validator::make($request->all(), $Validation, $customMessages);
+
+            if ($validator->fails()) {
+                // Handle validation failure manually, e.g., return back with errors
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
 
             $notification = Notification::find($id);
             if (!$notification) {
@@ -252,7 +250,7 @@ class NotificationController extends Controller
                         $notification->image =  $newimage;
                         //dd($notification->image);
                     }
-                }  else if ($request->menutype == 'Url') {
+                } else if ($request->menutype == 'Url') {
                     $filedestinatinon = (public_path('admin/upload/notification/') . $notification->fileupload);
                     if (file_exists($filedestinatinon) && is_file($filedestinatinon)) {
                         unlink($filedestinatinon);
@@ -269,8 +267,7 @@ class NotificationController extends Controller
                     $notification->image =  null;
                     $notification->fileupload =  null;
                     $notification->menutype =  $request->menutype;
-                    
-                }else if($request->menutype == 'File upload')  {
+                } else if ($request->menutype == 'File upload') {
                     $imagedestination = public_path('admin/upload/notification/') . $notification->image;
                     if (file_exists($imagedestination) && is_file($imagedestination)) {
                         unlink($imagedestination);
@@ -294,10 +291,10 @@ class NotificationController extends Controller
                         }
 
                         $notification->fileupload =  $newfileupload;
-                      //  dd($notification);
+                        //  dd($notification);
                     }
                 }
-             //dd($notification);
+                //dd($notification);
                 $notification->menutype =  $request->menutype;
                 // dd($notification);
             }
@@ -305,7 +302,7 @@ class NotificationController extends Controller
 
 
             // print("hi");
-           //dd($notification);
+            //dd($notification);
 
             $result = $notification->save();
             // dd($result);
@@ -314,7 +311,7 @@ class NotificationController extends Controller
             // Check if the save operation was successful
             if ($result) {
                 return redirect('/admin/notification')->withSuccess('Notification detail updated successfully!');
-            }else{
+            } else {
                 return redirect('/admin/notification')->withError('Notification detail not updated successfully!');
             }
         }

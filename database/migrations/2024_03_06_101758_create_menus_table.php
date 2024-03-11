@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->string('title');    
+            $table->integer('menu_category');
+            $table->integer('parent_menu')->nullable()->default(0); 
+            $table->string('title');  
             $table->string('menutype');
             $table->string('keyword')->nullable();
             $table->longtext('description')->nullable();
@@ -23,6 +25,7 @@ return new class extends Migration
             $table->string('menu_position');
             $table->string('banner_image');
             $table->integer('admin_id');
+            $table->string('status');
             $table->timestamps();
         });
     }

@@ -285,7 +285,7 @@
 <script>
 $(document).ready(function() {
     var oldMenutype =   "{{ old('menutype',$notifications->menutype) }}";
-    alert(oldMenutype);
+   // alert(oldMenutype);
     document.getElementById('ContentBlock').style.display = 'none';
     document.getElementById('fileuploadBlock').style.display = 'none';
     document.getElementById('urlBlock').style.display = 'none';
