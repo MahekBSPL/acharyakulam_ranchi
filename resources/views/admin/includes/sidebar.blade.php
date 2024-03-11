@@ -37,6 +37,12 @@
             <li class="">
                 <a href="{{ url('/admin/council')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Student Council</span></a>
             </li>
+            <li class="">
+                <a href="{{ url('/admin/winner')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Winner</span></a>
+            </li>
+            <li class="">
+                <a href="{{ url('/admin/popup')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Modal Popup</span></a>
+            </li>
         </ul>
 
     </aside>

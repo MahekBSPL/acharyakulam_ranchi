@@ -13,24 +13,27 @@
  
 
   <!-- General JS Scripts -->
-  <script src="{{URL::asset('/assets/modules/jquery.min.js')}}"></script>
-  <script src="{{URL::asset('/assets/modules/popper.js')}}"></script>
-  <script src="{{URL::asset('/assets/modules/tooltip.js')}}"></script>
-  <script src="{{URL::asset('/assets/modules/bootstrap/js/bootstrap.min.js')}}"></script>
-  <script src="{{URL::asset('/assets/modules/nicescroll/jquery.nicescroll.min.js')}}"></script>
-  <script src="{{URL::asset('/assets/modules/moment.min.js')}}"></script>
-  <script src="{{URL::asset('/assets/js/stisla.js')}}"></script>
+  <script src="{{URL::asset('/public/assets/modules/jquery.min.js')}}"></script>
+  <script src="{{URL::asset('/public/assets/modules/popper.js')}}"></script>
+  <script src="{{URL::asset('/public/assets/modules/tooltip.js')}}"></script>
+  <script src="{{URL::asset('/public/assets/modules/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{URL::asset('/public/assets/modules/nicescroll/jquery.nicescroll.min.js')}}"></script>
+  <script src="{{URL::asset('/public/assets/modules/moment.min.js')}}"></script>
+  <script src="{{URL::asset('/public/assets/js/stisla.js')}}"></script>
   
   <!-- JS Libraies -->
-  <script src="{{URL::asset('/assets/modules/jquery.sparkline.min.js')}}"></script>
-  <script src="{{URL::asset('/assets/modules/chart.min.js')}}"></script>
-  <script src="{{URL::asset('/assets/modules/owlcarousel2/dist/owl.carousel.min.js')}}"></script>
-  <script src="{{URL::asset('/assets/modules/summernote/summernote-bs4.js')}}"></script>
-  <script src="{{URL::asset('/assets/modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
+  <script src="{{URL::asset('/public/assets/modules/jquery.sparkline.min.js')}}"></script>
+  <script src="{{URL::asset('/public/assets/modules/chart.min.js')}}"></script>
+  <script src="{{URL::asset('/public/assets/modules/owlcarousel2/dist/owl.carousel.min.js')}}"></script>
+  <script src="{{URL::asset('/public/assets/modules/summernote/summernote-bs4.js')}}"></script>
+  <script src="{{URL::asset('/public/assets/modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
 
   
   <!-- Template JS File -->
-  <script src="{{URL::asset('/assets/js/scripts.js')}}"></script>
-  <script src="{{URL::asset('/assets/js/custom.js')}}"></script>
+  <script src="{{URL::asset('/public/assets/js/scripts.js')}}"></script>
+  <script src="{{URL::asset('/public/assets/js/custom.js')}}"></script>
  
+
+  <script src="{{ URL::asset('/public/assets/modules/jquery.min.js')}}"></script>
+<script src="{{ URL::asset('/public/assets/js/page/validate.js')}}"></script>
 </html>

@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
-@section('title', 'Edit Slider')
+@section('title', 'Edit Winner')
 
 <div class="row">
     <div class="col-12 col-md-12 col-lg-12">
@@ -11,59 +11,16 @@
                     <p>{{ $message }}</p>
                 </div>
                 @endif
-
                 @if ($message = Session::get('error'))
                 <div class="alert alert-danger">
                     <p>{{ $message }}</p>
                 </div>
                 @endif
 
-                <form action="{{ route('slider.update' , $sliders->id) }}" name="form1" id="form1" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+                <form action="{{ route('winner.update' , $winneres->id) }}" name="form1" id="form1" method="post" enctype="multipart/form-data" accept-charset="utf-8">
                     @csrf
                     @method('PUT')
-                    <div class="panel-body">
-
-                        <div class="row">
-                            <div class="col-12 col-md-3 col-lg-3">
-                                <div class="form-group">
-                                    <label>Slider Title:</label>
-                                    <span class="star">*</span>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-6">
-                                <div class="form-group">
-                                    <input name="title" maxlength="36" minlength="2" autocomplete="off" type="text" class="input_class form-control  @error('title') is-invalid @enderror" id="title" value="{{ !empty($sliders->title)?$sliders->title:old('title')}}" />
-                                 
-                                    <span class="invalid-feedback" role="alert">
-                                    @error('title')
-                                        <strong>{{ $message }}</strong>
-                                        @enderror
-                                    </span>
-                                  
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-12 col-md-3 col-lg-3">
-                                <div class="form-group">
-                                    <label>URL:</label>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-6">
-                                <div class="form-group">
-                                    <input name="url" autocomplete="off" type="text" minlength="" class="input_class form-control @error('url') is-invalid @enderror " id="url" value="{{!empty($sliders->url)?$sliders->url:old('url')}}" />
-                                 
-                                    <span class="invalid-feedback" role="alert">
-                                    @error('url')
-                                        <strong>{{ $message }}</strong>
-                                        @enderror
-                                    </span>
-                                 
-                                </div>
-                            </div>
-                        </div>
-
+                    <div class="panel-body">                       
                         <div id="txtPDF">
                             <div class="row">
                                 <div class="col-12 col-md-3 col-lg-3">
@@ -75,8 +32,8 @@
                                 <div class="col-12 col-md-6 col-lg-6">
                                     <div class="form-group">
                                         <input type="file" value="{{old('image')}}" name="image" class="input_class w-50 inline-block" id="image" />
-                                        <a href="{{ URL::asset('/admin/upload/slider/'.$sliders->image)}}"><img src="{{ URL::asset('admin/upload/slider/'.$sliders->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
-                                        <input type="hidden" name="olduplode" class="input_class w-50 inline-block" value="<?php echo !empty($slider->img) ? $slider->img : ''; ?>" />
+                                        <a href="{{ URL::asset('/pubic/admin/upload/winner/'.$winneres->image)}}"><img src="{{ URL::asset('public/admin/upload/winner/'.$winneres->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
+                                        <input type="hidden" name="olduplode" class="input_class w-50 inline-block" value="<?php echo !empty($winneres->image) ? $winneres->image : ''; ?>" />
 
                                         <span class="invalid-feedback" role="alert">
                                             @error('image')
@@ -94,7 +51,7 @@
                                 <div class="pull-right">
 
                                     <input name="cmdsubmit" type="submit" class="btn btn-success" id="cmdsubmit" value="Submit" />&nbsp;
-                                    <a href="{{ url('/admin/slider')}}" class="btn btn-primary">Back</a>
+                                    <a href="{{ url('/admin/winner')}}" class="btn btn-primary">Back</a>
                                     <input type="hidden" name="random" value="" />
                                 </div>
                             </div>
