@@ -166,9 +166,9 @@ class NotificationController extends Controller
                 if ($request->menutype == 'Content') {
                     $Validation['keyword'] = 'required';
                     $Validation['description'] = 'required';
-                    $Validation['image'] = 'required|mimes:pdf,jpeg,jpg,png,webp|max:2048';
+                    $Validation['image'] = 'nullable|mimes:pdf,jpeg,jpg,png,webp|max:2048';
                 } elseif ($request->menutype == 'File upload') {
-                    $Validation['fileupload'] = 'required|mimes:pdf,jpeg,jpg,png,webp|max:2048';
+                    $Validation['fileupload'] = 'nullable|mimes:pdf,jpeg,jpg,png,webp|max:2048';
                 } elseif ($request->menutype == 'Url') {
                     $Validation['url'] = 'required|url';
                 }

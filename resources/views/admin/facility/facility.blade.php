@@ -1,13 +1,13 @@
 @extends('admin.layouts.master')
 @section('content')
-@section('title', 'menu')
+@section('title', 'Facility')
 
 <div class="card">
     <div class="card-body">
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-12">
-                    <a style="float: right;" href="{{URL::to('/admin/menu/create')}}" class="btn btn-primary pull-right"> Add Menu</a>
+                    <a style="float: right;" href="{{URL::to('/admin/facility/create')}}" class="btn btn-primary pull-right"> Add Facility</a>
                 </div>
             </div>
 
@@ -29,45 +29,43 @@
 
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table id="menutable" name="menutable" class="table table-striped table-bordered table-hover">
+                                <table id="facilitytable" name="facilitytable" class="table table-striped table-bordered table-hover">
 
                                     <thead>
                                         <tr>
                                             <th>Sr. No.</th>
                                             <th>Title</th>
-                                            <th>Menu Category</th>
-                                            <th>Menu type</th>
-                                            <th>Keyword</th>
+                                            <th>image</th>
                                             <th>Description</th>
-                                            <th>url</th>
-                                            <th>Menu Position</th>
-                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="menus">
-                                        @if(count($menus) > 0)
+                                    <tbody id="facilitys">
+                                        @if(count($facilitys) > 0)
                                         @php $count = 1; @endphp
-                                        @foreach($menus as $menu)
+                                        @foreach($facilitys as $facility)
                                         <tr>
-                                            <td> @if(count($menus) > 0){{$count++}}@endif</td>
-                                            <td>{{$menu->title}}</td>
-                                            <td>{{ $menu->menu_category === '1' ? 'Main menu' : ($menu->menu_category === '2' ? 'Sub Menu' : '-') }}</td> 
-                                            <td>{{$menu->menutype}}</td>
-                                            <td>@if(!empty($menu->keyword)){{$menu->keyword}} @else - @endif</td>
-                                            <td>@if(!empty($menu->description)){{strip_tags($menu->description)}} @else - @endif</td>
-                                            <td>@if(!empty($menu->url)){{$menu->url}} @else - @endif</td>
-                                            <td>{{$menu->menu_position}}</td>
-                                            <td>{{$menu->status}}</td>
+                                            <td> @if(count($facilitys) > 0){{$count++}}@endif</td>
+                                            <td>{{$facility->title}}</td>
+                                            <td>
+                                                @if(!empty($facility->image))
+                                                <a href="{{ URL::asset('admin/upload/facility/'.$facility->image) }}" target="_blank">
+                                                    <img src="{{ URL::asset('/admin/upload/facility/'.$facility->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
+                                                </a>
+                                                @else
+                                                  -
+                                                @endif
+                                            </td>
+                                            <td>{{$facility->description}}</td>
                                             <td style='display:inline-flex'>
-                                                <a class="btn btn-primary" style='margin-right:5px;' href="{{ route('menu.edit', $menu->id) }}">
+                                                <a class="btn btn-primary" style='margin-right:5px;' href="{{ route('facility.edit', $facility->id) }}">
                                                     <i class="fas fa-edit" style="font-size: 15px;"></i>
                                                 </a>
-                                                <form action="{{ route('menu.destroy',$menu->id) }}" method="POST">
+                                                <form action="{{ route('facility.destroy',$facility->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a><button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete Menu?')">
-                                                        <i class="fas fa-trash-alt" style="font-size: 15px;"></i></button>
+                                                    <a><button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to facility?')">
+                                                            <i class="fas fa-trash-alt" style="font-size: 15px;"></i></button>
                                                     </a>
                                                 </form>
                                             </td>
@@ -93,7 +91,8 @@
 </div>
 <script>
     $(document).ready(function() {
-       new DataTable('#menutable');
+        new DataTable('#facilitytable');
     });
 </script>
+
 @endsection

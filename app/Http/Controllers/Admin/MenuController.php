@@ -66,7 +66,7 @@ class MenuController extends Controller
                 }
             }
 
-            if($request->has('menu_category') == '2'){
+            if($request->menu_category == '2'){
                 $Validation['parent_menu'] = 'required';
             }
         
@@ -131,7 +131,7 @@ class MenuController extends Controller
             // print("hi");
 
             // Check if the save operation was successful
-            if ($menu) {
+            if ($result) {
                 return redirect('/admin/menu')->withSuccess('Menu detail added successfully!');
             } else {
                 return redirect('/admin/menu')->withError('Menu detail not added successfully!');
@@ -174,12 +174,11 @@ class MenuController extends Controller
     public function update(Request $request, string $id)
     {
         //
-
         $Validation = [
             'menu_category' => 'required',
             'title' => 'required',
             'menu_position' => 'required',
-            'banner_image' => 'required|mimes:jpeg,jpg,png,webp|max:2048',
+            'banner_image' => 'nullable|mimes:jpeg,jpg,png,webp|max:2048',
             'status' => 'required',
             'menutype' => 'required'
         ];
@@ -189,36 +188,38 @@ class MenuController extends Controller
             if ($request->menutype == 'Content') {
                 $Validation['keyword'] = 'required';
                 $Validation['description'] = 'required';
-                $Validation['image'] = 'required|mimes:pdf,jpeg,jpg,png,webp|max:2048';
+                $Validation['image'] = 'nullable|mimes:pdf,jpeg,jpg,png,webp|max:2048';
             } elseif ($request->menutype == 'File upload') {
-                $Validation['fileupload'] = 'required|mimes:pdf,jpeg,jpg,png,webp|max:2048';
+                $Validation['fileupload'] = 'nullable|mimes:pdf,jpeg,jpg,png,webp|max:2048';
             } elseif ($request->menutype == 'Url') {
                 $Validation['url'] = 'required|url';
             }
         }
 
-        if($request->has('menu_category') == '2'){
+      //dd($request->all());
+        if($request->menu_category == '2'){
             $Validation['parent_menu'] = 'required';
         }
     
         $validator = Validator::make($request->all(), $Validation);
-    
+
+        //dd($validator);
         if ($validator->fails()) {
             // Handle validation failure manually, e.g., return back with errors
             return redirect()->back()->withErrors($validator)->withInput();
         }
-
+ //dd($validator);
         $menu = menu::find($id);
         if (!$menu) {
             return redirect('/admin/menu')->withError('Menu detail not found.');
         }
-        //dd($notification);
+   
         // print_r("hi");
 
         $menu->menu_category = $request->menu_category;
         $menu->parent_menu = $request->parent_menu;
         $menu->title = $request->title;
-        $menu->menutype =  $request->menutype;
+        //$menu->menutype =  $request->menutype;
         $menu->keyword =  $request->keyword;
         $menu->description =  $request->description;
         $menu->url =  $request->url;
@@ -282,28 +283,29 @@ class MenuController extends Controller
                     //dd($notification->image);
                 }
             } else if ($request->menutype == 'Url') {
-                $filedestinatinon = (public_path('admin/upload/menu/') . $menu->fileupload);
-                if (file_exists($filedestinatinon) && is_file($filedestinatinon)) {
-                    unlink($filedestinatinon);
-                }
-
                 $imagedestination = public_path('/admin/upload/menu/') . $menu->image;
                 if (file_exists($imagedestination) && is_file($imagedestination)) {
                     unlink($imagedestination);
                 }
-
-                $menu->url =  $request->url;
+                $filedestinatinon = public_path('admin/upload/menu/') . $menu->fileupload;
+                if (file_exists($filedestinatinon) && is_file($filedestinatinon)) {
+                    unlink($filedestinatinon);
+                }
+              
                 $menu->keyword =  null;
                 $menu->description =  null;
                 $menu->image =  null;
                 $menu->fileupload =  null;
+                $menu->url =  $request->url;
                 $menu->menutype =  $request->menutype;
             } else if ($request->menutype == 'File upload') {
                 $imagedestination = public_path('admin/upload/menu/') . $menu->image;
+             //dd($imagedestination);
                 if (file_exists($imagedestination) && is_file($imagedestination)) {
                     unlink($imagedestination);
+                    //dd($imagedestination);
                 }
-                //$notification->menutype = $request->menutype;
+            
                 $menu->url = null;
                 $menu->keyword =  null;
                 $menu->description =  null;
@@ -312,7 +314,7 @@ class MenuController extends Controller
                 if (isset($request->fileupload)) {
                     $newfileupload = time() . '.' . $request->fileupload->extension();
                     $request->fileupload->move(public_path('/admin/upload/menu'), $newfileupload);
-                    $filedestinatinon = (public_path('admin/upload/menu/') . $menu->fileupload);
+                    $filedestinatinon = public_path('admin/upload/menu/') . $menu->fileupload;
                     //dd($newfileupload);
                     //dd($filedestinatinon);
 
@@ -322,14 +324,14 @@ class MenuController extends Controller
                     }
 
                     $menu->fileupload =  $newfileupload;
-                    //  dd($notification);
+                     // dd($menu);
                 }
             }
             //dd($notification);
             $menu->menutype =  $request->menutype;
             // dd($notification);
         }
-
+ 
         //banner image
         if (isset($request->banner_image)) {
             $file = $request->file('banner_image');

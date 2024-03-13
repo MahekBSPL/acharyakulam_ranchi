@@ -37,6 +37,15 @@
             <li class="">
                 <a href="{{ url('/admin/council')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Student Council</span></a>
             </li>
+            <li class="">
+                <a href="{{ url('/admin/competitive_exam')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Competitive Exam</span></a>
+            </li>
+            <li class="">
+                <a href="{{ url('/admin/academic')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Academic Session</span></a>
+            </li>
+            <li class="">
+                <a href="{{ url('/admin/facility')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Facility</span></a>
+            </li>
         </ul>
 
     </aside>

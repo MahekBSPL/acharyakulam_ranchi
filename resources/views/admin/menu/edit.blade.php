@@ -63,15 +63,9 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
-                                <select name="menu_category" class="input_class form-control" id="menu_category" autocomplete="off" onchange="handleMenuCategory(this)">
-                                    <option value="" selected="" disabled=""> Select </option>
-                                    <?php
-                                    $menu_categoryArray = ["1" => "Main menu", "2" => "Sub Menu"];
-                                    foreach ($menu_categoryArray as $key => $value) {
-                                    ?>
-                                        <option value="{{ $key }}" @if((!empty($menus->menu_category)?$menus->menu_category:old('menu_category'))==$key) selected @endif >{{ $value }}</option>
-                                    <?php  } ?>
-                                </select>
+                                <?php $menu_categoryArray = ["1" => "Main menu", "2" => "Sub Menu"]; ?>
+                                <input type="hidden" name="menu_category" id="menu_category_hidden" value="{{ !empty($menus->menu_category) ? $menus->menu_category : old('menu_category') }}" />
+                                <input type="text" class="input_class form-control" id="menu_category" value="{{ !empty($menus->menu_category) ? $menu_categoryArray[$menus->menu_category] : 'Select' }}" readonly />
                                 <span class="text-danger">@error('menu_category'){{$message}} @enderror</span>
                             </div>
                         </div>
@@ -93,7 +87,7 @@
                                         @foreach($submenu as $key)
                                         @if($key->parent_menu == '')
                                         <option value="{{ $key->id }}" @if((!empty($menus->parent_menu)?$menus->parent_menu:old('parent_menu')) == $key->id) selected @endif>{{ $key->title }}</option>
-                                       
+
                                         @endif
                                         @endforeach
                                     </select>
@@ -165,7 +159,7 @@
                             </div>
                             <div class="col-12 col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <textarea name="description" id="description" class="form-control summernote-simple " rows="3" aria-hidden="true" style="display: none;" value="{{ !empty($menus->description)?$menus->description:old('description')}}"></textarea>
+                                    <textarea name="description" id="description" class="form-control summernote-simple " rows="3" aria-hidden="true" style="display: none;" value="{{ !empty($menus->description)?$menus->description:old('description')}}"><?php echo !empty($menus->description) ? $menus->description : old('description'); ?></textarea>
                                     <span class="text-danger">@error('description'){{$message}} @enderror</span>
                                 </div>
                             </div>
@@ -207,7 +201,6 @@
                                     <a href="{{ URL::asset('/admin/upload/menu/'.$menus->fileupload)}}"><img src="{{ URL::asset('admin/upload/menu/'.$menus->fileupload)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
                                     @endif
                                     <input type="hidden" name="oldfileupload" class="input_class w-50 inline-block" value="{{ !empty($menus->fileupload)?$menus->fileupload:old('fileupload')}}" />
-
                                     <span class="text-danger">@error('fileupload'){{$message}} @enderror</span>
                                 </div>
                             </div>
@@ -247,7 +240,7 @@
                                     $menupositionArray = ["1" => "Header Menu", "2" => "Footer Menu"];
                                     foreach ($menupositionArray as $key => $value) {
                                     ?>
-                                        <option value="{{ $key }}" @if((!empty($menus->menu_position)?$menus->menu_position:old('menu_position'))==$value) selected @endif >{{ $value }}</option>
+                                        <option value="{{ $value }}" @if((!empty($menus->menu_position)?$menus->menu_position:old('menu_position'))==$value) selected @endif >{{ $value }}</option>
                                     <?php  } ?>
                                 </select>
                                 <span class="text-danger">@error('menu_position'){{$message}} @enderror</span>
@@ -289,7 +282,7 @@
                                     $statusArray = ["1" => "Draft", "2" => "Publish"];
                                     foreach ($statusArray as $key => $value) {
                                     ?>
-                                        <option value="{{ $key }}" @if((!empty($menus->status)?$menus->status:old('status'))==$value) selected @endif >{{ $value }}</option>
+                                        <option value="{{ $value }}" @if((!empty($menus->status)?$menus->status:old('status'))==$value) selected @endif >{{ $value }}</option>
                                     <?php  } ?>
                                 </select>
                                 <span class="text-danger">@error('status'){{$message}} @enderror</span>
@@ -301,7 +294,7 @@
                         <div class="col-lg-12 col-md-12 col-xm-12">
                             <div class="pull-right">
                                 <input name="submit" type="submit" class="btn btn-success" id="submit" value="Submit" />&nbsp;
-                                <a href="{{URL::to('/admin/notification')}}" class="btn btn-primary">back</a>
+                                <a href="{{URL::to('/admin/menu')}}" class="btn btn-primary">back</a>
                             </div>
                         </div>
                     </div>

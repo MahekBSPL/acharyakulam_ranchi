@@ -91,8 +91,8 @@
                                         <!-- Retrieve data from MySQL table and generate options -->
                                         @foreach($data as $key)
                                         @if($key->parent_menu == '')
-                                        <option value="{{ $key->id }}" @if(old('parent_menu') == $key->id) selected @endif>{{ $key->title }}</option>
-                                        @endif                   
+                                        <option value="{{ $key->id }}" @if(old('parent_menu')==$key->id) selected @endif>{{ $key->title }}</option>
+                                        @endif
                                         @endforeach
                                     </select>
                                     <span class="text-danger">@error('parent_menu'){{$message}} @enderror</span>
@@ -236,7 +236,7 @@
                                     $menupositionArray = ["1" => "Header Menu", "2" => "Footer Menu"];
                                     foreach ($menupositionArray as $key => $value) {
                                     ?>
-                                        <option value="{{ $key }}" @if(old('menu_position')==$key) selected @endif>{{ $value }}</option>
+                                        <option value="{{ $value }}" @if(old('menu_position')==$value) selected @endif>{{ $value }}</option>
                                     <?php  } ?>
                                 </select>
                                 <span class="text-danger">@error('menu_position'){{$message}} @enderror</span>
@@ -290,10 +290,10 @@
                             </div>
                         </div>
                     </div>
-
+                </form>
             </div>
         </div>
-        </form>
+
     </div>
 </div>
 
@@ -301,7 +301,7 @@
 <script>
     $(document).ready(function() {
         var oldMenutype = "{{ old('menutype') }}";
-        var oldmenucategory ="{{old('menu_category') }}"
+        var oldmenucategory = "{{old('menu_category') }}"
         document.getElementById('ContentBlock').style.display = 'none';
         document.getElementById('fileuploadBlock').style.display = 'none';
         document.getElementById('urlBlock').style.display = 'none';
@@ -312,12 +312,12 @@
             document.getElementById('fileuploadBlock').style.display = 'none';
             document.getElementById('urlBlock').style.display = 'none';
         } else if (oldMenutype == 'File upload') {
-             document.getElementById('ContentBlock').style.display = 'none';
+            document.getElementById('ContentBlock').style.display = 'none';
             document.getElementById('fileuploadBlock').style.display = 'block';
-             document.getElementById('urlBlock').style.display = 'none';
+            document.getElementById('urlBlock').style.display = 'none';
         } else if (oldMenutype == 'Url') {
             document.getElementById('ContentBlock').style.display = 'none';
-             document.getElementById('fileuploadBlock').style.display = 'none';
+            document.getElementById('fileuploadBlock').style.display = 'none';
             document.getElementById('urlBlock').style.display = 'block';
         } else {
             document.getElementById('ContentBlock').style.display = 'none';
@@ -325,13 +325,12 @@
             document.getElementById('urlBlock').style.display = 'none';
         }
 
-    if (oldmenucategory == '2') {
+        if (oldmenucategory == '2') {
             document.getElementById('parent_menuBlock').style.display = "block";
         } else {
             document.getElementById('parent_menuBlock').style.display = "none";
         }
 
     });
-    
 </script>
 @endsection

@@ -949,7 +949,6 @@
          </div>
       </div>
 
-
       <section class="p70">
          <div class="container">
             <h2>Campus & Facility</h2>
@@ -1308,10 +1307,6 @@
                               </div>
                            </a>
                         </div>
-
-
-
-
 
                         <div class="slider1 div-description" id="dir-3" style="display: none;">
                            <div class="row">

@@ -2,24 +2,27 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Frontend\IndexController;
-use App\Http\Controllers\Frontend\AboutUsController;
-use App\Http\Controllers\frontend\ToarchBearersController;
-use App\Http\Controllers\frontend\AdmissionController;
-use App\Http\Controllers\frontend\AcademicsController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MenuController;
-use App\Http\Controllers\Admin\SliderController;
-use App\Http\Controllers\Admin\NotificationController;
-use App\Http\Controllers\Admin\EventController;
-use App\Http\Controllers\admin\PhotoGallery as photoGallery;
-use App\Http\Controllers\admin\AjaxRequestController;
-use App\Http\Controllers\admin\ClassNameController;
-use App\Http\Controllers\admin\SectionController;
-use App\Http\Controllers\admin\StudentCouncilController;
 use App\Http\Controllers\admin\RuleController;
+use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\admin\WinnerController;
+use App\Http\Controllers\admin\SectionController;
+use App\Http\Controllers\Admin\AcademicController;
+use App\Http\Controllers\Admin\FacilityController;
+use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\admin\ClassNameController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Frontend\AboutUsController;
+use App\Http\Controllers\admin\AjaxRequestController;
+use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\frontend\AcademicsController;
+use App\Http\Controllers\frontend\AdmissionController;
+use App\Http\Controllers\admin\StudentCouncilController;
+use App\Http\Controllers\Admin\CompetitiveExamController;
+use App\Http\Controllers\frontend\ToarchBearersController;
+use App\Http\Controllers\admin\PhotoGallery as photoGallery;
 
 
 //use App\http\Controllers\Admin\DashboardController;
@@ -74,8 +77,10 @@ Route::middleware(['auth', 'IsAdmin'])->group(function () {
     Route::view('admin/dashboard', 'admin.dashboard')->name('admin.dashboard');
     Route::resource('/admin/menu', MenuController::class);
     Route::resource('/admin/slider', SliderController::class);
-    //Route::post('/addslider', [SliderController::class, 'store'])->name('addslider');
     Route::resource('/admin/notification', NotificationController::class);
+    Route::resource('/admin/competitive_exam', CompetitiveExamController::class);
+    Route::resource('/admin/academic', AcademicController::class);
+    Route::resource('/admin/facility', FacilityController::class);
     Route::resource('/admin/event', EventController::class);
     Route::resource('/admin/photoGallery', photoGallery::class);
     Route::any('/admin/update_rules_orders', [AjaxRequestController::class, 'update_rules_orders'])->name('/admin/update_rules_orders');

@@ -39,8 +39,8 @@ class SliderController extends Controller
          //if (isset($request->cmdsubmit)) {
 
             $validator = $request->validate([
-                'title' => 'Required', 
-                'image' => 'Required | image | mimes:jpeg,jpg,png,webp | max:2048'
+                'title' => 'required', 
+                'image' => 'required | image | mimes:jpeg,jpg,png,webp | max:2048'
             ]);
 
             if(isset($request->image)){
@@ -101,7 +101,7 @@ class SliderController extends Controller
         //
         if (isset($request->cmdsubmit)) {
             $request->validate([
-                'title' => 'Required',
+                'title' => 'required',
                 'image' => 'nullable | image | mimes:jpeg,jpg,png,webp | max:2048'
             ]);
 
