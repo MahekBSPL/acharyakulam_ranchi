@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
-@section('title', ' Add competitive exam')
+@section('title', 'Add competitive exam')
 
 <div class="row">
     <div class="col-12 col-md-12 col-lg-12">
@@ -25,14 +25,19 @@
                     <div class="row">
                         <div class="col-12 col-md-3 col-lg-3">
                             <div class="form-group">
-                                <label>Title:</label>
+                                <label>Select Year :</label>
                                 <span class="star">*</span>
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-6">
-                            <div class="form-group">
-                                <input name="title" minlength="2" autocomplete="off" type="text" class="input_class form-control" id="title" value="{{old('title')}}" />
-                                <span class="text-danger"> @error('title'){{$message}} @enderror</span>
+                            <div class="input_class form-group">
+                                <select name="selectyear" id="selectyear" class="form-control" autocomplete="off">
+                                    <option value="" selected="" disabled="">Select</option>
+                                    @foreach ($data as $participation)
+                                    <option value="{{ $participation->id }}" @if(old('selectyear')==$participation->id) selected @endif>{{ $participation->year }}</option>
+                                    @endforeach 
+                                </select>
+                                <span class="text-danger">@error('selectyear'){{$message}} @enderror</span>
                             </div>
                         </div>
                     </div>
@@ -51,37 +56,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-12 col-md-3 col-lg-3">
-                            <div class="form-group">
-                                <label>Year:</label>
-                                <span class="star">*</span>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6">
-                            <div class="form-group">
-                                <input name="year" minlength="2" autocomplete="off" type="text" class="input_class form-control" id="year" value="{{old('year')}}" />
-                                <span class="text-danger"> @error('year'){{$message}} @enderror</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-12 col-md-3 col-lg-3">
-                            <div class="form-group">
-                                <label>Image:</label>
-                                <span class="star">*</span>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6">
-                            <div class="form-group">
-                                <input type="file" name="image" class="input_class inline-block" id="image" autocomplete="off" value="{{old('image')}}" />
-                                <span class="text-danger">@error('image'){{$message}} @enderror</span>
-                            </div>
-                        </div>
-                    </div>
-
 
                     <div class="row">
                         <div class="col-12 col-md-3 col-lg-3">

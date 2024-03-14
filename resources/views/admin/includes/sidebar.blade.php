@@ -11,6 +11,24 @@
                 <a href="{{ url('/admin/dashboard')}}" class="nav-link"><i class="bi bi-display" aria-hidden="true"></i><span>Dashboard</span></a>
             </li>
             <li class="">
+                <a href="{{ url('/admin/participation')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Participation Exam</span></a>
+            </li>
+            <li class="">
+                <a href="{{ url('/admin/competitive_exam')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Competitive Exam</span></a>
+            </li>
+            <li class="">
+                <a href="{{ url('/admin/academic')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Academic Session</span></a>
+            </li>
+            <li class="">
+                <a href="{{ url('/admin/facilitydescription')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Facility Description</span></a>
+            </li>
+            <li class="">
+                <a href="{{ url('/admin/facilityslider')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Facility Slider</span></a>
+            </li>
+            <li class="">
+                <a href="{{ url('/admin/facility')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Facility</span></a>
+            </li>
+            <li class="">
                 <a href="{{ url('/admin/menu')}}" class="nav-link"><i class="bi bi-menu-up" aria-hidden="true"></i><span>Menu</span></a>
             </li>
             <li class="">
@@ -37,14 +55,12 @@
             <li class="">
                 <a href="{{ url('/admin/council')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Student Council</span></a>
             </li>
+            
             <li class="">
-                <a href="{{ url('/admin/competitive_exam')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Competitive Exam</span></a>
+                <a href="{{ url('/admin/winner')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Winner</span></a>
             </li>
             <li class="">
-                <a href="{{ url('/admin/academic')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Academic Session</span></a>
-            </li>
-            <li class="">
-                <a href="{{ url('/admin/facility')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Facility</span></a>
+                <a href="{{ url('/admin/popup')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Modal Popup</span></a>
             </li>
         </ul>
 

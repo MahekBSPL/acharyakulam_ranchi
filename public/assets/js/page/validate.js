@@ -18,7 +18,7 @@ jQuery(function(){
 
 });
    function onlytxtuplodepdf(data) {
-        alert(data);
+       
         // var myFile="";
         var myFile = data.value;
         var upld = myFile.split('.').pop();
@@ -36,7 +36,6 @@ jQuery(function(){
         }
     }
     function onlytxtuplodeimg(data) {
-        
         var myFile="";
         var myFile = data.value;
         var upld = myFile.split('.').pop();
@@ -51,6 +50,42 @@ jQuery(function(){
 
             $("#txtimg").val("");
             $('.'+data.id+'_error').html('Only jpg,png,jpeg,webp formate are allowed.');
+            false;
+        }
+    }
+    function onlytxtuplodecsv(data) {
+        var myFile="";
+        var myFile = data.value;
+        var upld = myFile.split('.').pop();
+        
+        if (upld == 'csv' || upld == 'xlsx')  {
+            $('.'+data.id+'_error').html('');
+            if (Filevalidation(data.id)) {
+                return true
+            }
+            return false;
+        } else {
+
+            $("#file_path").val("");
+            $('.'+data.id+'_error').html('Only csv,xlsx formate are allowed.');
+            false;
+        }
+    }
+    function onlytxtuplodeimg_and_pdf(data) {
+        var myFile="";
+        var myFile = data.value;
+        var upld = myFile.split('.').pop();
+        
+        if (upld == 'jpg' || upld == 'png' || upld == 'jpeg' || upld =='webp' || upld == 'pdf')  {
+            $('.'+data.id+'_error').html('');
+            if (Filevalidation(data.id)) {
+                return true
+            }
+            return false;
+        } else {
+
+            $("#txtimg_pdf").val("");
+            $('.'+data.id+'_error').html('Only jpg,png,jpeg,webp and pdf formate are allowed.');
             false;
         }
     }

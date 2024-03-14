@@ -30,7 +30,8 @@ class NotificationController extends Controller
     {
         //
         $title = "Add Notification";
-        $SelectType = SelectType::select('value')->pluck('value');
+        //$SelectType = SelectType::select('value')->pluck('value');
+        $SelectType = SelectType::all();
         return view('admin.notification.create', ['SelectType' => $SelectType], compact('title'));
     }
 

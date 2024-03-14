@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\CompetitiveExam;
+use App\Models\Admin\Participation;
 use Illuminate\Support\Facades\Validator;
 
 class CompetitiveExamController extends Controller
@@ -17,8 +18,10 @@ class CompetitiveExamController extends Controller
     {
         //
         $title = "Competitive Exam";
-        $data = CompetitiveExam::orderBy('created_at', 'desc')->get();
-        return view('admin.competitive_exam.competitive_exam', ['exams' => $data], compact('title'));
+        $exam = CompetitiveExam::orderBy('created_at', 'desc')->get();
+       // $data = Participation::select('year')->pluck('year');
+        $data = Participation::all();
+        return view('admin.competitive_exam.competitive_exam', ['exams' => $exam, 'data' => $data], compact('title'));
     }
 
     /**
@@ -28,7 +31,9 @@ class CompetitiveExamController extends Controller
     {
         //
         $title = "Add Competitive Exam";
-        return view('admin.competitive_exam.create', compact('title'));
+        //$data = Participation::select('*')->pluck('year');
+        $data = Participation::all();
+        return view('admin.competitive_exam.create', ['data' => $data], compact('title'));
     }
 
     /**
@@ -37,17 +42,13 @@ class CompetitiveExamController extends Controller
     public function store(Request $request)
     {
         //
-
         $validator = $request->validate([
-                'title' => 'required',
-            'name' =>'required',
-            'year' => 'required',
-            'image' => 'required|image|mimes:jpeg,jpg,png,webp|max:2048',
+            'selectyear' => 'required',
+            'name' => 'required',
             'pdf' => 'required|mimes:pdf|max:2048',
         ]);
 
         //second method for validation 
-
         // $validator = Validator::make($request->all(), [
         //     'title' => 'required',
         //     'name' =>'required',
@@ -55,7 +56,7 @@ class CompetitiveExamController extends Controller
         //     'image' => 'required|image|mimes:jpeg,jpg,png,webp|max:2048',
         //     'pdf' => 'required|file|mimes:pdf|max:2048',
         // ]);
-        
+
         // if ($validator->fails()) {
         //     return redirect()->back()->withErrors($validator)->withInput();
         // }
@@ -65,27 +66,16 @@ class CompetitiveExamController extends Controller
         if (!is_dir('admin/upload/competitiveExam')) {
             mkdir('admin/upload/competitiveExam', 0777, TRUE);
         }
-        if (!is_dir('admin/upload/competitiveExam/pdf')) {
-            mkdir('admin/upload/competitiveExam/pdf', 0777, TRUE);
-        }
 
         $competitiveexam = new CompetitiveExam;
-        $competitiveexam->title = $request->title;
+        $competitiveexam->selectyear = $request->selectyear;
         $competitiveexam->name = $request->name;
-        $competitiveexam->year = $request->year;
-
-        //image upload
-        if (isset($request->image)) {
-            $image = time() . '.' . $request->image->getClientOriginalExtension();
-            $request->image->move(public_path('admin/upload/competitiveExam'), $image);
-            $competitiveexam->image =  $image;
-        }
 
         //pdf upload
         if (isset($request->pdf)) {
             $file = $request->file('pdf');
             $pdf = date('YmdHis') . '.' . $request->pdf->getClientOriginalExtension();
-            $file->move(public_path('admin/upload/competitiveExam/pdf'), $pdf);
+            $file->move(public_path('admin/upload/competitiveExam'), $pdf);
             $competitiveexam->pdf =  $pdf;
         }
 
@@ -113,8 +103,10 @@ class CompetitiveExamController extends Controller
     {
         //
         $title = "Edit Competitive Exam";
-        $data = CompetitiveExam::find($id);
-        return view('admin/competitive_exam/edit', ['exams' => $data, 'title' => $title]);
+        $exam = CompetitiveExam::find($id);
+        $data = Participation::all();
+        //$data = Participation::select('year')->pluck('year');
+        return view('admin/competitive_exam/edit', ['exams' => $exam, 'data' => $data, 'title' => $title]);
     }
 
     /**
@@ -124,19 +116,14 @@ class CompetitiveExamController extends Controller
     {
         //
         $validator = $request->validate([
-            'title' => 'required',
-            'name' =>'required',
-            'year' => 'required',
-            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:2048',
+            'selectyear' => 'required',
+            'name' => 'required',
             'pdf' => 'nullable|mimes:pdf|max:2048',
         ]);
 
         //make directory if not present
-        if (!is_dir('admin/upload/competitiveExam')) {
-            mkdir('admin/upload/competitiveExam', 0777, TRUE);
-        }
-        if (!is_dir('admin/upload/competitiveExam/pdf')) {
-            mkdir('admin/upload/competitiveExam/pdf', 0777, TRUE);
+        if (!is_dir('admin/upload/competitiveExam/')) {
+            mkdir('admin/upload/competitiveExam/', 0777, TRUE);
         }
 
         //find id
@@ -148,33 +135,21 @@ class CompetitiveExamController extends Controller
         }
 
         //update data
-        $competitiveexam->title = $request->title;
+        $competitiveexam->selectyear = $request->selectyear;
         $competitiveexam->name = $request->name;
-        $competitiveexam->year = $request->year;
-
-        //update new image and remove old image
-        if (isset($request->image)) {
-            $newimage = time() . '.' . $request->image->getClientOriginalExtension();
-            $request->image->move(public_path('admin/upload/competitiveExam/'), $newimage);
-            $imagedestination = public_path('admin/upload/competitiveExam/') . $competitiveexam->image;
-            if (file_exists($imagedestination) && is_file($imagedestination)) {
-                unlink($imagedestination);
-            }
-            $competitiveexam->image =  $newimage;
-        }
 
         //update new pdf and remove old pdf
         if (isset($request->pdf)) {
             //$file = $request->file('pdf');
             $newpdf = date('YmdHis') . '.' . $request->pdf->getClientOriginalExtension();
-            $request->pdf->move(public_path('admin/upload/competitiveExam/pdf'), $newpdf);
-            $pdfdestination = public_path('admin/upload/competitiveExam/pdf/') . $competitiveexam->pdf;
+            $request->pdf->move(public_path('admin/upload/competitiveExam/'), $newpdf);
+            $pdfdestination = public_path('admin/upload/competitiveExam/') . $competitiveexam->pdf;
             if (file_exists($pdfdestination) && is_file($pdfdestination)) {
                 unlink($pdfdestination);
             }
             $competitiveexam->pdf =  $newpdf;
         }
-//dd($competitiveexam);
+        //dd($competitiveexam);
         $result = $competitiveexam->save();
 
         if ($result) {
@@ -197,12 +172,7 @@ class CompetitiveExamController extends Controller
             return redirect('/admin/competitive_exam')->withError('competitive detail not found.');
         }
 
-        $image_path = public_path('admin/upload/competitiveExam/') . $competitiveexam->image;
-        if (file_exists($image_path) && is_file($image_path)) {
-            unlink($image_path);
-        }
-
-        $pdf_path = public_path('admin/upload/competitiveExam/pdf/') . $competitiveexam->pdf;
+        $pdf_path = public_path('admin/upload/competitiveExam/') . $competitiveexam->pdf;
         if (file_exists($pdf_path) && is_file($pdf_path)) {
             unlink($pdf_path);
         }

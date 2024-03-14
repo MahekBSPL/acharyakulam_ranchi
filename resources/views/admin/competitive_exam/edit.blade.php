@@ -26,14 +26,19 @@
                     <div class="row">
                         <div class="col-12 col-md-3 col-lg-3">
                             <div class="form-group">
-                                <label>Title:</label>
+                                <label>Select Year:</label>
                                 <span class="star">*</span>
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-6">
-                            <div class="form-group">
-                                <input name="title" autocomplete="off" type="text" class="input_class form-control" id="title" value="{{ !empty($exams->title)?$exams->title:old('title')}}" />
-                                <span class="text-danger">@error('title'){{$message}} @enderror</span>
+                            <div class="input_class form-group">
+                                <select name="selectyear" id="selectyear" class="form-control" autocomplete="off">
+                                    <option value="" selected disabled>Select</option>
+                                    @foreach ($data as $participation)
+                                    <option value="{{ $participation->id }}" @if(old('selectyear', $exams->selectyear) == $participation->id) selected @endif>{{ $participation->year }}</option>
+                                    @endforeach 
+                                </select>
+                                <span class="text-danger">@error('selectyear'){{ $message }} @enderror</span>
                             </div>
                         </div>
                     </div>
@@ -56,40 +61,6 @@
                     <div class="row">
                         <div class="col-12 col-md-3 col-lg-3">
                             <div class="form-group">
-                                <label>Year:</label>
-                                <span class="star">*</span>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6">
-                            <div class="form-group">
-                                <input name="year" autocomplete="off" type="text" class="input_class form-control" id="year" value="{{ !empty($exams->year)?$exams->year:old('year')}}" />
-                                <span class="text-danger">@error('year'){{$message}} @enderror</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-12 col-md-3 col-lg-3">
-                            <div class="form-group">
-                                <label>Image:</label>
-                                <span class="star">*</span>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6">
-                            <div class="form-group">
-                                <input type="file" name="image" class="input_class inline-block" id="image" autocomplete="off" value="{{old('image')}}" />
-                                @if($exams->image)
-                                <a href="{{ URL::asset('/admin/upload/competitiveExam/'.$exams->image)}}"><img src="{{ URL::asset('admin/upload/competitiveExam/'.$exams->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
-                                @endif
-                                <input type="hidden" name="oldimage" class="input_class w-50 inline-block" value="{{ !empty($exams->image)?$exams->image:old('image')}}" />
-                                <span class="text-danger">@error('image'){{$message}} @enderror</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-12 col-md-3 col-lg-3">
-                            <div class="form-group">
                                 <label>pdf:</label>
                                 <span class="star">*</span>
                             </div>
@@ -99,7 +70,7 @@
                                 <input type="file" name="pdf" class="input_class inline-block" id="pdf" autocomplete="off" value="{{old('pdf')}}" />
                                 @if($exams->pdf)
 
-                                <a href="{{ URL::asset('/admin/upload/competitiveExam/pdf/'.$exams->pdf)}}" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="{{ URL::asset('/admin/upload/competitiveExam/'.$exams->pdf)}}" target="_blank"><i class="fas fa-eye"></i></a>
                                 @endif
                                 <input type="hidden" name="oldpdf" class="input_class w-50 inline-block" value="{{ !empty($exams->pdf)?$exams->pdf:old('pdf')}}" />
                                 <span class="text-danger">@error('pdf'){{$message}} @enderror</span>

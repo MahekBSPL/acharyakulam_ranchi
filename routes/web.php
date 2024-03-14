@@ -1,11 +1,14 @@
 <?php
 
+use App\Models\Admin\Participation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\admin\RuleController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\admin\PopupController;
+
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\admin\WinnerController;
 use App\Http\Controllers\admin\SectionController;
@@ -14,16 +17,19 @@ use App\Http\Controllers\Admin\FacilityController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\admin\ClassNameController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\admin\ProspectusController;
 use App\Http\Controllers\Frontend\AboutUsController;
 use App\Http\Controllers\admin\AjaxRequestController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\frontend\AcademicsController;
 use App\Http\Controllers\frontend\AdmissionController;
+use App\Http\Controllers\Admin\ParticipationController;
+use App\Http\Controllers\Admin\FacilitySliderController;
 use App\Http\Controllers\admin\StudentCouncilController;
 use App\Http\Controllers\Admin\CompetitiveExamController;
 use App\Http\Controllers\frontend\ToarchBearersController;
 use App\Http\Controllers\admin\PhotoGallery as photoGallery;
-
+use App\Http\Controllers\Admin\FacilityDescriptionController;
 
 //use App\http\Controllers\Admin\DashboardController;
 /*
@@ -78,19 +84,25 @@ Route::middleware(['auth', 'IsAdmin'])->group(function () {
     Route::resource('/admin/menu', MenuController::class);
     Route::resource('/admin/slider', SliderController::class);
     Route::resource('/admin/notification', NotificationController::class);
+    Route::resource('/admin/participation', ParticipationController::class);
     Route::resource('/admin/competitive_exam', CompetitiveExamController::class);
     Route::resource('/admin/academic', AcademicController::class);
     Route::resource('/admin/facility', FacilityController::class);
+    Route::resource('/admin/facilitydescription', FacilityDescriptionController::class);
+    Route::resource('/admin/facilityslider', FacilitySliderController::class);
     Route::resource('/admin/event', EventController::class);
     Route::resource('/admin/photoGallery', photoGallery::class);
     Route::any('/admin/update_rules_orders', [AjaxRequestController::class, 'update_rules_orders'])->name('/admin/update_rules_orders');
     Route::any('/admin/update_gallery_orders', [AjaxRequestController::class, 'update_gallery_orders'])->name('/admin/update_gallery_orders');
     Route::any('/admin/update_slider_orders', [AjaxRequestController::class, 'update_slider_orders'])->name('/admin/update_slider_orders');
+    Route::any('/admin/update_winner_orders', [AjaxRequestController::class, 'update_winner_orders'])->name('/admin/update_winner_orders');
     Route::resource('/admin/rule', RuleController::class);
     Route::resource('/admin/council', StudentCouncilController::class);
     Route::resource('/admin/class', ClassNameController::class);
     Route::resource('/admin/section', SectionController::class);
     Route::resource('/admin/winner', WinnerController::class);
+    Route::resource('/admin/popup', PopupController::class);
+    Route::resource('/admin/prospectus', ProspectusController::class);
     Route::any('/admin/delete_images', [AjaxRequestController::class, 'delete_images'])->name('/admin/delete_images');
 });
 

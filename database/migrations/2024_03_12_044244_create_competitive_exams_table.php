@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('competitive_exams', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('selectyear');
             $table->string('name');
-            $table->string('year');
-            $table->string('image');
             $table->string('pdf');
             $table->timestamps();
         });

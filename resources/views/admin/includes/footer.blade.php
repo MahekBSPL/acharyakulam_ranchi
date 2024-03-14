@@ -10,7 +10,6 @@
 
   </div>
 </footer>
- 
 
   <!-- General JS Scripts -->
   <script src="{{URL::asset('/assets/modules/jquery.min.js')}}"></script>
@@ -33,4 +32,7 @@
   <script src="{{URL::asset('/assets/js/scripts.js')}}"></script>
   <script src="{{URL::asset('/assets/js/custom.js')}}"></script>
  
+
+  <script src="{{ URL::asset('/assets/modules/jquery.min.js')}}"></script>
+<script src="{{ URL::asset('/assets/js/page/validate.js')}}"></script>
 </html>
