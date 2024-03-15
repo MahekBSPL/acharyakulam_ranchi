@@ -163,7 +163,9 @@
                             <div class="col-12 col-md-6 col-lg-6">
                                 <div class="form-group">
                                     <input type="file" name="image" class="input_class inline-block" id="image" autocomplete="off" value="{{old('image')}}" />
+                                    @if($notifications->image)
                                     <a href="{{ URL::asset('/admin/upload/notification/'.$notifications->image)}}"><img src="{{ URL::asset('admin/upload/notification/'.$notifications->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
+                                    @endif
                                     <input type="hidden" name="oldimage" class="input_class w-50 inline-block" value="<?php echo !empty($notifications->image)?$notifications->image:''; ?>" />
                                     <span class="text-danger">@error('image'){{$message}} @enderror</span>
                                 </div>
@@ -182,7 +184,9 @@
                             <div class="col-12 col-md-6 col-lg-6">
                                 <div class="form-group">
                                     <input type="file" name="fileupload" class="input_class inline-block" id="fileupload" value="{{old('fileupload')}}"autocomplete="off" />
+                                    @if($notifications->fileupload)
                                     <a href="{{ URL::asset('/admin/upload/notification/'.$notifications->fileupload)}}"><img src="{{ URL::asset('admin/upload/notification/'.$notifications->fileupload)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
+                                    @endif
                                     <input type="hidden" name="oldfileupload" class="input_class w-50 inline-block" value="<?php echo !empty($notifications->fileupload)?$notifications->fileupload:''; ?>" />
     
                                     <span class="text-danger">@error('fileupload'){{$message}} @enderror</span>
@@ -212,6 +216,7 @@
                         <div class="col-12 col-md-3 col-lg-3">
                             <div class="form-group">
                                 <label>Start Date:</label>
+                                <span class="star">*</span>
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-6">
@@ -226,12 +231,36 @@
                         <div class="col-lg-3 col-md-3 col-xm-3">
                             <div class="form-group">
                                 <label>End Date:</label>
+                                <span class="star">*</span>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-xm-6">
                             <div class="form-group">
                                 <input type="date" name="enddate" class="input_class form-control" autocomplete="off" value="{{ !empty($notifications->enddate)?$notifications->enddate:old('enddate')}}">
                                 <span class="text-danger">@error('enddate'){{$message}} @enderror</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-3 col-lg-3">
+                            <div class="form-group">
+                                <label>Status:</label>
+                                <span class="star">*</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <select name="status" class="input_class form-control" id="status" autocomplete="off">
+                                    <option value="" selected="" disabled=""> Select </option>
+                                    <?php
+                                    $statusArray = ["1" => "Draft", "2" => "Publish"];
+                                    foreach ($statusArray as $key => $value) {
+                                    ?>
+                                        <option value="{{ $value }}" @if((!empty($notifications->status)?$notifications->status:old('status'))==$value) selected @endif >{{ $value }}</option>
+                                    <?php  } ?>
+                                </select>
+                                <span class="text-danger">@error('status'){{$message}} @enderror</span>
                             </div>
                         </div>
                     </div>
@@ -256,7 +285,7 @@
 <script>
 $(document).ready(function() {
     var oldMenutype =   "{{ old('menutype',$notifications->menutype) }}";
-    alert(oldMenutype);
+   // alert(oldMenutype);
     document.getElementById('ContentBlock').style.display = 'none';
     document.getElementById('fileuploadBlock').style.display = 'none';
     document.getElementById('urlBlock').style.display = 'none';

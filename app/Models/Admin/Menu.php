@@ -5,23 +5,23 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Notification extends Model
+class Menu extends Model
 {
     use HasFactory;
 
     protected $fillable =[
-        'language',
+        'menu_category',
+        'parent_menu',
         'title',
-        'notificationtype',
         'menutype',
         'keyword',
         'description',
         'image',
         'fileupload',
         'url',
-        'startdate',
-        'enddate',
-        'status'
+        'menu_position',
+        'banner_image',
+        'admin_id',
+        'status',
     ];
 }
-

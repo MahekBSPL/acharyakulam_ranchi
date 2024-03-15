@@ -42,8 +42,8 @@
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="event">
-                                    @if(count($events) > 0)
+                                    <tbody id="events">
+                                        @if(count($events) > 0)
                                         @php $count = 1; @endphp
                                         @foreach($events as $event)
                                         <tr>
@@ -59,7 +59,7 @@
                                             <td>{{$event->location}}</td>
                                             <td>{{$event->date}}</td>
                                             <td>{{$event->description}}</td>
-                                            
+
                                             <td>
                                                 @if(!empty($event->image))
                                                 <img src="{{ URL::asset('admin/upload/event/'.$event->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
@@ -69,7 +69,7 @@
                                             </td>
                                             <td><a href="{{ URL::asset('/admin/upload/event/'.$event->image)}}" target="_blank"><i class="fas fa-eye"></i></a></td>
                                             <td>
-                                                <form action="{{ route('event.destroy',$event->id) }}" method="POST"> 
+                                                <form action="{{ route('event.destroy',$event->id) }}" method="POST">
                                                     <a class="btn btn-primary" href="{{ route('event.edit', $event->id) }}">
                                                         <i class="fas fa-edit" style="font-size: 17px;"></i>
                                                     </a>
@@ -86,7 +86,7 @@
                                         @else
 
                                         <tr>
-                                            <td colspan="4" class="text-center"> No Record Added. </td>
+                                            <td> No Record Added. </td>
                                         </tr>
 
                                         @endif

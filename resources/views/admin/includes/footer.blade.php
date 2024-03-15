@@ -10,7 +10,6 @@
 
   </div>
 </footer>
- 
 
   <!-- General JS Scripts -->
   <script src="{{URL::asset('/assets/modules/jquery.min.js')}}"></script>

@@ -1,12 +1,11 @@
 @extends('admin.layouts.master')
 @section('content')
-@section('title', 'Add Notification')
-
+@section('title', 'Edit menu')
 <script>
- function handleSelectChange(select) {
-            // document.getElementById('ContentBlock').style.display = "none";
-            // document.getElementById('fileuploadBlock').style.display = "none";
-            // document.getElementById('urlBlock').style.display = "none";
+    function handleSelectChange(select) {
+        // document.getElementById('ContentBlock').style.display = "none";
+        // document.getElementById('fileuploadBlock').style.display = "none";
+        // document.getElementById('urlBlock').style.display = "none";
         if (select.value === 'Content') {
             document.getElementById('ContentBlock').style.display = "block";
             document.getElementById('fileuploadBlock').style.display = "none";
@@ -25,12 +24,21 @@
             document.getElementById('urlBlock').style.display = "none";
         }
     }
-    </script>
+
+    function handleMenuCategory(select) {
+        document.getElementById('parent_menuBlock').style.display = "none";
+        if (select.value === '2') {
+            document.getElementById('parent_menuBlock').style.display = "block";
+        } else {
+            document.getElementById('parent_menuBlock').style.display = "none";
+        }
+    }
+</script>
+
 <div class="row">
     <div class="col-12 col-md-12 col-lg-12">
         <div class="card">
             <div class="card-body">
-
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success">
                     <p>{{ $message }}</p>
@@ -43,20 +51,48 @@
                 </div>
                 @endif
 
-                <form name="form1" action="{{URL::to('/admin/notification')}}" id="form1" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+                <form action="{{ route('menu.update', $menus->id) }}" name="EditMenu" id="EditMenu" method="post" enctype="multipart/form-data" accept-charset="utf-8">
                     @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col-12 col-md-3 col-lg-3">
                             <div class="form-group">
-                                <label>Page Language:</label>
+                                <label>menu category:</label>
                                 <span class="star">*</span>
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-6">
-                            <div class="input_class form-group">
-                                <input type="radio" name="language" autocomplete="off" id="language" value="1" @if(old('language')==1) checked @endif />English &nbsp;
-                                <input type="radio" name="language" autocomplete="off" id="language" value="2" @if(old('language')==2) checked @endif />Hindi &nbsp;
-                                <span class="text-danger"> @error('language'){{$message}} @enderror</span>
+                            <div class="form-group">
+                                <?php $menu_categoryArray = ["1" => "Main menu", "2" => "Sub Menu"]; ?>
+                                <input type="hidden" name="menu_category" id="menu_category_hidden" value="{{ !empty($menus->menu_category) ? $menus->menu_category : old('menu_category') }}" />
+                                <input type="text" class="input_class form-control" id="menu_category" value="{{ !empty($menus->menu_category) ? $menu_categoryArray[$menus->menu_category] : 'Select' }}" readonly />
+                                <span class="text-danger">@error('menu_category'){{$message}} @enderror</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="" id="parent_menuBlock" style="display:none">
+                        <div class="row">
+                            <div class="col-12 col-md-3 col-lg-3">
+                                <div class="form-group">
+                                    <label>Parent Menu:</label>
+                                    <span class="star">*</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <select name="parent_menu" class="input_class form-control" id="parent_menu" autocomplete="off">
+                                        <option value="" selected="" disabled=""> Select </option>
+                                        <!-- Retrieve data from MySQL table and generate options -->
+                                        @foreach($submenu as $key)
+                                        @if($key->parent_menu == '')
+                                        <option value="{{ $key->id }}" @if((!empty($menus->parent_menu)?$menus->parent_menu:old('parent_menu')) == $key->id) selected @endif>{{ $key->title }}</option>
+
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                    <span class="text-danger">@error('parent_menu'){{$message}} @enderror</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -70,31 +106,8 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
-                                <input name="title" minlength="2" autocomplete="off" type="text" class="input_class form-control" id="title" value="{{old('title')}}" />
+                                <input name="title" minlength="2" autocomplete="off" type="text" class="input_class form-control" id="title" value="{{ !empty($menus->title)?$menus->title:old('title')}}" />
                                 <span class="text-danger"> @error('title'){{$message}} @enderror</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-12 col-md-3 col-lg-3">
-                            <div class="form-group">
-                                <label>Notification Type:</label>
-                                <span class="star">*</span>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6">
-                            <div class="form-group">
-                                <select name="notificationtype" class="input_class form-control" id="notificationtype" autocomplete="off">
-                                    <option value="" selected="" disabled=""> Select </option>
-                                    <?php
-                                    $notificatioTypeArray = ["1" => "Important Notice", "2" => "Latest News"];
-                                    foreach ($notificatioTypeArray as $key => $value) {
-                                    ?>
-                                        <option value="{{ $value }}" @if(old('notificationtype') == $value) selected @endif>{{ $value }}</option>
-                                    <?php  } ?>
-                                </select>
-                                <span class="text-danger">@error('notificationtype'){{$message}} @enderror</span>
                             </div>
                         </div>
                     </div>
@@ -112,7 +125,7 @@
                                 <select name="menutype" id="menutype" class="form-control" autocomplete="off" onchange="handleSelectChange(this)">
                                     <option value="" selected="" disabled="">Select</option>
                                     @foreach ($SelectType as $id => $value)
-                                    <option value="{{ $value }}" @if(old('menutype') == $value) selected @endif>{{ $value }}</option>
+                                    <option value="{{ $value }}" @if((!empty($menus->menutype)?$menus->menutype:old('menutype'))==$value) selected @endif >{{ $value }}</option>
                                     @endforeach
                                 </select>
                                 <span class="text-danger">@error('menutype'){{$message}} @enderror</span>
@@ -120,8 +133,8 @@
                         </div>
                     </div>
 
-                     <!-- <div id="ContentBlock">   -->
-                     <div class="" id="ContentBlock" style="display: none;">
+                    <!-- <div id="ContentBlock">   -->
+                    <div class="" id="ContentBlock" style="display: none;">
                         <div class="row">
                             <div class="col-12 col-md-3 col-lg-3">
                                 <div class="form-group">
@@ -131,12 +144,12 @@
                             </div>
                             <div class="col-12 col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <input name="keyword" autocomplete="off" type="text" class="input_class form-control" id="keyword" value="{{old('keyword')}}" />
+                                    <input name="keyword" autocomplete="off" type="text" class="input_class form-control" id="keyword" value="{{ !empty($menus->keyword)?$menus->keyword:old('keyword')}}" />
                                     <span class="text-danger">@error('keyword'){{$message}} @enderror</span>
                                 </div>
                             </div>
                         </div>
-                
+
                         <div class="row">
                             <div class="col-12 col-md-3 col-lg-3">
                                 <div class="form-group">
@@ -146,12 +159,12 @@
                             </div>
                             <div class="col-12 col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <textarea name="description" id="description" class="form-control summernote-simple " rows="3" aria-hidden="true" style="display: none;" ><?php echo old('description'); ?></textarea>
+                                    <textarea name="description" id="description" class="form-control summernote-simple " rows="3" aria-hidden="true" style="display: none;" value="{{ !empty($menus->description)?$menus->description:old('description')}}"><?php echo !empty($menus->description) ? $menus->description : old('description'); ?></textarea>
                                     <span class="text-danger">@error('description'){{$message}} @enderror</span>
                                 </div>
                             </div>
                         </div>
-                    
+
                         <div class="row">
                             <div class="col-12 col-md-3 col-lg-3">
                                 <div class="form-group">
@@ -161,13 +174,17 @@
                             </div>
                             <div class="col-12 col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <input type="file" name="image" class="input_class inline-block" id="image" autocomplete="off" value="{{old('image')}}"/>
+                                    <input type="file" name="image" class="input_class inline-block" id="image" autocomplete="off" value="{{old('image')}}" />
+                                    @if($menus->image)
+                                    <a href="{{ URL::asset('/admin/upload/menu/'.$menus->image)}}"><img src="{{ URL::asset('admin/upload/menu/'.$menus->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
+                                    @endif
+                                    <input type="hidden" name="oldimage" class="input_class w-50 inline-block" value="{{ !empty($menus->image)?$menus->image:old('image')}}" />
                                     <span class="text-danger">@error('image'){{$message}} @enderror</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- <div id="fileuploadBlock" > -->
                     <div class="" id="fileuploadBlock" style="display: none;">
                         <div class="row">
@@ -179,13 +196,17 @@
                             </div>
                             <div class="col-12 col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <input type="file" name="fileupload" class="input_class inline-block" id="fileupload" autocomplete="off" value="{{old('fileupload')}}" />
+                                    <input type="file" name="fileupload" class="input_class inline-block" id="fileupload" value="{{old('fileupload')}}" autocomplete="off" />
+                                    @if($menus->fileupload)
+                                    <a href="{{ URL::asset('/admin/upload/menu/'.$menus->fileupload)}}"><img src="{{ URL::asset('admin/upload/menu/'.$menus->fileupload)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
+                                    @endif
+                                    <input type="hidden" name="oldfileupload" class="input_class w-50 inline-block" value="{{ !empty($menus->fileupload)?$menus->fileupload:old('fileupload')}}" />
                                     <span class="text-danger">@error('fileupload'){{$message}} @enderror</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-            
+
                     <!-- <div id="urlBlock"> -->
                     <div class="" id="urlBlock" style="display: none;">
                         <div class="row">
@@ -197,38 +218,51 @@
                             </div>
                             <div class="col-12 col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <input type="text" name="url" id="url" class="input_class form-control" autocomplete="off" placeholder="https://www.xyz.com" value="{{old('url')}}" />
+                                    <input type="text" name="url" id="url" class="input_class form-control" autocomplete="off" placeholder="https://www.xyz.com" value="{{ !empty($menus->url)?$menus->url:old('url')}}" />
                                     <span class="text-danger">@error('url'){{$message}} @enderror</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                
 
                     <div class="row">
                         <div class="col-12 col-md-3 col-lg-3">
                             <div class="form-group">
-                                <label>Start Date:</label>
+                                <label>Menu position:</label>
+                                <span class="star">*</span>
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
-                                <input type="date" name="startdate" class="input_class form-control" autocomplete="off" value="{{old('startdate')}}">
-                                <span class="text-danger">@error('startdate'){{$message}} @enderror</span>
+                                <select name="menu_position" class="input_class form-control" id="menu_position" autocomplete="off">
+                                    <option value="" selected="" disabled=""> Select </option>
+                                    <?php
+                                    $menupositionArray = ["1" => "Header Menu", "2" => "Footer Menu"];
+                                    foreach ($menupositionArray as $key => $value) {
+                                    ?>
+                                        <option value="{{ $value }}" @if((!empty($menus->menu_position)?$menus->menu_position:old('menu_position'))==$value) selected @endif >{{ $value }}</option>
+                                    <?php  } ?>
+                                </select>
+                                <span class="text-danger">@error('menu_position'){{$message}} @enderror</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-xm-3">
+                        <div class="col-12 col-md-3 col-lg-3">
                             <div class="form-group">
-                                <label>End Date:</label>
+                                <label>Banner image :</label>
+                                <span class="star">*</span>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-xm-6">
+                        <div class="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
-                                <input type="date" name="enddate" class="input_class form-control" autocomplete="off" value="{{old('enddate')}}">
-                                <span class="text-danger">@error('enddate'){{$message}} @enderror</span>
+                                <input type="file" name="banner_image" class="input_class inline-block" id="banner_image" autocomplete="off" value="{{old('banner_image')}}" />
+                                @if($menus->banner_image)
+                                <a href="{{ URL::asset('/admin/upload/menu/banner/'.$menus->banner_image)}}"><img src="{{ URL::asset('/admin/upload/menu/banner/'.$menus->banner_image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
+                                @endif
+                                <input type="hidden" name="oldbanner_image" class="input_class w-50 inline-block" value="{{ !empty($menus->banner_image)?$menus->banner_image:old('banner_image')}}" />
+                                <span class="text-danger">@error('banner_image'){{$message}} @enderror</span>
                             </div>
                         </div>
                     </div>
@@ -248,7 +282,7 @@
                                     $statusArray = ["1" => "Draft", "2" => "Publish"];
                                     foreach ($statusArray as $key => $value) {
                                     ?>
-                                        <option value="{{ $value }}" @if(old('status') == $value) selected @endif>{{ $value }}</option>
+                                        <option value="{{ $value }}" @if((!empty($menus->status)?$menus->status:old('status'))==$value) selected @endif >{{ $value }}</option>
                                     <?php  } ?>
                                 </select>
                                 <span class="text-danger">@error('status'){{$message}} @enderror</span>
@@ -260,7 +294,7 @@
                         <div class="col-lg-12 col-md-12 col-xm-12">
                             <div class="pull-right">
                                 <input name="submit" type="submit" class="btn btn-success" id="submit" value="Submit" />&nbsp;
-                                <a href="{{URL::to('/admin/notification')}}" class="btn btn-primary">back</a>
+                                <a href="{{URL::to('/admin/menu')}}" class="btn btn-primary">back</a>
                             </div>
                         </div>
                     </div>
@@ -271,34 +305,38 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    $(document).ready(function() {
+        var oldMenutype = "{{ old('menutype',$menus->menutype) }}";
+        var oldmenucategory = "{{ old('menu_category',$menus->menu_category) }}";
+        //alert(oldMenutype);
+        document.getElementById('ContentBlock').style.display = 'none';
+        document.getElementById('fileuploadBlock').style.display = 'none';
+        document.getElementById('urlBlock').style.display = 'none';
+        if (oldMenutype == 'Content') {
+            document.getElementById('ContentBlock').style.display = 'block';
+            document.getElementById('fileuploadBlock').style.display = 'none';
+            document.getElementById('urlBlock').style.display = 'none';
+        } else if (oldMenutype == 'File upload') {
+            document.getElementById('ContentBlock').style.display = 'none';
+            document.getElementById('fileuploadBlock').style.display = 'block';
+            document.getElementById('urlBlock').style.display = 'none';
+        } else if (oldMenutype == 'Url') {
+            document.getElementById('ContentBlock').style.display = 'none';
+            document.getElementById('fileuploadBlock').style.display = 'none';
+            document.getElementById('urlBlock').style.display = 'block';
+        } else {
+            document.getElementById('ContentBlock').style.display = 'none';
+            document.getElementById('fileuploadBlock').style.display = 'none';
+            document.getElementById('urlBlock').style.display = 'none';
+        }
 
-$(document).ready(function() {
-    var oldMenutype =   "{{ old('menutype') }}";
-    document.getElementById('ContentBlock').style.display = 'none';
-    document.getElementById('fileuploadBlock').style.display = 'none';
-    document.getElementById('urlBlock').style.display = 'none';
+        if (oldmenucategory == '2') {
+            document.getElementById('parent_menuBlock').style.display = 'block';
+        } else {
+            document.getElementById('parent_menuBlock').style.display = 'none';
+        }
 
-if (oldMenutype == 'Content') {
-    document.getElementById('ContentBlock').style.display = 'block';
-    document.getElementById('fileuploadBlock').style.display = 'none';
-    document.getElementById('urlBlock').style.display = 'none';
-} else if (oldMenutype == 'File upload') {
-    document.getElementById('ContentBlock').style.display = 'none';
-    document.getElementById('fileuploadBlock').style.display = 'block';
-    document.getElementById('urlBlock').style.display = 'none';
-} else if (oldMenutype == 'Url') {
-    document.getElementById('ContentBlock').style.display = 'none';
-    document.getElementById('fileuploadBlock').style.display = 'none';
-    document.getElementById('urlBlock').style.display = 'block';
-} else {
-    document.getElementById('ContentBlock').style.display = 'none';
-    document.getElementById('fileuploadBlock').style.display = 'none';
-    document.getElementById('urlBlock').style.display = 'none';
-}
-
-});  
-
+    });
 </script>
 @endsection
