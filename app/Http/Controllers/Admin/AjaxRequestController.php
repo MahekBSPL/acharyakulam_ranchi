@@ -10,6 +10,7 @@ use App\Models\Admin\PhotoCategory;
 use App\Models\Admin\Rule;
 use App\Models\Admin\Slider;
 use App\Models\Admin\Winner;
+use App\Models\Admin\HomeGallery;
 use App;
 class AjaxRequestController extends Controller
 {
@@ -161,6 +162,31 @@ class AjaxRequestController extends Controller
                $data = Slider::where('id', $id)->first();
                if($data->order!==$request->slider_postion){
                    $create 	= Slider::where('id', $id)->update($pArray);
+                   $msg['success']='This Postion is Updated';
+               }else{
+                   $msg['error']='This Postion Alredy Taken';
+               }
+            $lastInsertID = $id;
+            $user_login_id=Auth()->user()->id;
+            if($create > 0){
+                echo json_encode($msg);
+                die();
+                        
+            }
+        }
+        
+    }
+    public function update_home_gallery_orders(Request $request)
+    {
+
+        $msg=array();
+        if($request->ajax())
+        {
+            $id= clean_single_input( $request->id);
+               $pArray['order'] =clean_single_input($request->gallery_postion);
+               $data = HomeGallery::where('id', $id)->first();
+               if($data->order!==$request->gallery_postion){
+                   $create 	= HomeGallery::where('id', $id)->update($pArray);
                    $msg['success']='This Postion is Updated';
                }else{
                    $msg['error']='This Postion Alredy Taken';
