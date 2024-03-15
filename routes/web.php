@@ -9,6 +9,12 @@ use App\Http\Controllers\admin\RuleController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\admin\PopupController;
 
+use App\Http\Controllers\admin\ProspectusController;
+use App\Http\Controllers\admin\HomeGalleryController;
+use App\Http\Controllers\admin\TopperStudentController;
+use App\Http\Controllers\admin\TopperStudentImagesController;
+
+
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\admin\WinnerController;
 use App\Http\Controllers\admin\SectionController;
@@ -96,6 +102,7 @@ Route::middleware(['auth', 'IsAdmin'])->group(function () {
     Route::any('/admin/update_gallery_orders', [AjaxRequestController::class, 'update_gallery_orders'])->name('/admin/update_gallery_orders');
     Route::any('/admin/update_slider_orders', [AjaxRequestController::class, 'update_slider_orders'])->name('/admin/update_slider_orders');
     Route::any('/admin/update_winner_orders', [AjaxRequestController::class, 'update_winner_orders'])->name('/admin/update_winner_orders');
+    Route::any('/admin/update_home_gallery_orders', [AjaxRequestController::class, 'update_home_gallery_orders'])->name('/admin/update_home_gallery_orders');
     Route::resource('/admin/rule', RuleController::class);
     Route::resource('/admin/council', StudentCouncilController::class);
     Route::resource('/admin/class', ClassNameController::class);
@@ -103,6 +110,11 @@ Route::middleware(['auth', 'IsAdmin'])->group(function () {
     Route::resource('/admin/winner', WinnerController::class);
     Route::resource('/admin/popup', PopupController::class);
     Route::resource('/admin/prospectus', ProspectusController::class);
+    Route::resource('/admin/homegallery', HomeGalleryController::class);
+    Route::resource('/admin/topperstudent', TopperStudentController::class);
+     Route::any('/student_image/delete/{id}', [TopperStudentImagesController::class,'delete_image']);
+     Route::any('/student_image/update_image/', [TopperStudentImagesController::class,'update_image']);
+     
     Route::any('/admin/delete_images', [AjaxRequestController::class, 'delete_images'])->name('/admin/delete_images');
 });
 

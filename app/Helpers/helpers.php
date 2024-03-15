@@ -9,6 +9,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Models\Admin\PhotoCategory;
+use App\Models\Admin\TopperStudent ;
+use App\Models\Admin\TopperStudentImage;
 
 
 
@@ -859,5 +861,12 @@ if (!function_exists('get_studentsection_name')) {
 		$fetchResult = DB::table('sections')->where('id', $section_id)->first();
 			return $fetchResult;
 			
+	}
+}
+if (!function_exists('check_topper_student_image')) {
+	function check_topper_student_image($sid)
+	{
+		$fetchResult = DB::table('topper_student_images')->where('student_id', $sid)->exists();
+		return $fetchResult;
 	}
 }
