@@ -13,9 +13,7 @@ class WinnerController extends Controller
      */
     public function index()
     {
-      $title='Winner List';
-      $data=Winner::orderBy('order', 'asc')->get();
-      return view('admin.winner.index',['winneres'=>$data,'title'=>$title]);
+        //
     }
 
     /**
@@ -43,12 +41,12 @@ class WinnerController extends Controller
     // exit;
             foreach ($request->file('images') as $image) {
                 $imageName = time() . '_' . $image->getClientOriginalName();
-                $image->move(public_path('/admin/upload/winner'), $imageName);
+                $image->move(public_path('/admin/upload/council'), $imageName);
                 $imageModel = new Winner();
                 $imageModel->image = $imageName;
                 $imageModel->save();
             }
-            return redirect('/admin/winner')->with('success', 'Images uploaded successfully!');
+            return redirect('/admin/council')->with('success', 'Images uploaded successfully!');
         }
     }
 
@@ -65,9 +63,7 @@ class WinnerController extends Controller
      */
     public function edit(string $id)
     {
-        $title = "Edit Winner";
-        $data = Winner::find($id);
-        return view('admin/winner/edit', ['winneres' => $data,'title'=>$title]);
+        //
     }
 
     /**
@@ -75,36 +71,7 @@ class WinnerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        if (isset($request->cmdsubmit)) {
-            $request->validate([
-                'image' => 'nullable | image | mimes:jpeg,jpg,png,webp | max:2048'
-            ]);
-            $winner = winner::find($id);
-            //check if slider is available or not
-            if (!$winner) {
-                return redirect('/admin/winner')->with('error', 'Winner not found.');
-            }
-            // Check if any changes are made
-            if (!$request->hasFile('image')) {
-                return redirect('/admin/winner')->withSuccess('No changes made.');
-            }
-            // Validate and store the new image
-            if (isset($request->image)) {
-                //$newImageName = null;
-                $image = $request->file('image');
-                $newImageName = time() . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('/admin/upload/winner/'), $newImageName);
-                $destination = public_path('/admin/upload/winner/') . $winner->image;
-                if (file_exists($destination)) {
-                    unlink($destination);
-                }
-                $winner->image = $newImageName;
-            }
-             $result =  $winner->save();
-            return redirect('/admin/winner')->withSuccess('Winner detail updated Successfully!!!');
-
-            
-        }
+        //
     }
 
     /**
@@ -112,16 +79,6 @@ class WinnerController extends Controller
      */
     public function destroy(string $id)
     {
-       $winner =Winner::find($id);
-       if(!$winner){
-        return redirect('/admin/winner')->withError('Winner not found.');
-       }
-        $image_path = public_path('/admin/upload/winner/') . $winner->image;
-        if (file_exists($image_path)) {
-            unlink($image_path);
-            $winner->delete();
-        }
-        return redirect('/admin/winner')->withSuccess('Winner detail deleted Successfully!!!');
-       }
+        //
     }
-
+}

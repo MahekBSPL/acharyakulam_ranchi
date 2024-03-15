@@ -24,6 +24,7 @@
             <link rel="stylesheet" href="{{ URL::asset('/assets/modules/summernote/summernote-bs4.css')}}">
             <link rel="stylesheet" href="{{ URL::asset('/assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css')}}">
             <link rel="stylesheet" href="{{ URL::asset('/assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css')}}">
+
             <!-- Template CSS -->
             <link rel="stylesheet" href="{{ URL::asset('/assets/css/style.css')}}">
             <link rel="stylesheet" href="{{ URL::asset('/assets/css/components.css')}}">

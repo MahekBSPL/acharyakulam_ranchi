@@ -18,6 +18,7 @@ jQuery(function(){
 
 });
    function onlytxtuplodepdf(data) {
+        alert(data);
         // var myFile="";
         var myFile = data.value;
         var upld = myFile.split('.').pop();

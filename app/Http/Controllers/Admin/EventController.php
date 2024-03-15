@@ -96,7 +96,7 @@ class EventController extends Controller
             if (!$event) {
                 return redirect('/admin/event')->with('error', 'Event not found.');
             }
-            $event->title = $request->title;
+             $event->title = $request->title;
             $event->sub_title = $request->sub_title;
             $event->date = $request->date;
             $event->location = $request->location;
@@ -112,7 +112,6 @@ class EventController extends Controller
                 }
                 $event->image = $newImageName;
             }
-            
            $result =  $event->save();
             return redirect('/admin/event')->withSuccess('Event detail updated Successfully!!!');
         }

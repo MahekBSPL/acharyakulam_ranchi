@@ -50,12 +50,16 @@
                                         @php $count = 1; @endphp
                                         @foreach($menus as $menu)
                                         <tr>
-                                            <td> @if(count($menus) > 0){{$count++}}@endif</td>
+                                            <td>{{$count}}</td>
                                             <td>{{$menu->title}}</td>
                                             <td>{{ $menu->menu_category === '1' ? 'Main menu' : ($menu->menu_category === '2' ? 'Sub Menu' : '-') }}</td> 
-                                            <td>{{$menu->menutype}}</td>
+                                            <td>@foreach($SelectType as $SelectType)
+                                                @if($SelectType->id == $menu->menutype)
+                                                {{ $SelectType->value }}
+                                                @endif
+                                                @endforeach</td>
                                             <td>@if(!empty($menu->keyword)){{$menu->keyword}} @else - @endif</td>
-                                            <td>@if(!empty($menu->description)){{strip_tags($menu->description)}} @else - @endif</td>
+                                            <td>@if(!empty($menu->description)){{strip_tags(html_entity_decode($menu->description))}} @else - @endif</td>
                                             <td>@if(!empty($menu->url)){{$menu->url}} @else - @endif</td>
                                             <td>{{$menu->menu_position}}</td>
                                             <td>{{$menu->status}}</td>
@@ -73,11 +77,10 @@
                                             </td>
 
                                         </tr>
+                                        @php
+                                        $count++;
+                                        @endphp
                                         @endforeach
-                                        @else
-                                        <tr>
-                                            <td class="text-center"> No data available in table </td>
-                                        </tr>
                                         @endif
                                     </tbody>
                                 </table>
