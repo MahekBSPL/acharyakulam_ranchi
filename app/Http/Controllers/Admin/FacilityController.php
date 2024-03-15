@@ -58,14 +58,6 @@ class FacilityController extends Controller
                 return redirect()->back()->withErrors($validator)->withInput();
             }
 
-
-            $validator = Validator::make($request->all(), $Validation);
-
-            if ($validator->fails()) {
-                // Handle validation failure manually, e.g., return back with errors
-                return redirect()->back()->withErrors($validator)->withInput();
-            }
-
             //make directory if not present
             if (!is_dir('admin/upload/facility')) {
                 mkdir('admin/upload/facility', 0777, TRUE);

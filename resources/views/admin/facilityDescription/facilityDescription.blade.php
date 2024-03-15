@@ -44,7 +44,7 @@
                                         @foreach($facilitys as $facility)
                                         <tr>
                                             <td>{{$count}}</td>
-                                            <td>@if(!empty($facility->description)){{strip_tags($facility->description)}} @else - @endif</td>
+                                            <td>@if(!empty($facility->description)){{strip_tags(html_entity_decode($facility->description))}} @else - @endif</td>
                                             <td style='display:inline-flex'>
                                                 <a class="btn btn-primary" style='margin-right:5px;' href="{{ route('facilitydescription.edit', $facility->id) }}">
                                                     <i class="fas fa-edit" style="font-size: 15px;"></i>
@@ -52,7 +52,7 @@
                                                 <form action="{{ route('facilitydescription.destroy',$facility->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a><button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to facility description?')">
+                                                    <a><button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete facility description?')">
                                                             <i class="fas fa-trash-alt" style="font-size: 15px;"></i></button>
                                                     </a>
                                                 </form>

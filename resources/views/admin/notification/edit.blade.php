@@ -6,15 +6,15 @@
         // document.getElementById('ContentBlock').style.display = "none";
         // document.getElementById('fileuploadBlock').style.display = "none";
         // document.getElementById('urlBlock').style.display = "none";
-        if (select.value === 'Content') {
+        if (select.value === '1') {
             document.getElementById('ContentBlock').style.display = "block";
             document.getElementById('fileuploadBlock').style.display = "none";
             document.getElementById('urlBlock').style.display = "none";
-        } else if (select.value === 'File upload') {
+        } else if (select.value === '2') {
             document.getElementById('fileuploadBlock').style.display = "block";
             document.getElementById('ContentBlock').style.display = "none";
             document.getElementById('urlBlock').style.display = "none";
-        } else if (select.value === 'Url') {
+        } else if (select.value === '3') {
             document.getElementById('urlBlock').style.display = "block";
             document.getElementById('ContentBlock').style.display = "none";
             document.getElementById('fileuploadBlock').style.display = "none";
@@ -110,10 +110,9 @@
                             <div class="input_class form-group">
                                 <select name="menutype" id="menutype" class="form-control" autocomplete="off" onchange="handleSelectChange(this)">
                                     <option value="" selected="" disabled="">Select</option>
-                                    @foreach ($SelectType as $id => $value)
-                                    <option value="{{ $value }}" @if((!empty($notifications->menutype)?$notifications->menutype:old('menutype'))==$value) selected @endif >{{ $value }}</option>
-                                    @endforeach
-
+                                    @foreach ($SelectType as $row)
+                                    <option value="{{ $row->id }}" @if(old('menutype', $notifications->menutype) == $row->id) selected @endif>{{ $row->value }}</option>
+                                    @endforeach 
                                 </select>
                                 <span class="text-danger">@error('menutype'){{$message}} @enderror</span>
                             </div>
@@ -185,10 +184,10 @@
                                 <div class="form-group">
                                     <input type="file" name="fileupload" class="input_class inline-block" id="fileupload" value="{{old('fileupload')}}"autocomplete="off" />
                                     @if($notifications->fileupload)
-                                    <a href="{{ URL::asset('/admin/upload/notification/'.$notifications->fileupload)}}"><img src="{{ URL::asset('admin/upload/notification/'.$notifications->fileupload)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
+                                    <!-- <a href="{{ URL::asset('/admin/upload/notification/'.$notifications->fileupload)}}"><img src="{{ URL::asset('admin/upload/notification/'.$notifications->fileupload)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a> -->
+                                    <a href="{{ URL::asset('/admin/upload/notification/'.$notifications->fileupload)}}" target="_blank"><i class="fas fa-eye"></i></a>
                                     @endif
                                     <input type="hidden" name="oldfileupload" class="input_class w-50 inline-block" value="<?php echo !empty($notifications->fileupload)?$notifications->fileupload:''; ?>" />
-    
                                     <span class="text-danger">@error('fileupload'){{$message}} @enderror</span>
                                 </div>
                             </div>
@@ -289,15 +288,15 @@ $(document).ready(function() {
     document.getElementById('ContentBlock').style.display = 'none';
     document.getElementById('fileuploadBlock').style.display = 'none';
     document.getElementById('urlBlock').style.display = 'none';
-if (oldMenutype == 'Content') {
+if (oldMenutype == '1') {
     document.getElementById('ContentBlock').style.display = 'block';
     document.getElementById('fileuploadBlock').style.display = 'none';
     document.getElementById('urlBlock').style.display = 'none';
-} else if (oldMenutype == 'File upload') {
+} else if (oldMenutype == '2') {
     document.getElementById('ContentBlock').style.display = 'none';
     document.getElementById('fileuploadBlock').style.display = 'block';
     document.getElementById('urlBlock').style.display = 'none';
-} else if (oldMenutype == 'Url') {
+} else if (oldMenutype == '3') {
     document.getElementById('ContentBlock').style.display = 'none';
     document.getElementById('fileuploadBlock').style.display = 'none';
     document.getElementById('urlBlock').style.display = 'block';

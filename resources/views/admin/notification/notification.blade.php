@@ -50,13 +50,22 @@
                                         @php $count = 1; @endphp
                                         @foreach($notifications as $notification)
                                         <tr>
-                                            <td> @if(count($notifications) > 0){{$count++}}@endif</td>
-                                            <td>{{$notification->language}}</td>
+                                            <td>{{$count}}</td>
+                                            <td>@if ($notification->language == 1)
+                                                English
+                                                @else
+                                                Hindi
+                                                @endif</td>
                                             <td>{{$notification->title}}</td>
                                             <td>{{$notification->notificationtype}}</td>
-                                            <td>{{$notification->menutype}}</td>
+                                            <td>@foreach($SelectType as $SelectType)
+                                                @if($SelectType->id == $notification->menutype)
+                                                {{ $SelectType->value }}
+                                                @endif
+                                                @endforeach
+                                            </td>
                                             <td>@if(!empty($notification->keyword)){{$notification->keyword}} @else - @endif</td>
-                                            <td>@if(!empty($notification->description)){{strip_tags($notification->description)}} @else - @endif</td>
+                                            <td>@if(!empty($notification->description)){{strip_tags(html_entity_decode($notification->description))}} @else - @endif</td>
                                             <td>@if(!empty($notification->url)){{$notification->url}} @else - @endif</td>
                                             <td>{{$notification->status}}</td>
                                             <td style='display:inline-flex'>
@@ -67,17 +76,16 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <a><button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete notification?')">
-                                                        <i class="fas fa-trash-alt" style="font-size: 15px;"></i></button>
+                                                            <i class="fas fa-trash-alt" style="font-size: 15px;"></i></button>
                                                     </a>
                                                 </form>
                                             </td>
 
                                         </tr>
+                                        @php
+                                        $count++;
+                                        @endphp
                                         @endforeach
-                                        @else
-                                        <tr>
-                                            <td colspan="4" class="text-center"> No data available in table </td>
-                                        </tr>
                                         @endif
                                     </tbody>
                                 </table>

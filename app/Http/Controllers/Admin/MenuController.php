@@ -21,7 +21,8 @@ class MenuController extends Controller
         //return view('admin.notification.notification');
         //$data = Notification::all();
         $data = Menu::orderBy('created_at', 'desc')->get();
-        return view('admin.menu.menu', ['menus' => $data], compact('title'));
+        $SelectType = SelectType::all();
+        return view('admin.menu.menu', ['menus' => $data, 'SelectType' => $SelectType ], compact('title'));
     }
 
     /**
@@ -33,7 +34,8 @@ class MenuController extends Controller
         $title = "Add Menu";
         $data = DB::table('menus')->select('*')->get();
         //dd($data);
-        $SelectType = SelectType::select('value')->pluck('value');
+        //$SelectType = SelectType::select('value')->pluck('value');
+        $SelectType = SelectType::all();
         return view('admin.menu.create', ['SelectType' => $SelectType, 'data' => $data], compact('title'));
     }
 
@@ -55,13 +57,13 @@ class MenuController extends Controller
         
             // Add validation based on menu type conditionally
             if ($request->has('menutype')) {
-                if ($request->menutype == 'Content') {
+                if ($request->menutype == '1') {
                     $Validation['keyword'] = 'required';
                     $Validation['description'] = 'required';
                     $Validation['image'] = 'required|mimes:pdf,jpeg,jpg,png,webp|max:2048';
-                } elseif ($request->menutype == 'File upload') {
+                } elseif ($request->menutype == '2') {
                     $Validation['fileupload'] = 'required|mimes:pdf,jpeg,jpg,png,webp|max:2048';
-                } elseif ($request->menutype == 'Url') {
+                } elseif ($request->menutype == '3') {
                     $Validation['url'] = 'required|url';
                 }
             }
@@ -163,7 +165,8 @@ class MenuController extends Controller
         //
         $title = "Edit Menu";
         $data = Menu::find($id);
-        $SelectType = SelectType::select('value')->pluck('value');
+       // $SelectType = SelectType::select('value')->pluck('value');
+        $SelectType = SelectType::all();
         $submenu = DB::table('menus')->select('*')->get();
         return view('admin/menu/edit', ['menus' => $data, 'SelectType' => $SelectType, 'submenu'=> $submenu, 'title' => $title]);
     }
@@ -185,13 +188,13 @@ class MenuController extends Controller
     
         // Add validation based on menu type conditionally
         if ($request->has('menutype')) {
-            if ($request->menutype == 'Content') {
+            if ($request->menutype == '1') {
                 $Validation['keyword'] = 'required';
                 $Validation['description'] = 'required';
                 $Validation['image'] = 'nullable|mimes:pdf,jpeg,jpg,png,webp|max:2048';
-            } elseif ($request->menutype == 'File upload') {
+            } elseif ($request->menutype == '2') {
                 $Validation['fileupload'] = 'nullable|mimes:pdf,jpeg,jpg,png,webp|max:2048';
-            } elseif ($request->menutype == 'Url') {
+            } elseif ($request->menutype == '3') {
                 $Validation['url'] = 'required|url';
             }
         }
@@ -260,7 +263,7 @@ class MenuController extends Controller
                 $menu->fileupload =  $newfileupload;
             }
         } else if ($request->menutype != $menu->menutype) {
-            if ($request->menutype == 'Content') {
+            if ($request->menutype == '1') {
 
                 $filedestinatinon = public_path('admin/upload/menu/') . $menu->fileupload;
                 if (file_exists($filedestinatinon) && is_file($filedestinatinon)) {
@@ -282,7 +285,7 @@ class MenuController extends Controller
                     $menu->image =  $newimage;
                     //dd($notification->image);
                 }
-            } else if ($request->menutype == 'Url') {
+            } else if ($request->menutype == '3') {
                 $imagedestination = public_path('/admin/upload/menu/') . $menu->image;
                 if (file_exists($imagedestination) && is_file($imagedestination)) {
                     unlink($imagedestination);
@@ -298,7 +301,7 @@ class MenuController extends Controller
                 $menu->fileupload =  null;
                 $menu->url =  $request->url;
                 $menu->menutype =  $request->menutype;
-            } else if ($request->menutype == 'File upload') {
+            } else if ($request->menutype == '2') {
                 $imagedestination = public_path('admin/upload/menu/') . $menu->image;
              //dd($imagedestination);
                 if (file_exists($imagedestination) && is_file($imagedestination)) {

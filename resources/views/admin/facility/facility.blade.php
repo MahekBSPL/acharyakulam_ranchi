@@ -59,7 +59,7 @@
                                                 @endif
                                             </td>
                                             <td>{{$facility->type === '1' ? 'Description' : ($facility->type === '2' ? 'Url' : '-') }}</td> 
-                                            <td>@if(!empty($facility->description)){{strip_tags($facility->description)}} @else - @endif</td>
+                                            <td>@if(!empty($facility->description)){{strip_tags(html_entity_decode($facility->description))}} @else - @endif</td>
                                             <td>{{$facility->url}}</td>
                                             <td style='display:inline-flex'>
                                                 <a class="btn btn-primary" style='margin-right:5px;' href="{{ route('facility.edit', $facility->id) }}">
@@ -68,7 +68,7 @@
                                                 <form action="{{ route('facility.destroy',$facility->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a><button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to facility?')">
+                                                    <a><button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete facility?')">
                                                             <i class="fas fa-trash-alt" style="font-size: 15px;"></i></button>
                                                     </a>
                                                 </form>

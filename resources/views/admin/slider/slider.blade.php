@@ -2,7 +2,6 @@
 @section('content')
 @section('title', 'slider')
 
-
 <div class="card">
     <div class="card-body">
         <div id="page-wrapper">
@@ -28,10 +27,10 @@
                             <p>{{ $message }}</p>
                         </div>
                         @endif
+
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table id="slidertable" name="slidertable" class="table table-striped table-bordered table-hover">
-
                                     <thead>
                                         <tr>
                                             <th>Sr. No.</th>
@@ -48,7 +47,7 @@
                                         @php $count = 1; @endphp
                                         @foreach($sliders as $slider)
                                         <tr>
-                                            <td>{{$count++}}</td>
+                                            <td>{{$count}}</td>
                                             <td>{{$slider->title}}</td>
                                             <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;">
                                                 @if(!empty($slider->url))
@@ -57,11 +56,9 @@
                                                 -
                                                 @endif
                                             </td>
-                                            <td><?php echo $slider->order??0; ?> <i id="{{$slider->id}}"
-                                                    onclick="editcatpos(this);" class="far editbut fa-edit"></i>
+                                            <td><?php echo $slider->order ?? 0; ?> <i id="{{$slider->id}}" onclick="editcatpos(this);" class="far editbut fa-edit"></i>
                                                 <span id="slider_postion_{{$slider->id}}" style="display:none">
-                                                    <input class="w-25" type="number" onchange="savedata(this);"
-                                                        id="{{$slider->id}}" name="slider_postion" value="" /></span>
+                                                    <input class="w-25" type="number" onchange="savedata(this);" id="{{$slider->id}}" name="slider_postion" value="" /></span>
                                                 <p class="text-success" id="success_{{$slider->id}}"></p>
                                             </td>
                                             <td>
@@ -88,13 +85,8 @@
                                             </td>
 
                                         </tr>
+                                        @php $count++; @endphp
                                         @endforeach
-                                        @else
-
-                                        <tr>
-                                            <td colspan="4" class="text-center"> No Record Added. </td>
-                                        </tr>
-
                                         @endif
                                     </tbody>
 
@@ -117,35 +109,40 @@
 
 <script src="{{ URL::asset('/public/assets/modules/jquery.min.js')}}"></script>
 <script>
-     function editcatpos(data) {
-       // alert(data);
-        $("#slider_postion_"+data.id).toggle();
-     }
-     function savedata(data) {
+    function editcatpos(data) {
+        // alert(data);
+        $("#slider_postion_" + data.id).toggle();
+    }
+
+    function savedata(data) {
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        var slider_postion =  data.value;
-        var id =  data.id;
+        var slider_postion = data.value;
+        var id = data.id;
         var linkurl = "{{ url('/admin/update_slider_orders')}}";
         jQuery.ajax({
             url: linkurl,
             type: "POST",
-            data: {id: id,slider_postion:slider_postion,update_slider_orders:'update_slider_orders'},
+            data: {
+                id: id,
+                slider_postion: slider_postion,
+                update_slider_orders: 'update_slider_orders'
+            },
             cache: false,
-            success: function (html) {
-               // location.reload();
-                setTimeout(function(){
+            success: function(html) {
+                // location.reload();
+                setTimeout(function() {
                     location.reload();
-                },); 
-                $("#slider_postion_"+data.id).hide();
-                $("#success_"+data.id).html('This Postion is Updated');
+                }, );
+                $("#slider_postion_" + data.id).hide();
+                $("#success_" + data.id).html('This Postion is Updated');
             },
         });
-       
-        
-     }
+
+
+    }
 </script>
 @endsection

@@ -55,7 +55,7 @@
                                                 <form action="{{ route('participation.destroy',$participation->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a><button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to participation exam?')">
+                                                    <a><button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete participation exam?')">
                                                             <i class="fas fa-trash-alt" style="font-size: 15px;"></i></button>
                                                     </a>
                                                 </form>

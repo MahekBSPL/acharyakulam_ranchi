@@ -37,8 +37,8 @@
                                             <th>Sr. No.</th>
                                             <th>Title</th>
                                             <th>Year</th>
-                                            <th>image</th>
-                                            <th>pdf</th>
+                                            <th>Image</th>
+                                            <th>Pdf</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -47,7 +47,7 @@
                                         @php $count = 1; @endphp
                                         @foreach($academics as $academic)
                                         <tr>
-                                            <td> @if(count($academics) > 0){{$count++}}@endif</td>
+                                            <td>{{$count}}@endif</td>
                                             <td>{{$academic->title}}</td>
                                             <td>{{$academic->year}}</td>
                                             <td>
@@ -73,18 +73,17 @@
                                                 <form action="{{ route('academic.destroy',$academic->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a><button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to academic session?')">
+                                                    <a><button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete academic session?')">
                                                             <i class="fas fa-trash-alt" style="font-size: 15px;"></i></button>
                                                     </a>
                                                 </form>
                                             </td>
 
                                         </tr>
+                                        @php
+                                        $count++;
+                                        @endphp
                                         @endforeach
-                                        @else
-                                        <tr>
-                                            <td class="text-center"> No data available in table </td>
-                                        </tr>
                                         @endif
                                     </tbody>
                                 </table>

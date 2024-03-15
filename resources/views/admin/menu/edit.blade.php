@@ -6,15 +6,15 @@
         // document.getElementById('ContentBlock').style.display = "none";
         // document.getElementById('fileuploadBlock').style.display = "none";
         // document.getElementById('urlBlock').style.display = "none";
-        if (select.value === 'Content') {
+        if (select.value === '1') {
             document.getElementById('ContentBlock').style.display = "block";
             document.getElementById('fileuploadBlock').style.display = "none";
             document.getElementById('urlBlock').style.display = "none";
-        } else if (select.value === 'File upload') {
+        } else if (select.value === '2') {
             document.getElementById('fileuploadBlock').style.display = "block";
             document.getElementById('ContentBlock').style.display = "none";
             document.getElementById('urlBlock').style.display = "none";
-        } else if (select.value === 'Url') {
+        } else if (select.value === '3') {
             document.getElementById('urlBlock').style.display = "block";
             document.getElementById('ContentBlock').style.display = "none";
             document.getElementById('fileuploadBlock').style.display = "none";
@@ -124,8 +124,8 @@
 
                                 <select name="menutype" id="menutype" class="form-control" autocomplete="off" onchange="handleSelectChange(this)">
                                     <option value="" selected="" disabled="">Select</option>
-                                    @foreach ($SelectType as $id => $value)
-                                    <option value="{{ $value }}" @if((!empty($menus->menutype)?$menus->menutype:old('menutype'))==$value) selected @endif >{{ $value }}</option>
+                                    @foreach ($SelectType as $row)
+                                    <option value="{{ $row->id }}" @if(old('menutype', $menus->menutype) == $row->id) selected @endif>{{ $row->value }}</option>
                                     @endforeach
                                 </select>
                                 <span class="text-danger">@error('menutype'){{$message}} @enderror</span>
@@ -198,7 +198,8 @@
                                 <div class="form-group">
                                     <input type="file" name="fileupload" class="input_class inline-block" id="fileupload" value="{{old('fileupload')}}" autocomplete="off" />
                                     @if($menus->fileupload)
-                                    <a href="{{ URL::asset('/admin/upload/menu/'.$menus->fileupload)}}"><img src="{{ URL::asset('admin/upload/menu/'.$menus->fileupload)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
+                                    <!-- <a href="{{ URL::asset('/admin/upload/menu/'.$menus->fileupload)}}"><img src="{{ URL::asset('admin/upload/menu/'.$menus->fileupload)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a> -->
+                                    <a href="{{ URL::asset('/admin/upload/menu/'.$menus->fileupload)}}" target="_blank"><i class="fas fa-eye"></i></a>
                                     @endif
                                     <input type="hidden" name="oldfileupload" class="input_class w-50 inline-block" value="{{ !empty($menus->fileupload)?$menus->fileupload:old('fileupload')}}" />
                                     <span class="text-danger">@error('fileupload'){{$message}} @enderror</span>
@@ -313,15 +314,15 @@
         document.getElementById('ContentBlock').style.display = 'none';
         document.getElementById('fileuploadBlock').style.display = 'none';
         document.getElementById('urlBlock').style.display = 'none';
-        if (oldMenutype == 'Content') {
+        if (oldMenutype == '1') {
             document.getElementById('ContentBlock').style.display = 'block';
             document.getElementById('fileuploadBlock').style.display = 'none';
             document.getElementById('urlBlock').style.display = 'none';
-        } else if (oldMenutype == 'File upload') {
+        } else if (oldMenutype == '2') {
             document.getElementById('ContentBlock').style.display = 'none';
             document.getElementById('fileuploadBlock').style.display = 'block';
             document.getElementById('urlBlock').style.display = 'none';
-        } else if (oldMenutype == 'Url') {
+        } else if (oldMenutype == '3') {
             document.getElementById('ContentBlock').style.display = 'none';
             document.getElementById('fileuploadBlock').style.display = 'none';
             document.getElementById('urlBlock').style.display = 'block';

@@ -4,15 +4,15 @@
 
 <script>
     function handleSelectChange(select) {
-        if (select.value === 'Content') {
+        if (select.value === '1') {
             document.getElementById('ContentBlock').style.display = "block";
             document.getElementById('fileuploadBlock').style.display = "none";
             document.getElementById('urlBlock').style.display = "none";
-        } else if (select.value === 'File upload') {
+        } else if (select.value === '2') {
             document.getElementById('fileuploadBlock').style.display = "block";
             document.getElementById('ContentBlock').style.display = "none";
             document.getElementById('urlBlock').style.display = "none";
-        } else if (select.value === 'Url') {
+        } else if (select.value === '3') {
             document.getElementById('urlBlock').style.display = "block";
             document.getElementById('ContentBlock').style.display = "none";
             document.getElementById('fileuploadBlock').style.display = "none";
@@ -128,8 +128,8 @@
 
                                 <select name="menutype" id="menutype" class="form-control" autocomplete="off" onchange="handleSelectChange(this)">
                                     <option value="" selected="" disabled="">Select</option>
-                                    @foreach ($SelectType as $id => $value)
-                                    <option value="{{ $value }}" @if(old('menutype')==$value) selected @endif>{{ $value }}</option>
+                                    @foreach ($SelectType as $row)
+                                    <option value="{{ $row->id }}" @if(old('menutype') == $row->id) selected @endif>{{ $row->value }}</option>
                                     @endforeach
                                 </select>
                                 <span class="text-danger">@error('menutype'){{$message}} @enderror</span>
@@ -307,15 +307,15 @@
         document.getElementById('urlBlock').style.display = 'none';
         document.getElementById('parent_menuBlock').style.display = "none";
 
-        if (oldMenutype == 'Content') {
+        if (oldMenutype == '1') {
             document.getElementById('ContentBlock').style.display = 'block';
             document.getElementById('fileuploadBlock').style.display = 'none';
             document.getElementById('urlBlock').style.display = 'none';
-        } else if (oldMenutype == 'File upload') {
+        } else if (oldMenutype == '2') {
             document.getElementById('ContentBlock').style.display = 'none';
             document.getElementById('fileuploadBlock').style.display = 'block';
             document.getElementById('urlBlock').style.display = 'none';
-        } else if (oldMenutype == 'Url') {
+        } else if (oldMenutype == '3') {
             document.getElementById('ContentBlock').style.display = 'none';
             document.getElementById('fileuploadBlock').style.display = 'none';
             document.getElementById('urlBlock').style.display = 'block';

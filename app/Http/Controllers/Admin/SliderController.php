@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 use App\Models\Admin\Slider;
 
 class SliderController extends Controller
@@ -136,7 +137,6 @@ class SliderController extends Controller
            $result =  $slider->save();
             return redirect('/admin/slider')->withSuccess('Slider detail updated Successfully!!!');
 
-            
         }
     }
 

@@ -20,7 +20,8 @@ class NotificationController extends Controller
         //return view('admin.notification.notification');
         //$data = Notification::all();
         $data = Notification::orderBy('created_at', 'desc')->get();
-        return view('admin.notification.notification', ['notifications' => $data], compact('title'));
+        $SelectType = SelectType::all();
+        return view('admin.notification.notification', ['notifications' => $data,'SelectType' => $SelectType], compact('title'));
     }
 
     /**
@@ -58,13 +59,13 @@ class NotificationController extends Controller
 
             // Add validation based on menu type conditionally
             if ($request->has('menutype')) {
-                if ($request->menutype == 'Content') {
+                if ($request->menutype == '1') {
                     $Validation['keyword'] = 'required';
                     $Validation['description'] = 'required';
                     $Validation['image'] = 'required|mimes:pdf,jpeg,jpg,png,webp|max:2048';
-                } elseif ($request->menutype == 'File upload') {
+                } elseif ($request->menutype == '2') {
                     $Validation['fileupload'] = 'required|mimes:pdf,jpeg,jpg,png,webp|max:2048';
-                } elseif ($request->menutype == 'Url') {
+                } elseif ($request->menutype == '3') {
                     $Validation['url'] = 'required|url';
                 }
             }
@@ -135,7 +136,8 @@ class NotificationController extends Controller
         //
         $title = "Edit Notification";
         $data = Notification::find($id);
-        $SelectType = SelectType::select('value')->pluck('value');
+        //$SelectType = SelectType::select('value')->pluck('value');
+        $SelectType = SelectType::all();
         return view('admin/notification/edit', ['notifications' => $data, 'SelectType' => $SelectType, 'title' => $title]);
     }
 
@@ -164,13 +166,13 @@ class NotificationController extends Controller
 
             // Add validation based on menu type conditionally
             if ($request->has('menutype')) {
-                if ($request->menutype == 'Content') {
+                if ($request->menutype == '1') {
                     $Validation['keyword'] = 'required';
                     $Validation['description'] = 'required';
                     $Validation['image'] = 'nullable|mimes:pdf,jpeg,jpg,png,webp|max:2048';
-                } elseif ($request->menutype == 'File upload') {
+                } elseif ($request->menutype == '2') {
                     $Validation['fileupload'] = 'nullable|mimes:pdf,jpeg,jpg,png,webp|max:2048';
-                } elseif ($request->menutype == 'Url') {
+                } elseif ($request->menutype == '3') {
                     $Validation['url'] = 'required|url';
                 }
             }
@@ -229,7 +231,7 @@ class NotificationController extends Controller
                     $notification->fileupload =  $newfileupload;
                 }
             } else if ($request->menutype != $notification->menutype) {
-                if ($request->menutype == 'Content') {
+                if ($request->menutype == '1') {
 
                     $filedestinatinon = public_path('admin/upload/notification/') . $notification->fileupload;
                     if (file_exists($filedestinatinon) && is_file($filedestinatinon)) {
@@ -251,24 +253,8 @@ class NotificationController extends Controller
                         $notification->image =  $newimage;
                         //dd($notification->image);
                     }
-                } else if ($request->menutype == 'Url') {
-                    $filedestinatinon = (public_path('admin/upload/notification/') . $notification->fileupload);
-                    if (file_exists($filedestinatinon) && is_file($filedestinatinon)) {
-                        unlink($filedestinatinon);
-                    }
-
-                    $imagedestination = public_path('/admin/upload/notification/') . $notification->image;
-                    if (file_exists($imagedestination) && is_file($imagedestination)) {
-                        unlink($imagedestination);
-                    }
-
-                    $notification->url =  $request->url;
-                    $notification->keyword =  null;
-                    $notification->description =  null;
-                    $notification->image =  null;
-                    $notification->fileupload =  null;
-                    $notification->menutype =  $request->menutype;
-                } else if ($request->menutype == 'File upload') {
+                
+                } else if ($request->menutype == '2') {
                     $imagedestination = public_path('admin/upload/notification/') . $notification->image;
                     if (file_exists($imagedestination) && is_file($imagedestination)) {
                         unlink($imagedestination);
@@ -294,6 +280,23 @@ class NotificationController extends Controller
                         $notification->fileupload =  $newfileupload;
                         //  dd($notification);
                     }
+                } else if ($request->menutype == '3') {
+                    $filedestinatinon = (public_path('admin/upload/notification/') . $notification->fileupload);
+                    if (file_exists($filedestinatinon) && is_file($filedestinatinon)) {
+                        unlink($filedestinatinon);
+                    }
+
+                    $imagedestination = public_path('/admin/upload/notification/') . $notification->image;
+                    if (file_exists($imagedestination) && is_file($imagedestination)) {
+                        unlink($imagedestination);
+                    }
+
+                    $notification->url =  $request->url;
+                    $notification->keyword =  null;
+                    $notification->description =  null;
+                    $notification->image =  null;
+                    $notification->fileupload =  null;
+                    $notification->menutype =  $request->menutype;
                 }
                 //dd($notification);
                 $notification->menutype =  $request->menutype;

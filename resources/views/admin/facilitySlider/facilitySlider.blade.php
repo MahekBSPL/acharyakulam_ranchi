@@ -65,7 +65,7 @@
                                                 <form action="{{ route('facilityslider.destroy',$facility->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a><button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to facility slider?')">
+                                                    <a><button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete facility slider?')">
                                                             <i class="fas fa-trash-alt" style="font-size: 15px;"></i></button>
                                                     </a>
                                                 </form>

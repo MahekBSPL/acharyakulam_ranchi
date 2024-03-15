@@ -48,11 +48,11 @@
                                             <td>{{ $count }}</td>
                                             <!--  0 = '2022-2023' , 1= '2023-2024' -->
                                             <td>
-                                            @foreach($data as $participation)
-        @if($participation->id == $exam->selectyear)
-            {{ $participation->year }}
-        @endif
-    @endforeach
+                                                @foreach($data as $participation)
+                                                @if($participation->id == $exam->selectyear)
+                                                {{ $participation->year }}
+                                                @endif
+                                                @endforeach
                                             </td>
                                             <td>{{$exam->name}}</td>
                                             <td>
@@ -62,14 +62,14 @@
                                                 -
                                                 @endif
                                             </td>
-                                            <td  style='display:inline-flex'>
+                                            <td style='display:inline-flex'>
                                                 <a class="btn btn-primary" style='margin-right:5px;' href="{{ route('competitive_exam.edit', $exam->id) }}">
                                                     <i class="fas fa-edit" style="font-size: 15px;"></i>
                                                 </a>
                                                 <form action="{{ route('competitive_exam.destroy',$exam->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a><button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to competitive exam?')">
+                                                    <a><button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete competitive exam?')">
                                                             <i class="fas fa-trash-alt" style="font-size: 15px;"></i></button>
                                                     </a>
                                                 </form>
