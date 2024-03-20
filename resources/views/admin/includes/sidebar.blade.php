@@ -11,9 +11,6 @@
                 <a href="{{ url('/admin/dashboard')}}" class="nav-link"><i class="bi bi-display" aria-hidden="true"></i><span>Dashboard</span></a>
             </li>
             <li class="">
-<<<<<<< HEAD
-=======
-
                 <a href="{{ url('/admin/participation')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Participation Exam</span></a>
             </li>
             <li class="">
@@ -30,16 +27,14 @@
             </li>
             <li class="">
                 <a href="{{ url('/admin/facility')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Facility</span></a>
-</li>
-<li>
+            </li>
+            <li>
                 <a href="{{ url('/admin/homegallery')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Home Gallery</span></a>
             </li>
             <li class="">
                 <a href="{{ url('/admin/topperstudent')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Topper Student</span></a>
-
             </li>
             <li class="">
->>>>>>> ded4fed4be212a719f838e32e5007a0402a708a6
                 <a href="{{ url('/admin/menu')}}" class="nav-link"><i class="bi bi-menu-up" aria-hidden="true"></i><span>Menu</span></a>
             </li>
             <li class="">

@@ -47,7 +47,7 @@
                                         @php $count = 1; @endphp
                                         @foreach($academics as $academic)
                                         <tr>
-                                            <td>{{$count}}@endif</td>
+                                            <td>{{$count}}</td>
                                             <td>{{$academic->title}}</td>
                                             <td>{{$academic->year}}</td>
                                             <td>
