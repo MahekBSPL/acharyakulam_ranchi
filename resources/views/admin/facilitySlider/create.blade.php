@@ -33,8 +33,10 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
-                                <input type="file" name="image" class="input_class inline-block" id="image" autocomplete="off" value="{{old('image')}}" />
+                                <input type="file" onchange="onlytxtuplodeimg(this)" name="image" class="input_class inline-block" id="txtimg"   autocomplete="off" value="{{old('image')}}" />
+                                <span class="txtimg_error" style="color:red;"></span>
                                 <span class="text-danger">@error('image'){{$message}} @enderror</span>
+                               
                             </div>
                         </div>
                     </div>
@@ -53,5 +55,5 @@
         </div>
     </div>
 </div>
-
+<script src="{{ URL::asset('/assets/js/page/validate.js')}}"></script>
 @endsection

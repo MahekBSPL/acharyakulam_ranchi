@@ -61,7 +61,7 @@
                     <div class="row">
                         <div class="col-12 col-md-3 col-lg-3">
                             <div class="form-group">
-                                <label>pdf:</label>
+                                <label>PDF:</label>
                                 <span class="star">*</span>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                                 <input type="file" name="pdf" class="input_class inline-block" id="pdf" autocomplete="off" value="{{old('pdf')}}" />
                                 @if($exams->pdf)
 
-                                <a href="{{ URL::asset('/admin/upload/competitiveExam/'.$exams->pdf)}}" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="{{ URL::asset('/admin/upload/competitiveExam/'.$exams->pdf)}}" target="_blank">View PDF</a>
                                 @endif
                                 <input type="hidden" name="oldpdf" class="input_class w-50 inline-block" value="{{ !empty($exams->pdf)?$exams->pdf:old('pdf')}}" />
                                 <span class="text-danger">@error('pdf'){{$message}} @enderror</span>

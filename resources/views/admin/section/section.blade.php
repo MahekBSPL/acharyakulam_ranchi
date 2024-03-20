@@ -91,7 +91,7 @@
 <script src="{{ URL::asset('/public/assets/modules/jquery.min.js')}}"></script>
 <script>
 $(document).ready(function() {
-    new DataTable('#classtable');
+    new DataTable('#sectiontable');
 });
 </script>
 

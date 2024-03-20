@@ -14,7 +14,6 @@
                             <p>{{ $message }}</p>
                         </div>
                         @endif
-
                         @if ($message = Session::get('error'))
                         <div class="alert alert-danger">
                             <p>{{ $message }}</p>
@@ -28,7 +27,7 @@
                                             <th>Sr. No.</th>
                                             <th>Image</th>
                                             <th>View Image</th>
-                                            <th>Update Image</th> 
+                                            <th>Image</th> 
                                             <th>Delete</th>
                                           
                                         </tr>
@@ -80,5 +79,4 @@
         </div>
     </div>
 </div>
-
 @endsection

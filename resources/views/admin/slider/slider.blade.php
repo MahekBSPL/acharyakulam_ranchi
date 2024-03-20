@@ -43,6 +43,7 @@
                                         </tr>
                                     </thead>
                                     <tbody id="slider">
+                                        
                                         @if(count($sliders) > 0)
                                         @php $count = 1; @endphp
                                         @foreach($sliders as $slider)
@@ -56,7 +57,8 @@
                                                 -
                                                 @endif
                                             </td>
-                                            <td><?php echo $slider->order ?? 0; ?> <i id="{{$slider->id}}" onclick="editcatpos(this);" class="far editbut fa-edit"></i>
+                                            <td>
+                                                <?php echo $slider->order ?? 0; ?> <i id="{{$slider->id}}" onclick="editcatpos(this);" class="far editbut fa-edit"></i>
                                                 <span id="slider_postion_{{$slider->id}}" style="display:none">
                                                     <input class="w-25" type="number" onchange="savedata(this);" id="{{$slider->id}}" name="slider_postion" value="" /></span>
                                                 <p class="text-success" id="success_{{$slider->id}}"></p>
