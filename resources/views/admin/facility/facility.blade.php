@@ -58,9 +58,19 @@
                                                   -
                                                 @endif
                                             </td>
+
                                             <td>{{$facility->type === '1' ? 'Description' : ($facility->type === '2' ? 'Url' : '-') }}</td> 
                                             <td>@if(!empty($facility->description)){{strip_tags(html_entity_decode($facility->description))}} @else - @endif</td>
-                                            <td>{{$facility->url}}</td>
+                                            <td>
+                                            @if(!empty($facility->url))
+                                            {{$facility->url}}
+                                            @else
+                                                  -
+                                                @endif
+                                            
+                                        </td>
+
+
                                             <td style='display:inline-flex'>
                                                 <a class="btn btn-primary" style='margin-right:5px;' href="{{ route('facility.edit', $facility->id) }}">
                                                     <i class="fas fa-edit" style="font-size: 15px;"></i>

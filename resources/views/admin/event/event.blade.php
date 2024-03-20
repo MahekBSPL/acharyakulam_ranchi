@@ -82,13 +82,8 @@
                                             </td>
 
                                         </tr>
+                                    
                                         @endforeach
-                                        @else
-
-                                        <tr>
-                                            <td> No Record Added. </td>
-                                        </tr>
-
                                         @endif
                                     </tbody>
                                 </table>

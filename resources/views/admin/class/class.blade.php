@@ -66,13 +66,8 @@
                                             </td>
 
                                         </tr>
+                                       
                                         @endforeach
-                                        @else
-
-                                        <tr>
-                                            <td colspan="4" class="text-center"> No Record Added. </td>
-                                        </tr>
-
                                         @endif
                                     </tbody>
 

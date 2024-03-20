@@ -51,9 +51,9 @@
                                             <td>{{$rule->description}}</td>
                                             <td><?php echo $rule->order??0; ?> <i id="{{$rule->id}}"
                                                     onclick="editcatpos(this);" class="far editbut fa-edit"></i>
-                                                <span id="rule_postion_{{$rule->id}}" style="display:none">
+                                                <span id="rule_postion_{{$rule->id}}" style="display:none;width:100%">
                                                     <input class="w-25" type="number" onchange="savedata(this);"
-                                                        id="{{$rule->id}}" name="rule_postion" value="" style="width:60px" /></span>
+                                                        id="{{$rule->id}}" name="rule_postion" value="" style="width:100%" /></span>
                                                 <p class="text-success" id="success_{{$rule->id}}"></p>
                                             </td>
                                             <td>

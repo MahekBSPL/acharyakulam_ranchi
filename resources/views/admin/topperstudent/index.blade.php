@@ -32,7 +32,7 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Title</th>
-                                            <th>Pdf</th>
+                                            <th>PDF</th>
                                             <th>Image</th>
                                             <th>Action</th>
                                         </tr>
@@ -80,9 +80,7 @@
                                                 </td>
                                             </form>
                                         </tr>
-                                        @php
-                                        $count++;
-                                        @endphp
+                                       
                                         @endforeach
                                         @endif
                                     </tbody>

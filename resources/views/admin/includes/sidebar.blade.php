@@ -61,15 +61,7 @@
             <li class="">
                 <a href="{{ url('/admin/council')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Student Council</span></a>
             </li>
-            <li class="">
-                <a href="{{ url('/admin/participation')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Paricipation Exam</span></a>
-            </li>
-            <li class="">
-                <a href="{{ url('/admin/competitive_exam')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Competitive Exam</span></a>
-            </li>
-            <li class="">
-                <a href="{{ url('/admin/academic')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Academic Session</span></a>
-            </li>
+           
           
             <li class="">
                 <a href="{{ url('/admin/procedure')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Admission Procedure</span></a>
@@ -86,6 +78,10 @@
             <li class="">
                 <a href="{{ url('/admin/prospectus')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Prospectus</span></a>
             </li>
+            <li class="">
+                <a href="{{ url('/admin/popup')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Home Modal</span></a>
+            </li>
+            
         </ul>
 
     </aside>

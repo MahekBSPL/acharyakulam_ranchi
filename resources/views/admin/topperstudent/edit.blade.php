@@ -77,4 +77,6 @@
         </div>
     </div>
 </div>
+<script src="{{ URL::asset('/assets/modules/jquery.min.js')}}"></script>
+<script src="{{ URL::asset('/assets/js/page/validate.js')}}"></script>
 @endsection
