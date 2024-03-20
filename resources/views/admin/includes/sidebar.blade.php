@@ -70,15 +70,7 @@
             <li class="">
                 <a href="{{ url('/admin/academic')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Academic Session</span></a>
             </li>
-            <li class="">
-                <a href="{{ url('/admin/facilitydescription')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Facility Description</span></a>
-            </li>
-            <li class="">
-                <a href="{{ url('/admin/facilityslider')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Facility Slider</span></a>
-            </li>
-            <li class="">
-                <a href="{{ url('/admin/facility')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Facility</span></a>
-            </li>
+          
             <li class="">
                 <a href="{{ url('/admin/procedure')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Admission Procedure</span></a>
             </li>

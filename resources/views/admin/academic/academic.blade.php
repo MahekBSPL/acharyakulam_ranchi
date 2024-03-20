@@ -38,7 +38,7 @@
                                             <th>Title</th>
                                             <th>Year</th>
                                             <th>Image</th>
-                                            <th>Pdf</th>
+                                            <th>PDF</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -61,7 +61,7 @@
                                             </td>
                                             <td>
                                                 @if(!empty($academic->pdf))
-                                                <a href="{{ URL::asset('/admin/upload/academic/pdf/'.$academic->pdf)}}" target="_blank"><i class="fas fa-eye"></i></a>
+                                                <a href="{{ URL::asset('/admin/upload/academic/pdf/'.$academic->pdf)}}" target="_blank">View PDF</a>
                                                 @else
                                                 -
                                                 @endif

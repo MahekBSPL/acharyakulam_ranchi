@@ -17,6 +17,10 @@ class FacilitySliderController extends Controller
         //
         $title = "Facility Slider";
         $facility = FacilitySlider::orderBy('created_at', 'desc')->get();
+        // echo "<pre>";
+        // print_r( $facility);
+        // echo "</pre>";
+        // exit;
         return view('admin.facilityslider.facilitySlider', ['facilitys' => $facility], compact('title'));
     }
 
@@ -38,7 +42,7 @@ class FacilitySliderController extends Controller
         //
         if (isset($request->submit)) {
             $Validation = [
-                'image' => 'required|image|mimes:jpeg,jpg,png|max:2048',
+                'image' => 'required',
             ];
 
             $validator = Validator::make($request->all(), $Validation);

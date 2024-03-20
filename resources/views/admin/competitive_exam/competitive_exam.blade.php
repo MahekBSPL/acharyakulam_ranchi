@@ -32,9 +32,9 @@
                                     <thead>
                                         <tr>
                                             <th>Sr. No.</th>
-                                            <th>Select Year</th>
+                                            <th>Year</th>
                                             <th>Name</th>
-                                            <th>pdf</th>
+                                            <th>PDF</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -57,7 +57,7 @@
                                             <td>{{$exam->name}}</td>
                                             <td>
                                                 @if(!empty($exam->pdf))
-                                                <a href="{{ URL::asset('/admin/upload/competitiveExam/'.$exam->pdf)}}" target="_blank"><i class="fas fa-eye"></i></a>
+                                                <a href="{{ URL::asset('/admin/upload/competitiveExam/'.$exam->pdf)}}" target="_blank">View PDF</a>
                                                 @else
                                                 -
                                                 @endif

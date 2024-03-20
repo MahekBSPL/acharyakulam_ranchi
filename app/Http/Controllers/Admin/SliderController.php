@@ -134,6 +134,7 @@ class SliderController extends Controller
                 $slider->image = $newImageName;
             }
 
+
             $result =  $slider->save();
 
             if ($result) {
@@ -142,6 +143,10 @@ class SliderController extends Controller
 
                 return redirect('/admin/slider')->withSuccess('Slider detail updated Successfully!!!');
             }
+
+           $result =  $slider->save();
+            return redirect('/admin/slider')->withSuccess('Slider detail updated Successfully!!!');
+
         }
     }
 

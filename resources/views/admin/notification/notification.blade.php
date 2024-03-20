@@ -58,9 +58,9 @@
                                                 @endif</td>
                                             <td>{{$notification->title}}</td>
                                             <td>{{$notification->notificationtype}}</td>
-                                            <td>@foreach($SelectType as $SelectType)
-                                                @if($SelectType->id == $notification->menutype)
-                                                {{ $SelectType->value }}
+                                            <td>@foreach($SelectType as $s)
+                                                @if($s->id == $notification->menutype)
+                                                {{ $s->value }}
                                                 @endif
                                                 @endforeach
                                             </td>

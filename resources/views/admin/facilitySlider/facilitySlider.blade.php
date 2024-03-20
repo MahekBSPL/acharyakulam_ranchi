@@ -53,10 +53,11 @@
                                                   -
                                                 @endif
                                             </td>
-                                            <td><?php echo $faclity->order ?? 0; ?> <i id="{{$faclity->id}}" onclick="editcatpos(this);" class="far editbut fa-edit"></i>
-                                                <span id="slider_postion_{{$faclity->id}}" style="display:none">
-                                                    <input class="w-25" type="number" onchange="savedata(this);" id="{{$faclity->id}}" name="slider_postion" value="" /></span>
-                                                <p class="text-success" id="success_{{$faclity->id}}"></p>
+                                            <td>
+                                            <?php echo $facility->order ?? 0; ?> <i id="{{$facility->id}}" onclick="editcatpos(this);" class="far editbut fa-edit"></i>
+                                                <span id="slider_postion_{{$facility->id}}" style="display:none">
+                                                    <input class="w-25" type="number" onchange="savedata(this);" id="{{$facility->id}}" name="slider_postion" value="" /></span>
+                                                <p class="text-success" id="success_{{$facility->id}}"></p>
                                             </td>
                                             <td style='display:inline-flex'>
                                                 <a class="btn btn-primary" style='margin-right:5px;' href="{{ route('facilityslider.edit', $facility->id) }}">
@@ -109,14 +110,14 @@
         });
         var slider_postion = data.value;
         var id = data.id;
-        var linkurl = "{{ url('/admin/update_slider_orders')}}";
+        var linkurl = "{{ url('/admin/update_facilty_slider_orders')}}";
         jQuery.ajax({
             url: linkurl,
             type: "POST",
             data: {
                 id: id,
                 slider_postion: slider_postion,
-                update_slider_orders: 'update_slider_orders'
+                update_facilty_slider_orders: 'update_facilty_slider_orders'
             },
             cache: false,
             success: function(html) {

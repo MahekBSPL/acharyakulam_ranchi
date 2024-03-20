@@ -56,7 +56,7 @@
 
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
+                                <table id="gallerytable" class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -69,13 +69,9 @@
                                     </thead>
 
                                     <tbody id="list">
-
-                                        <?php
-							if(count($list) > 0)
-							{
-							$count = 1;
-							foreach($list as $row):
-						?>
+                                    @if(count($list) > 0)
+                                        @php $count = 1; @endphp
+                                        @foreach($list as $row)
                                         <tr>
                                             <td>{{$count++}}</td>
                                            
@@ -118,17 +114,12 @@
                                                 </td>
                                             </form>
                                         </tr>
-                                        <?php
-							endforeach;
-							} else {
-						?>
-                                        <tr>
-                                            <td colspan="5" class="text-center"> No Record Added. </td>
-                                        </tr>
-                                        <?php
-
-							}
-						?>
+                                        @php
+                                        $count++;
+                                        @endphp
+                                        @endforeach
+                                        @endif
+                                      
                                     </tbody>
                                 </table>
                                 {!! $list->withQueryString()->links('pagination::bootstrap-5') !!}
@@ -147,7 +138,11 @@
     <!-- /.row -->
 </div>
 <!-- Button trigger modal -->
-
+<script>
+    $(document).ready(function() {
+        new DataTable('#gallerytable');
+    });
+</script>
 
 <script src="{{ URL::asset('/public/assets/modules/jquery.min.js')}}"></script>
 <script>
