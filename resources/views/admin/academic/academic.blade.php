@@ -38,7 +38,7 @@
                                             <th>Title</th>
                                             <th>Year</th>
                                             <th>Image</th>
-                                            <th>Pdf</th>
+                                            <th>PDF</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -47,7 +47,7 @@
                                         @php $count = 1; @endphp
                                         @foreach($academics as $academic)
                                         <tr>
-                                            <td>{{$count}}@endif</td>
+                                            <td>{{$count}}</td>
                                             <td>{{$academic->title}}</td>
                                             <td>{{$academic->year}}</td>
                                             <td>
@@ -61,7 +61,7 @@
                                             </td>
                                             <td>
                                                 @if(!empty($academic->pdf))
-                                                <a href="{{ URL::asset('/admin/upload/academic/pdf/'.$academic->pdf)}}" target="_blank"><i class="fas fa-eye"></i></a>
+                                                <a href="{{ URL::asset('/admin/upload/academic/pdf/'.$academic->pdf)}}" target="_blank">View PDF</a>
                                                 @else
                                                 -
                                                 @endif

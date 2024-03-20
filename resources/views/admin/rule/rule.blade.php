@@ -53,7 +53,7 @@
                                                     onclick="editcatpos(this);" class="far editbut fa-edit"></i>
                                                 <span id="rule_postion_{{$rule->id}}" style="display:none">
                                                     <input class="w-25" type="number" onchange="savedata(this);"
-                                                        id="{{$rule->id}}" name="rule_postion" value="" /></span>
+                                                        id="{{$rule->id}}" name="rule_postion" value="" style="width:60px" /></span>
                                                 <p class="text-success" id="success_{{$rule->id}}"></p>
                                             </td>
                                             <td>
@@ -73,13 +73,8 @@
                                             </td>
 
                                         </tr>
+                                        @php  @endphp
                                         @endforeach
-                                        @else
-
-                                        <tr>
-                                            <td colspan="4" class="text-center"> No Record Added. </td>
-                                        </tr>
-
                                         @endif
                                     </tbody>
 
@@ -95,12 +90,13 @@
     </div>
 </div>
 
-<script src="{{ URL::asset('/public/assets/modules/jquery.min.js')}}"></script>
+
 <script>
 $(document).ready(function() {
     new DataTable('#ruletable');
 });
 </script>
+<script src="{{ URL::asset('/public/assets/modules/jquery.min.js')}}"></script>
 <script>
      function editcatpos(data) {
         $("#rule_postion_"+data.id).toggle();

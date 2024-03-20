@@ -31,11 +31,12 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
-                                <input type="file" name="image" class="input_class inline-block" id="image" autocomplete="off" value="{{old('image')}}" />
+                                <input type="file"  onchange="onlytxtuplodeimg(this)" name="image" class="input_class inline-block" id="txtimg" autocomplete="off" value="{{old('image')}}" />
                                 @if($facilitys->image)
                                 <a href="{{ URL::asset('/admin/upload/facilitySlider/'.$facilitys->image)}}"><img src="{{ URL::asset('admin/upload/facilitySlider/'.$facilitys->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
                                 @endif
                                 <input type="hidden" name="oldimage" class="input_class w-50 inline-block" value="{{ !empty($facilitys->image)?$facilitys->image:old('image')}}" />
+                                <span class="txtimg_error" style="color:red;"></span>
                                 <span class="text-danger">@error('image'){{$message}} @enderror</span>
                             </div>
                         </div>
@@ -54,5 +55,5 @@
         </div>
     </div>
 </div>
-
+<script src="{{ URL::asset('/assets/js/page/validate.js')}}"></script>
 @endsection

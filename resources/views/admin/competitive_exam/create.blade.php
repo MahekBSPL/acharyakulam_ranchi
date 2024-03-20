@@ -60,7 +60,7 @@
                     <div class="row">
                         <div class="col-12 col-md-3 col-lg-3">
                             <div class="form-group">
-                                <label>pdf:</label>
+                                <label>PDF:</label>
                                 <span class="star">*</span>
                             </div>
                         </div>

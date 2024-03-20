@@ -27,7 +27,7 @@
                         @endif
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
+                                <table class="table table-striped table-bordered table-hover" name="topperstudent" id="topperstudent">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -40,12 +40,9 @@
 
                                     <tbody id="list">
 
-                                        <?php
-							if(count($data) > 0)
-							{
-							$count = 1;
-							foreach($data as $row):
-						?>
+                                    @if(count($data) > 0)
+                                        @php $count = 1; @endphp
+                                        @foreach($data as $row)
                                         <tr>
                                             <td>{{$count++}}</td>
                                            
@@ -83,17 +80,11 @@
                                                 </td>
                                             </form>
                                         </tr>
-                                        <?php
-							endforeach;
-							} else {
-						?>
-                                        <tr>
-                                            <td colspan="5" class="text-center"> No Record Added. </td>
-                                        </tr>
-                                        <?php
-
-							}
-						?>
+                                        @php
+                                        $count++;
+                                        @endphp
+                                        @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                               
@@ -112,6 +103,12 @@
     <!-- /.row -->
 </div>
 <!-- Button trigger modal -->
+
+<script>
+    $(document).ready(function() {
+        new DataTable('#topperstudent');
+    });
+</script>
 
 
 <script src="{{ URL::asset('/public/assets/modules/jquery.min.js')}}"></script>

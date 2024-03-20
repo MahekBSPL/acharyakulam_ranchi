@@ -8,8 +8,6 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\admin\RuleController;
 use App\Http\Controllers\Admin\YogaController;
 use App\Http\Controllers\Admin\EventController;
-<<<<<<< HEAD
-=======
 use App\Http\Controllers\admin\PopupController;
 
 use App\Http\Controllers\admin\ProspectusController;
@@ -17,8 +15,6 @@ use App\Http\Controllers\admin\HomeGalleryController;
 use App\Http\Controllers\admin\TopperStudentController;
 use App\Http\Controllers\admin\TopperStudentImagesController;
 
-
->>>>>>> ded4fed4be212a719f838e32e5007a0402a708a6
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\admin\WinnerController;
 use App\Http\Controllers\admin\SectionController;
@@ -111,26 +107,25 @@ Route::middleware(['auth', 'IsAdmin'])->group(function () {
     Route::any('/admin/update_rules_orders', [AjaxRequestController::class, 'update_rules_orders'])->name('/admin/update_rules_orders');
     Route::any('/admin/update_gallery_orders', [AjaxRequestController::class, 'update_gallery_orders'])->name('/admin/update_gallery_orders');
     Route::any('/admin/update_slider_orders', [AjaxRequestController::class, 'update_slider_orders'])->name('/admin/update_slider_orders');
-<<<<<<< HEAD
-=======
+
+
+    Route::any('/admin/update_facilty_slider_orders', [AjaxRequestController::class, 'update_facilty_slider_orders'])->name('/admin/update_facilty_slider_orders');
+
+    
     Route::any('/admin/update_winner_orders', [AjaxRequestController::class, 'update_winner_orders'])->name('/admin/update_winner_orders');
     Route::any('/admin/update_home_gallery_orders', [AjaxRequestController::class, 'update_home_gallery_orders'])->name('/admin/update_home_gallery_orders');
->>>>>>> ded4fed4be212a719f838e32e5007a0402a708a6
     Route::resource('/admin/rule', RuleController::class);
     Route::resource('/admin/council', StudentCouncilController::class);
     Route::resource('/admin/class', ClassNameController::class);
     Route::resource('/admin/section', SectionController::class);
     Route::resource('/admin/winner', WinnerController::class);
-<<<<<<< HEAD
-=======
+
     Route::resource('/admin/popup', PopupController::class);
     Route::resource('/admin/prospectus', ProspectusController::class);
     Route::resource('/admin/homegallery', HomeGalleryController::class);
     Route::resource('/admin/topperstudent', TopperStudentController::class);
      Route::any('/student_image/delete/{id}', [TopperStudentImagesController::class,'delete_image']);
      Route::any('/student_image/update_image/', [TopperStudentImagesController::class,'update_image']);
-     
->>>>>>> ded4fed4be212a719f838e32e5007a0402a708a6
     Route::any('/admin/delete_images', [AjaxRequestController::class, 'delete_images'])->name('/admin/delete_images');
 });
 

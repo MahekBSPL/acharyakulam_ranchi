@@ -135,12 +135,7 @@ class SliderController extends Controller
                 $slider->image = $newImageName;
             }
            $result =  $slider->save();
-<<<<<<< HEAD
             return redirect('/admin/slider')->withSuccess('Slider detail updated Successfully!!!');
-
-=======
-            return redirect('/admin/slider')->withSuccess('Slider detail updated Successfully!!!');  
->>>>>>> ded4fed4be212a719f838e32e5007a0402a708a6
         }
     }
 
