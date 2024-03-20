@@ -11,7 +11,11 @@ use App\Models\Admin\Rule;
 use App\Models\Admin\Slider;
 use App\Models\Admin\Winner;
 use App\Models\Admin\HomeGallery;
+
+
+=======
 use App\Models\Admin\FacilitySlider;
+
 use App;
 class AjaxRequestController extends Controller
 {
@@ -201,6 +205,7 @@ class AjaxRequestController extends Controller
             }
         }
         
+
     }
     public function update_gallery_orders(Request $request)
     {

@@ -27,13 +27,12 @@
             </li>
             <li class="">
                 <a href="{{ url('/admin/facility')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Facility</span></a>
-</li>
-<li>
+            </li>
+            <li>
                 <a href="{{ url('/admin/homegallery')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Home Gallery</span></a>
             </li>
             <li class="">
                 <a href="{{ url('/admin/topperstudent')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Topper Student</span></a>
-
             </li>
             <li class="">
                 <a href="{{ url('/admin/menu')}}" class="nav-link"><i class="bi bi-menu-up" aria-hidden="true"></i><span>Menu</span></a>

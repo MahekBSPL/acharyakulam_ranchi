@@ -17,9 +17,8 @@ class SliderController extends Controller
         //
         $title = "Slider List";
         $data = Slider::all();
-      // $data = Slider::orderBy('Order')::all();
+        // $data = Slider::orderBy('Order')::all();
         return view('admin.slider.slider', ['sliders' => $data, 'title' => $title]);
-      
     }
 
     /**
@@ -36,41 +35,41 @@ class SliderController extends Controller
     public function store(Request $request)
     {
         //
-         //if (isset($request->cmdsubmit)) {
+        //if (isset($request->cmdsubmit)) {
 
-            $validator = $request->validate([
-                'title' => 'required', 
-                'image' => 'required | image | mimes:jpeg,jpg,png,webp | max:2048'
-            ]);
+        $validator = $request->validate([
+            'title' => 'required',
+            'image' => 'required | image | mimes:jpeg,jpg,png,webp | max:2048'
+        ]);
 
-            if(isset($request->image)){
+        if (isset($request->image)) {
             $image = time() . '.' . $request->image->extension();
             $request->image->move(public_path('/admin/upload/slider'), $image);
-            }
+        }
 
-            $slider = new Slider;
-            $slider->title = $request->title;
-            $slider->url = $request->url;
-            $slider->image =  $image;
-            $result = $slider->save();
+        $slider = new Slider;
+        $slider->title = $request->title;
+        $slider->url = $request->url;
+        $slider->image =  $image;
+        $result = $slider->save();
 
-                //     return redirect('/admin/slider')->withSuccess('Slider detail added Successfully!!!');
-                // } else {
-                 //     return redirect('/admin/slider')->withError('Slider detail not added Successfully!!!');
-                // }
+        //     return redirect('/admin/slider')->withSuccess('Slider detail added Successfully!!!');
+        // } else {
+        //     return redirect('/admin/slider')->withError('Slider detail not added Successfully!!!');
+        // }
 
-        if($result){
+        if ($result) {
             return response()->json([
                 'success' => true,
-                'message' =>"Slider detail added Successfully!!!"
+                'message' => "Slider detail added Successfully!!!"
             ]);
-        }else{
+        } else {
             return response()->json([
                 'error' => true,
-                'message' =>"Slider detail not added Successfully!!!"
+                'message' => "Slider detail not added Successfully!!!"
             ]);
         }
-    // }
+        // }
     }
 
     /**
@@ -134,8 +133,20 @@ class SliderController extends Controller
 
                 $slider->image = $newImageName;
             }
+
+
+            $result =  $slider->save();
+
+            if ($result) {
+                return redirect('/admin/slider')->withSuccess('Slider detail updated Successfully!!!');
+            } else {
+
+                return redirect('/admin/slider')->withSuccess('Slider detail updated Successfully!!!');
+            }
+
            $result =  $slider->save();
             return redirect('/admin/slider')->withSuccess('Slider detail updated Successfully!!!');
+
         }
     }
 
@@ -155,8 +166,8 @@ class SliderController extends Controller
         $image_path = public_path('/admin/upload/slider/') . $slider->image;
         if (file_exists($image_path)) {
             unlink($image_path);
-        
-        $slider->delete();
+
+            $slider->delete();
         }
         return redirect('/admin/slider')->withSuccess('Slider detail deleted Successfully!!!');
     }

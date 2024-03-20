@@ -108,10 +108,8 @@ Route::middleware(['auth', 'IsAdmin'])->group(function () {
     Route::any('/admin/update_gallery_orders', [AjaxRequestController::class, 'update_gallery_orders'])->name('/admin/update_gallery_orders');
     Route::any('/admin/update_slider_orders', [AjaxRequestController::class, 'update_slider_orders'])->name('/admin/update_slider_orders');
 
-
     Route::any('/admin/update_facilty_slider_orders', [AjaxRequestController::class, 'update_facilty_slider_orders'])->name('/admin/update_facilty_slider_orders');
 
-    
     Route::any('/admin/update_winner_orders', [AjaxRequestController::class, 'update_winner_orders'])->name('/admin/update_winner_orders');
     Route::any('/admin/update_home_gallery_orders', [AjaxRequestController::class, 'update_home_gallery_orders'])->name('/admin/update_home_gallery_orders');
     Route::resource('/admin/rule', RuleController::class);
@@ -126,6 +124,7 @@ Route::middleware(['auth', 'IsAdmin'])->group(function () {
     Route::resource('/admin/topperstudent', TopperStudentController::class);
      Route::any('/student_image/delete/{id}', [TopperStudentImagesController::class,'delete_image']);
      Route::any('/student_image/update_image/', [TopperStudentImagesController::class,'update_image']);
+
     Route::any('/admin/delete_images', [AjaxRequestController::class, 'delete_images'])->name('/admin/delete_images');
 });
 
