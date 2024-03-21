@@ -1,5 +1,8 @@
-@extends('frontend.layouts.main')
-@extends('container')
+<!DOCTYPE html>
+<html lang="en">
+<?php include_once("header.php"); ?>
+
+
 <body>
     <main id="main">
         <div class="banner">
@@ -40,5 +43,10 @@
 
 
     </main>
+
+    <?php include_once("footer.php"); ?>
+
+
 </body>
-@endsection
+
+</html>

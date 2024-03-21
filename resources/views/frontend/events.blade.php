@@ -3,13 +3,14 @@
 <?php include_once("header.php"); ?>
 
 <style>
-    .events-slide h5 {
- font-size: 15px;
+  .events-slide h5 {
+    font-size: 15px;
     font-weight: 600;
     margin-top: 0;
     margin-bottom: 5px;
-}
+  }
 </style>
+
 <body>
   <main id="main">
     <div class="banner">
@@ -25,17 +26,38 @@
 
     <section class="events-slide">
       <div class="container" data-aos="fade-up">
+
         <div class="row align-items-center">
-         
+          <h4>67th National School Game Wushu 2023-2024 Jharkhand</h4>
+          <h6><span><strong> Date:</strong> From- 24-01-2024 to 28-01-2024, </span> <br /><span><strong> Event
+                Location:</strong>  Thakur Vishwanath Shahdeo Indoor Stadium Khelgaon Ranchi, Jharkhand</span></h6>
+
+          <div class="col-lg-4" data-aos="zoom-out" data-aos-delay="200">
+            <img src="assets/img/events/5.jpeg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+            <ul>
+              <li>1. Adm no. Rajat Kaushik  (IX-B) Won Silver Medal</li>
+              <li>2. Adm no. 01234 Keshav Purohit (IX-C) Won Bronze Medal</li>
+              <li>3. Adm no. 00619 Abhinash kumar (IX-C) Won Bronze Medal</li>
+              <li>4. Adm no. 00322 Aditya Raj (IX-C) Participants</li>
+              <li>5. Adm no. 01392 Shresth Mathur  (IX-C) Participants</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="row align-items-center">
+
 
           <div class="col-lg-4" data-aos="zoom-out" data-aos-delay="200">
             <img src="assets/img/events/4.jpeg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
-               <h4>16th DOX Inter School Co-Curricular Competition-2023-2024 Jharkhand </h4>
-          <h6><span><strong> Date:</strong> -From- 4-11-2023 to 4-11-2023, </span> <span><strong> Event
-                Location:</strong> DORANDA OLD XAVERIANS (DOX)- Alumni Association of St. Xavier’s School, Ranchi
-              -Jharkhand</span></h6>
+            <h4>16th DOX Inter School Co-Curricular Competition-2023-2024 Jharkhand </h4>
+            <h6><span><strong> Date:</strong> -From- 4-11-2023 to 4-11-2023, </span> <span><strong> Event
+                  Location:</strong> DORANDA OLD XAVERIANS (DOX)- Alumni Association of St. Xavier’s School, Ranchi
+                -Jharkhand</span></h6>
             <h5>Best out of Waste :</h5>
             <ul>
               <li>1. Adm no. 00610 – Prince Kumar Mahto (IX-C) Participants</li>
@@ -58,7 +80,7 @@
           <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
             <h4>National Level Painting Competition </h4>
             <h5>(Under National Campaign on Energy Conservation 2023)</h5>
-            <h6><span><strong>Date:</strong> From- 11-12-2023 to 11-12-2023</span> <br/><span><strong> Event
+            <h6><span><strong>Date:</strong> From- 11-12-2023 to 11-12-2023</span> <br /><span><strong> Event
                   Location:</strong> – Gurugram (Organized by the Ministry of Power, Government of India)</span></h6>
             <ul>
               <li> 1. Adm no. 00352 – Nidhi Rani (VIII-A) Participant</li>
@@ -69,7 +91,7 @@
         <div class="row align-items-center">
           <h4>State Level Painting Competition</h4>
           <h5>(Under National Campaign on Energy Conservation 2023)</h5>
-          <h6><span><strong> Date:</strong> From- 16-11-2023 to 16-11-2023, </span> <br/><span><strong> Event
+          <h6><span><strong> Date:</strong> From- 16-11-2023 to 16-11-2023, </span> <br /><span><strong> Event
                 Location:</strong> Palash meeting hall (auditorium) DORANDA Ranchi -Jharkhand</span></h6>
 
           <div class="col-lg-4" data-aos="zoom-out" data-aos-delay="200">

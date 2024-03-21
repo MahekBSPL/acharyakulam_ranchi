@@ -50,7 +50,7 @@ class MenuController extends Controller
                 'menu_category' => 'required',
                 'title' => 'required',
                 'menu_position' => 'required',
-                'banner_image' => 'required|mimes:jpeg,jpg,png,webp|max:2048',
+                'banner_image' => 'mimes:jpeg,jpg,png,webp|max:2048',
                 'status' => 'required',
                 'menutype' => 'required'
             ];
