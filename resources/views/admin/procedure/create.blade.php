@@ -33,7 +33,7 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
-                                <input name="class" minlength="2" autocomplete="off" type="text" class="input_class form-control" id="class" value="{{old('class')}}" />
+                                <input name="class"  autocomplete="off" type="text" class="input_class form-control" id="class" value="{{old('class')}}" />
                                 <span class="text-danger"> @error('class'){{$message}} @enderror</span>
                             </div>
                         </div>
