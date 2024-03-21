@@ -37,7 +37,7 @@ class EventController extends Controller
             'date' => 'Required',
             'location' => 'Required', 
             'description' => 'Required',
-            'image' => 'Required | image | mimes:jpeg,jpg,png,webp | max:2048'
+            'image' => 'Required'
         ]);
         if(isset($request->image)){
         $image = time() . '.' . $request->image->extension();

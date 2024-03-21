@@ -21,7 +21,7 @@
                         @endif
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table id="imagetable" name="imagetable" class="table table-striped table-bordered table-hover">
+                                <table id="topper_student_table" name="topper_student_table" class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th>Sr. No.</th>
@@ -79,4 +79,9 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        new DataTable('#topper_student_table');
+    });
+</script>
 @endsection

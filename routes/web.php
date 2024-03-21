@@ -109,9 +109,9 @@ Route::middleware(['auth', 'IsAdmin'])->group(function () {
     Route::any('/admin/update_slider_orders', [AjaxRequestController::class, 'update_slider_orders'])->name('/admin/update_slider_orders');
 
     Route::any('/admin/update_facilty_slider_orders', [AjaxRequestController::class, 'update_facilty_slider_orders'])->name('/admin/update_facilty_slider_orders');
-
     Route::any('/admin/update_winner_orders', [AjaxRequestController::class, 'update_winner_orders'])->name('/admin/update_winner_orders');
     Route::any('/admin/update_home_gallery_orders', [AjaxRequestController::class, 'update_home_gallery_orders'])->name('/admin/update_home_gallery_orders');
+    Route::any('/admin/update_yoga_orders', [AjaxRequestController::class, 'update_yoga_orders'])->name('/admin/update_yoga_orders');
     Route::resource('/admin/rule', RuleController::class);
     Route::resource('/admin/council', StudentCouncilController::class);
     Route::resource('/admin/class', ClassNameController::class);
