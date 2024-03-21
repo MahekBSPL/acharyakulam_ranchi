@@ -1,14 +1,16 @@
-@extends('frontend.layouts.main')
-@section('container')
+<!DOCTYPE html>
+<html lang="en">
+<?php include_once("header.php"); ?>
+
 
 <body>
   <main id="main">
     <div class="banner">
-      <img src="{{url('frontend/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
+      <img src="assets/img/Mask Group 108.jpg" class="img-fluid" alt="banner">
       <div class="banner-inr breadcrumbs">
         <h1>Mission & Vision</h1>
         <h5>
-          <a href="{{url('frontend/index')}}">Home</a> / <span>About</span>
+          <a href="index.php">Home</a> / <span>About</span>
         </h5>
       </div>
     </div>
@@ -29,7 +31,7 @@
         </div>
         <div class="row">
           <div class="groom-img col-lg-6" data-aos="zoom-out" data-aos-delay="200">
-            <img src="{{url('frontend/img/4.png')}}" class="img-fluid" alt="">
+            <img src="assets/img/4.png" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
             <div class="mask-content">
@@ -54,7 +56,7 @@
             </div>
           </div>
           <div class="leader col-lg-6" data-aos="zoom-out" data-aos-delay="200">
-            <img src="{{url('frontend/img/5.png')}}" class="img-fluid" alt="">
+            <img src="assets/img/5.png" class="img-fluid" alt="">
           </div>
 
         </div>
@@ -82,7 +84,7 @@
         <div class="row align-items-center">
           <div class="mission-img col-lg-6 col-md-6 col-sm-12" data-aos="zoom-out" data-aos-delay="200">
             <div class="mask">
-              <img src="{{url('frontend/img/6.png')}}" class="img-fluid" alt="">
+              <img src="assets/img/6.png" class="img-fluid" alt="">
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-12 mission-content" data-aos="fade-up" data-aos-delay="200">
@@ -118,7 +120,7 @@
             </div>
             <div class="mission-img col-lg-6 col-md-6 col-sm-12" data-aos="zoom-out" data-aos-delay="200">
               <div class="mask-2">
-                <img src="{{url('frontend/img/7.png')}}" class="img-fluid" alt="">
+                <img src="assets/img/7.png" class="img-fluid" alt="">
               </div>
             </div>
 
@@ -149,6 +151,9 @@
       </div>
 
     </section>
+    <?php include_once("footer.php"); ?>
+
+
 </body>
 
-@endsection
+</html>

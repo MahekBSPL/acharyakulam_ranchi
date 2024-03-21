@@ -61,8 +61,8 @@
                                             <td>@if(!empty($menu->keyword)){{$menu->keyword}} @else - @endif</td>
                                             <td>@if(!empty($menu->description)){{strip_tags(html_entity_decode($menu->description))}} @else - @endif</td>
                                             <td>@if(!empty($menu->url)){{$menu->url}} @else - @endif</td>
-                                            <td>{{$menu->menu_position}}</td>
-                                            <td>{{$menu->status}}</td>
+                                            <td>@if($menu->menu_position == 1) Header Menu@else Footer Menu @endif</td>
+                                            <td>@if($menu->status == 1)Draft @else Publish @endif</td>
                                             <td style='display:inline-flex'>
                                                 <a class="btn btn-primary" style='margin-right:5px;' href="{{ route('menu.edit', $menu->id) }}">
                                                     <i class="fas fa-edit" style="font-size: 15px;"></i>

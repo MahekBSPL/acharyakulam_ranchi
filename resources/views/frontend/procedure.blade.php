@@ -1,14 +1,15 @@
-@extends('frontend.layouts.main')
-@section('container')
+<!DOCTYPE html>
+<html lang="en">
+<?php include_once("header.php"); ?>
 
 <body>
   <main id="main">
     <div class="banner">
-      <img src="{{url('frontend/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
+      <img src="assets/img/Mask Group 108.jpg" class="img-fluid" alt="banner">
       <div class="banner-inr breadcrumbs">
         <h1>Admission-Procedure</h1>
         <h5>
-          <a href="{{url('frontend/index')}}">Home</a> / <span>Admission</span>
+          <a href="index.php">Home</a> / <span>Admission</span>
         </h5>
       </div>
     </div>
@@ -46,7 +47,7 @@
             </div>
           </div>
           <div class="col-lg-5" data-aos="zoom-out" data-aos-delay="200">
-            <img src="{{url('frontend/img/Mask Group 37.png')}}" class="img-fluid" alt="">
+            <img src="assets/img/Mask Group 37.png" class="img-fluid" alt="">
           </div>
         </div>
       </div>
@@ -169,5 +170,10 @@
       </div>
 
     </section>
+
+    <?php include_once("footer.php"); ?>
+
+
 </body>
-@endsection
+
+</html>

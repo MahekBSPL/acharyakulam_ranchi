@@ -1,16 +1,17 @@
-@extends('frontend.layouts.main')
-@section('container')
+<!DOCTYPE html>
+<html lang="en">
+<?php include_once("header.php"); ?>
 
 <body>
 
 
   <main id="main">
     <div class="banner">
-      <img src="url('frontend/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
+      <img src="assets/img/Mask Group 108.jpg" class="img-fluid" alt="banner">
       <div class="banner-inr breadcrumbs">
         <h1>Circular</h1>
         <h5>
-          <a href="index.blade.php">Home</a> / <span>Circular</span>
+          <a href="index.php">Home</a> / <span>Circular</span>
         </h5>
       </div>
     </div>
@@ -78,6 +79,9 @@
       </div>
     </section>
 -->
+      <?php include_once("footer.php"); ?>
+ 
 
+</body>
 
-@endsection
+</html>

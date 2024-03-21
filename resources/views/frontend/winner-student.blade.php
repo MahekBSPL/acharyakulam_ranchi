@@ -21,7 +21,17 @@
             <section class="craft">
                 <div class="container" data-aos="fade-up">
                     <div class="row">
-
+ <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                            <div class="portfolio-wrap">
+                                <img src="assets/img/winner-student/winner-A.webp" class="img-fluid" alt="">
+                                <div class="portfolio-info">
+                                    <div class="portfolio-links">
+                                        <a href="assets/img/winner-student/winner-A.webp" data-gallery="portfolioGallery"
+                                            class="portfokio-lightbox" title=""><i class="bi bi-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
  <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                             <div class="portfolio-wrap">
                                 <img src="assets/img/winner-student/competition-01.jpeg" class="img-fluid" alt="">

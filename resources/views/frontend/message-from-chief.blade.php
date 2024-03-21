@@ -1,32 +1,40 @@
-@extends('frontend.layouts.main')
-@section('container')
+<!DOCTYPE html>
+<html lang="en">
+<?php include_once("header.php"); ?>
+
 <body>
 
   <main id="main">
     <div class="banner">
-      <img src="{{url('frontend/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
+      <img src="assets/img/Mask Group 108.jpg" class="img-fluid" alt="banner">
       <div class="banner-inr breadcrumbs">
         <h1>Message From chief Cordinator</h1>
         <h5>
-          <a href="{{url('frontend/index')}}">Home</a> / <span>About</span>
+          <a href="index.php">Home</a> / <span>About</span>
         </h5>
       </div>
     </div>
+
+  
+
+    <footer>
+      <?php include_once("footer.php"); ?>
+    </footer>
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
         class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="{{url('frontend/vendor/purecounter/purecounter_vanilla.js')}}"></script>
-    <script src="{{url('frontend/vendor/aos/aos.js')}}"></script>
-    <script src="{{url('frontend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{url('frontend/vendor/glightbox/js/glightbox.min.js')}}"></script>
-    <script src="{{url('frontend/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
-    <script src="{{url('frontend/vendor/swiper/swiper-bundle.min.js')}}"></script>
-    <script src="{{url('frontend/vendor/php-email-form/validate.js')}}"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
-    <script src="{{url('frontend/js/main.js')}}"></script>
+    <script src="assets/js/main.js"></script>
 
     <script>
       // Check if the state is stored in localStorage
@@ -57,4 +65,5 @@
       }
     </script>
 </body>
-@endsection
+
+</html>

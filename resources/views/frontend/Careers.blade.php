@@ -248,7 +248,16 @@ $mail->SMTPAutoTLS = false;
 
   ?>
 
+<style>
+ol li {
 
+    list-style: decimal;
+}
+ol {
+    padding-left:20px;
+}
+    
+</style>
   <main id="main">
     <div class="banner">
       <img src="assets/img/Mask Group 108.jpg" class="img-fluid" alt="banner">
@@ -264,7 +273,24 @@ $mail->SMTPAutoTLS = false;
             <div class="container">
         <div class="appl-job-form apply-jobs-slide col-md-8">
 
-          
+          <h2>**VACANCIES*</h2>
+          <p>Applications are invited from the candidates, who are dynamic, committed to their profession, and proficient in their field, on the following posts.</p>
+          <ol>
+              <li>Hindi</li>
+<li>Maths</li>
+<li>Science</li>
+<li> Computer</li>
+<li>Mother Teacher</li>
+<li> Lab Assistant (1)</li>
+<li>Art & Craft</li>
+          </ol>
+          <br/>
+          <ol><h5><strong>Note :-</strong></h5>
+<li>Fluency in English with good communication skill is must.   
+<li>For post 1-4 Masters degree in the relevant subject with B.Ed is mandatory.</li>
+<li>Only shortlisted candidates will be called for interview telephonically, intimating the date/time of interview.</li>
+</ol>
+<p>Candidates can send their CV through e-mail at <a href="mailto:acharyakulamranchi@gmail.com">acharyakulamranchi@gmail.com</a> OR can WhatsApp at 6287842460, 6287842467</p>
 
         <form action="" method="post" enctype="multipart/form-data" class="apply-form" style="display:none;">      
 

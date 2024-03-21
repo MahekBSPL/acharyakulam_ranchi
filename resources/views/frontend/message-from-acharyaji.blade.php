@@ -1,14 +1,16 @@
-@extends('frontend.layouts.main')
-@section('container')
+<!DOCTYPE html>
+<html lang="en">
+<?php include_once("header.php"); ?>
+
 <body>
 
   <main id="main">
     <div class="banner">
-      <img src="{{url('frontend/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
+      <img src="assets/img/Mask Group 108.jpg" class="img-fluid" alt="banner">
       <div class="banner-inr breadcrumbs">
         <h1>A Message from Acharya Ji</h1>
         <h5>
-          <a href="{{url('frontend/index')}}">Home</a> / <span>About Us</span>
+          <a href="index.php">Home</a> / <span>About Us</span>
         </h5>
       </div>
     </div>
@@ -18,7 +20,7 @@
         <div class="approach">
           <div class="row align-items-center">
             <div class="col-lg-5" data-aos="zoom-out" data-aos-delay="200">
-              <img src="{{url('frontend/img/acharyaji.png')}}" class="img-fluid" alt="">
+              <img src="assets/img/acharyaji.png" class="img-fluid" alt="">
             </div>
             <div class="col-lg-7  d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
               <div class="content">
@@ -63,7 +65,10 @@
       </div>
     </section>
 
-    <script src="{{url('frontend/js/main.js')}}"></script>
+    <?php include_once("footer.php"); ?>
+
+    <script src="assets/js/main.js"></script>
 
 </body>
-@endsection
+
+</html>

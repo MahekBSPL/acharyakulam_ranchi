@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('fileupload')->nullable();
             $table->string('url')->nullable();
             $table->string('menu_position');
-            $table->string('banner_image');
+            $table->string('banner_image')->nullable();
             $table->integer('admin_id');
             $table->string('status');
             $table->timestamps();
