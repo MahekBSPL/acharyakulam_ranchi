@@ -67,7 +67,7 @@
                 <a href="{{ url('/admin/procedure')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Admission Procedure</span></a>
             </li>
             <li class="">
-                <a href="{{ url('/admin/procedurefee')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>rocedure Fee</span></a>
+                <a href="{{ url('/admin/procedurefee')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Procedure Fee</span></a>
             </li>
             <li class="">
                 <a href="{{ url('/admin/proceduredescription')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Procedure Description</span></a>
