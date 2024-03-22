@@ -2,15 +2,18 @@
 
 use App\Models\Admin\Menu;
 use Illuminate\Support\Str;
+
+if (!function_exists('getStaticPageUrl')) {
 function getStaticPageUrl($pageTitle)
 {
     switch ($pageTitle) {
         case 'Why Acharyakulam':
-            return '/frontend/introduction';
+            return '/introduction';
         // Add more static page URLs as needed
         default:
             return '/';
     }
+}
 }
 
 if (!function_exists('getMenuData')) {
@@ -23,5 +26,6 @@ if (!function_exists('getMenuData')) {
                     ->get();
     }
 }
+
 
 ?>

@@ -1,17 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<?php include_once("header.php"); ?>
-
+@extends('frontend.layouts.main')
+@section('container')
 <body>
-
 
   <main id="main">
     <div class="banner">
-      <img src="assets/img/Mask Group 108.jpg" class="img-fluid" alt="banner">
+      <img src="{{url('frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
       <div class="banner-inr breadcrumbs">
         <h1>Acharya Balkrishna Ji</h1>
         <h5>
-          <a href="index.php">Home</a> / <span>Torch Bearers</span>
+          <a href="{{url('frontend/index')}}">Home</a> / <span>Torch Bearers</span>
         </h5>
       </div>
     </div>
@@ -21,7 +18,7 @@
         <div class="approach col-lg-12">
           <div class="row">
             <div class="col-lg-5" data-aos="zoom-out" data-aos-delay="200">
-              <img src="assets/img/acharyaji.png" class="img-fluid" alt="">
+              <img src="{{url('frontend/assets/img/acharyaji.png')}}" class="img-fluid" alt="">
             </div>
             <div class="col-lg-7  d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
               <div class="content">
@@ -104,8 +101,5 @@
       </div>
     </section>
 
-    <?php include_once("footer.php"); ?>
-
 </body>
-
-</html>
+@endsection

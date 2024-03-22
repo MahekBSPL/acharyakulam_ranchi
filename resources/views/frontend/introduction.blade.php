@@ -1,9 +1,23 @@
 @extends('frontend.layouts.main')
 @section('container')
+
 <body>
   <main id="main">
     <div class="banner">
-      <img src="{{url('frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
+
+    <!-- @php $menuData = App\Models\Admin\Menu::all(); @endphp
+
+    @foreach ($menuData as $menu)
+        <h1>{{ $menu->title }}</h1>      
+        @if (!empty($menu->banner_image))
+            <img src="{{ url('admin/upload/menu/banner/' . $menu->banner_image) }}" class="img-fluid" alt="banner">
+        @else
+            <img src="{{ url('frontend/assets/img/Mask Group 108.jpg') }}" class="img-fluid" alt="banner">
+        @endif -->
+      <!-- Display other menu data as needed  -->
+     <!-- @endforeach -->  
+
+       <img src="{{url('frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner"> 
       <div class="banner-inr breadcrumbs">
         <h1>Introduction</h1>
         <h5>

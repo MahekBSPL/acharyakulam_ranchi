@@ -52,13 +52,12 @@
 
                     <ul>
                         @foreach($menuparent->subMenu as $subMenu)
-
                         <li>
                             @if($subMenu->menutype == 1)
                             @php
                             $staticPageUrl = getStaticPageUrl($subMenu->title);
                             @endphp
-                            <a href="{{ $staticPageUrl }}">{{ $subMenu->title }}</a>
+                            <a href="{{ url('/frontend/' . $staticPageUrl) }}">{{ $subMenu->title }}</a>
                             @elseif($subMenu->menutype==2)
                             <a href="{{url('/admin/upload/menu/' . $subMenu->fileupload)}}" target="_blank">{{ $subMenu->title }}</a>
                             @elseif($subMenu->menutype==3)
@@ -70,11 +69,11 @@
                 </li>
                 @else
                 <li>
-                @if($menuparent->menutype == 1)
-                            @php
-                            $staticPageUrl = getStaticPageUrl($menuparent->title);
-                            @endphp
-                            <a href="{{ $staticPageUrl }}">{{ $menuparent->title }}</a>
+                    @if($menuparent->menutype == 1)
+                    @php
+                    $staticPageUrl = getStaticPageUrl($menuparent->title);
+                    @endphp
+                     <a href="{{ $staticPageUrl }}">{{ $menuparent->title }}</a>
                     @elseif($menuparent->menutype==2)
                     <a href="{{url('/admin/upload/menu/' . $menuparent->fileupload)}}" target="_blank">{{ $menuparent->title }}</a>
                     @elseif($menuparent->menutype==3)

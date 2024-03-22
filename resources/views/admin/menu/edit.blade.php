@@ -241,7 +241,7 @@
                                     $menupositionArray = ["1" => "Header Menu", "2" => "Footer Menu"];
                                     foreach ($menupositionArray as $key => $value) {
                                     ?>
-                                        <option value="{{ $key }}" @if((!empty($menus->menu_position)?$menus->menu_position:old('menu_position'))==$value) selected @endif >{{ $value }}</option>
+                                        <option value="{{ $key }}" @if((!empty($menus->menu_position)?$menus->menu_position:old('menu_position'))==$key) selected @endif >{{ $value }}</option>
                                     <?php  } ?>
                                 </select>
                                 <span class="text-danger">@error('menu_position'){{$message}} @enderror</span>
@@ -282,7 +282,7 @@
                                     $statusArray = ["1" => "Draft", "2" => "Publish"];
                                     foreach ($statusArray as $key => $value) {
                                     ?>
-                                        <option value="{{ $key }}" @if((!empty($menus->status)?$menus->status:old('status'))==$value) selected @endif >{{ $value }}</option>
+                                        <option value="{{ $key }}" @if((!empty($menus->status)?$menus->status:old('status'))==$key) selected @endif >{{ $value }}</option>
                                     <?php  } ?>
                                 </select>
                                 <span class="text-danger">@error('status'){{$message}} @enderror</span>
