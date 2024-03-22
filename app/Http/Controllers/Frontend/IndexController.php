@@ -19,9 +19,21 @@ class IndexController extends Controller
         $title = "index";
         $sliders = Slider::all();      
         $notifications = Notification::where('status', 2)->where('language', 1)->get();
-        $menuparents = Menu::where('status',2)->where('menu_position',1)->where('menu_category',1)->get();
-        $menuchilds = Menu::where('status',2)->where('menu_position',1)->where('menu_category',2)->get();
-        //return view('frontend/index', compact('title','sliders','notifications'));
-        return view('frontend/index', compact('title','sliders','notifications','menuparents','menuchilds'));
+        $menuparents = Menu::with('subMenu')
+                            ->where('status',2)
+                            ->where('menu_position',1)
+                            ->where('menu_category', 1)
+                            ->get();
+        return view('frontend/index', compact('title','sliders','notifications','menuparents'));
+    }
+
+    public function menu()
+    {
+        $menuparents = Menu::with('subMenu')
+        ->where('status',2)
+        ->where('menu_position',1)
+        ->where('menu_category',1)
+        ->get();
+        return view('frontend/layouts/main', compact('menuparents'));
     }
 }

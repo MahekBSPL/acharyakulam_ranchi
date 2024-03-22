@@ -10,15 +10,15 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="{{url('frontend/vendor/aos/aos.css')}}" rel="stylesheet">
-    <link href="{{url('frontend/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{url('frontend/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-    <link href="{{url('frontend/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
-    <link href="{{url('frontend/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+    <link href="{{url('frontend/assets/vendor/aos/aos.css')}}" rel="stylesheet">
+    <link href="{{url('frontend/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url('frontend/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+    <link href="{{url('frontend/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+    <link href="{{url('frontend/assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="{{url('frontend/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+    <link href="{{url('frontend/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
     <!-- Template Main CSS File -->
-    <link href="{{url('frontend/css/style.css?v=1')}}" rel="stylesheet">
+    <link href="{{url('frontend/assets/css/style.css?v=1')}}" rel="stylesheet">
 </head>
 
 <div class="top-header">
@@ -37,12 +37,56 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
         <a href="index.php" class="logo d-flex align-items-center">
-            <img src="{{url('frontend/img/logo.png')}}" alt="">
+            <img src="{{url('frontend/assets/img/logo.png')}}" alt="">
         </a>
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li class="dropdown"><a href="#"><span>About Us</span> <i class="bi bi-chevron-down"></i></a>
+                @foreach(getMenuData() as $menuparent)
+                @if($menuparent->subMenu && $menuparent->subMenu->count() > 0)
+                <li class="dropdown">
+                    <a href="#">
+                        <span>{{ $menuparent->title }}</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </a>
+
+                    <ul>
+                        @foreach($menuparent->subMenu as $subMenu)
+
+                        <li>
+                            @if($subMenu->menutype == 1)
+                            @php
+                            $staticPageUrl = getStaticPageUrl($subMenu->title);
+                            @endphp
+                            <a href="{{ $staticPageUrl }}">{{ $subMenu->title }}</a>
+                            @elseif($subMenu->menutype==2)
+                            <a href="{{url('/admin/upload/menu/' . $subMenu->fileupload)}}" target="_blank">{{ $subMenu->title }}</a>
+                            @elseif($subMenu->menutype==3)
+                            <a href="{{$subMenu->url}}">{{ $subMenu->title }}</a>
+                            @endif
+                        </li>
+                        @endforeach
+                    </ul>
+                </li>
+                @else
+                <li>
+                @if($menuparent->menutype == 1)
+                            @php
+                            $staticPageUrl = getStaticPageUrl($menuparent->title);
+                            @endphp
+                            <a href="{{ $staticPageUrl }}">{{ $menuparent->title }}</a>
+                    @elseif($menuparent->menutype==2)
+                    <a href="{{url('/admin/upload/menu/' . $menuparent->fileupload)}}" target="_blank">{{ $menuparent->title }}</a>
+                    @elseif($menuparent->menutype==3)
+                    <a href="{{$menuparent->url}}">{{ $menuparent->title }}</a>
+                    @endif
+
+                    <!-- <a href="{{url('frontend/assets/pdf/Oasis.pdf')}}" target="_blank">{{ $menuparent->title }}</a> -->
+                </li>
+                @endif
+                @endforeach
+
+                <!-- <li class="dropdown"><a href="#"><span>About Us</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
 
                         <li><a href="{{url('frontend/introduction')}}">Why Acharyakulam</a></li>
@@ -53,18 +97,18 @@
                         <li><a href="{{url('frontend/message-from-the-principal')}}">Message From The Principal’s Desk</a></li>
                         <li><a href="{{url('frontend/message-from-chief')}}">Message From The Chief Coordinator's Desk</a></li>
                     </ul>
-                </li>
+                </li> -->
 
-                <li class="dropdown"><a href="#"><span>Torch Bearers</span> <i class="bi bi-chevron-down"></i></a>
+                <!-- <li class="dropdown"><a href="#"><span>Torch Bearers</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="{{url('frontend/yogrishi-swami-ramdev-ji')}}">Yogrishi Swami Ramdev Ji</a></li>
                         <li><a href="{{url('frontend/acharya-balkrishna-ji')}}">Acharya Balkrishna Ji</a></li>
                     </ul>
-                </li>
+                </li> -->
 
                 <!-- <li class="dropdown"><a href="#"><span>Public Disclosure</span><i class="bi bi-chevron-down"></i></a> -->
 
-                <li><a href="{{url('frontend/pdf/Oasis.pdf')}}" target="_blank">Mandatory Disclosure</a></li>
+                <!-- <li><a href="{{url('frontend/assets/pdf/Oasis.pdf')}}" target="_blank">Mandatory Disclosure</a></li> -->
                 <!-- <li><a href="assets/pdf/2023/Oasis.pdf" target="_blank">Oasis</a></li> -->
 
                 <!-- </li> -->
@@ -72,7 +116,7 @@
                 <li class="dropdown"><a href="#"><span>Admission</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="{{url('frontend/procedure')}}">Admission Procedure</a></li>
-                        <li><a href="{{url('frontend/img/Admission-Pamphlet-2024-2025.jpeg')}}">Admission Pamphlet
+                        <li><a href="{{url('frontend/assets/img/Admission-Pamphlet-2024-2025.jpeg')}}">Admission Pamphlet
                                 2024-2025</a></li>
                         <li><a href="{{url('frontend/rules')}}">Rules &amp; Regulation</a></li>
                         <li><a href="{{url('frontend/prospectus')}}">Prospectus</a></li>
@@ -85,27 +129,29 @@
                         <li><a href="{{url('frontend/academics')}}">Academic Session</a></li>
                         <li><a href="{{url('frontend/competitive-exam')}}">Participation in Competitive Exams</a> </li>
                         <li><a href="{{url('frontend/yoga')}}">Participation In Yoga</a></li>
+
+
                     </ul>
 
                 </li>
 
                 <li class="dropdown"><a href="#"><span>Gallery</span> <i class="bi bi-chevron-down"></i></a>
                     <ul class="dropdown">
-                        <li><a href="gallery.blade.php">Gallery Photos</a></li>
-                        <li><a href="media.blade.php">Media Print</a></li>
+                        <li><a href="{{url('frontend/gallery')}}">Gallery Photos</a></li>
+                        <li><a href="{{url('frontend/media')}}">Media Print</a></li>
                     </ul>
                 </li>
-                <li><a href="facility.blade.php">Facilities</a></li>
+                <li><a href="{{url('frontend/facility')}}">Facilities</a></li>
 
 
                 <li class="dropdown"><a href="#"><span>Download</span> <i class="bi bi-chevron-down"></i></a>
                     <ul class="dropdown">
-                        <li><a href="{{url('frontend/pdf/Prospectus-Acharyakulam-Ranchi-2024-2025.pdf')}}" target="_blank">Acharyakulam
+                        <li><a href="{{url('frontend/assets/pdf/Prospectus-Acharyakulam-Ranchi-2024-2025.pdf')}}" target="_blank">Acharyakulam
                                 Prospectus 2024-2025</a></li>
-                        <li><a href="{{url('frontend/pdf/School-Planner-2023-24.pdf')}}" target="_blank">School Planner 2023-24</a></li>
+                        <li><a href="{{url('frontend/assets/pdf/School-Planner-2023-24.pdf')}}" target="_blank">School Planner 2023-24</a></li>
                     </ul>
                 </li>
-                <li><a class="nav-link" href="circular.blade.php">Circular</a></li>
+                <li><a class="nav-link" href="{{url('frontend/circular')}}">Circular</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
@@ -115,8 +161,8 @@
 
 @yield('container')
 
-<!-- ======= Footer ======= -->
 
+<!-- ======= Footer ======= -->
 <footer id="footer" class="footer">
     <div class="container">
 
@@ -137,12 +183,12 @@
             <div class="footer-content col-lg-4">
                 <h4>About</h4>
                 <ul>
-                    <li><a href="introduction.blade.php">Why Acharyakulam</a></li>
-                    <li><a href="mission.blade.php">Our Mission</a></li>
-                    <li><a href="rules.blade.php">Rules & Regulation </a></li>
-                    <li><a href="media.blade.php">Media Print</a></li>
-                    <li><a href="contact-us.blade.php">Contact Us</a></li>
-                    <li><a href="Careers.blade.php">Careers</a></li>
+                    <li><a href="{{url('frontend/introduction')}}">Why Acharyakulam</a></li>
+                    <li><a href="{{url('frontend/mission')}}">Our Mission</a></li>
+                    <li><a href="{{url('frontend/rules')}}">Rules & Regulation </a></li>
+                    <li><a href="{{url('frontend/media')}}">Media Print</a></li>
+                    <li><a href="{{url('frontend/contact-us')}}">Contact Us</a></li>
+                    <li><a href="{{url('frontend/Careers')}}">Careers</a></li>
                 </ul>
             </div>
 
@@ -165,6 +211,9 @@
                 </ul>
 
             </div>
+
+
+
         </div>
     </div>
     <div class="copyright">
@@ -174,15 +223,15 @@
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
-<script src="{{url('frontend/vendor/purecounter/purecounter_vanilla.js')}}"></script>
-<script src="{{url('frontend/vendor/aos/aos.js')}}"></script>
-<script src="{{url('frontend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{url('frontend/vendor/glightbox/js/glightbox.min.js')}}"></script>
-<script src="{{url('frontend/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
-<script src="{{url('frontend/vendor/swiper/swiper-bundle.min.js')}}"></script>
-<script src="{{url('frontend/vendor/php-email-form/validate.js')}}"></script>
+<script src="{{url('frontend/assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
+<script src="{{url('frontend/assets/vendor/aos/aos.js')}}"></script>
+<script src="{{url('frontend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{url('frontend/assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
+<script src="{{url('frontend/assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+<script src="{{url('frontend/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+<script src="{{url('frontend/assets/vendor/php-email-form/validate.js')}}"></script>
 
 <!-- Template Main JS File -->
-<script src="{{url('frontend/js/main.js')}}"></script>
+<script src="{{url('frontend/assets/js/main.js')}}"></script>
 
 </html>

@@ -12,8 +12,6 @@ use App\Models\Admin\Slider;
 use App\Models\Admin\Winner;
 use App\Models\Admin\HomeGallery;
 
-
-=======
 use App\Models\Admin\FacilitySlider;
 
 use App;

@@ -56,6 +56,7 @@ Route::get('/', function () {
 });
 
 Route::get('/frontend/index', [IndexController::class, 'index']);
+Route::get('/frontend/menu', [IndexController::class, 'menu']);
 Route::get('/frontend/introduction', [AboutUsController::class, 'introduction']);
 Route::get('/frontend/mission-vision', [AboutUsController::class, 'mission_vision']);
 Route::get('/frontend/staff', [AboutUsController::class, 'staff']);
