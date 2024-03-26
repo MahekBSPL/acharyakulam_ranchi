@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<?php include_once("header.php"); ?>
+@extends('frontend.layouts.main')
+@section('container')
 
 <body>
-
-
   <main id="main">
     <div class="banner">
       <img src="assets/img/Mask Group 108.jpg" class="img-fluid" alt="banner">
@@ -16,7 +13,7 @@
       </div>
     </div>
 
-    <!-- <section id="msg-swamiji" class="msg">
+    <section id="msg-swamiji" class="msg">
       <div class="container" data-aos="fade-up">
         <h2>Circular</h2>
         <div class="row mt-4">
@@ -78,10 +75,8 @@
         </div>
       </div>
     </section>
--->
-      <?php include_once("footer.php"); ?>
+
  
 
 </body>
-
-</html>
+@endsection

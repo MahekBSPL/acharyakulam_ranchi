@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<?php include_once("header.php"); ?>
-
+@extends('frontend.layouts.main')
+@section('container')
 
 <body>
     <main id="main">
@@ -26,7 +24,7 @@
                             </div>
                         </a>
                     </div>
- <div class="col-lg-4  col-md-6">
+                    <div class="col-lg-4  col-md-6">
                         <a href="groups.php">
                             <div class="gallery">
                                 <img src="assets/img/gallery/2023-2024/goups/2.jpeg" class="img-fluid" alt="">
@@ -34,7 +32,7 @@
                             </div>
                         </a>
                     </div>
-                     <div class="col-lg-4  col-md-6">
+                    <div class="col-lg-4  col-md-6">
                         <a href="investiture.php">
                             <div class="gallery">
                                 <img src="assets/img/gallery/investiture/Investiture-Ceremony-21.webp" class="img-fluid" alt="">
@@ -42,7 +40,7 @@
                             </div>
                         </a>
                     </div>
-                      <div class="col-lg-4  col-md-6">
+                    <div class="col-lg-4  col-md-6">
                         <a href="republic-day-2023-2024.php">
                             <div class="gallery">
                                 <img src="assets/img/gallery/2023-2024/republic-day/36.jpg" class="img-fluid" alt="">
@@ -53,8 +51,7 @@
                     <div class="col-lg-4 col-md-6">
                         <a href="science-exhibition-2023-2024.php">
                             <div class="gallery">
-                                <img src="assets/img/gallery/Science-Exhibition/2023-2024/2.jpeg" class="img-fluid"
-                                    alt="">
+                                <img src="assets/img/gallery/Science-Exhibition/2023-2024/2.jpeg" class="img-fluid" alt="">
                                 <h5>Science Exhibition</h5>
                             </div>
                         </a>
@@ -122,17 +119,9 @@
                         </a>
                     </div>
 
-                  
-
-                   
-
                 </div>
 
         </section>
 
-        <?php include_once("footer.php"); ?>
-
-
 </body>
-
-</html>
+@endsection

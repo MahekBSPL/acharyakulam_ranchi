@@ -61,7 +61,7 @@
                             @elseif($subMenu->menutype==2)
                             <a href="{{url('/admin/upload/menu/' . $subMenu->fileupload)}}" target="_blank">{{ $subMenu->title }}</a>
                             @elseif($subMenu->menutype==3)
-                            <a href="{{$subMenu->url}}">{{ $subMenu->title }}</a>
+                            <a href="{{url('/frontend/' .$subMenu->url)}}">{{ $subMenu->title }}</a>
                             @endif
                         </li>
                         @endforeach
@@ -77,7 +77,7 @@
                     @elseif($menuparent->menutype==2)
                     <a href="{{url('/admin/upload/menu/' . $menuparent->fileupload)}}" target="_blank">{{ $menuparent->title }}</a>
                     @elseif($menuparent->menutype==3)
-                    <a href="{{$menuparent->url}}">{{ $menuparent->title }}</a>
+                    <a href="{{url('/frontend/'. $menuparent->url)}}">{{ $menuparent->title }}</a>
                     @endif
 
                     <!-- <a href="{{url('frontend/assets/pdf/Oasis.pdf')}}" target="_blank">{{ $menuparent->title }}</a> -->
@@ -112,7 +112,7 @@
 
                 <!-- </li> -->
 
-                <li class="dropdown"><a href="#"><span>Admission</span> <i class="bi bi-chevron-down"></i></a>
+                <!-- <li class="dropdown"><a href="#"><span>Admission</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="{{url('frontend/procedure')}}">Admission Procedure</a></li>
                         <li><a href="{{url('frontend/assets/img/Admission-Pamphlet-2024-2025.jpeg')}}">Admission Pamphlet
@@ -150,7 +150,7 @@
                         <li><a href="{{url('frontend/assets/pdf/School-Planner-2023-24.pdf')}}" target="_blank">School Planner 2023-24</a></li>
                     </ul>
                 </li>
-                <li><a class="nav-link" href="{{url('frontend/circular')}}">Circular</a></li>
+                <li><a class="nav-link" href="{{url('frontend/circular')}}">Circular</a></li> -->
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->

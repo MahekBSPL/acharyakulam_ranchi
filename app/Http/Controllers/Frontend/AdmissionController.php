@@ -8,18 +8,18 @@ use Illuminate\Http\Request;
 class AdmissionController extends Controller
 {
     //
-    public function procedure()
-    {
-        return view('frontend.procedure');
-    }
+    // public function procedure()
+    // {
+    //     return view('frontend.procedure');
+    // }
 
-    public function rules()
-    {
-        return view('frontend.rules');
-    }
+    // public function rules()
+    // {
+    //     return view('frontend.rules');
+    // }
 
-    public function prospectus()
-    {
-        return view('frontend.prospectus');
-    }
+    // public function prospectus()
+    // {
+    //     return view('frontend.prospectus');
+    // }
 }

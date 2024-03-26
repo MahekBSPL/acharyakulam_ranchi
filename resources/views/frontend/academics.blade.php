@@ -27,18 +27,6 @@
             </div>
 
           </div>
-
-          <!-- <div class="col-md-6 academic-1 text-center">
-            <p>Holiday List (2023-2024)</p>
-            <img src="assets/img/holiday-list-2023.webp">
-            <div class="eye">
-              <a href="assets/pdf/Topper-Students-List-2022-2023.pdf"><img src="assets/img/eye.png" alt=""></a>
-            </div>
-            <div class="toper-img">
-              <a href="assets/pdf/Topper-Students-List-2022-2023.pdf" download="" target="blank"><img
-                  src="assets/img/download.png" alt=""></a>
-            </div>
-          </div> -->
         </div>
       </div>
 

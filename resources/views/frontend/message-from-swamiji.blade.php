@@ -1,7 +1,6 @@
 @extends('frontend.layouts.main')
 @section('container')
 <body>
-
   <main id="main">
     <div class="banner">
       <img src="{{url('frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
@@ -12,7 +11,6 @@
         </h5>
       </div>
     </div>
-
     <section class="msg-swamiji">
       <div class="container" data-aos="fade-up">
         <div class="approach">
