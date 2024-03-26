@@ -36,7 +36,7 @@ class ProspectusController extends Controller
             $validator = $request->validate([
                 'title' => 'Required',
                 'image' => 'Required | image | mimes:jpeg,jpg,png,webp | max:2048',
-                'pdf' => 'required|file|mimes:pdf|max:2048' 
+                'pdf' => 'required|file|mimes:pdf' 
             ]);
             if (isset($request->image)) {
                 $image = time() . '.' . $request->image->extension();

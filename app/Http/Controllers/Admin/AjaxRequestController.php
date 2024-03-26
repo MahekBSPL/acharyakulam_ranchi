@@ -11,6 +11,7 @@ use App\Models\Admin\Rule;
 use App\Models\Admin\Slider;
 use App\Models\Admin\Winner;
 use App\Models\Admin\HomeGallery;
+use App\Models\Admin\Yoga;
 
 use App\Models\Admin\FacilitySlider;
 
@@ -254,4 +255,31 @@ class AjaxRequestController extends Controller
         }
         
     }
+    public function update_yoga_orders(Request $request)
+    {
+        $msg=array();
+        if($request->ajax())
+        {
+            $id= clean_single_input( $request->id);
+               $pArray['order'] =clean_single_input($request->yoga_postion);
+               $data = Yoga::where('id', $id)->first();
+               if($data->order!==$request->yoga_postion){
+                   $create 	= Yoga::where('id', $id)->update($pArray);
+                   $msg['success']='This Postion is Updated';
+               }else{
+                   $msg['error']='This Postion Alredy Taken';
+               }
+            $lastInsertID = $id;
+            $user_login_id=Auth()->user()->id;
+            if($create > 0){
+                echo json_encode($msg);
+                die();
+                        
+            }
+        }
+        
+    }
+
+
+    
 }

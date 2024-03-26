@@ -6,9 +6,9 @@
     <div class="card-body">
         <div id="page-wrapper">
             <div class="row">
-                <div class="col-12 col-md-12 col-lg-12">
+                <!-- <div class="col-12 col-md-12 col-lg-12">
                     <a style="float: right;" href="{{URL::to('/admin/proceduredescription/create')}}" class="btn btn-primary pull-right"> Add Procedure Description</a>
-                </div>
+                </div> -->
             </div>
 
             <div class="row">

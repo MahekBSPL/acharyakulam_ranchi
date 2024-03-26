@@ -37,7 +37,7 @@
                                     <thead>
                                         <tr>
                                             <th>Sr. No.</th>
-                                            <th>Section ame</th>
+                                            <th>Section Name</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -66,13 +66,8 @@
                                             </td>
 
                                         </tr>
+                                       
                                         @endforeach
-                                        @else
-
-                                        <tr>
-                                            <td colspan="4" class="text-center"> No Record Added. </td>
-                                        </tr>
-
                                         @endif
                                     </tbody>
 

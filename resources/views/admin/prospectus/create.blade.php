@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-6">
                                     <div class="form-group">
-                                        <input type="file" onchange="onlytxtuplodeimg(this);" name="image" class="input_class inline-block" id="txtimg" />
+                                        <input type="file" id="txtimg"  onchange="onlytxtuplodeimg(this)" name="image" class="input_class inline-block"  />
 
                                     </div>
                                     <span class="txtimg_error" style="color:red;"></span>
@@ -93,4 +93,6 @@
     </div>
 </div>
 </div>
+<script src="{{ URL::asset('/assets/modules/jquery.min.js')}}"></script>
+<script src="{{ URL::asset('/assets/js/page/validate.js')}}"></script>
 @endsection
