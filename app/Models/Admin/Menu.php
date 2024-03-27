@@ -24,4 +24,8 @@ class Menu extends Model
         'admin_id',
         'status',
     ];
+
+    public function subMenu() {
+        return $this->hasMany(Menu::class, 'parent_menu');
+    }
 }
