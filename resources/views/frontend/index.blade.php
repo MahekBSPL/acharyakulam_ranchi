@@ -1,11 +1,6 @@
 @extends('frontend.layouts.main')
 @section('container')
 
-<!-- <!DOCTYPE html>
-<html lang="en">
-<?php //include_once("header.php"); 
-?> -->
-
 <body>
   <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -44,35 +39,53 @@
         <!-- <h1>आचार्यकुलम्<br>रांची</h1> -->
       </div>
       <div class="swiper-wrapper align-items-center">
-        <?php
-        foreach ($sliders as $slider) {
-          if (!empty($slider->url)) { ?>
-            <!-- <div class="swiper-slide"><img src="{{url('frontend/img/Group 1594.jpg')}}" class="img-fluid" alt=""></div> -->
-            <!-- <div class="swiper-slide"><img src="{{url('frontend/img/banner.jpg')}}" class="img-fluid" alt=""></div> -->
-            <!-- <div class="swiper-slide"><img src="{{url('frontend/img/banner-2.jpg')}}" class="img-fluid" alt=""></div> -->
-
-            <div class="swiper-slide"><a href="{{$slider->url}}"><img src="{{ URL::asset('admin/upload/slider/'.$slider->image)}}" class="img-fluid" alt=""></a></div>
-          <?php  } else { ?>
-            <div class="swiper-slide"><img src="{{ URL::asset('admin/upload/slider/'.$slider->image)}}" class="img-fluid" alt=""></div>
-        <?php }
-              } ?>
+        @foreach ($sliders as $slider)
+        @if(!empty($slider->url))
+        <div class="swiper-slide"><a href="{{$slider->url}}" img src="{{ URL::asset('admin/upload/slider/'.$slider->image)}}" class="img-fluid" alt=""></a></div>
+        <!-- <div class="swiper-slide"><img src="{{url('frontend/assets/img/Group 1594.jpg')}}" class="img-fluid" alt=""></div>
+        <div class="swiper-slide"><img src="{{url('frontend/assets/img/banner.jpg')}}" class="img-fluid" alt=""></div>
+        <div class="swiper-slide"><img src="{{url('frontend/assets/img/banner-2.jpg')}}" class="img-fluid" alt=""></div> -->
+        @else
+        <div class="swiper-slide"><img src="{{ URL::asset('admin/upload/slider/'.$slider->image)}}" class="img-fluid" alt=""></div>
+        @endif
+        @endforeach
       </div>
-
       <div class="swiper-pagination"></div>
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
     </div>
 
-
-
     <div class="important-notice">
       <h5>Important Notice</h5>
       <div class="news-update">
-        <h6><img src="{{url('frontend/img/new.gif')}}">
-          <a href="{{url('frontend/pdf/Admission-procedure-2024-2025.pdf')}}" target="_blank">
+        @foreach ($notifications as $notification)
+        @if ($notification->notificationtype == 1)
+        @if ($notification->menutype == 1)
+        <h6><img src="{{url('frontend/assets/img/new.gif')}}">
+          <a href="{{url('/admin/upload/notification/' . $notification->image) }}" target="_blank">
+            {{ $notification->title }}</a>
+        </h6>
+        @elseif ($notification->menutype == 2)
+        <h6><img src="{{url('frontend/assets/img/new.gif')}}">
+          <a href="{{url('/admin/upload/notification/' . $notification->fileupload) }}" target="_blank">
+            {{ $notification->title }}</a>
+        </h6>
+        @elseif ($notification->menutype == 3)
+        <h6><img src="{{url('frontend/assets/img/new.gif')}}">
+          <a href="{{$notification->url }}" target="_blank">
+            {{ $notification->title }} </a>
+        </h6>
+        @endif
+        @endif
+        @endforeach
+        <!-- <h6><img src="{{url('frontend/assets/img/new.gif')}}">
+          <a href="{{url('frontend/assets/pdf/Admission-procedure-2024-2025.pdf')}}" target="_blank">
             Admission Open for Class Nursery to VIII Session 2024-2025</a>
         </h6>
-
+        <h6><img src="{{url('frontend/assets/img/new.gif')}}">
+          <a href="{{url('frontend/Careers')}}">
+            Vacancies</a>
+        </h6> -->
       </div>
   </section>
   <!-- End Hero -->
@@ -82,10 +95,25 @@
         <div class="label">Latest News</div>
         <marquee>
           <ul class="headlines">
-            <li><a href="{{url('frontend/pdf/Admission-procedure-2024-2025.pdf')}}" target="_blank"> Admission Open for Class Nursery
+            @foreach ($notifications as $notification)
+            @if ($notification->notificationtype == 1)
+            @if ($notification->menutype == 1)
+            <li><a href="{{url('/admin/upload/notification/'.$notification->image) }}">
+                {{$notification->title }}</a></li> 
+            @elseif ($notification->menutype == 2)
+            <li><a href="{{url('/admin/upload/notification/'.$notification->fileupload) }}">
+                {{$notification->title }}</a></li> 
+            @elseif ($notification->menutype == 3)
+            <li><a href="{{$notification->url }}">
+                {{$notification->title }}</a></li> 
+            @endif
+            @endif
+            @endforeach
+            <!-- <li><a href="{{url('frontend/assets/pdf/Admission-procedure-2024-2025.pdf')}}" target="_blank"> Admission Open for Class Nursery
                 to VIII Session 2024-2025</a></li>
-            <!-- <li><a href="#" target="_blank"> Admission Open for Class Nursery to VIII Session 2024-2025</a></li>
-            <li><a href="#"> Admission Open for Class Nursery to VIII Session 2024-2025</a></li> -->
+            <li><a href="{{url('frontend/Careers')}}">
+                Vacancies</a></li> -->
+
           </ul>
         </marquee>
       </div>
@@ -108,7 +136,7 @@
                 who will be prepared through the confluence of wisdom and ultra-modern scientific knowledge.
               </p>
               <div class="text-center text-lg-start">
-                <a href="introduction.php" class="btn-read-more d-inline-flex align-items-center justify-content-center">
+                <a href="{{url('frontend/introduction')}}" class="btn-read-more d-inline-flex align-items-center justify-content-center">
                   <span>READ MORE</span>
                   <i class="bi bi-arrow-right"></i>
                 </a>
@@ -119,7 +147,7 @@
           <div class="about-image col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
             <!-- <img src="assets/img/acharyaji.jpg" class="img-fluid" alt=""> -->
             <!-- <div id="mask1"> -->
-            <img src="{{url('frontend/img/acharya-ji.webp')}}" class="img-fluid" alt="">
+            <img src="{{url('frontend/assets/img/acharya-ji.webp')}}" class="img-fluid" alt="">
             <!-- </div> -->
           </div>
 
@@ -132,7 +160,7 @@
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="goal-img col-lg-5 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="{{url('frontend/img/baba.png')}}" class="img-fluid" alt="">
+            <img src="{{url('frontend/assets/img/baba.png')}}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-7 goal-content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
             <div class="content">
@@ -146,7 +174,7 @@
                 awakened and conscious scholars who will be able to change the course of the flow of the current times.
               </p>
               <div class="text-center text-lg-start">
-                <a href="about.php" class="btn-read-more d-inline-flex align-items-center justify-content-center">
+                <a href="{{url('frontend/about')}}" class="btn-read-more d-inline-flex align-items-center justify-content-center">
                   <span>READ MORE</span>
                   <i class="bi bi-arrow-right"></i>
                 </a>
@@ -164,7 +192,7 @@
             <div class="carousel-item active">
               <div class="row">
                 <div class="col-lg-6 swamiji">
-                  <img src="{{url('frontend/img/msg-from-swami-ji.webp')}}" class="d-block w-100" alt="...">
+                  <img src="{{url('frontend/assets/img/msg-from-swami-ji.webp')}}" class="d-block w-100" alt="...">
                 </div>
 
                 <div class="msg-swamiji col-lg-6">
@@ -191,7 +219,7 @@
             <div class="carousel-item">
               <div class="row">
                 <div class="col-lg-6">
-                  <img src="{{url('frontend/img/msg-from-acharyaji.jpg')}}" class="d-block w-100" alt="...">
+                  <img src="{{url('frontend/assets/img/msg-from-acharyaji.jpg')}}" class="d-block w-100" alt="...">
                 </div>
                 <div class="msg-swamiji col-lg-6">
                   <h2>Message from Acharyaji Ji</h2>
@@ -233,14 +261,14 @@
           <div class="tile-wrapper">
             <div class="image-container">
               <div class="event">
-                <img src="{{url('frontend/img/goal.jfif')}}" class="img-fluid" alt="" data-pagespeed-url-hash="95400539" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                <img src="{{url('frontend/assets/img/gallery/2023-2024/gurupurnima-mahotsav/10.jpg')}}" class="img-fluid" alt="" data-pagespeed-url-hash="95400539" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
               </div>
               <div class="overlay">
                 <div class="events">
                   <h5>Events</h5>
                 </div>
                 <div class="img-btn">
-                  <p><a href="events.php">CLICK HERE</a></p>
+                  <p><a href="{{url('frontend/events')}}">CLICK HERE</a></p>
                 </div>
               </div>
             </div>
@@ -249,12 +277,12 @@
           <div class="tile-wrapper">
             <div class="image-container">
               <div class="event">
-                <img src="{{url('frontend/img/Bal-Swarozgar-01.jpg')}}" class="img-fluid" alt="" data-pagespeed-url-hash="95400539" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                <img src="{{url('frontend/assets/img/Bal-Swarozgar-01.jpg')}}" class="img-fluid" alt="" data-pagespeed-url-hash="95400539" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
               </div>
               <div class="overlay">
                 <div class="img-btn">
                   <h5>Photo Gallery</h5>
-                  <p><a href="gallery.php">CLICK HERE</a></p>
+                  <p><a href="{{url('frontend/gallery')}}">CLICK HERE</a></p>
                 </div>
               </div>
             </div>
@@ -263,7 +291,7 @@
           <div class="tile-wrapper">
             <div class="image-container">
               <div class="event">
-                <img src="{{url('frontend/img/Bal-Swarozgar-12.jpg')}}" class="img-fluid" alt="" data-pagespeed-url-hash="95400539" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                <img src="{{url('frontend/assets/img/Bal-Swarozgar-12.jpg')}}" class="img-fluid" alt="" data-pagespeed-url-hash="95400539" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
               </div>
               <div class="overlay">
                 <div class="img-btn">
@@ -277,12 +305,12 @@
           <div class="tile-wrapper">
             <div class="image-container">
               <div class="event">
-                <img src="{{url('frontend/img/topper.jpeg')}}" class="img-fluid" alt="" data-pagespeed-url-hash="95400539" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                <img src="{{url('frontend/assets/img/topper.jpeg')}}" class="img-fluid" alt="" data-pagespeed-url-hash="95400539" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
               </div>
               <div class="overlay">
                 <div class="img-btn">
                   <h5 style="padding-left:2rem">Topper Student</h5>
-                  <p><a href="topper-student.php">CLICK HERE</a></p>
+                  <p><a href="{{url('frontend/topper-student')}}">CLICK HERE</a></p>
                 </div>
               </div>
             </div>
@@ -291,12 +319,12 @@
           <div class="tile-wrapper">
             <div class="image-container">
               <div class="event">
-                <img src="{{url('frontend/img/winner-student/winner-student-1.webp')}}" class="img-fluid" alt="" data-pagespeed-url-hash="95400539" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                <img src="{{url('frontend/assets/img/events/5.jpeg')}}" class="img-fluid" alt="">
               </div>
               <div class="overlay">
                 <div class="img-btn">
                   <h5 style="padding-left:2.2rem">Achiever/Winner Students</h5>
-                  <p><a href="winner-student.php">CLICK HERE</a></p>
+                  <p><a href="{{url('frontend/winner-student')}}">CLICK HERE</a></p>
                 </div>
               </div>
             </div>
@@ -304,10 +332,6 @@
         </div>
       </div>
     </section>
-
-
-    <!-- <?php //include_once("footer.php"); 
-          ?> -->
 
     <script>
       // Show the modal when the page is loaded

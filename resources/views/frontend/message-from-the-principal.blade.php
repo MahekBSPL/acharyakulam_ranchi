@@ -1,11 +1,9 @@
 @extends('frontend.layouts.main')
 @section('container')
-
 <body>
-
   <main id="main">
     <div class="banner">
-      <img src="{{url('frontend/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
+      <img src="{{url('frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
       <div class="banner-inr breadcrumbs">
         <h1>Message From The Principal Desk</h1>
         <h5>
@@ -19,7 +17,7 @@
         <div class="approach">
           <div class="row">
             <div class="col-lg-5 align-items-center" data-aos="zoom-out" data-aos-delay="200">
-              <img src="{{url('frontend/img/principal.png')}}" class="img-fluid" alt="">
+              <img src="{{url('frontend/assets/img/principal.png')}}" class="img-fluid" alt="">
             </div>
             <div class="col-lg-7  d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
               <div class="content">
@@ -139,7 +137,6 @@
               </button>
             </div>
 
-
             </button>
           </div>
         </div>
@@ -147,7 +144,6 @@
 
       </div>
     </section>
-
 
     <script>
       // Check if the state is stored in localStorage
@@ -178,5 +174,4 @@
       }
     </script>
 </body>
-
 @endsection

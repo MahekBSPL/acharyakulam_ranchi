@@ -2,9 +2,10 @@
 @section('container')
 
 <body>
+
   <main id="main">
     <div class="banner">
-      <img src="{{url('frontend/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
+      <img src="{{url('frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
       <div class="banner-inr breadcrumbs">
         <h1>Participation in Competitive Exams 2022-2023</h1>
         <h5>
@@ -17,12 +18,22 @@
       <div class="container" data-aos="fade-up">
         <h2>Participation in Competitive Exams 2022-2023</h2>
         <div class="row mt-4 mb-4">
+
+          @foreach ($competitiveExam as $competitive)
           <div class="col-md-4 exam">
-            <h6>Olympiad-JH2464</h6>
-            <img src="{{url('frontend/img/Group 1448.png')}}" alt="">
+            <h6>{{$competitive->name}}</h6>
+            <img src="{{url('frontend/assets/img/Group 1448.png')}}" alt="">
             <div class="participate">
-              <a href="{{url('frontend/pdf/olympiad-JH2464-01.pdf')}}" download="" target="_blank"> <img src="{{url('frontend/img/pdf.png')}}"
-                  alt=""> </a>
+              <a href="{{url('/admin/upload/competitiveExam/'.$competitive->pdf)}}" download="" target="_blank"> <img src="{{url('frontend/assets/img/pdf.png')}}" alt=""> </a>
+            </div>
+          </div>
+          @endforeach
+
+          <!-- <div class="col-md-4 exam">
+            <h6>Olympiad-JH2464</h6>
+            <img src="assets/img/Group 1448.png" alt="">
+            <div class="participate">
+              <a href="assets/pdf/olympiad-JH2464-01.pdf" download="" target="_blank"> <img src="assets/img/pdf.png" alt=""> </a>
             </div>
           </div>
 
@@ -30,21 +41,20 @@
             <h6>Olympiad-JH2464</h6>
             <img src="assets/img/Group 1448.png" alt="">
             <div class="participate">
-              <a href="{{url('frontend/pdf/olympiad-JH2464-02.pdf')}}" download="" target="_blank"> <img src="{{url('frontend/img/pdf.png')}}"
-                  alt=""> </a>
+              <a href="assets/pdf/olympiad-JH2464-02.pdf" download="" target="_blank"> <img src="assets/img/pdf.png" alt=""> </a>
             </div>
           </div>
 
           <div class="col-md-4 exam">
             <h6>Olympiad-JH2464</h6>
-            <img src="{{url('frontend/img/Group 1448.png')}}" alt="">
+            <img src="assets/img/Group 1448.png" alt="">
             <div class="participate">
-              <a href="{{url('frontend/pdf/olympiad-JH2464-03.pdf')}}" download="" target="_blank"> <img src="{{url('frontend/img/pdf.png')}}"
-                  alt=""> </a>
+              <a href="assets/pdf/olympiad-JH2464-03.pdf" download="" target="_blank"> <img src="assets/img/pdf.png" alt=""> </a>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
+
 </body>
 @endsection

@@ -1,9 +1,10 @@
 @extends('frontend.layouts.main')
 @section('container')
+
 <body>
   <main id="main">
     <div class="banner">
-      <img src="{{url('frontend/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
+      <img src="{{url('frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
       <div class="banner-inr breadcrumbs">
         <h1>Teacher's & Office Staff</h1>
         <h5>
@@ -17,7 +18,7 @@
         <div class="approach col-lg-12">
           <div class="row">
             <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-              <img src="{{url('frontend/img/staff.png')}}" class="img-fluid" alt="">
+              <img src="{{url('frontend/assets/img/staff.png')}}" class="img-fluid" alt="">
             </div>
             <div class="col-lg-6 mt-5" data-aos="fade-up" data-aos-delay="200">
               <div class="content">
@@ -35,5 +36,6 @@
         </div>
       </div>
     </section>
+
 </body>
 @endsection

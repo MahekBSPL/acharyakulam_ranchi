@@ -91,7 +91,7 @@
                                     $notificatioTypeArray = ["1" => "Important Notice", "2" => "Latest News"];
                                     foreach ($notificatioTypeArray as $key => $value) {
                                     ?>
-                                        <option value="{{ $value }}" @if(old('notificationtype') == $value) selected @endif>{{ $value }}</option>
+                                        <option value="{{ $key }}" @if(old('notificationtype') == $key) selected @endif>{{ $value }}</option>
                                     <?php  } ?>
                                 </select>
                                 <span class="text-danger">@error('notificationtype'){{$message}} @enderror</span>
@@ -248,7 +248,7 @@
                                     $statusArray = ["1" => "Draft", "2" => "Publish"];
                                     foreach ($statusArray as $key => $value) {
                                     ?>
-                                        <option value="{{ $value }}" @if(old('status') == $value) selected @endif>{{ $value }}</option>
+                                        <option value="{{ $key }}" @if(old('status') == $key) selected @endif>{{ $value }}</option>
                                     <?php  } ?>
                                 </select>
                                 <span class="text-danger">@error('status'){{$message}} @enderror</span>

@@ -4,7 +4,7 @@
 <body>
   <main id="main">
     <div class="banner">
-      <img src="{{url('frontend/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
+      <img src="{{url('frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
       <div class="banner-inr breadcrumbs">
         <h1>Admission-Procedure</h1>
         <h5>
@@ -46,7 +46,7 @@
             </div>
           </div>
           <div class="col-lg-5" data-aos="zoom-out" data-aos-delay="200">
-            <img src="{{url('frontend/img/Mask Group 37.png')}}" class="img-fluid" alt="">
+            <img src="assets/img/Mask Group 37.png" class="img-fluid" alt="">
           </div>
         </div>
       </div>
@@ -55,7 +55,15 @@
     <div class="col-md-12 mt-5">
       <table class="age-crieria">
         <tbody>
+          @foreach($procedures as $procedure)
           <tr>
+            <td>{{$procedure->class}}</td>
+            <td>{{$procedure->title}}</td>
+            <td>{{strip_tags(html_entity_decode($procedure->description))}}</td>
+          </tr>
+          @endforeach
+
+          <!-- <tr>
             <td>NURSERY</td>
             <td>3 years to 4 years</td>
             <td>(Born between 01-04-2020 &amp; 31-03-2021) </td>
@@ -111,7 +119,7 @@
             <td>VIII</td>
             <td>13 years to 14 years</td>
             <td>(Born between 01-04-2010 &amp; 31-03-2011)</td>
-          </tr>
+          </tr> -->
         </tbody>
       </table>
     </div>
@@ -121,8 +129,11 @@
         <div class="row">
           <div class="col-md-8">
             <h2>List of Documents to be brought at the time of Admission:–</h2>
+            @foreach($procedureDescriptions as $procedureDescription)
             <ul>
-              <li>Birth Certificate issued by Municipal Corporation of the State Government.</li>
+              <li>{{strip_tags(html_entity_decode($procedureDescription->description))}}</li>
+
+              <!-- <li>Birth Certificate issued by Municipal Corporation of the State Government.</li>
               <li>Only following Proof of Residence (in the name of the child’s Father or Mother) accepted as
                 Address proof of the Child (No other address proof will be accepted) -Unique Identification Card
                 (Aadhar Card) / Voter ID Card / Post-paid Mobile Bill / Electricity Bill /Passport / Gas connection /
@@ -145,11 +156,19 @@
               <li> Transfer Certificate (Original) of the previous school.</li>
               <li>Report Card of the previous school.</li>
               <li>Two passport size photographs of the child and one photograph of each parents (father, mother
-                and guardian)</li>
+                and guardian)</li> -->
             </ul>
+            @endforeach
           </div>
 
+          @foreach($procedureFees as $procedureFee)
           <div class="fees col-md-4">
+            <h4>Registration Fees Rs. 800/-</h4>
+            <p>{{strip_tags(html_entity_decode($procedureFee->description))}}</p>
+          </div>
+          @endforeach
+
+          <!-- <div class="fees col-md-4">
             <h4>Registration Fees Rs. 800/-</h4>
             <p>Any deviation would be considered NOT ELIGIBLE for admission even though a candidate may have been
               invited to apply for Admission. In such cases, Acharyakulam would use its discretion on case-to-case
@@ -157,7 +176,7 @@
               to choose ELIGIBLE STUDENTS outside AGE and Standard bracket and its decision would be final & binding
               on
               all and NO reason thereof for not choosing would be provided</p>
-          </div>
+          </div> -->
 
           <div class="col-md-12">
             <p><b style="color:#FF9800;">Note :-</b> Parents Are Required To Submit Xerox Copy Of The Following
@@ -169,5 +188,6 @@
       </div>
 
     </section>
+
 </body>
 @endsection

@@ -51,23 +51,19 @@
                                         @foreach($notifications as $notification)
                                         <tr>
                                             <td>{{$count}}</td>
-                                            <td>@if ($notification->language == 1)
-                                                English
-                                                @else
-                                                Hindi
-                                                @endif</td>
+                                            <td>@if ($notification->language == 1)English @else Hindi @endif</td>
                                             <td>{{$notification->title}}</td>
-                                            <td>{{$notification->notificationtype}}</td>
-                                            <td>@foreach($SelectType as $s)
-                                                @if($s->id == $notification->menutype)
-                                                {{ $s->value }}
+                                            <td>@if($notification->notificationtype == 1) Important Notice @else Latest News @endif</td>
+                                            <td>@foreach($SelectType as $select)
+                                                @if($select->id == $notification->menutype)
+                                                {{ $select->value }}
                                                 @endif
                                                 @endforeach
                                             </td>
                                             <td>@if(!empty($notification->keyword)){{$notification->keyword}} @else - @endif</td>
                                             <td>@if(!empty($notification->description)){{strip_tags(html_entity_decode($notification->description))}} @else - @endif</td>
                                             <td>@if(!empty($notification->url)){{$notification->url}} @else - @endif</td>
-                                            <td>{{$notification->status}}</td>
+                                            <td>@if($notification->status == 1)Draft @else Publish @endif</td>
                                             <td style='display:inline-flex'>
                                                 <a class="btn btn-primary" style='margin-right:5px;' href="{{ route('notification.edit', $notification->id) }}">
                                                     <i class="fas fa-edit" style="font-size: 15px;"></i>

@@ -50,7 +50,7 @@ class MenuController extends Controller
                 'menu_category' => 'required',
                 'title' => 'required',
                 'menu_position' => 'required',
-                'banner_image' => 'required|mimes:jpeg,jpg,png,webp|max:2048',
+                'banner_image' => 'mimes:jpeg,jpg,png,webp|max:2048',
                 'status' => 'required',
                 'menutype' => 'required'
             ];
@@ -62,9 +62,9 @@ class MenuController extends Controller
                     $Validation['description'] = 'required';
                     $Validation['image'] = 'required|mimes:pdf,jpeg,jpg,png,webp|max:2048';
                 } elseif ($request->menutype == '2') {
-                    $Validation['fileupload'] = 'required|mimes:pdf,jpeg,jpg,png,webp|max:2048';
+                    $Validation['fileupload'] = 'required|mimes:pdf,jpeg,jpg,png,webp|max:25000';
                 } elseif ($request->menutype == '3') {
-                    $Validation['url'] = 'required|url';
+                    $Validation['url'] = 'required';
                 }
             }
 
@@ -193,9 +193,9 @@ class MenuController extends Controller
                 $Validation['description'] = 'required';
                 $Validation['image'] = 'nullable|mimes:pdf,jpeg,jpg,png,webp|max:2048';
             } elseif ($request->menutype == '2') {
-                $Validation['fileupload'] = 'nullable|mimes:pdf,jpeg,jpg,png,webp|max:2048';
+                $Validation['fileupload'] = 'nullable|mimes:pdf,jpeg,jpg,png,webp|max:25000';
             } elseif ($request->menutype == '3') {
-                $Validation['url'] = 'required|url';
+                $Validation['url'] = 'required';
             }
         }
 

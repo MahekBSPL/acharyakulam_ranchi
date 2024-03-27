@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<?php include_once("header.php"); ?>
-
+@extends('frontend.layouts.main')
+@section('container')
 <style>
    campus {
       -webkit-transition: opacity .5s ease;
@@ -940,21 +938,25 @@
 <body>
    <main id="main">
       <div class="banner">
-         <img src="assets/img/Mask Group 108.jpg" class="img-fluid" alt="banner">
+         <img src="{{url('frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
          <div class="banner-inr breadcrumbs">
             <h1>Facilities</h1>
             <h5>
-               <a href="index.php">Home</a> / <span>Facilities</span>
+               <a href="{{url('frontend/index')}}">Home</a> / <span>Facilities</span>
             </h5>
          </div>
       </div>
+
 
       <section class="p70">
          <div class="container">
             <h2>Campus & Facility</h2>
             <div class="row">
                <div class="col-lg-7">
-                  <p>The Acharyakulam, under the spiritual and divine guidance of Param Pujya Yogrishii Swami Ramdevji
+                  @foreach($facilityDescriptions as $facilityDescription)
+                  <p>{{strip_tags(html_entity_decode($facilityDescription->description))}}</p>
+                  @endforeach
+                  <!-- <p>The Acharyakulam, under the spiritual and divine guidance of Param Pujya Yogrishii Swami Ramdevji
                      and Param Shraddhey Acharya Balkrishnaji, nurtures its students in the divine and spiritual
                      precincts along with progressive education. We take care of our students’ dreams and aspirations
                      and are determined to provide holistic education by combining values, ethics and scientific
@@ -966,14 +968,19 @@
                   <p>Enhancing the skills of both teachers and students is the primary aim of Acharyakulam. We conduct
                      numerous teacher orientation programs to train our teachers. The classrooms are made lively and
                      constructive with the use of smart classes, state of the art teaching aids and innovative
-                     pedagogies.</p>
+                     pedagogies.</p> -->
                </div>
 
                <div class="col-lg-5">
                   <div class="swiper heroSwiper">
-
                      <div class="swiper-wrapper">
+                        @foreach($facilitySliders as $facilitySlider)
+
                         <div class="swiper-slide">
+                           <img src="{{url('/admin/upload/facilitySlider/' .$facilitySlider->image)}}" class="img-fluid" alt="...">
+                        </div>
+
+                        <!-- <div class="swiper-slide">
                            <img src="assets/img/facility/campus-A.png" class="img-fluid" alt="...">
                         </div>
 
@@ -1083,7 +1090,8 @@
 
                         <div class="swiper-slide">
                            <img src="assets/img/facility/campus-9.webp" class="img-fluid" alt="...">
-                        </div>
+                        </div> -->
+                        @endforeach
                      </div>
                      <div class="swiper-button-next"></div>
                      <div class="swiper-button-prev"></div>
@@ -1307,6 +1315,10 @@
                               </div>
                            </a>
                         </div>
+
+
+
+
 
                         <div class="slider1 div-description" id="dir-3" style="display: none;">
                            <div class="row">
@@ -1981,13 +1993,6 @@
       </section>
 
 
-      <script type="text/javascript" src="assets/js/facility.js"></script>
-
-
-      <?php include_once("footer.php"); ?>
-
-
-
+      <script type="text/javascript" src="{{url('frontend/assets/js/facility.js')}}"></script>
 </body>
-
-</html>
+@endsection

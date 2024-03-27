@@ -91,7 +91,7 @@
                                     $notificatioTypeArray = ["1" => "Important Notice", "2" => "Latest News"];
                                     foreach ($notificatioTypeArray as $key => $value) {
                                     ?>
-                                        <option value="{{ $value }}" @if((!empty($notifications->notificationtype)?$notifications->notificationtype:old('notificationtype'))==$value) selected @endif >{{ $value }}</option>
+                                        <option value="{{ $key }}" @if((!empty($notifications->notificationtype)?$notifications->notificationtype:old('notificationtype'))==$key) selected @endif >{{ $value }}</option>
                                     <?php  } ?>
                                 </select>
                                 <span class="text-danger">@error('notificationtype'){{$message}} @enderror</span>
@@ -155,7 +155,7 @@
                         <div class="row">
                             <div class="col-12 col-md-3 col-lg-3">
                                 <div class="form-group">
-                                    <label>image:</label>
+                                    <label>Image:</label>
                                     <span class="star">*</span>
                                 </div>
                             </div>
@@ -256,7 +256,7 @@
                                     $statusArray = ["1" => "Draft", "2" => "Publish"];
                                     foreach ($statusArray as $key => $value) {
                                     ?>
-                                        <option value="{{ $value }}" @if((!empty($notifications->status)?$notifications->status:old('status'))==$value) selected @endif >{{ $value }}</option>
+                                        <option value="{{ $key }}" @if((!empty($notifications->status)?$notifications->status:old('status'))==$key) selected @endif >{{ $value }}</option>
                                     <?php  } ?>
                                 </select>
                                 <span class="text-danger">@error('status'){{$message}} @enderror</span>

@@ -2,6 +2,7 @@
 @section('content')
 @section('title', 'menu')
 
+
 <div class="card">
     <div class="card-body">
         <div id="page-wrapper">
@@ -53,16 +54,16 @@
                                             <td>{{$count}}</td>
                                             <td>{{$menu->title}}</td>
                                             <td>{{ $menu->menu_category === '1' ? 'Main menu' : ($menu->menu_category === '2' ? 'Sub Menu' : '-') }}</td> 
-                                            <td>@foreach($SelectType as $SelectType)
-                                                @if($SelectType->id == $menu->menutype)
-                                                {{ $SelectType->value }}
+                                            <td>@foreach($SelectType as $select)
+                                                @if($select->id == $menu->menutype)
+                                                {{ $select->value }}
                                                 @endif
                                                 @endforeach</td>
                                             <td>@if(!empty($menu->keyword)){{$menu->keyword}} @else - @endif</td>
                                             <td>@if(!empty($menu->description)){{strip_tags(html_entity_decode($menu->description))}} @else - @endif</td>
                                             <td>@if(!empty($menu->url)){{$menu->url}} @else - @endif</td>
-                                            <td>{{$menu->menu_position}}</td>
-                                            <td>{{$menu->status}}</td>
+                                            <td>@if($menu->menu_position == 1) Header Menu @else Footer Menu @endif</td>
+                                            <td>@if($menu->status == 1)Draft @else Publish @endif</td>
                                             <td style='display:inline-flex'>
                                                 <a class="btn btn-primary" style='margin-right:5px;' href="{{ route('menu.edit', $menu->id) }}">
                                                     <i class="fas fa-edit" style="font-size: 15px;"></i>
@@ -96,7 +97,7 @@
 </div>
 <script>
     $(document).ready(function() {
-       new DataTable('#menutable');
+        var dataTable = new DataTable('#menutable');
     });
 </script>
 @endsection

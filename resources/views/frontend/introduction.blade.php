@@ -4,7 +4,20 @@
 <body>
   <main id="main">
     <div class="banner">
-      <img src="{{url('frontend/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
+
+    <!-- @php $menuData = App\Models\Admin\Menu::all(); @endphp
+
+    @foreach ($menuData as $menu)
+        <h1>{{ $menu->title }}</h1>      
+        @if (!empty($menu->banner_image))
+            <img src="{{ url('admin/upload/menu/banner/' . $menu->banner_image) }}" class="img-fluid" alt="banner">
+        @else
+            <img src="{{ url('frontend/assets/img/Mask Group 108.jpg') }}" class="img-fluid" alt="banner">
+        @endif -->
+      <!-- Display other menu data as needed  -->
+     <!-- @endforeach -->  
+
+       <img src="{{url('frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner"> 
       <div class="banner-inr breadcrumbs">
         <h1>Introduction</h1>
         <h5>
@@ -26,7 +39,7 @@
       <div class="acharya container" data-aos="fade-up">
         <div class="row align-items-center">
           <div class="acharya-img col-lg-6 mt-5" data-aos="zoom-out" data-aos-delay="200">
-            <img src="{{url('frontend/img/Why-Acharyakulam.webp')}}" class="img-fluid" alt="">
+            <img src="{{url('frontend/assets/img/Why-Acharyakulam.webp')}}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
             <div class="content">
@@ -82,7 +95,8 @@
         </div>
         
         -->
-              
+        
+        
       </div>
     </section>
 </body>
