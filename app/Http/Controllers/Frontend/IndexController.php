@@ -6,16 +6,18 @@ use App\Models\Admin\Menu;
 use App\Models\Admin\Yoga;
 use App\Models\Admin\Slider;
 use Illuminate\Http\Request;
+use App\Models\Admin\Procedure;
+use App\Models\Admin\Prospectu;
 use App\Models\Admin\Notification;
+use App\Models\Admin\ProcedureFee;
 use Illuminate\Support\Facades\DB;
 use App\Models\Admin\Participation;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Circular;
+use App\Models\Admin\FacilitySlider;
 use App\Models\Admin\CompetitiveExam;
 use App\Models\Admin\FacilityDescription;
-use App\Models\Admin\FacilitySlider;
-use App\Models\Admin\Procedure;
 use App\Models\Admin\ProcedureDescription;
-use App\Models\Admin\ProcedureFee;
 
 class IndexController extends Controller
 {
@@ -26,7 +28,8 @@ class IndexController extends Controller
         // $slider =  Slider::orderBy('slider_postion', 'ASC')->get();
         $title = "index";
         $sliders = Slider::all();
-        $notifications = Notification::where('status', 2)->where('language', 1)->get();
+        $today=date('Y-m-d');
+        $notifications = Notification::where('status', 2)->where('language', 1)->where('startdate', '<=', $today)->where('enddate', '>=', $today)->get();
         return view('frontend/index', compact('title', 'sliders', 'notifications'));
         // $menuparents = Menu::with('subMenu')
         //                     ->where('status',2)
@@ -96,7 +99,8 @@ class IndexController extends Controller
 
     public function prospectus()
     {
-        return view('frontend.prospectus');
+        $prospectuss = Prospectu::all();
+        return view('frontend.prospectus', compact('prospectuss'));
     }
     public function council()
     {
@@ -146,7 +150,9 @@ class IndexController extends Controller
 
     public function media()
     {
-        return view('frontend/media');
+        $today=date('Y-m-d');
+        $medias = Notification::where('status', 2)->where('language', 1)->where('notificationtype', 3)->where('startdate', '<=', $today)->where('enddate', '>=', $today)->get();
+        return view('frontend/media', compact('medias'));
     }
 
     public function image_gallery_2022_2023()
@@ -168,7 +174,8 @@ class IndexController extends Controller
 
     public function circular()
     {
-        return view('frontend/circular');
+        $circulars = Circular::all();
+        return view('frontend/circular', compact('circulars'));
     }
 
 }

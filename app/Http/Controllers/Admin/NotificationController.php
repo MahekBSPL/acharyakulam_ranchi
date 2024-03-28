@@ -66,7 +66,7 @@ class NotificationController extends Controller
                 } elseif ($request->menutype == '2') {
                     $Validation['fileupload'] = 'required|mimes:pdf,jpeg,jpg,png,webp|max:2048';
                 } elseif ($request->menutype == '3') {
-                    $Validation['url'] = 'required|url';
+                    $Validation['url'] = 'required';
                 }
             }
 
@@ -173,7 +173,7 @@ class NotificationController extends Controller
                 } elseif ($request->menutype == '2') {
                     $Validation['fileupload'] = 'nullable|mimes:pdf,jpeg,jpg,png,webp|max:2048';
                 } elseif ($request->menutype == '3') {
-                    $Validation['url'] = 'required|url';
+                    $Validation['url'] = 'required';
                 }
             }
 

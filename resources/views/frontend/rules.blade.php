@@ -4,11 +4,11 @@
 <body>
   <main id="main">
     <div class="banner">
-      <img src="assets/img/Mask Group 108.jpg" class="img-fluid" alt="banner">
+      <img src="{{url('frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
       <div class="banner-inr breadcrumbs">
         <h1>Rules & Regulation</h1>
         <h5>
-          <a href="index.php">Home</a> / <span>Admission</span>
+          <a href="{{url('frontend/index')}}">Home</a> / <span>Admission</span>
         </h5>
       </div>
     </div>
@@ -16,9 +16,8 @@
     <section>
       <div class="container" data-aos="fade-up">
         <h2>General Rules:–</h2>
+
         <div class="row rules mt-4">
-         
-        
           <div class="col-md-4">
             <div class="rules-inr-outer">
               <div class="rules-inr">
@@ -27,8 +26,8 @@
               <p>Students shall be bound by different rules and regulations framed from time to time by the Management for smooth running of the school.</p>
             </div>
           </div>
-          
-             <div class="col-md-4">
+
+          <div class="col-md-4">
             <div class="rules-inr-outer">
               <div class="rules-inr">
                 <h6>2</h6>
@@ -36,6 +35,7 @@
               <p>Parental co-operation can never be overlooked. Understanding between the teachers and the parents is essential for the comprehensive or holistic development of a child. It has been proven by the researchers that the performance of a child depends immensely on the parents’ direct involvement with the school.</p>
             </div>
           </div>
+
           <div class="col-md-4">
             <div class="rules-inr-outer">
               <div class="rules-inr">
@@ -46,8 +46,9 @@
             </div>
           </div>
         </div>
+
         <div class="row  rules">
-       
+
           <div class="col-md-4">
             <div class="rules-inr-outer">
               <div class="rules-inr">
@@ -56,8 +57,8 @@
               <p>Discipline, decency and decorum should be maintained by each student. Any act or mischief, breach of rules, disobedience or disloyalty to the institute by the student or parents can be considered as an act of indiscipline. The school reserves the right to expel a student on the grounds of misconduct, indiscipline or disregard of school rules and regulations.</p>
             </div>
           </div>
-          
-            <div class="col-md-4">
+
+          <div class="col-md-4">
             <div class="rules-inr-outer">
               <div class="rules-inr">
                 <h6>5</h6>
@@ -77,7 +78,7 @@
         </div>
 
         <div class="row rules">
-        
+
           <div class="col-md-4">
             <div class="rules-inr-outer">
               <div class="rules-inr">
@@ -86,7 +87,7 @@
               <p>Any change in the address or telephone or mobile number of the parents must be immediately informed by the parents to the school authority in writing.</p>
             </div>
           </div>
-            <div class="col-md-4">
+          <div class="col-md-4">
             <div class="rules-inr-outer">
               <div class="rules-inr">
                 <h6>8</h6>
@@ -103,11 +104,11 @@
               </p>
             </div>
           </div>
-          
+
         </div>
 
         <div class="row  rules">
-        
+
           <div class="col-md-4">
             <div class="rules-inr-outer">
               <div class="rules-inr">
@@ -117,7 +118,7 @@
               </p>
             </div>
           </div>
-             <div class="col-md-4">
+          <div class="col-md-4">
             <div class="rules-inr-outer">
               <div class="rules-inr">
                 <h6>11</h6>
@@ -136,7 +137,7 @@
           </div>
         </div>
 
-       
+
       </div>
     </section>
 

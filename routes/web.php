@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Admin\Circular;
 use App\Models\Admin\Procedure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -8,13 +9,14 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\admin\RuleController;
 use App\Http\Controllers\Admin\YogaController;
 use App\Http\Controllers\Admin\EventController;
-use App\Http\Controllers\admin\PopupController;
 
+use App\Http\Controllers\admin\PopupController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\admin\WinnerController;
 use App\Http\Controllers\admin\SectionController;
-use App\Http\Controllers\Admin\AcademicController;
 
+use App\Http\Controllers\Admin\AcademicController;
+use App\Http\Controllers\Admin\CircularController;
 use App\Http\Controllers\Admin\FacilityController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\admin\ClassNameController;
@@ -133,6 +135,7 @@ Route::middleware(['auth', 'IsAdmin'])->group(function () {
     Route::resource('/admin/proceduredescription', ProcedureDescriptionController::class);
     Route::resource('/admin/yoga', YogaController::class);
     Route::resource('/admin/event', EventController::class);
+    Route::resource('/admin/circular', CircularController::class);
     Route::resource('/admin/photoGallery', photoGallery::class);
     Route::any('/admin/update_rules_orders', [AjaxRequestController::class, 'update_rules_orders'])->name('/admin/update_rules_orders');
     Route::any('/admin/update_gallery_orders', [AjaxRequestController::class, 'update_gallery_orders'])->name('/admin/update_gallery_orders');
@@ -152,8 +155,8 @@ Route::middleware(['auth', 'IsAdmin'])->group(function () {
     Route::resource('/admin/prospectus', ProspectusController::class);
     Route::resource('/admin/homegallery', HomeGalleryController::class);
     Route::resource('/admin/topperstudent', TopperStudentController::class);
-     Route::any('/student_image/delete/{id}', [TopperStudentImagesController::class,'delete_image']);
-     Route::any('/student_image/update_image/', [TopperStudentImagesController::class,'update_image']);
+    Route::any('/student_image/delete/{id}', [TopperStudentImagesController::class,'delete_image']);
+    Route::any('/student_image/update_image/', [TopperStudentImagesController::class,'update_image']);
 
     Route::any('/admin/delete_images', [AjaxRequestController::class, 'delete_images'])->name('/admin/delete_images');
 });

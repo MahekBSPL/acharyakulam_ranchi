@@ -88,7 +88,7 @@
                                 <select name="notificationtype" class="input_class form-control" id="notificationtype" autocomplete="off">
                                     <option value="" selected="" disabled=""> Select </option>
                                     <?php
-                                    $notificatioTypeArray = ["1" => "Important Notice", "2" => "Latest News"];
+                                    $notificatioTypeArray = ["1" => "Important Notice", "2" => "Latest News", "3" => "Media Print"];
                                     foreach ($notificatioTypeArray as $key => $value) {
                                     ?>
                                         <option value="{{ $key }}" @if(old('notificationtype') == $key) selected @endif>{{ $value }}</option>
@@ -209,6 +209,7 @@
                         <div class="col-12 col-md-3 col-lg-3">
                             <div class="form-group">
                                 <label>Start Date:</label>
+                                <span class="star">*</span>
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-6">
@@ -223,6 +224,7 @@
                         <div class="col-lg-3 col-md-3 col-xm-3">
                             <div class="form-group">
                                 <label>End Date:</label>
+                                <span class="star">*</span>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-xm-6">

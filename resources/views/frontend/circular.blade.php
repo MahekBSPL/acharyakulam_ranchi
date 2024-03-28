@@ -16,7 +16,19 @@
     <section id="msg-swamiji" class="msg">
       <div class="container" data-aos="fade-up">
         <h2>Circular</h2>
+          
         <div class="row mt-4">
+        @foreach($circulars as $circular)
+          <div class="col-md-4 exam">
+            <h6>{{$circular->name}}</h6>
+            <p><img src="{{url('frontend/assets/img/Group 1448.png')}}" alt=""></p>
+            <div class="participate">
+              <a href="{{url('/admin/upload/circular/' .$circular->pdf)}}" download="" target="_blank"> <img src="{{url('frontend/assets/img/pdf.png')}}" alt=""> </a>
+            </div>
+          </div>
+      @endforeach
+    
+        <!-- <div class="row mt-4">
           <div class="col-md-4 exam">
             <h6>Art NationalLEVEL Painting</h6>
             <p><img src="assets/img/Group 1448.png" alt=""></p>
@@ -71,12 +83,13 @@
               <a href="assets/pdf/WUSHU-Championstudents.pdf" download="" target="_blank"> <img
                   src="assets/img/pdf.png" alt=""> </a>
             </div>
-          </div>
+          </div> 
+        </div> -->
         </div>
       </div>
     </section>
 
- 
+
 
 </body>
 @endsection

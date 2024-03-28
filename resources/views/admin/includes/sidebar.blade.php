@@ -81,7 +81,10 @@
             <li class="">
                 <a href="{{ url('/admin/popup')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Home Modal</span></a>
             </li>
-            
+            <li class="">
+                <a href="{{ url('/admin/circular')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Circular</span></a>
+            </li>
+
         </ul>
 
     </aside>
