@@ -125,19 +125,7 @@ class IndexController extends Controller
         return view('frontend/competitive-exam', compact('participations', 'menuData'));
     }
 
-    public function competitive_exam_2022_2023()
-    {
-         $participation = Participation::all();
-         $competitiveExam = CompetitiveExam::where('selectyear','3')->get();
-        return view('frontend/competitive-exam-2022-2023', compact('competitiveExam'));
-    }
-
-    public function competitive_exam_2023_2024()
-    {
-        $competitiveExam = CompetitiveExam::where('selectyear','4')->get();
-        return view('frontend/competitive-exam-2023-2024', compact('competitiveExam'));
-    
-    }
+  
     public function competitive_exam_details($id)
     {
         $competitiveExam = CompetitiveExam::where('selectyear',$id)->get();
