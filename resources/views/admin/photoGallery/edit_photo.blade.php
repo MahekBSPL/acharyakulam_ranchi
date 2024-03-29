@@ -116,34 +116,44 @@
                             <thead>
                                 <tr class="warning">
                                     <!-- <th>Title</th> -->
+                                    <th>Sr.No.</th>
                                     <th>Images</th>
-                                    <th>Order</th>
+                                    <!-- <th>Order</th> -->
                                     <th>Action</th>
                                 </tr>
                             </thead>
                                 <tbody id="tbl_row">
-                                @if($gimg)
-                                   @foreach($gimg as $val)
+                                <?php 
+                                
+                                if($gimg)
+                                {
+                                    $i=1;
+                                   foreach($gimg as $val)
+                                {
+
+                                ?>
                                     <tr>
+                                        <td><?=$i++?></td>
                                         <!-- <td><?php echo $val->title; ?></td> -->
                                         <td> <img src="{{ URL::asset('/admin/upload/photoGallery/photo/'.$val->img)}}"
                                                     style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
                                                     <input class="form-control" name="oldid[]" value="{{$val->id}} " type="hidden">
                                                     <input class="form-control" name="oldimag[]" value="{{$val->img}} " type="hidden">
                                         </td>
-                                        <td><?php echo $val->img_postion??0; ?> <i id="{{$val->id}}" onclick="editimgpos(this);"  class="far editbut fa-edit"></i>
+                                     <!--   <td><?php echo $val->img_postion??0; ?> <i id="{{$val->id}}" onclick="editimgpos(this);"  class="far editbut fa-edit"></i>
                                                     <span  id="img_postion_{{$val->id}}" style="display:none" >
                                                     <input class="w-25" type="number"
                                                     onchange="savedata(this);" id="{{$val->id}}" name="img_postion" value="" /></span>
                                                     <p class="text-success" id="success_{{$val->id}}"></p>
-                                               </td>
+                                               </td>-->
                                          <td>
                                             <a class="btn btn-danger delete-row"  onclick="removeImg('{{$val->img}}, <?php echo $val->id; ?>')" href="javascript:void(0);"><i class="bi bi-trash"></i>
                                                                 </a>
                                                             </td> 
                                     </tr>
-                                    @endforeach
-                                @endif
+                                   <?php 
+                                }
+                                }?>
                                 </tbody>
                             </table>
                             {!! $gimg->withQueryString()->links('pagination::bootstrap-5') !!}
@@ -242,7 +252,7 @@ function removeImg(img, id){
         var img_postion =  data.value;
         var id =  data.id;
        
-        var linkurl = "{{ url('/admin/update_galleryCat_orders')}}";
+        var linkurl = "{{ url('/admin/update_galleryimg_orders')}}";
         
         jQuery.ajax({
             url: linkurl,
