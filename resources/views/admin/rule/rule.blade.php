@@ -48,7 +48,7 @@
                                         @foreach($rules as $rule)
                                         <tr>
                                             <td>{{$count++}}</td>
-                                            <td>{{$rule->description}}</td>
+                                            <td>{{strip_tags(html_entity_decode($rule->description))}}</td>
                                             <td><?php echo $rule->order??0; ?> <i id="{{$rule->id}}"
                                                     onclick="editcatpos(this);" class="far editbut fa-edit"></i>
                                                 <span id="rule_postion_{{$rule->id}}" style="display:none;width:100%">

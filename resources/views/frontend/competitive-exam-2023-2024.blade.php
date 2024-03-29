@@ -2,7 +2,6 @@
 @section('container')
 
 <body>
-
   <main id="main">
     <div class="banner">
       <img src="{{url('frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">

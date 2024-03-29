@@ -53,7 +53,7 @@
                                             <td>{{$count}}</td>
                                             <td>@if ($notification->language == 1)English @else Hindi @endif</td>
                                             <td>{{$notification->title}}</td>
-                                            <td>@if($notification->notificationtype == 1) Important Notice @else Latest News @endif</td>
+                                            <td>@if($notification->notificationtype == 1) Important Notice @elseif($notification->notificationtype == 2) Latest News @elseif($notification->notificationtype == 3)Media Print @else - @endif</td>
                                             <td>@foreach($SelectType as $select)
                                                 @if($select->id == $notification->menutype)
                                                 {{ $select->value }}
