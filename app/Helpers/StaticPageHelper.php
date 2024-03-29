@@ -24,8 +24,9 @@ if (!function_exists('getMenuData')) {
                     ->where('menu_position', 1)
                     ->where('menu_category', 1)
                     ->get();
-    }
+    } 
 }
+
 
 
 ?>

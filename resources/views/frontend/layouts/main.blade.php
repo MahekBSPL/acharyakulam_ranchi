@@ -36,7 +36,7 @@
 <header id="header" class="header sticky-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-        <a href="index.php" class="logo d-flex align-items-center">
+        <a href="{{url('frontend/index')}}" class="logo d-flex align-items-center">
             <img src="{{url('frontend/assets/img/logo.png')}}" alt="">
         </a>
 
@@ -57,7 +57,7 @@
                             @php
                             $staticPageUrl = getStaticPageUrl($subMenu->title);
                             @endphp
-                            <a href="{{ url('/frontend/' . $staticPageUrl) }}">{{ $subMenu->title }}</a>
+                            <a href="{{url('/frontend/'. $staticPageUrl) }}">{{ $subMenu->title }}</a>
                             @elseif($subMenu->menutype==2)
                             <a href="{{url('/admin/upload/menu/' . $subMenu->fileupload)}}" target="_blank">{{ $subMenu->title }}</a>
                             @elseif($subMenu->menutype==3)

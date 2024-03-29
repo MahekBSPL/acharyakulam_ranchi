@@ -72,7 +72,7 @@
         </h6>
         @elseif ($notification->menutype == 3)
         <h6><img src="{{url('frontend/assets/img/new.gif')}}">
-          <a href="{{$notification->url }}" target="_blank">
+          <a href="{{url('/frontend/'.$notification->url)}}" target="_blank">
             {{ $notification->title }} </a>
         </h6>
         @endif
@@ -96,7 +96,7 @@
         <marquee>
           <ul class="headlines">
             @foreach ($notifications as $notification)
-            @if ($notification->notificationtype == 1)
+            @if ($notification->notificationtype == 2)
             @if ($notification->menutype == 1)
             <li><a href="{{url('/admin/upload/notification/'.$notification->image) }}">
                 {{$notification->title }}</a></li> 
@@ -104,11 +104,12 @@
             <li><a href="{{url('/admin/upload/notification/'.$notification->fileupload) }}">
                 {{$notification->title }}</a></li> 
             @elseif ($notification->menutype == 3)
-            <li><a href="{{$notification->url }}">
+            <li><a href="{{url('/frontend/'.$notification->url) }}">
                 {{$notification->title }}</a></li> 
             @endif
             @endif
             @endforeach
+
             <!-- <li><a href="{{url('frontend/assets/pdf/Admission-procedure-2024-2025.pdf')}}" target="_blank"> Admission Open for Class Nursery
                 to VIII Session 2024-2025</a></li>
             <li><a href="{{url('frontend/Careers')}}">
@@ -174,7 +175,7 @@
                 awakened and conscious scholars who will be able to change the course of the flow of the current times.
               </p>
               <div class="text-center text-lg-start">
-                <a href="{{url('frontend/about')}}" class="btn-read-more d-inline-flex align-items-center justify-content-center">
+                <a href="{{url('frontend/introduction')}}" class="btn-read-more d-inline-flex align-items-center justify-content-center">
                   <span>READ MORE</span>
                   <i class="bi bi-arrow-right"></i>
                 </a>
@@ -208,7 +209,7 @@
                     famous German scholar Max Muller, English scholar G.W. Leitner and the then British Government,</p>
 
                   <div class="text-center text-lg-start">
-                    <a href="message-from-swamiji.php" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                    <a href="{{url('frontend/message-from-swamiji')}}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
                       <span>READ MORE</span>
                       <i class="bi bi-arrow-right"></i>
                     </a>
@@ -234,7 +235,7 @@
                     gain the ability of critical thinking of right and wrong.
                   </p>
                   <div class="text-center text-lg-start">
-                    <a href="message-from-acharyaji.php" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                    <a href="{{url('frontend/message-from-acharyaji')}}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
                       <span>READ MORE</span>
                       <i class="bi bi-arrow-right"></i>
                     </a>

@@ -88,7 +88,7 @@
                                 <select name="notificationtype" class="input_class form-control" id="notificationtype" autocomplete="off">
                                     <option value="" selected="" disabled=""> Select </option>
                                     <?php
-                                    $notificatioTypeArray = ["1" => "Important Notice", "2" => "Latest News"];
+                                    $notificatioTypeArray = ["1" => "Important Notice", "2" => "Latest News", "3" => "Media Print"];
                                     foreach ($notificatioTypeArray as $key => $value) {
                                     ?>
                                         <option value="{{ $key }}" @if((!empty($notifications->notificationtype)?$notifications->notificationtype:old('notificationtype'))==$key) selected @endif >{{ $value }}</option>
