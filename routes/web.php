@@ -86,7 +86,8 @@ Route::get('/frontend/facility', [IndexController::class, 'facility']);
 Route::get('/frontend/circular', [IndexController::class, 'circular']);
 Route::get('/frontend/competitive_exam_details/{id}', [IndexController::class, 'competitive_exam_details']);
 
-
+Route::get('/frontend/photo_gallery_details/{id}', [IndexController::class, 'photo_gallery_details']);
+Route::get('/frontend/sub_photo_gallery/{id}', [IndexController::class, 'sub_photo_gallery']);
 // Route::get('/frontend/introduction', [AboutUsController::class, 'introduction']);
 // Route::get('/frontend/mission-vision', [AboutUsController::class, 'mission_vision']);
 // Route::get('/frontend/staff', [AboutUsController::class, 'staff']);

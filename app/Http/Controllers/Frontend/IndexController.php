@@ -18,7 +18,11 @@ use App\Models\Admin\FacilitySlider;
 use App\Models\Admin\CompetitiveExam;
 use App\Models\Admin\FacilityDescription;
 use App\Models\Admin\ProcedureDescription;
-
+use App\Models\Admin\PhotoGallery;
+use App\Models\Admin\PhotoCategory;
+use App\Models\Admin\Rule;
+use App\Models\Admin\TopperStudent;
+use App\Models\Admin\TopperStudentImage;
 class IndexController extends Controller
 {
     //
@@ -94,7 +98,8 @@ class IndexController extends Controller
 
     public function rules()
     {
-        return view('frontend.rules');
+        $rules = Rule::all();
+        return view('frontend.rules',compact('rules'));
     }
 
     public function prospectus()
@@ -109,7 +114,8 @@ class IndexController extends Controller
 
     public function topper_student()
     {
-        return view('frontend/topper-student');
+        $result = TopperStudent::all();
+        return view('frontend/topper-student',compact('result'));
     }
 
     public function academics()
@@ -141,9 +147,29 @@ class IndexController extends Controller
 
     public function gallery()
     {
-        return view('frontend/gallery');
+        $photocategory_data =  PhotoCategory::where('parent_id', 0)->orderBy('cat_postion', 'ASC')->get();
+        return view('frontend/gallery',compact('photocategory_data'));
     }
-
+    public function sub_photo_gallery($parent_id){
+        $data='';
+        $photocategory_data=  PhotoCategory::where('parent_id', $parent_id)->get();
+        $title_data=  PhotoCategory::where('id', $parent_id)->get()->first();  
+        $cat_descriptions=$title_data->cat_descriptions;
+        $title = $title_data->title; 
+        return response()->view("frontend/gallery", compact('title','data','cat_descriptions','photocategory_data'));
+    }
+    public function photo_gallery_details($event_id){
+        $photoCategory = PhotoCategory::find($event_id);
+        $cat_descriptions=$photoCategory->cat_descriptions;
+        $title=$photoCategory->title;
+        $photoGallery = PhotoGallery::where('event_id', $event_id)->orderBy('img_postion', 'ASC')->get();
+        // echo "<pre>";
+        // print_r($photoGallery);
+        // echo "</pre>";
+        // exit;
+      //  $title="Photo Gallery:Annual Function";
+        return response()->view("frontend/photo_gallery_details", compact('title','photoGallery','cat_descriptions'));
+    }
     public function media()
     {
         $today=date('Y-m-d');

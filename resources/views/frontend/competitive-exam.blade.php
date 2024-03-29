@@ -14,13 +14,7 @@
       </div>
     </div>
     
-     <!-- @foreach ($menuData as $menuItem)
-    @foreach ($menuItem->subMenu as $subMenuItem)
-            @if ($subMenuItem->parent_menu == $menuItem->id)
-                <h6>{{$menuItem->title}}</h6>  
-                @endif
-          @endforeach 
-           @endforeach   -->
+ 
 
     <section class="competative-slide">
       <div class="container" data-aos="fade-up">
