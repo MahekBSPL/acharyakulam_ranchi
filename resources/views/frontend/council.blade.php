@@ -1,13 +1,14 @@
 @extends('frontend.layouts.main')
 @section('container')
+
 <body>
   <main id="main">
     <div class="banner">
-      <img src="assets/img/Mask Group 108.jpg" class="img-fluid" alt="banner">
+      <img src="{{url('frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
       <div class="banner-inr breadcrumbs">
         <h1>Student Council</h1>
         <h5>
-          <a href="index.php">Home</a> / <span>Academics</span>
+          <a href="{{url('frontend/index')}}">Home</a> / <span>Academics</span>
         </h5>
       </div>
     </div>
@@ -17,7 +18,19 @@
         <h2 class="text-center">Captain</h2>
         <h3 class="text-center mr-4">IX-A</h3>
         <div class="row mt-4 justify-content-center">
+          @foreach($councils as $council)
+          @if($council->class == 1 && $council->section == 1)
           <div class="col-md-3">
+            <img src="{{url('/admin/upload/council/' .$council->image)}}" alt="student">
+            <div class="info">
+              <h6>{{$council->student_name}}</h6>
+              <p>{{$council->about}}</p>
+            </div>
+          </div>
+          @endif
+          @endforeach
+
+          <!-- <div class="col-md-3">
             <img src="assets/img/student/30.jpg" alt="student">
             <div class="info">
               <h6>AROHI PATHAK</h6>
@@ -127,13 +140,25 @@
               <h6>PRIYANSHI KUMARI</h6>
               <p>Prefect</p>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div class="row justify-content-center">
           <h3 class="text-center mr-4">IX-B</h3>
 
+          @foreach($councils as $council)
+          @if($council->class == 1 && $council->section == 2)
           <div class="col-md-3">
+            <img src="{{url('/admin/upload/council/' .$council->image)}}" alt="student">
+            <div class="info">
+              <h6>{{$council->student_name}}</h6>
+              <p>{{$council->about}}</p>
+            </div>
+          </div>
+          @endif
+          @endforeach
+
+          <!-- <div class="col-md-3">
             <img src="assets/img/student/TAKSHEEL-ADITYA-SARAN.jpg" alt="student">
             <div class="info">
               <h6>TAKSHEEL ADITYA SARAN</h6>
@@ -187,13 +212,25 @@
               <h6>RAJAT KOUSHIK</h6>
               <p>Prefect</p>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div class="row justify-content-center">
           <h3 class="text-center mr-4">IX-C</h3>
 
+          @foreach($councils as $council)
+          @if($council->class == 1 && $council->section == 3)
           <div class="col-md-3">
+            <img src="{{url('/admin/upload/council/' .$council->image)}}" alt="student">
+            <div class="info">
+              <h6>{{$council->student_name}}</h6>
+              <p>{{$council->about}}</p>
+            </div>
+          </div>
+          @endif
+          @endforeach
+
+          <!-- <div class="col-md-3">
             <img src="assets/img/student/3.jpg" alt="student">
             <div class="info">
               <h6>VAIBHAV UPADHYAY</h6>
@@ -247,14 +284,25 @@
               <h6>SACHIN KUMAR</h6>
               <p>Prefect</p>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div class="row justify-content-center">
           <h3 class="text-center mr-4">VIII-A</h3>
 
-
+          @foreach($councils as $council)
+          @if($council->class == 2 && $council->section == 1)
           <div class="col-md-3">
+            <img src="{{url('/admin/upload/council/' .$council->image)}}" alt="student">
+            <div class="info">
+              <h6>{{$council->student_name}}</h6>
+              <p>{{$council->about}}</p>
+            </div>
+          </div>
+          @endif
+          @endforeach
+
+          <!-- <div class="col-md-3">
             <img src="assets/img/student/14.jpg" alt="student">
             <div class="info">
               <h6>TANISHA KUMARI</h6>
@@ -262,7 +310,7 @@
             </div>
           </div>
 
-       
+
 
           <div class="col-md-3">
             <img src="assets/img/student/khawahish-jha-A.webp" alt="student">
@@ -302,13 +350,24 @@
               <h6>AIRPITA SINGH</h6>
               <p>Prefect</p>
             </div>
-          </div>
+          </div> -->
         </div>
-
 
         <div class="row justify-content-center">
           <h3 class="text-center mr-4">VIII-B</h3>
+
+          @foreach($councils as $council)
+          @if($council->class == 2 && $council->section == 2)
           <div class="col-md-3">
+            <img src="{{url('/admin/upload/council/' .$council->image)}}" alt="student">
+            <div class="info">
+              <h6>{{$council->student_name}}</h6>
+              <p>{{$council->about}}</p>
+            </div>
+          </div>
+          @endif
+          @endforeach
+          <!-- <div class="col-md-3">
             <img src="assets/img/student/ANMOL-ARUN.jpg" alt="student">
             <div class="info">
               <h6>ANMOL ARUN</h6>
@@ -338,14 +397,26 @@
               <h6>AKSHAT KUMAR</h6>
               <p>Prefect</p>
             </div>
-          </div>
+          </div> -->
         </div>
 
 
         <div class="row justify-content-center">
           <h3 class="text-center mr-4">VII-A</h3>
 
+          @foreach($councils as $council)
+          @if($council->class == 3 && $council->section == 1)
           <div class="col-md-3">
+            <img src="{{url('/admin/upload/council/' .$council->image)}}" alt="student">
+            <div class="info">
+              <h6>{{$council->student_name}}</h6>
+              <p>{{$council->about}}</p>
+            </div>
+          </div>
+          @endif
+          @endforeach
+
+          <!-- <div class="col-md-3">
             <img src="assets/img/student/SOMYA-KUMARI.jpg" alt="student">
             <div class="info">
               <h6>SOUMYA KUMARI</h6>
@@ -367,13 +438,24 @@
               <h6>DHRITI TIWARI</h6>
               <p>Prefect</p>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div class="row justify-content-center">
           <h3 class="text-center mr-4">VII-B</h3>
 
+          @foreach($councils as $council)
+          @if($council->class == 3 && $council->section == 2)
           <div class="col-md-3">
+            <img src="{{url('/admin/upload/council/' .$council->image)}}" alt="student">
+            <div class="info">
+              <h6>{{$council->student_name}}</h6>
+              <p>{{$council->about}}</p>
+            </div>
+          </div>
+          @endif
+          @endforeach
+          <!-- <div class="col-md-3">
             <img src="assets/img/student/PRANAV-RAJ.jpg" alt="student">
             <div class="info">
               <h6>PRANAV RAJ</h6>
@@ -395,13 +477,24 @@
               <h6>ISHAAN KASHYAP</h6>
               <p>Prefect</p>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div class="row justify-content-center">
           <h3 class="text-center mr-4">VII-C</h3>
-
+          
+          @foreach($councils as $council)
+          @if($council->class == 3 && $council->section == 3)
           <div class="col-md-3">
+            <img src="{{url('/admin/upload/council/' .$council->image)}}" alt="student">
+            <div class="info">
+              <h6>{{$council->student_name}}</h6>
+              <p>{{$council->about}}</p>
+            </div>
+          </div>
+          @endif
+          @endforeach
+          <!-- <div class="col-md-3">
             <img src="assets/img/student/29.jpg" alt="student">
             <div class="info">
               <h6>KRISHNA ADVAIT DIXIT</h6>
@@ -415,126 +508,13 @@
               <h6>ANSHUMAN RANJAN</h6>
               <p>Prefect</p>
             </div>
-          </div>
+          </div> -->
         </div>
 
 
       </div>
       </div>
 
-      <!-- <div class="row">
-
-        <div class="col-md-3">
-          <img src="assets/img/student/10.jpg" alt="student">
-          <div class="info">
-            <h6>VAIBHAVI JHA</h6>
-            <p>ADM NO. 00308</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-3">
-          <img src="assets/img/student/16.jpg" alt="student">
-          <div class="info">
-            <h6>SURYA NAYAK</h6>
-            <p>ADM NO. 00714</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-3">
-          <img src="assets/img/student/17.jpg" alt="student">
-          <div class="info">
-            <h6>SHIVAM KUMAR KOUSHAL</h6>
-            <p>ADM NO. 00742</p>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <img src="assets/img/student/18.jpg" alt="student">
-          <div class="info">
-            <h6>VIDYA JHA</h6>
-            <p>ADM NO.00873</p>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <img src="assets/img/student/19.jpg" alt="student">
-          <div class="info">
-            <h6>ATULIT KUMAR</h6>
-            <p>ADM NO.00968</p>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <img src="assets/img/student/20.jpg" alt="student">
-          <div class="info">
-            <h6>NANDINI KUMARI</h6>
-            <p>ADM NO.01036</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-
-
-        <div class="col-md-3">
-          <img src="assets/img/student/22.jpg" alt="student">
-          <div class="info">
-            <h6>ABHYUDAY KUMAR</h6>
-            <p>ADM NO. 01114</p>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <img src="assets/img/student/23.jpg" alt="student">
-          <div class="info">
-            <h6>DRISHYA RAJ</h6>
-            <p>ADM NO. 01123</p>
-          </div>
-        </div>
-
-
-      </div>
-
-      <div class="row">
-        <div class="col-md-3">
-          <img src="assets/img/student/25.jpg" alt="student">
-          <div class="info">
-            <h6>SHUBHASHREE DAS</h6>
-            <p>ADM NO.01155</p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <img src="assets/img/student/28.jpg" alt="student">
-          <div class="info">
-            <h6>ARNAV KUMAR</h6>
-            <p>ADM NO. 01480</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-
-        <div class="col-md-3">
-          <img src="assets/img/student/31.jpg" alt="student">
-          <div class="info">
-            <h6>TANVI MIDHA</h6>
-            <p>ADM NO.01840</p>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <img src="assets/img/student/32.jpg" alt="student">
-          <div class="info">
-            <h6>PRINCY</h6>
-            <p>ADM NO.01909</p>
-          </div>
-        </div>
-      </div>
-      </div> -->
     </section>
 
 

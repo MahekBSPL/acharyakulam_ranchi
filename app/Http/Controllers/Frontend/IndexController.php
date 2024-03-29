@@ -6,6 +6,8 @@ use App\Models\Admin\Menu;
 use App\Models\Admin\Yoga;
 use App\Models\Admin\Slider;
 use Illuminate\Http\Request;
+use App\Models\Admin\Circular;
+use App\Models\Admin\Facility;
 use App\Models\Admin\Procedure;
 use App\Models\Admin\Prospectu;
 use App\Models\Admin\Notification;
@@ -13,8 +15,8 @@ use App\Models\Admin\ProcedureFee;
 use Illuminate\Support\Facades\DB;
 use App\Models\Admin\Participation;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Circular;
 use App\Models\Admin\FacilitySlider;
+use App\Models\Admin\StudentCouncil;
 use App\Models\Admin\CompetitiveExam;
 use App\Models\Admin\FacilityDescription;
 use App\Models\Admin\ProcedureDescription;
@@ -104,7 +106,8 @@ class IndexController extends Controller
     }
     public function council()
     {
-        return view('frontend/council');
+        $councils = StudentCouncil::all();
+        return view('frontend/council', compact('councils'));
     }
 
     public function topper_student()
@@ -167,9 +170,10 @@ class IndexController extends Controller
 
     public function facility()
     {
+        $facilitys = Facility::all();
         $facilitySliders = FacilitySlider::all();
         $facilityDescriptions = FacilityDescription::all();
-        return view('frontend/facility',compact('facilitySliders','facilityDescriptions'));
+        return view('frontend/facility',compact('facilitys', 'facilitySliders','facilityDescriptions'));
     }
 
     public function circular()
