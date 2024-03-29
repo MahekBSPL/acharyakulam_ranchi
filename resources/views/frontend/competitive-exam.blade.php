@@ -31,7 +31,7 @@
           <div class="col-md-6">
             <div class="competative-slide-inr">
               <h6>{{$participation->title}} {{$participation->year}}</h6>
-              <a href="{{url('frontend/competitive-exam-').$participation->year}}">View More</a>
+              <a href="{{url('frontend/competitive_exam_details').'/'.$participation->id}}">View More</a>
             </div>
           </div>   
           @endforeach  

@@ -85,6 +85,9 @@ Route::get('/frontend/image-gallery-2023-2024', [IndexController::class, 'image_
 Route::get('/frontend/media', [IndexController::class, 'media']);
 Route::get('/frontend/facility', [IndexController::class, 'facility']);
 Route::get('/frontend/circular', [IndexController::class, 'circular']);
+Route::get('/frontend/competitive_exam_details/{id}', [IndexController::class, 'competitive_exam_details']);
+
+
 // Route::get('/frontend/introduction', [AboutUsController::class, 'introduction']);
 // Route::get('/frontend/mission-vision', [AboutUsController::class, 'mission_vision']);
 // Route::get('/frontend/staff', [AboutUsController::class, 'staff']);

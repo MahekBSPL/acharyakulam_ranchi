@@ -121,6 +121,7 @@ class IndexController extends Controller
     {
         $menuData = getMenuData();
         $participations = Participation::all();
+
         return view('frontend/competitive-exam', compact('participations', 'menuData'));
     }
 
@@ -135,6 +136,13 @@ class IndexController extends Controller
     {
         $competitiveExam = CompetitiveExam::where('selectyear','4')->get();
         return view('frontend/competitive-exam-2023-2024', compact('competitiveExam'));
+    
+    }
+    public function competitive_exam_details($id)
+    {
+        $competitiveExam = CompetitiveExam::where('selectyear',$id)->get();
+        $participation = Participation::where('id',$id)->first();
+        return view('frontend/competitive_exam_details',compact('competitiveExam','participation'));
     }
 
     public function yoga()
