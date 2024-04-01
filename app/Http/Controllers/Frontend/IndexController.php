@@ -27,6 +27,8 @@ use App\Models\Admin\TopperStudent;
 use App\Models\Admin\TopperStudentImage;
 use App\Models\Admin\HomeGallery;
 use App\Models\Admin\Winner;
+use App\Models\Admin\Popup;
+use App\Models\Admin\Academic;
 
 class IndexController extends Controller
 {
@@ -40,8 +42,9 @@ class IndexController extends Controller
         $today=date('Y-m-d');
         $notifications = Notification::where('status', 2)->where('language', 1)->where('startdate', '<=', $today)->where('enddate', '>=', $today)->get();
         $home_gallery=HomeGallery::orderBy('order','ASC')->get();
-        return view('frontend/index', compact('title', 'sliders', 'notifications','home_gallery'));
-        // $menuparents = Menu::with('subMenu')
+        $popup_data=Popup::first();
+        return view('frontend/index', compact('title', 'sliders', 'notifications','home_gallery','popup_data'));
+        // $menuparents = Menu::with('subMenu'),
         //                     ->where('status',2)
         //                     ->where('menu_position',1)
         //                     ->where('menu_category', 1)
@@ -52,6 +55,11 @@ class IndexController extends Controller
     {
         $winner = Winner::orderBy('order', 'asc')->get();
         return view('frontend.winner-student',compact('winner'));
+    }
+    public function event()
+    {
+       // $winner = Winner::orderBy('order', 'asc')->get();
+        return view('frontend.event');
     }
     public function introduction()
     {
@@ -128,10 +136,10 @@ class IndexController extends Controller
         $result = TopperStudent::all();
         return view('frontend/topper-student',compact('result'));
     }
-
     public function academics()
     {
-        return view('frontend/academics');
+        $result = Academic::all();
+        return view('frontend/academics',compact('result'));
     }
 
     public function competitive_exam()

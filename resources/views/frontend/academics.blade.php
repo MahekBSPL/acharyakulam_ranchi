@@ -16,49 +16,28 @@
       
       <div class="container" data-aos="fade-up">
         <div class="row  align-items-center justify-content-center">
+
+        <?php
+        foreach($result as $row){
+        
+        ?>
           <div class="col-md-6 academic text-center">
-            <p>School Planner(2023-2024)</p>
-            <img src="{{url('frontend/assets/img/School-Planner-2023-24.webp')}}">
-
+            <p><?=$row->title?>(<?=$row->year?>)</p>
+            <img src="{{url('admin/upload/academic/'.$row->image)}}">
             <div class="eye">
-              <a href="{{url('frontend/assets/pdf/School-Planner-2023-24.pdf')}}"><img src="{{url('frontend/assets/img/eye.png')}}" alt=""></a>
-
-              <a href="{{url('frontend/assets/pdf/School-Planner-2023-24.pdf')}}" download="" target="blank"><img src="{{url('frontend/assets/img/pdf.png')}}"
-                  alt=""></a>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <div class="container" data-aos="fade-up">
-        <div class="row mt-5">
-          <div class="col-md-6 academic text-center">
-            <p>School Planner(2022-2023)</p>
-            <img src="{{url('frontend/assets/img/school-planer-2023.webp')}}">
-            <div class="eye">
-              <a href="{{url('frontend/assets/pdf/School calendar 2022-2023.pdf')}}"><img src="{{url('frontend/assets/img/eye.png')}}" alt=""></a>
-
-              <a href="{{url('frontend/assets/pdf/Topper-Students-List-2022-2023.pdf')}}" download="" target="blank"><img
-                  src="{{url('frontend/assets/img/pdf.png')}}" alt=""></a>
-            </div>
-          </div>
-
-          <div class="col-md-6 mt-2 academic text-center">
-            <p>Holiday-List(2022-2023)</p>
-            <img src="{{url('frontend/assets/img/holiday-list-2023.webp')}}">
-            <div class="eye">
-              <a href="{{url('frontend/assets/pdf/Holiday list 2022-2023.pdf')}}"><img src="{{url('frontend/assets/img/eye.png')}}" alt=""></a>
-
-              <a href="{{url('frontend/assets/pdf/Holiday list 2022-2023.pdf')}}" download="" target="blank"><img src="{{url('frontend/assets/img/pdf.png')}}"
+              <a href="{{URL::asset('admin/upload/academic/'.$row->image)}}"><img src="{{url('frontend/assets/img/eye.png')}}" alt=""></a>
+              <a href="{{URL::asset('admin/upload/academic/pdf/'.$row->pdf)}}" download="" target="blank"><img src="{{url('frontend/assets/img/pdf.png')}}"
                   alt=""></a>
             </div>
           </div>
+          <?php }?>
+
         </div>
       </div>
 
     
-    </div>
 
+      </div>
+</div>
 </body>
 @endsection
