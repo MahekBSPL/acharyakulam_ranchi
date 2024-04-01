@@ -61,7 +61,6 @@
             <li class="">
                 <a href="{{ url('/admin/council')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Student Council</span></a>
             </li>
-           
           
             <li class="">
                 <a href="{{ url('/admin/procedure')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Admission Procedure</span></a>
