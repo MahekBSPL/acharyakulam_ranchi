@@ -32,24 +32,7 @@
                         @endif
                         <div class="panel-heading">
                             <div class="search-from">
-                                <form action="{{ url('/admin/photoGallery')}}" class="search_inbox" name="form1" id="form1"
-                                    method="post" accept-charset="utf-8">
-
-                                    @csrf
-                                    <div class="form-row">
-                                        <div class="form-group">
-                                            <label for="Title">Title: </label>
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <input onchange="search(this);" class="form-control" type="text"
-                                                name="cattitle" value="{{Session::get('cattitle')??''}}">
-                                        </div>
-                                        <div class="form-group col-md-1">
-                                            <input onchange="search(this);" class="form-control btn btn-success"
-                                                type="submit" name="search" value="Search">
-                                        </div>
-                                    </div>
-                                </form>
+                               
                             </div>
                         </div>
 
@@ -114,15 +97,13 @@
                                                 </td>
                                             </form>
                                         </tr>
-                                        @php
-                                        $count++;
-                                        @endphp
+                                       
                                         @endforeach
                                         @endif
                                       
                                     </tbody>
                                 </table>
-                                {!! $list->withQueryString()->links('pagination::bootstrap-5') !!}
+                               
                             </div>
                             <!-- /.table-responsive -->
                         </div>

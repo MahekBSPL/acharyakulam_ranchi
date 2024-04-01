@@ -17,7 +17,7 @@
       <div class="container" data-aos="fade-up">
         <div class="row  align-items-center justify-content-center">
           <div class="col-md-6 academic text-center">
-            <p>School Planner(2023-2024)</p>
+            <p>School Planner(2023-2024)</p>    
             <img src="{{url('frontend/assets/img/School-Planner-2023-24.webp')}}">
 
             <div class="eye">

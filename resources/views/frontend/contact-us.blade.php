@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<?php include_once("header.php"); ?>
+@extends('frontend.layouts.main')
+@section('container')
 
 <!-- jqery validate cdn -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -9,11 +8,11 @@
 <body>
 
     <div class="banner">
-        <img src="assets/img/Mask Group 108.jpg" class="img-fluid" alt="banner">
+        <img src="{{url('frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
         <div class="banner-inr breadcrumbs">
             <h1>Contact Us</h1>
             <h5>
-                <a href="index.php">Home</a> / <span>Contact Us</span>
+                <a href="{{url('frontend/index')}}">Home</a> / <span>Contact Us</span>
             </h5>
         </div>
     </div>
@@ -101,10 +100,6 @@
 
     </main><!-- End #main -->
 
-    <!-- ======= Footer ======= -->
-    <?php include_once("footer.php"); ?>
-    <!-- End Footer -->
-
 
     <!-- ========== json script ========== -->
     <script>
@@ -168,5 +163,4 @@
         });
     </script>
 </body>
-
-</html>
+@endsection
