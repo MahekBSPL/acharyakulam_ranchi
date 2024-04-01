@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Winner;
+use Illuminate\Support\Facades\Validator;
 
 class WinnerController extends Controller
 {
@@ -13,7 +14,9 @@ class WinnerController extends Controller
      */
     public function index()
     {
-        //
+        $title = "Winner";
+        $Winner = Winner::orderBy('order', 'asc')->get();
+        return view('admin.winner.index', ['winners' => $Winner], compact('title'));
     }
 
     /**
@@ -30,23 +33,25 @@ class WinnerController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'images.*' => 'required' // Adjust the validation rule as per your requirement
-        ]);
-
-        if ($request->images) {
-    //             echo "<pre>";
-    // print_r($request->images);
-    // echo "</pre>";
-    // exit;
-            foreach ($request->file('images') as $image) {
-                $imageName = time() . '_' . $image->getClientOriginalName();
-                $image->move(public_path('/admin/upload/council'), $imageName);
-                $imageModel = new Winner();
-                $imageModel->image = $imageName;
-                $imageModel->save();
+        if (isset($request->submit)) {
+            
+            if (!is_dir('admin/upload/winner')) {
+                mkdir('admin/upload/winner', 0777, TRUE);
             }
-            return redirect('/admin/council')->with('success', 'Images uploaded successfully!');
+            $Winner = new Winner;
+            if (isset($request->image)) {
+                $image = time() . '.' . $request->image->getClientOriginalExtension();
+                $request->image->move(public_path('admin/upload/winner'), $image);
+                $Winner->image =  $image;
+            }
+
+            $result = $Winner->save();
+
+            if ($result) {
+                return redirect('admin/winner')->withSuccess('Winner added successfully!');
+            } else {
+                return redirect('admin/winner')->withError('Unable to add Winner!');
+            }
         }
     }
 
@@ -63,7 +68,9 @@ class WinnerController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title = "Edit Winner";
+        $winner = Winner::find($id);
+        return view('admin/winner/edit', ['winner' => $winner, 'title' => $title]);
     }
 
     /**
@@ -71,7 +78,31 @@ class WinnerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if (isset($request->submit)) {
+           
+            $winner = Winner::find($id);
+            if (!$winner) {
+                return redirect('/admin/winner')->withError('Yoga detail not found.');
+            }
+
+            //image upload
+            if (isset($request->image)) {
+                $newimage = time() . '.' . $request->image->extension();
+                $request->image->move(public_path('admin/upload/winner'), $newimage);
+                $imagedestination = public_path('admin/upload/winner/') . $winner->image;
+                if (file_exists($imagedestination) && is_file($imagedestination)) {
+                    unlink($imagedestination);
+                }
+                $winner->image =  $newimage;
+            }
+
+            $result = $winner->save();
+            if ($result) {
+                return redirect('/admin/winner')->withSuccess('Winner updated successfully!');
+            } else {
+                return redirect('/admin/winner')->withError('Unable to update winner!');
+            }
+        }
     }
 
     /**
@@ -79,6 +110,19 @@ class WinnerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $winner = Winner::find($id);
+        if (!$winner) {
+            return redirect('/admin/winner')->withError('Winner detail not found.');
+        }
+        $image_path = public_path('admin/upload/winner/') . $winner->image;
+        if (file_exists($image_path) && is_file($image_path)) {
+            unlink($image_path);
+        }
+        $result = $winner->delete();
+        if ($result) {
+            return redirect('/admin/winner')->withSuccess('Winner deleted successfully!');
+        } else {
+            return redirect('/admin/winner')->withError('Unable to delete winner');
+        }
     }
 }

@@ -84,7 +84,10 @@
             <li class="">
                 <a href="{{ url('/admin/circular')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Circular</span></a>
             </li>
-
+            <li class="">
+                <a href="{{ url('/admin/winner')}}" class="nav-link"><i class="bi bi-images" aria-hidden="true"></i><span>Winner</span></a>
+            </li>
+            
         </ul>
 
     </aside>

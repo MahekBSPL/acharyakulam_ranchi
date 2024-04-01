@@ -34,82 +34,9 @@
                             </div>
                         </div>
                         @endforeach
-                        
-                        <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                            <div class="portfolio-wrap">
-                                <img src="assets/img/yoga/Mask Group 74.png" class="img-fluid" alt="">
-                                <div class="portfolio-info">
-                                    <div class="portfolio-links">
-                                        <a href="assets/img/yoga/Mask Group 74.png" data-gallery="portfolioGallery"
-                                            class="portfokio-lightbox" title=""><i class="bi bi-plus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                            <div class="portfolio-wrap">
-                                <img src="assets/img/yoga/Mask Group 75.png" class="img-fluid" alt="">
-                                <div class="portfolio-info">
-                                    <div class="portfolio-links">
-                                        <a href="assets/img/yoga/Mask Group 75.png" data-gallery="portfolioGallery"
-                                            class="portfokio-lightbox" title=""><i class="bi bi-plus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4  col-md-6 portfolio-item filter-app">
-                            <div class="portfolio-wrap">
-                                <img src="assets/img/yoga/Mask Group 76.png" class="img-fluid" alt="">
-                                <div class="portfolio-info">
-                                    <div class="portfolio-links">
-                                        <a href="assets/img/yoga/Mask Group 76.png" data-gallery="portfolioGallery"
-                                            class="portfokio-lightbox" title=""><i class="bi bi-plus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4  col-md-6 portfolio-item filter-app">
-                            <div class="portfolio-wrap">
-                                <img src="assets/img/yoga/Mask Group 77.png" class="img-fluid" alt="">
-                                <div class="portfolio-info">
-                                    <div class="portfolio-links">
-                                        <a href="assets/img/yoga/Mask Group 77.png" data-gallery="portfolioGallery"
-                                            class="portfokio-lightbox" title=""><i class="bi bi-plus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4  col-md-6  portfolio-item filter-app">
-                            <div class="portfolio-wrap">
-                                <img src="assets/img/yoga/Mask Group 78.png" class="img-fluid" alt="">
-                                <div class="portfolio-info">
-                                    <div class="portfolio-links">
-                                        <a href="assets/img/yoga/Mask Group 78.png" data-gallery="portfolioGallery"
-                                            class="portfokio-lightbox" title=""><i class="bi bi-plus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-lg-4  col-md-6 portfolio-item filter-app">
-                            <div class="portfolio-wrap">
-                                <img src="assets/img/yoga/Mask Group 79.png" class="img-fluid" alt="">
-                                <div class="portfolio-info">
-                                    <div class="portfolio-links">
-                                        <a href="assets/img/yoga/Mask Group 79.png" data-gallery="portfolioGallery"
-                                            class="portfokio-lightbox" title=""><i class="bi bi-plus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>-->
                     </div>
                 </div>
             </div>
         </section>
-
 </body>
 @endsection
