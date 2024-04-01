@@ -86,7 +86,7 @@
                                             </td>
 
                                         </tr>
-                                        @php $count++; @endphp
+                                       
                                         @endforeach
                                         @endif
                                     </tbody>

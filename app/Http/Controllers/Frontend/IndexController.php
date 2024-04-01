@@ -25,6 +25,9 @@ use App\Models\Admin\PhotoCategory;
 use App\Models\Admin\Rule;
 use App\Models\Admin\TopperStudent;
 use App\Models\Admin\TopperStudentImage;
+use App\Models\Admin\HomeGallery;
+use App\Models\Admin\Winner;
+
 class IndexController extends Controller
 {
     //
@@ -36,7 +39,8 @@ class IndexController extends Controller
         $sliders = Slider::all();
         $today=date('Y-m-d');
         $notifications = Notification::where('status', 2)->where('language', 1)->where('startdate', '<=', $today)->where('enddate', '>=', $today)->get();
-        return view('frontend/index', compact('title', 'sliders', 'notifications'));
+        $home_gallery=HomeGallery::orderBy('order','ASC')->get();
+        return view('frontend/index', compact('title', 'sliders', 'notifications','home_gallery'));
         // $menuparents = Menu::with('subMenu')
         //                     ->where('status',2)
         //                     ->where('menu_position',1)
@@ -44,7 +48,11 @@ class IndexController extends Controller
         //                     ->get();
         //return view('frontend/index', compact('title','sliders','notifications','menuparents'));
     }
-
+    public function winner()
+    {
+        $winner = Winner::orderBy('order', 'asc')->get();
+        return view('frontend.winner-student',compact('winner'));
+    }
     public function introduction()
     {
         return view('frontend.introduction');
