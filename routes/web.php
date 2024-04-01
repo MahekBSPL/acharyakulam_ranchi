@@ -76,8 +76,7 @@ Route::get('/frontend/council', [IndexController::class, 'council']);
 Route::get('/frontend/topper-student', [IndexController::class, 'topper_student']);
 Route::get('/frontend/academics', [IndexController::class, 'academics']);
 Route::get('/frontend/competitive-exam', [IndexController::class, 'competitive_exam']);
-Route::get('/frontend/competitive-exam-2022-2023', [IndexController::class, 'competitive_exam_2022_2023']);
-Route::get('/frontend/competitive-exam-2023-2024', [IndexController::class, 'competitive_exam_2023_2024']);
+
 Route::get('/frontend/yoga', [IndexController::class, 'yoga']);
 Route::get('/frontend/gallery', [IndexController::class, 'gallery']);
 Route::get('/frontend/image-gallery-2022-2023', [IndexController::class, 'image_gallery_2022_2023']);
@@ -85,6 +84,10 @@ Route::get('/frontend/image-gallery-2023-2024', [IndexController::class, 'image_
 Route::get('/frontend/media', [IndexController::class, 'media']);
 Route::get('/frontend/facility', [IndexController::class, 'facility']);
 Route::get('/frontend/circular', [IndexController::class, 'circular']);
+Route::get('/frontend/competitive_exam_details/{id}', [IndexController::class, 'competitive_exam_details']);
+
+Route::get('/frontend/photo_gallery_details/{id}', [IndexController::class, 'photo_gallery_details']);
+Route::get('/frontend/sub_photo_gallery/{id}', [IndexController::class, 'sub_photo_gallery']);
 // Route::get('/frontend/introduction', [AboutUsController::class, 'introduction']);
 // Route::get('/frontend/mission-vision', [AboutUsController::class, 'mission_vision']);
 // Route::get('/frontend/staff', [AboutUsController::class, 'staff']);

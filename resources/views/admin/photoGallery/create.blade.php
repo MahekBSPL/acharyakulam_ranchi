@@ -92,7 +92,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-6">
                                     <div class="form-group">
-                                        <input type="file" require accept="image/png, image/gif, image/jpeg, image/jpg" name="thumbnail"
+                                        <input type="file"   name="thumbnail"
                                             class="input_class inline-block" id="txtimg"  required />
                                     </div>
                                     <span class="txtimg_error" style="color:red;"></span>
@@ -109,7 +109,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-6">
                                     <div class="form-group">
-                                        <input type="file" required accept="image/png, image/gif, image/jpeg, image/jpg" name="image[]"
+                                        <input type="file"   name="image[]"
                                             class="input_class inline-block" id="txtimg" multiple />
                                     </div>
                                     <span class="txtimg_error" style="color:red;"></span>

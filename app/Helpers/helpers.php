@@ -870,3 +870,18 @@ if (!function_exists('check_topper_student_image')) {
 		return $fetchResult;
 	}
 }
+if (!function_exists('check_topper_student_image_count')) {
+	function check_topper_student_image_count($student_id)
+	{
+
+		$fetchResult = DB::table('topper_student_images')->where('student_id', $student_id)->count();
+		return $fetchResult;
+	}
+}
+if (!function_exists('topper_student_image')) {
+	function topper_student_image($student_id)
+	{
+		$fetchResult = DB::table('topper_student_images')->where('student_id', $student_id)->get();
+		return $fetchResult;
+	}
+}
