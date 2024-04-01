@@ -1,10 +1,5 @@
 @extends('frontend.layouts.main')
 @section('container')
-
-<!-- jqery validate cdn -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"></script>
-
 <body>
 
     <div class="banner">
@@ -61,32 +56,49 @@
                             </div>
                         </div>
                     </div>
+                    @if ($errorMessage = Session::get('error'))
+                        <div class="alert alert-danger">
+                            <strong>Error!</strong> {{ $errorMessage }}
+                        </div>
+                    @endif
 
+                    @if ($successMessage = Session::get('success'))
+                        <div class="alert alert-success">
+                            {{ $successMessage }}
+                        </div>
+                    @endif
                     <div class="col-lg-6">
-                        <form id="contact-form" class="php-email-form" method="POST">
+                        <form action="{{ route('contactsave') }}" class="php-email-form" method="POST">
+                        @csrf
                             <div class="row gy-4">
 
                                 <div class="col-md-6">
-                                    <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required>
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="Your Name">
+                                    <span class="text-danger">@error('name'){{$message}} @enderror</span>
                                 </div>
 
                                 <div class="col-md-6 ">
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
+                                    <span class="text-danger">@error('email'){{$message}} @enderror</span>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone Number" required>
+                                    <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone Number">
+                                    <span class="text-danger">@error('phone'){{$message}} @enderror</span>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                                    <input type="text" class="form-control" name="sub" id="sub" placeholder="Subject">
+                                    <span class="text-danger">@error('sub'){{$message}} @enderror</span>
                                 </div>
 
                                 <div class="col-md-12">
-                                    <textarea class="form-control" name="message" id="message" rows="6" placeholder="Message" required></textarea>
+                                    <textarea class="form-control" name="msg" id="msg" rows="6" placeholder="Message"> </textarea>
+                                    <span class="text-danger">@error('msg'){{$message}} @enderror</span>
+     
                                 </div>
 
-                                <button type="submit" id="submit-button" name="submit">Send Message</button>
+                                <button type="submit" id="submit-button" value="submit" name="submit">Send Message</button>
                             </div>
                         </form>
                     </div>
@@ -99,68 +111,5 @@
 
 
     </main><!-- End #main -->
-
-
-    <!-- ========== json script ========== -->
-    <script>
-        $('#contact-form').validate({
-            rules: {
-                name: "required",
-                email: {
-                    required: true,
-                    email: true
-                },
-                phone: {
-                    required: true,
-                    number: true,
-                    minlength: 10,
-                    maxlength: 10
-                },
-                subject: "required",
-                // message:"required"
-
-            },
-            messages: {
-                name: {
-                    required: "Please enter your name",
-                },
-                email: {
-                    required: "Please enter email id",
-                    email: "Please enter valid email id",
-                },
-                phone: {
-                    required: "Please enter your phone",
-                    number: "Please enter valid digit number"
-                },
-                subject: "Please enter your subject",
-                // message:"Please enter your message",
-            },
-
-
-            submitHandler: function(form, e) {
-                e.preventDefault();
-                var nameAdd = $("#name").val();
-                var emailAdd = $("#email").val();
-                var phoneAdd = $("#phone").val();
-                var subjectAdd = $("#subject").val();
-                var messageAdd = $("#message").val();
-
-                $.ajax({
-                    url: '/form_handler/savedata.php',
-                    type: 'POST',
-                    data: {
-                        namesend: nameAdd,
-                        emailsend: emailAdd,
-                        phonesend: phoneAdd,
-                        subjectsend: subjectAdd,
-                        messagesend: messageAdd,
-                    },
-                    success: function(res) {
-                        alert(res);
-                    }
-                });
-            }
-        });
-    </script>
 </body>
 @endsection

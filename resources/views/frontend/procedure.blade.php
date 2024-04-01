@@ -129,8 +129,8 @@
         <div class="row">
           <div class="col-md-8">
             <h2>List of Documents to be brought at the time of Admission:–</h2>
-            @foreach($procedureDescriptions as $procedureDescription)
             <ul>
+            @foreach($procedureDescriptions as $procedureDescription)
               <li>{{strip_tags(html_entity_decode($procedureDescription->description))}}</li>
 
               <!-- <li>Birth Certificate issued by Municipal Corporation of the State Government.</li>
@@ -157,8 +157,8 @@
               <li>Report Card of the previous school.</li>
               <li>Two passport size photographs of the child and one photograph of each parents (father, mother
                 and guardian)</li> -->
+                @endforeach
             </ul>
-            @endforeach
           </div>
 
           @foreach($procedureFees as $procedureFee)

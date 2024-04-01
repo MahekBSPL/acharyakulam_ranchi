@@ -27,8 +27,8 @@
             </div>
           </div>
       @endforeach
-    
-        <!-- <div class="row mt-4">
+     
+         <!-- <div class="row mt-4">
           <div class="col-md-4 exam">
             <h6>Art NationalLEVEL Painting</h6>
             <p><img src="assets/img/Group 1448.png" alt=""></p>
@@ -85,6 +85,8 @@
             </div>
           </div> 
         </div> -->
+
+        <!-- ========= -->
         </div>
       </div>
     </section>
