@@ -7,24 +7,11 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Greetings to All:</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Greetings to All: </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p>A new session means a fresh start and new opportunities. So, on behalf of all the personnel I greet all the
-            parents with open arms for the session 2024-2025.</p>
-          <p>Here at Acharyakulam we affirm and aim at building independent and creative thinkers, with purpose. Our
-            genuine concern ensures student's emotional growth along with intellectual excellence.</p>
-          <p>Our priority is to create an excellent bond and bring all the stakeholders that is the parents, teachers
-            and students under one roof and create a perfect vicinity to develop the creative innovators of tomorrow.
-          </p>
-          <p>We focus at grooming our students' to become confident, articulate and enlightened young citizens, ready to
-            step into global society with dignity, honour and integrity.</p>
-          <p>The theme for the coming session is "Self Discipline".</p>
-          <p>A self disciplined student is more punctual, invests more time and effort in what he or she does, and is
-            more likely to take control of his or her life, set goals, and take concrete steps to achieve them.</p>
-          <p>With the nurturing they get from the school they would definitely become the future leaders and role models
-            of society.</p>
+          <?=$popup_data->description?>
         </div>
       </div>
     </div>
