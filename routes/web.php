@@ -59,7 +59,7 @@ Route::get('/', function () {
 });
 
 Route::get('/frontend/index', [IndexController::class, 'index']);
-
+Route::get('/frontend/winner', [IndexController::class, 'winner']);
 Route::get('/frontend/introduction', [IndexController::class, 'introduction']);
 Route::get('/frontend/mission-vision', [IndexController::class, 'mission_vision']);
 Route::get('/frontend/staff', [IndexController::class, 'staff']);
@@ -128,6 +128,7 @@ Route::middleware(['auth', 'IsAdmin'])->group(function () {
     Route::any('/admin/update_winner_orders', [AjaxRequestController::class, 'update_winner_orders'])->name('/admin/update_winner_orders');
     Route::any('/admin/update_home_gallery_orders', [AjaxRequestController::class, 'update_home_gallery_orders'])->name('/admin/update_home_gallery_orders');
     Route::any('/admin/update_yoga_orders', [AjaxRequestController::class, 'update_yoga_orders'])->name('/admin/update_yoga_orders');
+    Route::any('/admin/update_winner_orders', [AjaxRequestController::class, 'update_winner_orders'])->name('/admin/update_winner_orders');
     Route::resource('/admin/rule', RuleController::class);
     Route::resource('/admin/council', StudentCouncilController::class);
     Route::resource('/admin/class', ClassNameController::class);

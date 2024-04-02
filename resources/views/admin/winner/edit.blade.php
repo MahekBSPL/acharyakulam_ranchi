@@ -18,52 +18,10 @@
                 </div>
                 @endif
 
-                <form action="{{ route('slider.update' , $sliders->id) }}" name="form1" id="form1" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+                <form action="{{ route('winner.update' , $winner->id) }}" name="form1" id="form1" method="post" enctype="multipart/form-data" accept-charset="utf-8">
                     @csrf
                     @method('PUT')
                     <div class="panel-body">
-
-                        <div class="row">
-                            <div class="col-12 col-md-3 col-lg-3">
-                                <div class="form-group">
-                                    <label>Slider Title:</label>
-                                    <span class="star">*</span>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-6">
-                                <div class="form-group">
-                                    <input name="title" maxlength="36" minlength="2" autocomplete="off" type="text" class="input_class form-control  @error('title') is-invalid @enderror" id="title" value="{{ !empty($sliders->title)?$sliders->title:old('title')}}" />
-                                 
-                                    <span class="invalid-feedback" role="alert">
-                                    @error('title')
-                                        <strong>{{ $message }}</strong>
-                                        @enderror
-                                    </span>
-                                  
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-12 col-md-3 col-lg-3">
-                                <div class="form-group">
-                                    <label>URL:</label>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-6">
-                                <div class="form-group">
-                                    <input name="url" autocomplete="off" type="text" minlength="" class="input_class form-control @error('url') is-invalid @enderror " id="url" value="{{!empty($sliders->url)?$sliders->url:old('url')}}" />
-                                 
-                                    <span class="invalid-feedback" role="alert">
-                                    @error('url')
-                                        <strong>{{ $message }}</strong>
-                                        @enderror
-                                    </span>
-                                 
-                                </div>
-                            </div>
-                        </div>
-
                         <div id="txtPDF">
                             <div class="row">
                                 <div class="col-12 col-md-3 col-lg-3">
@@ -73,28 +31,25 @@
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-6">
-                                    <div class="form-group">
-                                        <input type="file" value="{{old('image')}}" name="image" class="input_class w-50 inline-block" id="image" />
-                                        <a href="{{ URL::asset('/admin/upload/slider/'.$sliders->image)}}"><img src="{{ URL::asset('admin/upload/slider/'.$sliders->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
-                                        <input type="hidden" name="olduplode" class="input_class w-50 inline-block" value="<?php echo !empty($slider->img) ? $slider->img : ''; ?>" />
-
-                                        <span class="invalid-feedback" role="alert">
-                                            @error('image')
-                                            <strong>{{ $message }}</strong>
-                                            @enderror
-                                        </span>
-
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <input type="file"  onchange="onlytxtuplodeimg(this);"  id="txtimg"name="image" class="input_class inline-block"  autocomplete="off" value="{{old('image')}}" />
+                                @if($winner->image)
+                                <a href="{{ URL::asset('/admin/upload/winner/'.$winner->image)}}"><img src="{{ URL::asset('admin/upload/winner/'.$winner->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
+                                @endif
+                                <input type="hidden" name="oldimage" class="input_class w-50 inline-block" value="{{ !empty($winner->image)?$winner->image:old('image')}}" />
+                                <span class="text-danger">@error('image'){{$message}} @enderror</span>
+                                <span class="txtimg_error" style="color:red;"></span>
                             </div>
+                        </div>
+                    </div>
                         </div>
 
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-xm-12">
                                 <div class="pull-right">
 
-                                    <input name="cmdsubmit" type="submit" class="btn btn-success" id="cmdsubmit" value="Submit" />&nbsp;
-                                    <a href="{{ url('/admin/slider')}}" class="btn btn-primary">Back</a>
+                                    <input name="submit" type="submit" class="btn btn-success" id="cmdsubmit" value="Submit" />&nbsp;
+                                    <a href="{{ url('/admin/winner')}}" class="btn btn-primary">Back</a>
                                     <input type="hidden" name="random" value="" />
                                 </div>
                             </div>
@@ -105,4 +60,6 @@
         </div>
     </div>
 </div>
+<script src="{{ URL::asset('/assets/modules/jquery.min.js')}}"></script>
+<script src="{{ URL::asset('/assets/js/page/validate.js')}}"></script>
 @endsection

@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<?php include_once("header.php"); ?>
+@extends('frontend.layouts.main')
+@section('container')
 
 <style>
   .events-slide h5 {
@@ -517,9 +516,5 @@
       </div>
     </section>
 
-    <?php include_once("footer.php"); ?>
-
-
+    @endsection
 </body>
-
-</html>
