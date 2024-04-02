@@ -27,6 +27,15 @@ if (!function_exists('getMenuData')) {
     } 
 }
 
-
+if (!function_exists('getFooterMenu')) {
+    function getFooterMenu()
+    {
+        return Menu::with('subMenu')
+                    ->where('status', 2)
+                    ->where('menu_position', 2)
+                    ->where('menu_category', 1)
+                    ->get();
+    } 
+}
 
 ?>

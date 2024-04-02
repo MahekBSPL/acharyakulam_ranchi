@@ -73,7 +73,7 @@
                     @php
                     $staticPageUrl = getStaticPageUrl($menuparent->title);
                     @endphp
-                     <a href="{{ $staticPageUrl }}">{{ $menuparent->title }}</a>
+                    <a href="{{ $staticPageUrl }}">{{ $menuparent->title }}</a>
                     @elseif($menuparent->menutype==2)
                     <a href="{{url('/admin/upload/menu/' . $menuparent->fileupload)}}" target="_blank">{{ $menuparent->title }}</a>
                     @elseif($menuparent->menutype==3)
@@ -182,12 +182,23 @@
             <div class="footer-content col-lg-4">
                 <h4>About</h4>
                 <ul>
-                    <li><a href="{{url('frontend/introduction')}}">Why Acharyakulam</a></li>
+                    <!-- <li><a href="{{url('frontend/introduction')}}">Why Acharyakulam</a></li>
                     <li><a href="{{url('frontend/mission')}}">Our Mission</a></li>
                     <li><a href="{{url('frontend/rules')}}">Rules & Regulation </a></li>
                     <li><a href="{{url('frontend/media')}}">Media Print</a></li>
                     <li><a href="{{url('frontend/contact-us')}}">Contact Us</a></li>
-                    <li><a href="{{url('frontend/Careers')}}">Careers</a></li>
+                    <li><a href="{{url('frontend/Careers')}}">Careers</a></li> -->
+                    @foreach(getFooterMenu() as $menuparent)
+                    <li>
+                        @if($menuparent->menutype == 2)
+                        <a href="{{ url('/admin/upload/menu/' . $menuparent->fileupload) }}" target="_blank">{{ $menuparent->title }}</a>
+                        @elseif($menuparent->menutype == 3)
+                        <a href="{{ url('/frontend/' . $menuparent->url) }}">{{ $menuparent->title }}</a>
+                        @endif
+                    </li>
+                    @endforeach
+                </ul>
+                </li>
                 </ul>
             </div>
 

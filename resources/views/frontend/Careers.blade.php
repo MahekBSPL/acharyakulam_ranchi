@@ -1,20 +1,23 @@
-<?php
+@extends('frontend.layouts.main')
+@section('container')
 
-  include 'db.php';
+<?php 
 
-include 'header.php';
+//   include 'db.php';
 
-  //include('smtp/PHPMailerAutoload.php');
+// include 'header.php';
 
-   use PHPMailer\PHPMailer\PHPMailer;
+//   //include('smtp/PHPMailerAutoload.php');
+
+//    use PHPMailer\PHPMailer\PHPMailer;
 
 
 
-require_once 'phpmailer/Exception.php';
+// require_once 'phpmailer/Exception.php';
 
-require_once 'phpmailer/PHPMailer.php';
+// require_once 'phpmailer/PHPMailer.php';
 
-require_once 'phpmailer/SMTP.php';
+// require_once 'phpmailer/SMTP.php';
 
 
 
@@ -22,229 +25,229 @@ require_once 'phpmailer/SMTP.php';
 
   
 
-  $alert = '';
+//   $alert = '';
 
-   if(isset($_POST["send"])){
+//    if(isset($_POST["send"])){
 
-   $mail = new PHPMailer(true);
+//    $mail = new PHPMailer(true);
 
-    $name=mysqli_real_escape_string($conn,$_POST['name']); 
+//     $name=mysqli_real_escape_string($conn,$_POST['name']); 
 
-     $postion=mysqli_real_escape_string($conn,$_POST['postion']); 
+//      $postion=mysqli_real_escape_string($conn,$_POST['postion']); 
 
-     $experience =mysqli_real_escape_string($conn,$_POST['experience']); 
+//      $experience =mysqli_real_escape_string($conn,$_POST['experience']); 
 
-    $msg=mysqli_real_escape_string($conn,$_POST['msg']); 
+//     $msg=mysqli_real_escape_string($conn,$_POST['msg']); 
 
-     $experience =mysqli_real_escape_string($conn,$_POST['experience']); 
+//      $experience =mysqli_real_escape_string($conn,$_POST['experience']); 
 
-      $fileinfo = @getimagesize($_FILES["image"]["tmp_name"]);
+//       $fileinfo = @getimagesize($_FILES["image"]["tmp_name"]);
 
-    $width = $fileinfo[0];
+//     $width = $fileinfo[0];
 
-    $height = $fileinfo[1];
+//     $height = $fileinfo[1];
 
     
 
-    $allowed_image_extension = array(
+//     $allowed_image_extension = array(
 
-        "pdf"
+//         "pdf"
 
         
 
-    );
+//     );
 
     
 
-    // Get image file extension
+//     // Get image file extension
 
-    $file_extension = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+//     $file_extension = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
 
     
 
-    // Validate file input to check if is not empty
+//     // Validate file input to check if is not empty
 
-    if (! file_exists($_FILES["image"]["tmp_name"])) {
+//     if (! file_exists($_FILES["image"]["tmp_name"])) {
 
-        $response = array(
+//         $response = array(
 
-            "type" => "error",
+//             "type" => "error",
 
-            "message" => "Choose image file to upload."
+//             "message" => "Choose image file to upload."
 
-        );
+//         );
 
-    }    // Validate file input to check if is with valid extension
+//     }    // Validate file input to check if is with valid extension
 
-    else if (! in_array($file_extension, $allowed_image_extension)) {
+//     else if (! in_array($file_extension, $allowed_image_extension)) {
 
-        $response = array(
+//         $response = array(
 
-            "type" => "error",
+//             "type" => "error",
 
-            "message" => "Upload valiid images. Only PNG and JPEG are allowed."
+//             "message" => "Upload valiid images. Only PNG and JPEG are allowed."
 
-        );
+//         );
 
-        echo $result;
+//         echo $result;
 
-    }    // Validate image file size
+//     }    // Validate image file size
 
-    else if (($_FILES["image"]["size"] > 1000000)) {
+//     else if (($_FILES["image"]["size"] > 1000000)) {
 
-        $response = array(
+//         $response = array(
 
-            "type" => "error",
+//             "type" => "error",
 
-            "message" => "Pdf size exceeds 1MB"
+//             "message" => "Pdf size exceeds 1MB"
 
-        );
+//         );
 
-    }    // Validate image file dimension
+//     }    // Validate image file dimension
 
-    else {
+//     else {
 
-        $target = "cv/" . basename($_FILES["image"]["name"]);
+//         $target = "cv/" . basename($_FILES["image"]["name"]);
 
-        move_uploaded_file($_FILES["image"]["tmp_name"], $target);
+//         move_uploaded_file($_FILES["image"]["tmp_name"], $target);
 
-      $mysql=mysqli_query($conn,"INSERT INTO `tbl_career`(`name`, `postion`, `experience`, `msg`, `file`) VALUES ('$name','$postion','$experience','$msg','".$target."')");
+//       $mysql=mysqli_query($conn,"INSERT INTO `tbl_career`(`name`, `postion`, `experience`, `msg`, `file`) VALUES ('$name','$postion','$experience','$msg','".$target."')");
 
       
 
-   //   echo "INSERT INTO `tbl_career`(`name`, `postion`, `experience`, `msg`, `file`) VALUES ('$name','$postion','$experience','$msg','".$target."')";
+//    //   echo "INSERT INTO `tbl_career`(`name`, `postion`, `experience`, `msg`, `file`) VALUES ('$name','$postion','$experience','$msg','".$target."')";
 
-    }
+//     }
 
-     if($mysql){
+//      if($mysql){
 
-     // $mail->SMTPDebug = 3;
+//      // $mail->SMTPDebug = 3;
 
    
 
-     $mail->isSMTP();
+//      $mail->isSMTP();
 
      
 
-  //   $mail->SMTPDebug = 3;
+//   //   $mail->SMTPDebug = 3;
 
-    $mail->Host = "localhost";
+//     $mail->Host = "localhost";
 
-   // $mail->SMTPSecure = 'tls';  // Enable TLS encryption, `ssl` also accepted
+//    // $mail->SMTPSecure = 'tls';  // Enable TLS encryption, `ssl` also accepted
 
-    $mail->Port = 25;  
+//     $mail->Port = 25;  
 
-//	$mail->SMTPAutoTLS = false;
+// //	$mail->SMTPAutoTLS = false;
 
-	$mail->SMTPAuth = false;
+// 	$mail->SMTPAuth = false;
 
-$mail->SMTPAutoTLS = false;
+// $mail->SMTPAutoTLS = false;
 
-  $mail->Username = 'helpdesk@acharyakulamranchi.com'; // Gmail address which you want to use as SMTP server
+//   $mail->Username = 'helpdesk@acharyakulamranchi.com'; // Gmail address which you want to use as SMTP server
 
-   $mail->Password = 'adminranchi01'; // Gmail address Password
+//    $mail->Password = 'adminranchi01'; // Gmail address Password
 
-      $mail->setFrom('helpdesk@acharyakulamranchi.com','HelpDesk'); // Gmail address which you used as SMTP server
+//       $mail->setFrom('helpdesk@acharyakulamranchi.com','HelpDesk'); // Gmail address which you used as SMTP server
 
-      $mail->addAddress('helpdesk@acharyakulamranchi.com'); // Email address where you want to receive emails (you can use any of your gmail address including the gmail address which you used as SMTP server)
-
-  
-
-      $mail->isHTML(true);
-
-      $mail->Subject = 'Message Received (Careers Page)';
-
-      $mail->Body = "<h3>Name : $name <br>Position: $postion <br>Experience : $experience <br>Message : $msg</h3>";
-
-        $attachment = $target;
-
-        $mail->AddAttachment($attachment , 'Resume.pdf');
-
-      $mail->SMTPOptions=array('ssl'=>array(
-
-		'verify_peer'=>false,
-
-		'verify_peer_name'=>false,
-
-		'allow_self_signed'=>false
-
-	));
-
-      $mail->send();
-
-      echo'<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
-
-    
-
-          echo '<script language="javascript">';
-
-    
-
-    echo 'swal({
-
-    
-
-      title: "THANKS!",
-
-    
-
-      text: "Successfully Submitted!",
-
-    
-
-      icon: "success",
-
-    
-
-      button: "ok!",
-
-    
-
-    });';
-
-    
-
-    echo '</script>';
-
-    
-
-          }else{
-
-  echo'<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
-
-        echo '<script language="javascript">';
-
-          echo 'swal({
+//       $mail->addAddress('helpdesk@acharyakulamranchi.com'); // Email address where you want to receive emails (you can use any of your gmail address including the gmail address which you used as SMTP server)
 
   
 
-    title: "Wrong!",
+//       $mail->isHTML(true);
+
+//       $mail->Subject = 'Message Received (Careers Page)';
+
+//       $mail->Body = "<h3>Name : $name <br>Position: $postion <br>Experience : $experience <br>Message : $msg</h3>";
+
+//         $attachment = $target;
+
+//         $mail->AddAttachment($attachment , 'Resume.pdf');
+
+//       $mail->SMTPOptions=array('ssl'=>array(
+
+// 		'verify_peer'=>false,
+
+// 		'verify_peer_name'=>false,
+
+// 		'allow_self_signed'=>false
+
+// 	));
+
+//       $mail->send();
+
+//       echo'<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+
+    
+
+//           echo '<script language="javascript">';
+
+    
+
+//     echo 'swal({
+
+    
+
+//       title: "THANKS!",
+
+    
+
+//       text: "Successfully Submitted!",
+
+    
+
+//       icon: "success",
+
+    
+
+//       button: "ok!",
+
+    
+
+//     });';
+
+    
+
+//     echo '</script>';
+
+    
+
+//           }else{
+
+//   echo'<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+
+//         echo '<script language="javascript">';
+
+//           echo 'swal({
 
   
 
-    text: "Something Wrong!",
+//     title: "Wrong!",
 
   
 
-    icon: "error",
+//     text: "Something Wrong!",
 
   
 
-    button: "ok!",
+//     icon: "error",
 
   
 
-  });';
+//     button: "ok!",
 
   
 
-  echo '</script>';
+//   });';
 
   
 
-        }
+//   echo '</script>';
 
-   }
+  
+
+//         }
+
+//    }
 
   ?>
 
@@ -407,8 +410,5 @@ ol {
     <!-- Js Plugins -->
 
   </body>
-
-</html>
-
-      <?php include_once("footer.php"); ?>
+@endsection
 
