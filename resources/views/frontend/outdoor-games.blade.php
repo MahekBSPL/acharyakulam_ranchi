@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<?php include_once("header.php"); ?>
-
+@extends('frontend.layouts.main')
+@section('container')
 
 
 <body>
@@ -25,11 +23,15 @@
             <section class="craft">
                 <div class="container" data-aos="fade-up">
                     <div class="row">
+<?php
+foreach($result as $row){
+?>
                         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                             <div class="portfolio-wrap">
                                 <div class="gallery">
-                                    <img src="assets/img/facility/Badminton.webp" class="img-fluid" alt="">
-                                    <h5>Badminton</h5>
+                                <img src="{{ URL::asset('/admin/upload/photoGallery/thumbnail/'.$row->thumbnail)}}" class="img-fluid" alt="">
+
+                                    <h5><?=$row->title?></h5>
                                 </div>
                                 <div class="portfolio-info">
                                     <div class="portfolio-links">
@@ -39,109 +41,19 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                            <div class="portfolio-wrap">
-                                <div class="gallery">
-                                    <img src="assets/img/facility/Carrom.webp" class="img-fluid" alt="">
-                                    <h5>Carrom</h5>
-                                </div>
-                                <div class="portfolio-info">
-                                    <div class="portfolio-links">
-                                        <a href="assets/img/facility/Carrom.webp" data-gallery="portfolioGallery"
-                                            class="portfokio-lightbox" title=""><i class="bi bi-plus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4  col-md-6 portfolio-item filter-app">
-                            <div class="portfolio-wrap">
-                                <div class="gallery">
-                                    <img src="assets/img/facility/Chess.webp" class="img-fluid" alt="">
-                                    <h5>Chess</h5>
-                                </div>
-                                <div class="portfolio-info">
 
-                                    <div class="portfolio-links">
-                                        <a href="assets/img/facility/Chess.webp" data-gallery="portfolioGallery"
-                                            class="portfokio-lightbox" title=""><i class="bi bi-plus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4  col-md-6 portfolio-item filter-app">
-                            <div class="portfolio-wrap">
-                                <div class="gallery">
-                                    <img src="assets/img/facility/Football.webp" class="img-fluid" alt="">
-                                    <h5>Football</h5>
-                                </div>
-                                <div class="portfolio-info">
-                                    <div class="portfolio-links">
-                                        <a href="assets/img/facility/Football.webp" data-gallery="portfolioGallery"
-                                            class="portfokio-lightbox" title=""><i class="bi bi-plus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4  col-md-6  portfolio-item filter-app">
-                            <div class="portfolio-wrap">
-                                <div class="gallery">
-                                    <img src="assets/img/facility/Outdoor Complex.webp" class="img-fluid" alt="">
-                                    <h5>Outdoor Complex</h5>
-                                </div>
-                                <div class="portfolio-info">
-                                    <div class="portfolio-links">
-                                        <a href="assets/img/facility/Outdoor Complex.webp"
-                                            data-gallery="portfolioGallery" class="portfokio-lightbox" title=""><i
-                                                class="bi bi-plus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <?php }?>
 
 
-                        <div class="col-lg-4  col-md-6 portfolio-item filter-app">
-                            <div class="portfolio-wrap">
-                                <div class="gallery">
-                                    <img src="assets/img/facility/indoor-games.webp" class="img-fluid" alt="">
-                                    <h5>Table-Tannis</h5>
-                                </div>
-                                <div class="portfolio-info">
-                                    <div class="portfolio-links">
-                                        <a href="assets/img/facility/indoor-games.webp" data-gallery="portfolioGallery"
-                                            class="portfokio-lightbox" title=""><i class="bi bi-plus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4  col-md-6 portfolio-item filter-app">
-                            <div class="portfolio-wrap">
-                                <div class="gallery">
-                                    <img src="assets/img/facility/Wushu.webp" class="img-fluid" alt="">
-                                    <h5>Wushu</h5>
-                                </div>
-                                <div class="portfolio-info">
-                                    <div class="portfolio-links">
-                                        <a href="assets/img/facility/Wushu.webp" data-gallery="portfolioGallery"
-                                            class="portfokio-lightbox" title=""><i class="bi bi-plus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
 
         </div>
-
-        <?php include_once("footer.php"); ?>
-
-
+        </body>
+        @endsection
 
 
 
-</body>
 
-</html>
+

@@ -33,7 +33,7 @@ use App\Models\Admin\ProcedureDescription;
 
 use App\Models\Admin\HomeGallery;
 use App\Models\Admin\Winner;
-
+use App\Models\Admin\Event;
 use App\Models\Admin\Academic;
 
 class IndexController extends Controller
@@ -59,8 +59,8 @@ class IndexController extends Controller
     }
     public function event()
     {
-       // $winner = Winner::orderBy('order', 'asc')->get();
-        return view('frontend.event');
+        $result = Event::get();
+        return view('frontend/events',compact('result'));
     }
     public function introduction()
     {
@@ -167,21 +167,21 @@ class IndexController extends Controller
 
     public function gallery()
     {
-        $photocategory_data =  PhotoCategory::where('parent_id', 0)->orderBy('cat_postion', 'ASC')->get();
+        $photocategory_data =  PhotoCategory::where(['parent_id'=> 0,'gallery_type'=>1])->orderBy('cat_postion', 'ASC')->get();
         return view('frontend/gallery', compact('photocategory_data'));
     }
     public function sub_photo_gallery($parent_id)
     {
         $data = '';
-        $photocategory_data =  PhotoCategory::where('parent_id', $parent_id)->get();
-        $title_data =  PhotoCategory::where('id', $parent_id)->get()->first();
+        $photocategory_data =  PhotoCategory::where(['parent_id'=>$parent_id,'gallery_type'=>1])->get();
+        $title_data =  PhotoCategory::where(['parent_id'=>$parent_id,'gallery_type'=>1])->get()->first();
         $cat_descriptions = $title_data->cat_descriptions;
         $title = $title_data->title;
         return response()->view("frontend/gallery", compact('title', 'data', 'cat_descriptions', 'photocategory_data'));
     }
     public function photo_gallery_details($event_id)
     {
-        $photoCategory = PhotoCategory::find($event_id);
+        $photoCategory = PhotoCategory::where('gallery_type',1)->find($event_id);
         $cat_descriptions = $photoCategory->cat_descriptions;
         $title = $photoCategory->title;
         $photoGallery = PhotoGallery::where('event_id', $event_id)->orderBy('img_postion', 'ASC')->get();
@@ -279,5 +279,10 @@ class IndexController extends Controller
     public function Careers()
     {
         return view('frontend/Careers');
+    }
+    public function games()
+    {
+        $result =  PhotoCategory::where(['parent_id'=>0,'gallery_type'=>2])->orderBy('id','asc')->get();
+        return view('frontend/outdoor-games',compact('result'));
     }
 }
