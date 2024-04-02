@@ -16,27 +16,17 @@
       
       <div class="container" data-aos="fade-up">
         <div class="row  align-items-center justify-content-center">
-
-          <div class="col-md-6 academic text-center">
-            <p>School Planner(2023-2024)</p>    
-            <img src="{{url('frontend/assets/img/School-Planner-2023-24.webp')}}">
-
-            <div class="eye">
-              <a href="{{url('frontend/assets/pdf/School-Planner-2023-24.pdf')}}"><img src="{{url('frontend/assets/img/eye.png')}}" alt=""></a>
-
-              <a href="{{url('frontend/assets/pdf/School-Planner-2023-24.pdf')}}" download="" target="blank"><img src="{{url('frontend/assets/img/pdf.png')}}"
-                  alt=""></a>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
         <?php
         foreach($result as $row){
-        
+        $check_year=check_academics_year($row->year);
+            if($check_year==1)
+            {
+              $class='12';
+            } elseif($check_year==2){
+              $class='6';
+            }      
         ?>
-          <div class="col-md-6 academic text-center">
+          <div class="col-md-<?=$class?> academic text-center">
             <p><?=$row->title?>(<?=$row->year?>)</p>
             <img src="{{url('admin/upload/academic/'.$row->image)}}">
             <div class="eye">

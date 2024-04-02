@@ -77,8 +77,15 @@ class PhotoGallery extends Controller
        if ($validator->fails()) {
            return redirect('admin/photoGallery/create')->withErrors($validator)->withInput();
        }else{
+            // echo "<pre>";
+            // print_r($_POST);
+            // echo "</pre>";
+            // exit;
+
+
             $pArray['title']    					= clean_single_input($request->title); 
             $pArray['parent_id']    				= clean_single_input($request->parent_id); 
+            $pArray['gallery_type']    				= clean_single_input($request->type); 
              $pArray['thumbnail']    			    = clean_single_input($txtuplode1); 
             $pArray['cat_descriptions']    			 = $request->cat_descriptions; 
          
@@ -189,6 +196,7 @@ class PhotoGallery extends Controller
         $pArray['title']    					= clean_single_input($request->title); 
         $pArray['thumbnail']    					= clean_single_input($txtuplode1); 
         $pArray['parent_id']    					= clean_single_input($request->parent_id); 
+        $pArray['gallery_type']    				= clean_single_input($request->type); 
         $pArray['cat_descriptions']    			     = $request->cat_descriptions;  
         $create 	= Photocate::where('id', $id)->update($pArray);
    // dd($request->file('image'));

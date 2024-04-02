@@ -62,7 +62,10 @@ Route::get('/frontend/index', [IndexController::class, 'index']);
 Route::get('/frontend/winner', [IndexController::class, 'winner']);
 Route::get('/frontend/introduction', [IndexController::class, 'introduction']);
 Route::get('/frontend/mission-vision', [IndexController::class, 'mission_vision']);
+Route::get('/frontend/games', [IndexController::class, 'games']);
 Route::get('/frontend/staff', [IndexController::class, 'staff']);
+
+Route::get('/frontend/event', [IndexController::class, 'event']);
 Route::get('/frontend/message-from-swamiji', [IndexController::class, 'message_from_swamiji']);
 Route::get('/frontend/message-from-acharyaji', [IndexController::class, 'message_from_acharyaji']);
 Route::get('/frontend/message-from-the-principal', [IndexController::class, 'message_from_the_principal']);

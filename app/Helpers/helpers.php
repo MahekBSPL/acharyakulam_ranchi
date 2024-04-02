@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 use App\Models\Admin\PhotoCategory;
 use App\Models\Admin\TopperStudent ;
 use App\Models\Admin\TopperStudentImage;
-
+use App\Models\Admin\Academic;
 
 
 
@@ -882,6 +882,13 @@ if (!function_exists('topper_student_image')) {
 	function topper_student_image($student_id)
 	{
 		$fetchResult = DB::table('topper_student_images')->where('student_id', $student_id)->get();
+		return $fetchResult;
+	}
+}
+if (!function_exists('check_academics_year')) {
+	function check_academics_year($year)
+	{
+		$fetchResult = DB::table('academics')->where('year', $year)->count();
 		return $fetchResult;
 	}
 }
