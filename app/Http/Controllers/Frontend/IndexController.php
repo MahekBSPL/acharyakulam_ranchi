@@ -18,7 +18,6 @@ use App\Models\Admin\PhotoGallery;
 use App\Models\Admin\ProcedureFee;
 use Illuminate\Support\Facades\DB;
 use App\Models\Admin\Participation;
-use App\Models\Admin\PhotoCategory;
 use App\Models\Admin\TopperStudent;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\FacilitySlider;
@@ -32,6 +31,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Admin\ProcedureDescription;
 use App\Models\Admin\HomeGallery;
 use App\Models\Admin\Winner;
+use App\Models\Admin\PhotoCategory;
 use App\Models\Admin\Academic;
 
 class IndexController extends Controller
@@ -49,12 +49,6 @@ class IndexController extends Controller
         $home_gallery=HomeGallery::orderBy('order','ASC')->get();
         $popup_data=Popup::first();
         return view('frontend/index', compact('title', 'sliders', 'notifications','home_gallery','popup_data'));
-        // $menuparents = Menu::with('subMenu'),
-        //                     ->where('status',2)
-        //                     ->where('menu_position',1)
-        //                     ->where('menu_category', 1)
-        //                     ->get();
-        //return view('frontend/index', compact('title','sliders','notifications','menuparents'));
     }
     public function winner()
     {
@@ -63,7 +57,6 @@ class IndexController extends Controller
     }
     public function event()
     {
-       // $winner = Winner::orderBy('order', 'asc')->get();
         return view('frontend.event');
     }
     public function introduction()
