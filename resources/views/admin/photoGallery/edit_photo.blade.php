@@ -79,6 +79,21 @@
                                     @endif 
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-12 col-md-3 col-lg-3">
+                          <div class="form-group">
+                               <label>Gallery Type</label>
+                                    <span class="star">*</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-6">
+                               <select name="type" class="input_class form-control"autocomplete="off" required>
+                                <option value="">--Select--</option>
+                                <option value="1" <?=($data->gallery_type==1)?'selected': ''?>>Gallery</option>
+                                <option value="2"  <?=($data->gallery_type==2)?'selected': ''?>>Games</option>
+                                </select>
+                            </div>
+                        </div>
                         <div id="txtPDF" >
                         <div class="row">
                             <div class="col-12 col-md-3 col-lg-3">

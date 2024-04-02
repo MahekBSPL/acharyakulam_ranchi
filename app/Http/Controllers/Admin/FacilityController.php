@@ -46,7 +46,7 @@ class FacilityController extends Controller
             // Add validation based on type conditionally
             if ($request->has('type')) {
                 if ($request->type == '1') {
-                    $Validation['description'] = 'required';
+                    // $Validation['description'] = 'required';
                 } elseif ($request->type == '2') {
                     $Validation['url'] = 'required';
                 }
@@ -121,7 +121,7 @@ class FacilityController extends Controller
             // Add validation based on  type conditionally
             if ($request->has('type')) {
                 if ($request->type == '1') {
-                    $Validation['description'] = 'required';
+                    // $Validation['description'] = 'required';
                 } elseif ($request->type == '2') {
                     $Validation['url'] = 'required';
                 }

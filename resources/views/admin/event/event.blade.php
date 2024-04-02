@@ -58,8 +58,7 @@
                                             </td>
                                             <td>{{$event->location}}</td>
                                             <td>{{$event->date}}</td>
-                                            <td>{{$event->description}}</td>
-
+                                            <td>@if(!empty($event->description)){{strip_tags(html_entity_decode($event->description))}} @else - @endif</td>
                                             <td>
                                                 @if(!empty($event->image))
                                                 <img src="{{ URL::asset('admin/upload/event/'.$event->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">

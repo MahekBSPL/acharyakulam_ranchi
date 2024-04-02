@@ -66,7 +66,7 @@
                         <div class="row">
                             <div class="col-12 col-md-3 col-lg-3">
                           <div class="form-group">
-                     <label>Main Catogory:</label>
+                               <label>Main Catogory:</label>
 
                                     <span class="star">*</span>
                                 </div>
@@ -80,6 +80,21 @@
                                           <p class="text-danger">{{ $errors->first('parent_id') }}</p>
                                     @endif
                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-3 col-lg-3">
+                          <div class="form-group">
+                               <label>Gallery Type</label>
+                                    <span class="star">*</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-6">
+                               <select name="type" class="input_class form-control"autocomplete="off" required>
+                                <option value="">--Select--</option>
+                                <option value="1">Gallery</option>
+                                <option value="2">Games</option>
+                                </select>
                             </div>
                         </div>
                         <div id="txtPDF" >
