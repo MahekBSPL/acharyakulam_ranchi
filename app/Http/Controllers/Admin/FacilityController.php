@@ -48,7 +48,7 @@ class FacilityController extends Controller
                 if ($request->type == '1') {
                     $Validation['description'] = 'required';
                 } elseif ($request->type == '2') {
-                    $Validation['url'] = 'required|url';
+                    $Validation['url'] = 'required';
                 }
             }
             $validator = Validator::make($request->all(), $Validation);
@@ -123,7 +123,7 @@ class FacilityController extends Controller
                 if ($request->type == '1') {
                     $Validation['description'] = 'required';
                 } elseif ($request->type == '2') {
-                    $Validation['url'] = 'required|url';
+                    $Validation['url'] = 'required';
                 }
             }
 

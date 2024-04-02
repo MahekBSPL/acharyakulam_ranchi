@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\MOdels\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -26,16 +27,17 @@ class DashboardController extends Controller
             'email.exists' => 'This email id is not register for admin',
         ]);
 
-    
 
-       // dd(Auth::guard('web')->attempt($credentials), Auth::user()->role_id == 2);
+
+        // dd(Auth::guard('web')->attempt($credentials), Auth::user()->role_id == 2);
         //dd(Auth::user()->role_id);
 
         $credentials = $req->only('email', 'password');
-
+        // Attempt to authenticate the user with email and password
         if (Auth::guard('web')->attempt($credentials) && Auth::user()->usertype == 2) {
-            return redirect()->route('admin.dashboard')->with('success', 'Login Successfully!!!');
-        }    
+            // If authentication is successful and usertype is 2 (admin), redirect to admin dashboard
+             return redirect()->route('admin.dashboard', compact('title'))->with('success', 'Login Successfully!!!');
+        }
     }
 
     public function logout()
@@ -43,6 +45,4 @@ class DashboardController extends Controller
         Auth::guard('web')->logout();
         return redirect('/login');
     }
-
-
 }

@@ -1147,7 +1147,7 @@
 
                         @elseif($facility->type == 2)
                         <div class="col-md-3 col-sm-3 col-6 npm">
-                           <a href="{{ $facility->url }}">
+                        <a href="{{ url('/frontend/' . $facility->url) }}">
                               <div class="director-img" onclick="manage_display_of_description_div('dir-{{$key + 1}}');">
                                  <div class="facilities-item">
                                     <div class="post-image1">
