@@ -129,8 +129,8 @@ class PhotoGallery extends Controller
     */
    public function show(string $id)
    {
-    $list=Photocate::where('parent_id',$id)->orderBy('cat_postion', 'ASC')->select('*')->paginate(10);
-      
+    $list=Photocate::where('parent_id',$id)->orderBy('cat_postion', 'ASC')->get();
+     
     $title="Gallery List";
     return view('admin/photoGallery/index',compact(['title','list']));
    }
