@@ -71,9 +71,9 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-6">
                                     <div class="form-group">
-                                        <input type="file" onchange="onlytxtuplodeimg(this);" name="image" class="input_class inline-block" id="image" />
+                                        <input type="file" id="txtimg"   onchange="onlytxtuplodeimg(this);" name="image" class="input_class inline-block" />
                                     </div>
-                                    <!-- <span class="image_error" style="color:red;"></span> -->
+                                    <span class="txtimg_error" style="color:red;"></span>
                                     <span class="text-danger">
                                         @error('image')
                                         {{$message}}
@@ -102,7 +102,8 @@
     </div>
 </div>
 </div>
-
+<script src="{{ URL::asset('/assets/modules/jquery.min.js')}}"></script>
+<script src="{{ URL::asset('/assets/js/page/validate.js')}}"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
 <script src="https://cdn.datatables.net/2.0.0/js/dataTables.js"></script>
