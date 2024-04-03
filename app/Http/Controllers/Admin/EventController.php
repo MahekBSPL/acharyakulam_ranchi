@@ -73,7 +73,7 @@ class EventController extends Controller
     {
         $title = "Edit Event";
         $data = Event::find($id);
-        return view('admin/event/edit', ['events' => $data], compact('title'));
+        return view('admin/event/edit', ['events' => $data,'title'=>$title]);
     }
 
     /**

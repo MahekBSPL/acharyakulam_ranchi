@@ -70,7 +70,7 @@ class HomeGalleryController extends Controller
     {
         $title = "Edit Home Gallery";
         $data = HomeGallery::find($id);
-        return view('admin/homegallery/edit', ['data' => $data,'title']);
+        return view('admin/homegallery/edit', ['data' => $data,'title'=>$title]);
     }
 
     /**
