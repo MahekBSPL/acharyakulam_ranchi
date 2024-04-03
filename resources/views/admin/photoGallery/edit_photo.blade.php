@@ -106,8 +106,9 @@
                             <div class="form-group">
                                     <input type="file" value="{{old('thumbnail')}}" accept="image/png, image/gif, image/jpeg, image/jpg" name="thumbnail" onchange="onlytxtuplodeimage(this);"  class="input_class w-50 inline-block" id="txtimage" />
                                     @if($data->thumbnail)
+                                    <a href="{{ URL::asset('/admin/upload/photoGallery/thumbnail/'.$data->thumbnail)}}">
                                     <img src="{{ URL::asset('/admin/upload/photoGallery/thumbnail/'.$data->thumbnail)}}"
-                                                    style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
+                                                    style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
                                     @endif
                                 <input type="hidden" name="olduplode" class="input_class w-50 inline-block" value="<?php echo !empty($data->thumbnail)?$data->thumbnail:''; ?>" />
                                  <span class="txtimage_error" style="color:red;"></span>
@@ -150,7 +151,8 @@
                                     <tr>
                                         <td><?=$i++?></td>
                                         <!-- <td><?php echo $val->title; ?></td> -->
-                                        <td> <img src="{{ URL::asset('/admin/upload/photoGallery/photo/'.$val->img)}}"
+                                        <td> 
+                                            <img src="{{ URL::asset('/admin/upload/photoGallery/photo/'.$val->img)}}"
                                                     style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
                                                     <input class="form-control" name="oldid[]" value="{{$val->id}} " type="hidden">
                                                     <input class="form-control" name="oldimag[]" value="{{$val->img}} " type="hidden">

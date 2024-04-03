@@ -250,6 +250,10 @@ class IndexController extends Controller
             'phone' => 'required|digits_between:10,10',
             'sub' => 'required',
             'msg' => 'required'
+        ], [
+
+            'sub.required' => 'The subject field is required.',
+            'msg.required' => 'The message field is required.'
         ]);
 
         // Creating a new contact record

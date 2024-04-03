@@ -65,7 +65,7 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-6">
                             <div class="form-group">
-                                <textarea name="description" id="description" class="form-control summernote-simple " rows="3" aria-hidden="true" style="display: none;"><?php echo old('description'); ?></textarea>
+                                <textarea name="description" id="description" class="form-control summernote-simple" rows="3" aria-hidden="true" style="display: none;"><?php echo old('description'); ?></textarea>
                                 <span class="text-danger">@error('description'){{$message}} @enderror</span>
                             </div>
                         </div>

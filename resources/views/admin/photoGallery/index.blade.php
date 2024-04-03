@@ -16,9 +16,6 @@
                 </div>
                 <!-- /.col-12 col-md-12 col-lg-12 -->
 
-
-
-
             </div>
             <!-- /.row -->
             <div class="row">
@@ -75,14 +72,14 @@
                                                </td>
                                             <td>
                                                 @if(!empty($row->thumbnail))
+                                                <a href="{{ URL::asset('/admin/upload/photoGallery/thumbnail/'.$row->thumbnail) }}" target="_blank">
                                                 <img src="{{ URL::asset('/admin/upload/photoGallery/thumbnail/'.$row->thumbnail)}}"
-                                                    style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
+                                                    style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
                                                 @else
                                                 _____
                                                 @endif
-                                            
                                             </td>
-                                            
+
                                             <form action="{{ route('photoGallery.destroy',$row->id) }}" method="POST">
                                                 <td>
                                                     

@@ -18,7 +18,7 @@
         <h2>Circular</h2>
           
         <div class="row mt-4">
-        @foreach($circulars as $circular)
+        <!-- @foreach($circulars as $circular)
           <div class="col-md-4 exam">
             <h6>{{$circular->name}}</h6>
             <p><img src="{{url('frontend/assets/img/Group 1448.png')}}" alt=""></p>
@@ -26,7 +26,7 @@
               <a href="{{url('/admin/upload/circular/' .$circular->pdf)}}" download="" target="_blank"> <img src="{{url('frontend/assets/img/pdf.png')}}" alt=""> </a>
             </div>
           </div>
-      @endforeach
+      @endforeach -->
      
          <!-- <div class="row mt-4">
           <div class="col-md-4 exam">
