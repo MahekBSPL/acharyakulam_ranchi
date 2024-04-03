@@ -61,7 +61,7 @@ class IndexController extends Controller
         $sliders = Slider::all();
         $modals = Popup::all();
         $today = date('Y-m-d');
-        $notifications = Notification::where('status', 2)->where('language', 1)->where('startdate', '<=', $today)->where('enddate', '>=', $today)->orderBy('created_at', 'desc')->get();
+        $notifications = Notification::where('status', 2)->where('language', 1)->where('startdate', '<=', $today)->where('enddate', '>=', $today)->orderBy('id','desc')->get();
         $home_gallery=HomeGallery::orderBy('order','ASC')->get();
         $popup_data=Popup::first();
         return view('frontend/index', compact('title', 'sliders', 'notifications','home_gallery','popup_data'));

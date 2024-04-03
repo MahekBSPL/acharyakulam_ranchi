@@ -39,6 +39,20 @@
     <!-- <div class="topper mt-4">
       <div class="container" data-aos="fade-up">
         <div class="row  align-items-center justify-content-center">
+<<<<<<< HEAD
+=======
+        <?php
+        foreach($result as $row){
+        $check_year=check_academics_year($row->year);
+            if($check_year==1)
+            {
+              $class='12';
+            } elseif($check_year==2){
+              $class='6 mt-2';
+            }      
+        ?>
+
+>>>>>>> a94616c6ee9f2aaeb2d39f930324d69495d13da4
           <div class="col-md-6 academic text-center">
             <p>School Planner(2023-2024)</p>
             <img src="{{url('frontend/assets/img/School-Planner-2023-24.webp')}}">
