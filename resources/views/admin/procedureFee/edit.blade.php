@@ -25,6 +25,21 @@
                     <div class="row">
                         <div class="col-12 col-md-3 col-lg-3">
                             <div class="form-group">
+                                <label>Title:</label>
+                                <span class="star">*</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <input name="title" autocomplete="off" type="text" class="input_class form-control" id="title" value="{{ !empty($procedurefees->title)?$procedurefees->title:old('title')}}" />
+                                <span class="text-danger">@error('title'){{$message}} @enderror</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-12 col-md-3 col-lg-3">
+                            <div class="form-group">
                                 <label>Description:</label>
                                 <span class="star">*</span>
                             </div>

@@ -163,7 +163,7 @@
 
           @foreach($procedureFees as $procedureFee)
           <div class="fees col-md-4">
-            <h4>Registration Fees Rs. 800/-</h4>
+             <h4>{{$procedureFee->title}}</h4> 
             <p>{{strip_tags(html_entity_decode($procedureFee->description))}}</p>
           </div>
           @endforeach

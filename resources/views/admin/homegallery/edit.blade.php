@@ -94,7 +94,7 @@
                                 <div class="pull-right">
 
                                     <input name="cmdsubmit" type="submit" class="btn btn-success" id="cmdsubmit" value="Submit" />&nbsp;
-                                    <a href="{{ url('/admin/homegalleryr')}}" class="btn btn-primary">Back</a>
+                                    <a href="{{ url('/admin/homegallery')}}" class="btn btn-primary">Back</a>
                                     <input type="hidden" name="random" value="" />
                                 </div>
                             </div>
