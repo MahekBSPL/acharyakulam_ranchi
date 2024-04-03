@@ -26,36 +26,11 @@ class HomeController extends Controller
 
      public function index()
      {
-         return view('admin/dashboard');
+        $title="View Menu";
+        if(Auth::user()->user_type == 1){
+            return view('admin/dashboard', compact('title'));
+        }
+         //return view('admin/dashboard');
      }
 
-
-    // public function check(Request $req)
-    // {
-    //     //validate form input 
-    //     $req->validate(
-    //         [
-    //             'email' => 'required|email|exists:users,email',
-    //             'password' => 'required|min:5|max:15',
-    //         ],
-    //         [
-    //             'email.exists' => 'This email id is not register for admin',
-    //         ]
-    //     );
-
-    //     return view('admin/dashboard');
-
-    //     //$credentials = $req->only('email', 'password');
-        //dd($credentials);
-        // return redirect('/admin/dashboard');
-        //dd($credentials);
-        //dd(Auth::guard('web')->attempt($credentials), Auth::user()->usertype == 2);
-        // dd(Auth::user()->usertype);
-
-        //if (Auth::guard('web')->attempt($credentials) && Auth::user()->usertype == 2) {
-            // return response()->view('/admin/dashboard');
-            //dd(Auth::guard('admin')->attempt($credentials), Auth::user()->role_id == 2);
-          //  return redirect()->route('admin.dashboard')->with('success', 'Login Successfully!!!');
-      //  }
-    //}
 }
