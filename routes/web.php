@@ -39,6 +39,7 @@ use App\Http\Controllers\Admin\CompetitiveExamController;
 use App\Http\Controllers\frontend\ToarchBearersController;
 use App\Http\Controllers\admin\PhotoGallery as photoGallery;
 use App\Http\Controllers\Admin\FacilityDescriptionController;
+use App\Http\Controllers\Admin\HouseActivityController;
 use App\Http\Controllers\admin\TopperStudentImagesController;
 use App\Http\Controllers\Admin\ProcedureDescriptionController;
 
@@ -62,7 +63,7 @@ Route::get('/frontend/index', [IndexController::class, 'index']);
 Route::get('/frontend/winner', [IndexController::class, 'winner']);
 Route::get('/frontend/introduction', [IndexController::class, 'introduction']);
 Route::get('/frontend/mission-vision', [IndexController::class, 'mission_vision']);
-Route::get('/frontend/games', [IndexController::class, 'games']);
+Route::get('/frontend/outdoor-games', [IndexController::class, 'games']);
 Route::get('/frontend/staff', [IndexController::class, 'staff']);
 
 Route::get('/frontend/event', [IndexController::class, 'event']);
@@ -79,6 +80,7 @@ Route::get('/frontend/council', [IndexController::class, 'council']);
 Route::get('/frontend/Careers', [IndexController::class, 'Careers']);
 Route::get('/frontend/contact-us', [IndexController::class, 'contact_us']);
 Route::post('/frontend/contactsave', [IndexController::class, 'contactsave'])->name('contactsave');
+Route::get('/frontend/house-activity', [IndexController::class, 'house_activity']);
 
 Route::get('/frontend/topper-student', [IndexController::class, 'topper_student']);
 Route::get('/frontend/academics', [IndexController::class, 'academics']);
@@ -106,7 +108,8 @@ Auth::routes();
 
 Route::post('login', [DashboardController::class, 'check'])->name('login');
 Route::middleware(['auth', 'IsAdmin'])->group(function () {
-    Route::view('admin/dashboard', 'admin.dashboard')->name('admin.dashboard');
+    // Route::view('admin/dashboard', 'admin.dashboard')->name('admin.dashboard');
+    Route::get('admin/dashboard', [IndexController::class, 'dashboard'])->name('admin.dashboard');
     Route::resource('/admin/menu', MenuController::class);
     Route::resource('/admin/slider', SliderController::class);
     Route::resource('/admin/notification', NotificationController::class);
@@ -116,6 +119,7 @@ Route::middleware(['auth', 'IsAdmin'])->group(function () {
     Route::resource('/admin/facility', FacilityController::class);
     Route::resource('/admin/facilitydescription', FacilityDescriptionController::class);
     Route::resource('/admin/facilityslider', FacilitySliderController::class);
+    Route::resource('/admin/house_activity', HouseActivityController::class);
     Route::resource('/admin/procedure', ProcedureController::class);
     Route::resource('/admin/procedurefee', ProcedureFeeController::class);
     Route::resource('/admin/proceduredescription', ProcedureDescriptionController::class);

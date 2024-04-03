@@ -18,7 +18,6 @@ use App\Models\Admin\PhotoGallery;
 use App\Models\Admin\ProcedureFee;
 use Illuminate\Support\Facades\DB;
 use App\Models\Admin\Participation;
-use App\Models\Admin\PhotoCategory;
 use App\Models\Admin\TopperStudent;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\FacilitySlider;
@@ -33,12 +32,25 @@ use App\Models\Admin\ProcedureDescription;
 
 use App\Models\Admin\HomeGallery;
 use App\Models\Admin\Winner;
+
+use App\Models\Admin\PhotoCategory;
+
+
+
 use App\Models\Admin\Event;
+
 use App\Models\Admin\Academic;
+use App\Models\Admin\HouseActivity;
 
 class IndexController extends Controller
 {
     //
+
+    public function dashboard()
+    {
+        $title = "Dashboard";
+        return view('admin/dashboard', compact('title'));
+    }
     public function index()
     {
         //$list = Slider::orderBy('id', 'desc')->select('*');
@@ -57,11 +69,13 @@ class IndexController extends Controller
         $winner = Winner::orderBy('order', 'asc')->get();
         return view('frontend.winner-student',compact('winner'));
     }
+
     public function event()
     {
         $result = Event::get();
         return view('frontend/events',compact('result'));
     }
+
     public function introduction()
     {
         return view('frontend.introduction');
@@ -261,25 +275,19 @@ class IndexController extends Controller
         $msg = 'Your message has been send successfully';
 
         return back()->with('success', $msg);
-
-
-        // if ($result) {
-        //     return redirect('frontend/contact-us')->withSuccess('Procedure Fee detail added successfully!');
-        // } else {
-        //     return redirect('frontend/contact-us')->withError('Procedure Fee detail not added successfully!');
-        // }
-
-
-
-
-        return view('frontend/contact-us');
     }
-
 
     public function Careers()
     {
         return view('frontend/Careers');
     }
+    
+    public function house_activity()
+    {
+        $activitys = HouseActivity::all();
+        return view('frontend/house-activity', compact('activitys'));
+    }
+
     public function games()
     {
         $result =  PhotoCategory::where(['parent_id'=>0,'gallery_type'=>2])->orderBy('id','asc')->get();

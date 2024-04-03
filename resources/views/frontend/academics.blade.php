@@ -26,6 +26,10 @@
               $class='6 mt-2';
             }      
         ?>
+
+          <div class="col-md-6 academic text-center">
+            <p>School Planner(2023-2024)</p>    
+            <img src="{{url('frontend/assets/img/School-Planner-2023-24.webp')}}">
           <div class="col-md-<?=$class?> academic text-center">
             <p><?=$row->title?>(<?=$row->year?>)</p>
             <img src="{{url('admin/upload/academic/'.$row->image)}}">
