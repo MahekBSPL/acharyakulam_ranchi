@@ -947,7 +947,6 @@
          </div>
       </div>
 
-
       <section class="p70">
          <div class="container">
             <h2>Campus & Facility</h2>
@@ -956,141 +955,15 @@
                   @foreach($facilityDescriptions as $facilityDescription)
                   <p>{{strip_tags(html_entity_decode($facilityDescription->description))}}</p>
                   @endforeach
-                  <!-- <p>The Acharyakulam, under the spiritual and divine guidance of Param Pujya Yogrishii Swami Ramdevji
-                     and Param Shraddhey Acharya Balkrishnaji, nurtures its students in the divine and spiritual
-                     precincts along with progressive education. We take care of our students’ dreams and aspirations
-                     and are determined to provide holistic education by combining values, ethics and scientific
-                     temperament.</p>
-                  <p>Our students have proved their stature through their performance at the national level inyoga,
-                     Bhagwat-Geeta, Sports, Wushu, and painting competitions. Students also participate in prestigious
-                     events like the Mathematics, Science, General Knowledge, English and Social Science Olympiad.</p>
-                  </p>
-                  <p>Enhancing the skills of both teachers and students is the primary aim of Acharyakulam. We conduct
-                     numerous teacher orientation programs to train our teachers. The classrooms are made lively and
-                     constructive with the use of smart classes, state of the art teaching aids and innovative
-                     pedagogies.</p> -->
                </div>
 
                <div class="col-lg-5">
                   <div class="swiper heroSwiper">
                      <div class="swiper-wrapper">
                         @foreach($facilitySliders as $facilitySlider)
-
                         <div class="swiper-slide">
                            <img src="{{url('/admin/upload/facilitySlider/' .$facilitySlider->image)}}" class="img-fluid" alt="...">
                         </div>
-
-                        <!-- <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-A.png" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-B.png" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-C.png" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-D.png" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-E.png" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-F.png" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-G.png" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-H.png" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-I.png" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-J.png" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-K.png" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-L.png" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-M.png" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-N.png" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-O.png" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-P.png" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-Q.png" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-R.png" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-S.png" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-T.png" class="img-fluid" alt="...">
-                        </div>
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-1.webp" class="img-fluid" alt="...">
-                        </div>
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-2.webp" class="img-fluid" alt="...">
-                        </div>
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-3.webp" class="img-fluid" alt="...">
-                        </div>
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-4.webp" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-5.webp" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-6.webp" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-7.webp" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-8.webp" class="img-fluid" alt="...">
-                        </div>
-
-                        <div class="swiper-slide">
-                           <img src="assets/img/facility/campus-9.webp" class="img-fluid" alt="...">
-                        </div> -->
                         @endforeach
                      </div>
                      <div class="swiper-button-next"></div>
@@ -1106,10 +979,11 @@
          <div class="container-fluid container-fluid1">
             <div class="row">
                <div class="col-md-12">
+                  @foreach($facilitys as $key => $facility)
+                  @if($key % 4 == 0)
                   <div class="dir-sec">
                      <div class="row">
-
-                        @foreach($facilitys as $key => $facility)
+                        @endif
                         @if($facility->type == 1)
                         <div class="slider1 div-description" id="dir-{{$key + 1}}" style="display: none;">
                            <div class="row">
@@ -1118,13 +992,7 @@
                               </div>
                               <div class="col-lg-12 text-center">
                                  <h3 class="sec-title-1 white-text">{{$facility->title}}</h3>
-                                 <p>
-                                    <!-- @if($facility->type == 1) -->
-                                    {{strip_tags(html_entity_decode($facility->description))}}
-                                    <!-- @elseif($facility->type == 2)
-                                    <a style="color:white" ; href="{{ $facility->url }}">{{ $facility->url }}</a> -->
-                                    <!-- @endif -->
-                                 </p>
+                                 <p>{{strip_tags(html_entity_decode($facility->description))}}</p>
                               </div>
                            </div>
                         </div>
@@ -1147,7 +1015,7 @@
 
                         @elseif($facility->type == 2)
                         <div class="col-md-3 col-sm-3 col-6 npm">
-                           <a href="{{ $facility->url }}">
+                           <a href="{{ url('/frontend/' . $facility->url) }}">
                               <div class="director-img" onclick="manage_display_of_description_div('dir-{{$key + 1}}');">
                                  <div class="facilities-item">
                                     <div class="post-image1">
@@ -1162,12 +1030,14 @@
                            </a>
                         </div>
                         @endif
-
-                        @endforeach
-                     </div>
-                  </div>
+                        @if(($key + 1) % 4 == 0 || $key == count($facilitys) - 1)
+                     </div><!-- closing row -->
+                  </div><!-- closing dir-sec -->
+                  @endif
+                  @endforeach
                </div>
             </div>
+
          </div>
       </section>
 

@@ -32,10 +32,10 @@ class DashboardController extends Controller
         //dd(Auth::user()->role_id);
 
         $credentials = $req->only('email', 'password');
-
         if (Auth::guard('web')->attempt($credentials) && Auth::user()->usertype == 2) {
             return redirect()->route('admin.dashboard')->with('success', 'Login Successfully!!!');
         }    
+     
     }
 
     public function logout()
