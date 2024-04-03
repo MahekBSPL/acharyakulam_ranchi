@@ -23,7 +23,7 @@
             {
               $class='12';
             } elseif($check_year==2){
-              $class='6';
+              $class='6 mt-2';
             }      
         ?>
 
