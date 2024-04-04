@@ -59,7 +59,7 @@
                             @endphp
                             <a href="{{url('/frontend/'. $staticPageUrl) }}">{{ $subMenu->title }}</a>
                             @elseif($subMenu->menutype==2)
-                            <a href="{{url('/admin/upload/menu/' . $subMenu->fileupload)}}" target="_blank">{{ $subMenu->title }}</a>
+                            <a href="{{url('/admin/upload/menu/' . $subMenu->fileupload)}}">{{ $subMenu->title }}</a>
                             @elseif($subMenu->menutype==3)
                             <a href="{{url('/frontend/' .$subMenu->url)}}">{{ $subMenu->title }}</a>
                             @endif
@@ -75,7 +75,7 @@
                     @endphp
                     <a href="{{ $staticPageUrl }}">{{ $menuparent->title }}</a>
                     @elseif($menuparent->menutype==2)
-                    <a href="{{url('/admin/upload/menu/' . $menuparent->fileupload)}}" target="_blank">{{ $menuparent->title }}</a>
+                    <a href="{{url('/admin/upload/menu/' . $menuparent->fileupload)}}">{{ $menuparent->title }}</a>
                     @elseif($menuparent->menutype==3)
                     <a href="{{url('/frontend/'. $menuparent->url)}}">{{ $menuparent->title }}</a>
                     @endif

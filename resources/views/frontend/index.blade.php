@@ -48,7 +48,7 @@
         @if ($notification->notificationtype == 1)
         @if ($notification->menutype == 1)
         <h6><img src="{{url('frontend/assets/img/new.gif')}}">
-          <a href="{{url('/admin/upload/notification/' . $notification->image) }}">
+          <a href="{{url('/admin/upload/notification/' . $notification->image) }}" target="_blank">
             {{ $notification->title }}</a>
         </h6>
         @elseif ($notification->menutype == 2)

@@ -5,7 +5,7 @@
 <body>
     <main id="main">
         <div class="banner">
-            <img src="{{ URL::asset('/frontend/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
+            <img src="{{url('frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
             <div class="banner-inr breadcrumbs">
                 <h1><?=!empty($title)?$title:""?></h1>
                 <h5>
