@@ -30,7 +30,8 @@
                             </div>
                             <div class="col-12 col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <input name="title" maxlength="36" minlength="2" autocomplete="off" type="text" class="input_class form-control" id="title" value="{{old('title')}}" />
+                                    <input name="title" maxlength="36" minlength="2"   autocomplete="off" type="text" class="input_class form-control" value="{{old('title')}}" />
+                                    
                                     <span class="text-danger">
                                         @error('title')
                                         {{$message}}
@@ -44,7 +45,7 @@
                             <div class="col-12 col-md-3 col-lg-3">
                                 <div class="form-group">
                                     <label>URL:</label>
-                                   
+                                    <span class="star">*</span>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-6">
@@ -71,9 +72,9 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-6">
                                     <div class="form-group">
-                                        <input type="file" onchange="onlytxtuplodeimg(this);" name="image" class="input_class inline-block" id="image" />
+                                        <input type="file" onchange="onlytxtuplodeimg(this);" name="image" class="input_class inline-block" id="txtimg" />
                                     </div>
-                                    <!-- <span class="image_error" style="color:red;"></span> -->
+                                    <span class="txtimg_error" style="color:red;"></span>
                                     <span class="text-danger">
                                         @error('image')
                                         {{$message}}
@@ -102,4 +103,6 @@
     </div>
 </div>
 </div>
+<script src="{{ URL::asset('/assets/modules/jquery.min.js')}}"></script>
+<script src="{{ URL::asset('/assets/js/page/validate.js')}}"></script>
 @endsection

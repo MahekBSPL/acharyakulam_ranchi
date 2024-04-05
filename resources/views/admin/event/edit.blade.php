@@ -130,10 +130,10 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-6">
                                     <div class="form-group">
-                                        <input type="file" value="{{old('image')}}" name="image" class="input_class w-50 inline-block" id="image" />
+                                        <input type="file"  onchange="onlytxtuplodeimg(this);" value="{{old('image')}}" name="image" class="input_class w-50 inline-block" id="txtimg" />
                                         <a href="{{ URL::asset('/admin/upload/event/'.$events->image)}}"><img src="{{ URL::asset('admin/upload/event/'.$events->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
                                         <input type="hidden" name="olduplode" class="input_class w-50 inline-block" value="<?php echo !empty($events->image) ? $events->image : ''; ?>" />
-
+                                        <span class="txtimg_error" style="color:red;"></span>
                                         <span class="invalid-feedback" role="alert">
                                             @error('image')
                                             <strong>{{ $message }}</strong>
@@ -161,4 +161,6 @@
         </div>
     </div>
 </div>
+<script src="{{ URL::asset('/assets/modules/jquery.min.js')}}"></script>
+<script src="{{ URL::asset('/assets/js/page/validate.js')}}"></script>
 @endsection
