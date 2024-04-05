@@ -68,7 +68,7 @@
                         </div>
                     @endif
                     <div class="col-lg-6">
-                        <form action="{{ route('contactsave') }}" class="php-email-form" method="POST">
+                        <form action="{{ route('contactsave') }}" id="contactForm" name="contactForm" class="php-email-form" method="POST">
                         @csrf
                             <div class="row gy-4">
 
@@ -111,4 +111,5 @@
 
     </main><!-- End #main -->
 </body>
+
 @endsection
