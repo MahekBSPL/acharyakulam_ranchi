@@ -1108,8 +1108,6 @@
                <div class="col-md-12">
                   <div class="dir-sec">
                      <div class="row">
-
-                        @foreach()
                         <div class="slider1 div-description" id="dir-1" style="display: none;">
                            <div class="row">
                               <div class="close-btn" onclick="manage_close('dir-1');">
@@ -1353,37 +1351,6 @@
                                     </div>
                                  </a>
                               </div>
-
-
-
-                              <!-- <div class="slider1 div-description" id="dir-7" style="display: none;">
-                     <div class="row">
-                        <div class="close-btn" onclick="manage_close('dir-7');">
-                           <img src="assets/img/close-btn.png" class="img-fluid">
-                        </div>
-                        <div class="col-lg-12 text-center">
-                           <h3 class="sec-title-1 white-text">Games</h3>
-                           <p></p>
-                        </div>
-                     </div>
-                  </div>
-
-                  <div class="col-md-3 col-sm-3 col-6 npm">
-                     <a href="javascript:;">
-                        <div class="director-img" onclick="manage_display_of_description_div('dir-7');">
-                           <div class="facilities-item">
-                              <div class="post-image1">
-                              <img src="assets/img/facility/games.webp"  class="w-100">
-                                 <div class="mask"></div>
-                              </div>
-                              <div class="post-content1">
-                                 <h5>Games</h5>
-                              </div>
-                           </div>
-                        </div>
-                     </a>
-                  </div>
--->
 
                               <div class="slider1 div-description" id="dir-8" style="display: none;">
                                  <div class="row">

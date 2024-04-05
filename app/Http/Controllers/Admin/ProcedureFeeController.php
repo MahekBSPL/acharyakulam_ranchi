@@ -38,6 +38,7 @@ class ProcedureFeeController extends Controller
         //
         if (isset($request->submit)) {
             $Validation = [
+                'title' => 'required',
                 'description' => 'required',
             ];
 
@@ -49,6 +50,7 @@ class ProcedureFeeController extends Controller
             }
 
             $procedurefee = new ProcedureFee();
+            $procedurefee->title = $request->title;
             $procedurefee->description = $request->description;
 
             $result = $procedurefee->save();
@@ -104,6 +106,7 @@ class ProcedureFeeController extends Controller
             }
 
             //update data as per type condition
+            $procedurefee->title = $request->title;
             $procedurefee->description = $request->description;
 
             $result = $procedurefee->save();

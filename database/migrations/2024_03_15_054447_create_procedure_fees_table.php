@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('procedure_fees', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->longtext('description');
             $table->timestamps();
         });

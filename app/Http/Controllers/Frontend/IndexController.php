@@ -40,7 +40,9 @@ use App\Models\Admin\PhotoCategory;
 use App\Models\Admin\Event;
 
 use App\Models\Admin\Academic;
+use App\Models\Admin\ClassName;
 use App\Models\Admin\HouseActivity;
+use App\Models\Admin\Section;
 
 class IndexController extends Controller
 {
@@ -142,8 +144,10 @@ class IndexController extends Controller
     }
     public function council()
     {
+        $classnames = ClassName::all();
+        $sections = Section::all();
         $councils = StudentCouncil::all();
-        return view('frontend/council', compact('councils'));
+        return view('frontend/council', compact('councils', 'classnames','sections'));
     }
 
     public function topper_student()
@@ -151,10 +155,11 @@ class IndexController extends Controller
         $result = TopperStudent::all();
         return view('frontend/topper-student', compact('result'));
     }
+
     public function academics()
     {
-        $result = Academic::all();
-        return view('frontend/academics',compact('result'));
+        $academics = Academic::get()->groupBy('year');
+        return view('frontend/academics',compact('academics'));
     }
 
     public function competitive_exam()
@@ -244,13 +249,25 @@ class IndexController extends Controller
 
     public function contactsave(Request $request)
     {
-        $validatedData = $request->validate([
+         $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required|digits_between:10,10',
             'sub' => 'required',
             'msg' => 'required'
         ]);
+
+        // $validatedData = $request->validate([
+        //     'name' => 'required',
+        //     'email' => 'required|email',
+        //     'phone' => 'required|digits_between:10,10',
+        //     'sub' => 'required',
+        //     'msg' => 'required'
+        // ], [
+
+        //     'sub.required' => 'The subject field is required.',
+        //     'msg.required' => 'The message field is required.'
+        // ]);
 
         // Creating a new contact record
         $contact = new ContactUs();

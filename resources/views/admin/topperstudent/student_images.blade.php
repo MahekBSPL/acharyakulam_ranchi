@@ -45,7 +45,7 @@
                                                 _____
                                                 @endif
                                             </td>
-                                            <td><a href="{{ URL::asset('/admin/upload/topperstudent/image/'.$row->image)}}" target="_blank"><i class="fas fa-eye"></i></a></td>
+                                            <td><a href="{{ URL::asset('/admin/upload/topperstudent/image/'.$row->image)}}" ><i class="fas fa-eye"></i></a></td>
                                            
                                                  <td>
                                                 <!-- Add form for updating image -->
