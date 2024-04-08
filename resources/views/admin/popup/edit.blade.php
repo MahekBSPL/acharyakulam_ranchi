@@ -93,7 +93,7 @@
 
                                     <a href="{{ url('/admin/popup')}}" class="btn btn-primary">Back</a>
 
-                                    <a href="{{ url('/admin/class')}}" class="btn btn-primary">Back</a>
+                                   
 
                                     <input type="hidden" name="random" value="" />
                                 </div>
