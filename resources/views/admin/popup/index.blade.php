@@ -23,8 +23,10 @@
                         @endif
                         <div class="panel-body">
                             <div class="table-responsive">
+
                                 <table id="classtable" name="classtable"
                                     class="table table-striped table-bordered table-hover">
+
 
                                     <thead>
                                         <tr>
@@ -40,8 +42,9 @@
                                         @php $count = 1; @endphp
                                         @foreach($data as $row)
                                         <tr>
-                                            <td>{{$count++}}</td>
+                                            <td>{{$count}}</td>
                                             <td>{{$row->type}}</td>
+                                            <td> @if(!empty($row->description)){{strip_tags(html_entity_decode($row->description))}} @else - @endif</td>
                                             <td>   
                                                 @if(!empty($row->description))
                                             {{$row->description}}
@@ -49,6 +52,7 @@
                                                 _____
                                                 @endif
                                         </td>
+
                                             <td>
                                                 @if(!empty($row->image))
                                                 <img src="{{ URL::asset('/public/admin/upload/popup/' . $row->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
@@ -56,6 +60,16 @@
                                                 _____
                                                 @endif
                                             </td>
+
+                                            <td style='display:inline-flex'>
+                                                <a class="btn btn-primary" style='margin-right:5px;' href="{{ route('popup.edit', $row->id) }}">
+                                                    <i class="fas fa-edit" style="font-size: 15px;"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        @php $count++; @endphp
+                                        @endforeach
+
                                             <td>
                                                     <a class="btn btn-primary"
                                                         href="{{ route('popup.edit', $row->id) }}">
@@ -69,6 +83,7 @@
                                         <tr>
                                             <td colspan="4" class="text-center"> No Record Added. </td>
                                              </tr>
+
                                         @endif
                                     </tbody>
                                 </table>
@@ -84,9 +99,10 @@
 
 <script src="{{ URL::asset('/public/assets/modules/jquery.min.js')}}"></script>
 <script>
-$(document).ready(function() {
-    new DataTable('#classtable');
-});
+    $(document).ready(function() {
+        new DataTable('#classtable');
+    });
+
 </script>
 
 @endsection

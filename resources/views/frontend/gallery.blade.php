@@ -8,9 +8,7 @@
             <div class="banner-inr breadcrumbs">
                 <h1><?=!empty($title)?$title:'Gallery'?></h1>
                 <h5>
-                    <a href="{{url('frontend/index')}}">Home</a> /Gallery<span><?=!empty($title)?'/'.$title:''?></span>
-                   
-                    
+                    <a href="{{url('frontend/index')}}">Home</a> /Gallery<span><?=!empty($title)?'/'.$title:''?></span>     
                 </h5>
             </div>
         </div>
@@ -27,9 +25,9 @@
                     <div class="col-lg-4 col-md-6">
                     @if($check_photo_category>0 || $rowcount11 > 0)
                     @if($rowcount11 > 0)
-                                <a style="" href="{{url('frontend/sub_photo_gallery/'.$photo_cat->id)}}">
+                                <a href="{{url('frontend/sub_photo_gallery/'.$photo_cat->id)}}">
                                 @else
-                                <a style="" href="{{url('frontend/photo_gallery_details/'.$photo_cat->id)}}">
+                                <a href="{{url('frontend/photo_gallery_details/'.$photo_cat->id)}}">
                                 @endif
                    
                             <div class="gallery">

@@ -198,6 +198,7 @@ class IndexController extends Controller
         $title = $title_data->title;
         return response()->view("frontend/gallery", compact('title', 'data', 'cat_descriptions', 'photocategory_data'));
     }
+    
     public function photo_gallery_details($event_id)
     {
         $photoCategory = PhotoCategory::where('gallery_type',1)->find($event_id);
