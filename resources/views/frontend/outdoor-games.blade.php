@@ -5,11 +5,11 @@
 <body>
     <main id="main">
         <div class="banner">
-            <img src="assets/img/Mask Group 108.jpg" class="img-fluid" alt="banner">
+        <img src="{{url('public/frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
             <div class="banner-inr breadcrumbs">
                 <h1>Games</h1>
                 <h5>
-                    <a href="index.php">Home</a> / <span>FACILITIES</span>
+                    <a  href="{{url('/')}}">Home</a> / <span>FACILITIES</span>
                 </h5>
             </div>
         </div>
@@ -29,13 +29,13 @@ foreach($result as $row){
                         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                             <div class="portfolio-wrap">
                                 <div class="gallery">
-                                <img src="{{ URL::asset('/admin/upload/photoGallery/thumbnail/'.$row->thumbnail)}}" class="img-fluid" alt="">
+                                <img src="{{ URL::asset('/public/admin/upload/photoGallery/thumbnail/'.$row->thumbnail)}}" class="img-fluid" alt="">
 
                                     <h5><?=$row->title?></h5>
                                 </div>
                                 <div class="portfolio-info">
                                     <div class="portfolio-links">
-                                        <a href="assets/img/facility/Badminton.webp" data-gallery="portfolioGallery"
+                                        <a href="/public/assets/img/facility/Badminton.webp" data-gallery="portfolioGallery"
                                             class="portfokio-lightbox" title=""><i class="bi bi-plus"></i></a>
                                     </div>
                                 </div>

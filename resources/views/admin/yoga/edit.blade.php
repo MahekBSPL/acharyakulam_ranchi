@@ -33,7 +33,7 @@
                             <div class="form-group">
                                 <input type="file" name="image" class="input_class inline-block" id="image" autocomplete="off" value="{{old('image')}}" />
                                 @if($yogas->image)
-                                <a href="{{ URL::asset('/admin/upload/yoga/'.$yogas->image)}}"><img src="{{ URL::asset('admin/upload/yoga/'.$yogas->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
+                                <a href="{{ URL::asset('/public/admin/upload/yoga/'.$yogas->image)}}"><img src="{{ URL::asset('public/admin/upload/yoga/'.$yogas->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
                                 @endif
                                 <input type="hidden" name="oldimage" class="input_class w-50 inline-block" value="{{ !empty($yogas->image)?$yogas->image:old('image')}}" />
                                 <span class="text-danger">@error('image'){{$message}} @enderror</span>

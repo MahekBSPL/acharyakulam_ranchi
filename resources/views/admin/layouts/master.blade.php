@@ -13,7 +13,7 @@
     <div id="app">
        <div class="main-wrapper main-wrapper-1">
           <div class="navbar-bg"></div>
-          @include('../admin/includes.header')s
+          @include('../admin/includes.header')
           <!-- Sidebar  -->
           @include('../admin/includes.sidebar')
           <!-- end topbar -->

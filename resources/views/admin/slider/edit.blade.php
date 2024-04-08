@@ -75,7 +75,7 @@
                                 <div class="col-12 col-md-6 col-lg-6">
                                     <div class="form-group">
                                         <input type="file" value="{{old('image')}}" name="image" class="input_class w-50 inline-block" id="image" />
-                                        <a href="{{ URL::asset('/admin/upload/slider/'.$sliders->image)}}"><img src="{{ URL::asset('admin/upload/slider/'.$sliders->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
+                                        <a href="{{ URL::asset('/public/admin/upload/slider/'.$sliders->image)}}"><img src="{{ URL::asset('public/admin/upload/slider/'.$sliders->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
                                         <input type="hidden" name="olduplode" class="input_class w-50 inline-block" value="<?php echo !empty($slider->img) ? $slider->img : ''; ?>" />
 
                                         <span class="invalid-feedback" role="alert">

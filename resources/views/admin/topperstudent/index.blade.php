@@ -52,7 +52,7 @@
                                               
                                             <td>
                                                 @if(!empty($row->pdf))
-                                                <a  href="{{ URL::asset('/admin/upload/topperstudent/pdf/'.$row->pdf)}}" target="_blank">View Pdf</a>
+                                                <a  href="{{ URL::asset('/public/admin/upload/topperstudent/pdf/'.$row->pdf)}}" target="_blank">View Pdf</a>
                                                 @else
                                                 _____
                                                 @endif

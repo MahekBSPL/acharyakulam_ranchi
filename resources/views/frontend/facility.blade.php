@@ -938,11 +938,11 @@
 <body>
    <main id="main">
       <div class="banner">
-         <img src="{{url('frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
+         <img src="{{url('public/frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
          <div class="banner-inr breadcrumbs">
             <h1>Facilities</h1>
             <h5>
-               <a href="{{url('frontend/index')}}">Home</a> / <span>Facilities</span>
+               <a href="{{url('/')}}">Home</a> / <span>Facilities</span>
             </h5>
          </div>
       </div>
@@ -962,7 +962,7 @@
                      <div class="swiper-wrapper">
                         @foreach($facilitySliders as $facilitySlider)
                         <div class="swiper-slide">
-                           <img src="{{url('/admin/upload/facilitySlider/' .$facilitySlider->image)}}" class="img-fluid" alt="...">
+                           <img src="{{url('/public/admin/upload/facilitySlider/' .$facilitySlider->image)}}" class="img-fluid" alt="...">
                         </div>
                         @endforeach
                      </div>
@@ -988,7 +988,7 @@
                         <div class="slider1 div-description" id="dir-{{$key + 1}}" style="display: none;">
                            <div class="row">
                               <div class="close-btn" onclick="manage_close('dir-{{$key + 1}}');">
-                                 <img src="{{url('frontend/assets/img/close-btn.png')}}" class="img-fluid">
+                                 <img src="{{url('public/frontend/assets/img/close-btn.png')}}" class="img-fluid">
                               </div>
                               <div class="col-lg-12 text-center">
                                  <h3 class="sec-title-1 white-text">{{$facility->title}}</h3>
@@ -1002,7 +1002,7 @@
                               <div class="director-img" onclick="manage_display_of_description_div('dir-{{$key + 1}}');">
                                  <div class="facilities-item">
                                     <div class="post-image1">
-                                       <img src="{{url('/admin/upload/facility/' .$facility->image)}}" class="w-100">
+                                       <img src="{{url('/public/admin/upload/facility/' .$facility->image)}}" class="w-100">
                                        <div class="mask"></div>
                                     </div>
                                     <div class="post-content1">
@@ -1019,7 +1019,7 @@
                               <div class="director-img" onclick="manage_display_of_description_div('dir-{{$key + 1}}');">
                                  <div class="facilities-item">
                                     <div class="post-image1">
-                                       <img src="{{url('/admin/upload/facility/' .$facility->image)}}" class="w-100">
+                                       <img src="{{url('/public/admin/upload/facility/' .$facility->image)}}" class="w-100">
                                        <div class="mask"></div>
                                     </div>
                                     <div class="post-content1">
@@ -1042,7 +1042,7 @@
       </section>
 
 
-      <script type="text/javascript" src="{{url('frontend/assets/js/facility.js')}}"></script>
+      <script type="text/javascript" src="{{url('public/frontend/assets/js/facility.js')}}"></script>
    </main>
 </body>
 @endsection

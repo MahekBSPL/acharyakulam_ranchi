@@ -13,9 +13,9 @@
       @foreach($menu->subMenu as $subMenu)
       @if($subMenu->title == 'Participation in Competitive Exam')
       @if($subMenu->banner_image)
-      <img src="{{ url('/admin/upload/menu/banner/'. $subMenu->banner_image) }}" class="img-fluid" alt="banner">
+      <img src="{{ url('public/admin/upload/menu/banner/'. $subMenu->banner_image) }}" class="img-fluid" alt="banner">
       @else
-      <img src="{{ url('frontend/assets/img/Mask Group 108.jpg') }}" class="img-fluid" alt="banner">
+      <img src="{{ url('public/frontend/assets/img/Mask Group 108.jpg') }}" class="img-fluid" alt="banner">
       @endif
       @endif
       @endforeach
@@ -25,7 +25,7 @@
         <h1>Participation in Competitive Exams</h1>
 
         <h5>
-          <a href="{{url('frontend/index')}}">Home</a> / <!-- <span>Academics</span> -->
+          <a href="{{url('/')}}">Home</a> / <!-- <span>Academics</span> -->
           @foreach($menuData as $menu)
           @if($menu->title == 'Academics')
           <span>{{ $menu->title }}</span>
@@ -48,25 +48,8 @@
             </div>
           </div>
           @endforeach
-
-          <!-- <div class="col-md-6">
-            <div class="competative-slide-inr">
-              <h6>Competitive Exams 2022-2023</h6>
-              <a href="{{url('frontend/competitive-exam-2022-2023')}}">View More</a>
-            </div>
-          </div>     -->
-
-
-          <!-- <div class="col-md-6">
-            <div class="competative-slide-inr">
-              <h6>Competitive Exams 2023-2024</h6>
-              <a href="{{url('frontend/competitive-exam-2023-2024')}}">View More</a>
-            </div>
-          </div> -->
-
         </div>
       </div>
     </section>
-
 </body>
 @endsection

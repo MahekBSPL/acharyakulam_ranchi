@@ -3,11 +3,11 @@
 <body>
 
     <div class="banner">
-        <img src="{{url('frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
+        <img src="{{url('public/frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
         <div class="banner-inr breadcrumbs">
             <h1>Contact Us</h1>
             <h5>
-                <a href="{{url('frontend/index')}}">Home</a> / <span>Contact Us</span>
+                <a href="{{url('/')}}">Home</a> / <span>Contact Us</span>
             </h5>
         </div>
     </div>

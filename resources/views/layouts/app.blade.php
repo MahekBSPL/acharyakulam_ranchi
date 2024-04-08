@@ -11,18 +11,19 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+     <!-- Option 1: Include in HTML -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+      <!-- General CSS Files -->
+      
+            <link rel="stylesheet" href="{{ URL::asset('/public/assets/modules/bootstrap/css/bootstrap.min.css')}}">
+            <link rel="stylesheet" href="{{ URL::asset('/public/assets/modules/fontawesome/css/all.min.css')}}">
+          
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+               
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -38,9 +39,9 @@
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
+                                </li> -->
                             @endif
 
                             <!-- @if (Route::has('register'))
@@ -76,5 +77,10 @@
             @yield('content')
         </main>
     </div>
+      <!-- General JS Scripts -->
+  <script src="{{URL::asset('/public/assets/modules/jquery.min.js')}}"></script>
+  <script src="{{URL::asset('/public/assets/modules/popper.js')}}"></script>
+  <script src="{{URL::asset('/public/assets/modules/tooltip.js')}}"></script>
+  <script src="{{URL::asset('/public/assets/modules/bootstrap/js/bootstrap.min.js')}}"></script>
 </body>
 </html>

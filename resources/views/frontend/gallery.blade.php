@@ -4,11 +4,11 @@
 <body>
     <main id="main">
         <div class="banner">
-        <img src="{{url('frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
+        <img src="{{url('public/frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
             <div class="banner-inr breadcrumbs">
                 <h1><?=!empty($title)?$title:'Gallery'?></h1>
                 <h5>
-                    <a href="{{url('frontend/index')}}">Home</a> /Gallery<span><?=!empty($title)?'/'.$title:''?></span>     
+                    <a href="{{url('/')}}">Home</a> /Gallery<span><?=!empty($title)?'/'.$title:''?></span>     
                 </h5>
             </div>
         </div>
@@ -31,7 +31,7 @@
                                 @endif
                    
                             <div class="gallery">
-                                <img src="{{ URL::asset('/admin/upload/photoGallery/thumbnail/'.$photo_cat->thumbnail)}}" class="img-fluid" alt="">
+                                <img src="{{ URL::asset('/public/admin/upload/photoGallery/thumbnail/'.$photo_cat->thumbnail)}}" class="img-fluid" alt="">
                                 <h5>
                                 @if($rowcount11 > 0)
                                 <a style="color:white" href="{{url('frontend/sub_photo_gallery/'.$photo_cat->id)}}">

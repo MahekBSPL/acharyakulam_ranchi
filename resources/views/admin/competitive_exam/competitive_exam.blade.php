@@ -57,7 +57,7 @@
                                             <td>{{$exam->name}}</td>
                                             <td>
                                                 @if(!empty($exam->pdf))
-                                                <a href="{{ URL::asset('/admin/upload/competitiveExam/'.$exam->pdf)}}" target="_blank">View PDF</a>
+                                                <a href="{{ URL::asset('/public/admin/upload/competitiveExam/'.$exam->pdf)}}" target="_blank">View PDF</a>
                                                 @else
                                                 -
                                                 @endif

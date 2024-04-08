@@ -176,7 +176,7 @@
                                 <div class="form-group">
                                     <input type="file" name="image" class="input_class inline-block" id="image" autocomplete="off" value="{{old('image')}}" />
                                     @if($menus->image)
-                                    <a href="{{ URL::asset('/admin/upload/menu/'.$menus->image)}}"><img src="{{ URL::asset('admin/upload/menu/'.$menus->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
+                                    <a href="{{ URL::asset('/public/admin/upload/menu/'.$menus->image)}}"><img src="{{ URL::asset('public/admin/upload/menu/'.$menus->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
                                     @endif
                                     <input type="hidden" name="oldimage" class="input_class w-50 inline-block" value="{{ !empty($menus->image)?$menus->image:old('image')}}" />
                                     <span class="text-danger">@error('image'){{$message}} @enderror</span>
@@ -199,7 +199,7 @@
                                     <input type="file" name="fileupload" class="input_class inline-block" id="fileupload" value="{{old('fileupload')}}" autocomplete="off" />
                                     @if($menus->fileupload)
                                     <!-- <a href="{{ URL::asset('/admin/upload/menu/'.$menus->fileupload)}}"><img src="{{ URL::asset('admin/upload/menu/'.$menus->fileupload)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a> -->
-                                    <a href="{{ URL::asset('/admin/upload/menu/'.$menus->fileupload)}}" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="{{ URL::asset('/public/admin/upload/menu/'.$menus->fileupload)}}" target="_blank"><i class="fas fa-eye"></i></a>
                                     @endif
                                     <input type="hidden" name="oldfileupload" class="input_class w-50 inline-block" value="{{ !empty($menus->fileupload)?$menus->fileupload:old('fileupload')}}" />
                                     <span class="text-danger">@error('fileupload'){{$message}} @enderror</span>
@@ -259,7 +259,7 @@
                             <div class="form-group">
                                 <input type="file" name="banner_image" class="input_class inline-block" id="banner_image" autocomplete="off" value="{{old('banner_image')}}" />
                                 @if($menus->banner_image)
-                                <a href="{{ URL::asset('/admin/upload/menu/banner/'.$menus->banner_image)}}"><img src="{{ URL::asset('/admin/upload/menu/banner/'.$menus->banner_image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
+                                <a href="{{ URL::asset('/public/admin/upload/menu/banner/'.$menus->banner_image)}}"><img src="{{ URL::asset('/public/admin/upload/menu/banner/'.$menus->banner_image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
                                 @endif
                                 <input type="hidden" name="oldbanner_image" class="input_class w-50 inline-block" value="{{ !empty($menus->banner_image)?$menus->banner_image:old('banner_image')}}" />
                                 <span class="text-danger">@error('banner_image'){{$message}} @enderror</span>

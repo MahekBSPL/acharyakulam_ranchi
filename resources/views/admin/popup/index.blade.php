@@ -42,13 +42,7 @@
                                         <tr>
                                             <td>{{$count++}}</td>
                                             <td>{{$row->type}}</td>
-                                            <td>   
-                                                @if(!empty($row->description))
-                                            {{$row->description}}
-                                            @else
-                                                _____
-                                                @endif
-                                        </td>
+                                            <td> @if(!empty($row->description)){{strip_tags(html_entity_decode($row->description))}} @else - @endif</td>
                                             <td>
                                                 @if(!empty($row->image))
                                                 <img src="{{ URL::asset('/public/admin/upload/popup/' . $row->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">

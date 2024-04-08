@@ -163,7 +163,7 @@
                                 <div class="form-group">
                                     <input type="file" name="image" class="input_class inline-block" id="image" autocomplete="off" value="{{old('image')}}" />
                                     @if($notifications->image)
-                                    <a href="{{ URL::asset('/admin/upload/notification/'.$notifications->image)}}"><img src="{{ URL::asset('admin/upload/notification/'.$notifications->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
+                                    <a href="{{ URL::asset('/public/admin/upload/notification/'.$notifications->image)}}"><img src="{{ URL::asset('public/admin/upload/notification/'.$notifications->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
                                     @endif
                                     <input type="hidden" name="oldimage" class="input_class w-50 inline-block" value="<?php echo !empty($notifications->image)?$notifications->image:''; ?>" />
                                     <span class="text-danger">@error('image'){{$message}} @enderror</span>
@@ -185,7 +185,7 @@
                                     <input type="file" name="fileupload" class="input_class inline-block" id="fileupload" value="{{old('fileupload')}}"autocomplete="off" />
                                     @if($notifications->fileupload)
                                     <!-- <a href="{{ URL::asset('/admin/upload/notification/'.$notifications->fileupload)}}"><img src="{{ URL::asset('admin/upload/notification/'.$notifications->fileupload)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a> -->
-                                    <a href="{{ URL::asset('/admin/upload/notification/'.$notifications->fileupload)}}" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="{{ URL::asset('/public/admin/upload/notification/'.$notifications->fileupload)}}" target="_blank"><i class="fas fa-eye"></i></a>
                                     @endif
                                     <input type="hidden" name="oldfileupload" class="input_class w-50 inline-block" value="<?php echo !empty($notifications->fileupload)?$notifications->fileupload:''; ?>" />
                                     <span class="text-danger">@error('fileupload'){{$message}} @enderror</span>
