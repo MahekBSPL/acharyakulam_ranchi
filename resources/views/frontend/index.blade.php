@@ -58,7 +58,7 @@
         </h6>
         @elseif ($notification->menutype == 3)
         <h6><img src="{{url('public/frontend/assets/img/new.gif')}}">
-          <a href="{{url('/public/frontend/' . $notification->url)}}">
+          <a href="{{url('/frontend/' . $notification->url)}}">
             {{ $notification->title }} </a>
         </h6>
         @endif
@@ -90,7 +90,7 @@
             <li><a href="{{url('/public/admin/upload/notification/' . $notification->fileupload) }}">
                 {{$notification->title }}</a></li> 
             @elseif ($notification->menutype == 3)
-            <li><a href="{{url('/public/frontend/' . $notification->url) }}">
+            <li><a href="{{url('/frontend/' . $notification->url) }}">
                 {{$notification->title }}</a></li> 
             @endif
             @endif
