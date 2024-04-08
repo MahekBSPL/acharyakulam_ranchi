@@ -33,7 +33,7 @@
                             <div class="form-group">
                                 <input type="file"  onchange="onlytxtuplodeimg(this)" name="image" class="input_class inline-block" id="txtimg" autocomplete="off" value="{{old('image')}}" />
                                 @if($facilitys->image)
-                                <a href="{{ URL::asset('/admin/upload/facilitySlider/'.$facilitys->image)}}"><img src="{{ URL::asset('admin/upload/facilitySlider/'.$facilitys->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
+                                <a href="{{ URL::asset('/public/admin/upload/facilitySlider/'.$facilitys->image)}}"><img src="{{ URL::asset('public/admin/upload/facilitySlider/'.$facilitys->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
                                 @endif
                                 <input type="hidden" name="oldimage" class="input_class w-50 inline-block" value="{{ !empty($facilitys->image)?$facilitys->image:old('image')}}" />
                                 <span class="txtimg_error" style="color:red;"></span>
@@ -55,5 +55,5 @@
         </div>
     </div>
 </div>
-<script src="{{ URL::asset('/assets/js/page/validate.js')}}"></script>
+<script src="{{ URL::asset('/public/assets/js/page/validate.js')}}"></script>
 @endsection

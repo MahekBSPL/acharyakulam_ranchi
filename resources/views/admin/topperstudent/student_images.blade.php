@@ -40,12 +40,12 @@
                                             <td>{{$count++}}</td>
                                             <td>
                                                 @if(!empty($row->image))
-                                                <img src="{{ URL::asset('/admin/upload/topperstudent/image/'.$row->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
+                                                <img src="{{ URL::asset('/public/admin/upload/topperstudent/image/'.$row->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
                                                 @else
                                                 _____
                                                 @endif
                                             </td>
-                                            <td><a href="{{ URL::asset('/admin/upload/topperstudent/image/'.$row->image)}}" ><i class="fas fa-eye"></i></a></td>
+                                            <td><a href="{{ URL::asset('/public/admin/upload/topperstudent/image/'.$row->image)}}" ><i class="fas fa-eye"></i></a></td>
                                            
                                                  <td>
                                                 <!-- Add form for updating image -->

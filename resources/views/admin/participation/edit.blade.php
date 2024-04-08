@@ -56,7 +56,7 @@
                         <div class="col-lg-12 col-md-12 col-xm-12">
                             <div class="pull-right">
                                 <input name="submit" type="submit" class="btn btn-success" id="submit" value="Submit" />&nbsp;
-                                <a href="{{URL::to('/admin/participations')}}" class="btn btn-primary">back</a>
+                                <a href="{{URL::to('/admin/participation')}}" class="btn btn-primary">back</a>
                             </div>
                         </div>
                     </div>

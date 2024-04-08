@@ -52,8 +52,8 @@
                                             <td>{{$academic->year}}</td>
                                             <td>
                                                 @if(!empty($academic->image))
-                                                <a href="{{ URL::asset('admin/upload/academic/'.$academic->image) }}" target="_blank">
-                                                    <img src="{{ URL::asset('/admin/upload/academic/'.$academic->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
+                                                <a href="{{ URL::asset('public/admin/upload/academic/'.$academic->image) }}" target="_blank">
+                                                    <img src="{{ URL::asset('/public/admin/upload/academic/'.$academic->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
                                                 </a>
                                                 @else
                                                 -
@@ -61,7 +61,7 @@
                                             </td>
                                             <td>
                                                 @if(!empty($academic->pdf))
-                                                <a href="{{ URL::asset('/admin/upload/academic/pdf/'.$academic->pdf)}}" target="_blank">View PDF</a>
+                                                <a href="{{ URL::asset('public//admin/upload/academic/pdf/'.$academic->pdf)}}" target="_blank">View PDF</a>
                                                 @else
                                                 -
                                                 @endif

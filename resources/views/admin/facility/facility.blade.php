@@ -51,8 +51,8 @@
                                             <td>{{$facility->title}}</td>
                                             <td>
                                                 @if(!empty($facility->image))
-                                                <a href="{{ URL::asset('admin/upload/facility/'.$facility->image) }}" target="_blank">
-                                                    <img src="{{ URL::asset('/admin/upload/facility/'.$facility->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
+                                                <a href="{{ URL::asset('public/admin/upload/facility/'.$facility->image) }}" target="_blank">
+                                                    <img src="{{ URL::asset('/public/admin/upload/facility/'.$facility->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
                                                 </a>
                                                 @else
                                                   -

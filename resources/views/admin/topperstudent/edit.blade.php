@@ -50,7 +50,7 @@
                                 <div class="col-12 col-md-6 col-lg-6">
                                     <div class="form-group">
                                         <input type="file" value="{{old('pdf')}}" name="pdf" class="input_class w-50 inline-block" id="txtuplode" />
-                                        <a href="{{ URL::asset('/admin/upload/topperstudent/pdf/'.$data->pdf)}}"><a target="_blank" href="{{ URL::asset('admin/upload/topperstudent/pdf/'.$data->pdf)}}" >View PDF</a>
+                                        <a href="{{ URL::asset('/public/admin/upload/topperstudent/pdf/'.$data->pdf)}}"><a target="_blank" href="{{ URL::asset('public/admin/upload/topperstudent/pdf/'.$data->pdf)}}" >View PDF</a>
                                         <input type="hidden" name="olduplode" class="input_class w-50 inline-block" value="<?php echo !empty($data->pdf) ? $data->pdf : ''; ?>" />
                                         <span id="txtuplode"> </span>  
                                         <span class="invalid-feedback" role="alert">

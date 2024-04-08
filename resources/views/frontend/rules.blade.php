@@ -4,11 +4,11 @@
 <body>
   <main id="main">
     <div class="banner">
-      <img src="{{url('frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
+      <img src="{{url('public/frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
       <div class="banner-inr breadcrumbs">
         <h1>Rules & Regulation</h1>
         <h5>
-          <a href="{{url('frontend/index')}}">Home</a> / <span>Admission</span>
+          <a href="{{url('/')}}">Home</a> / <span>Admission</span>
         </h5>
       </div>
     </div>

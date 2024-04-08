@@ -55,10 +55,8 @@ use App\Http\Controllers\Admin\ProcedureDescriptionController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+Route::get('/', [IndexController::class, 'index']);
 Route::get('/frontend/index', [IndexController::class, 'index']);
 Route::get('/frontend/winner', [IndexController::class, 'winner']);
 Route::get('/frontend/introduction', [IndexController::class, 'introduction']);

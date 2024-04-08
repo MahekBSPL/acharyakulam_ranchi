@@ -10,15 +10,15 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="{{url('frontend/assets/vendor/aos/aos.css')}}" rel="stylesheet">
-    <link href="{{url('frontend/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{url('frontend/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-    <link href="{{url('frontend/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
-    <link href="{{url('frontend/assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+    <link href="{{url('public/frontend/assets/vendor/aos/aos.css')}}" rel="stylesheet">
+    <link href="{{url('public/frontend/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url('public/frontend/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+    <link href="{{url('public/frontend/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+    <link href="{{url('public/frontend/assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="{{url('frontend/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+    <link href="{{url('public/frontend/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
     <!-- Template Main CSS File -->
-    <link href="{{url('frontend/assets/css/style.css?v=1')}}" rel="stylesheet">
+    <link href="{{url('public/frontend/assets/css/style.css?v=1')}}" rel="stylesheet">
 </head>
 
 <div class="top-header">
@@ -36,8 +36,8 @@
 <header id="header" class="header sticky-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-        <a href="{{url('frontend/index')}}" class="logo d-flex align-items-center">
-            <img src="{{url('frontend/assets/img/logo.png')}}" alt="">
+        <a href="{{url('/')}}" class="logo d-flex align-items-center">
+            <img src="{{url('public/frontend/assets/img/logo.png')}}" alt="">
         </a>
 
         <nav id="navbar" class="navbar">
@@ -57,9 +57,9 @@
                             @php
                             $staticPageUrl = getStaticPageUrl($subMenu->title);
                             @endphp
-                            <a href="{{url('/frontend/'. $staticPageUrl) }}">{{ $subMenu->title }}</a>
+                            <a href="{{url('/public/frontend/'. $staticPageUrl) }}">{{ $subMenu->title }}</a>
                             @elseif($subMenu->menutype==2)
-                            <a href="{{url('/admin/upload/menu/' . $subMenu->fileupload)}}">{{ $subMenu->title }}</a>
+                            <a href="{{url('/public/admin/upload/menu/' . $subMenu->fileupload)}}">{{ $subMenu->title }}</a>
                             @elseif($subMenu->menutype==3)
                             <a href="{{url('/frontend/' .$subMenu->url)}}">{{ $subMenu->title }}</a>
                             @endif
@@ -75,7 +75,7 @@
                     @endphp
                     <a href="{{ $staticPageUrl }}">{{ $menuparent->title }}</a>
                     @elseif($menuparent->menutype==2)
-                    <a href="{{url('/admin/upload/menu/' . $menuparent->fileupload)}}">{{ $menuparent->title }}</a>
+                    <a href="{{url('/public/admin/upload/menu/' . $menuparent->fileupload)}}">{{ $menuparent->title }}</a>
                     @elseif($menuparent->menutype==3)
                     <a href="{{url('/frontend/'. $menuparent->url)}}">{{ $menuparent->title }}</a>
                     @endif
@@ -191,7 +191,7 @@
                     @foreach(getFooterMenu() as $menuparent)
                     <li>
                         @if($menuparent->menutype == 2)
-                        <a href="{{ url('/admin/upload/menu/' . $menuparent->fileupload) }}" target="_blank">{{ $menuparent->title }}</a>
+                        <a href="{{ url('/public/admin/upload/menu/' . $menuparent->fileupload) }}" target="_blank">{{ $menuparent->title }}</a>
                         @elseif($menuparent->menutype == 3)
                         <a href="{{ url('/frontend/' . $menuparent->url) }}">{{ $menuparent->title }}</a>
                         @endif
@@ -233,15 +233,15 @@
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
-<script src="{{url('frontend/assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
-<script src="{{url('frontend/assets/vendor/aos/aos.js')}}"></script>
-<script src="{{url('frontend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{url('frontend/assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
-<script src="{{url('frontend/assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
-<script src="{{url('frontend/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+<script src="{{url('public/frontend/assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
+<script src="{{url('public/frontend/assets/vendor/aos/aos.js')}}"></script>
+<script src="{{url('public/frontend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{url('public/frontend/assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
+<script src="{{url('public/frontend/assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+<script src="{{url('public/frontend/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
 <!-- <script src="{{url('frontend/assets/vendor/php-email-form/validate.js')}}"></script> -->
 
 <!-- Template Main JS File -->
-<script src="{{url('frontend/assets/js/main.js')}}"></script>
+<script src="{{url('public/frontend/assets/js/main.js')}}"></script>
 
 </html>

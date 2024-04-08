@@ -64,7 +64,7 @@
                             <div class="form-group">
                                 <input type="file" name="image" class="input_class inline-block" id="image" autocomplete="off" value="{{old('image')}}" />
                                 @if($academics->image)
-                                <a href="{{ URL::asset('/admin/upload/academic/'.$academics->image)}}"><img src="{{ URL::asset('admin/upload/academic/'.$academics->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
+                                <a href="{{ URL::asset('/public/admin/upload/academic/'.$academics->image)}}"><img src="{{ URL::asset('/public/admin/upload/academic/'.$academics->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
                                 @endif
                                 <input type="hidden" name="oldimage" class="input_class w-50 inline-block" value="{{ !empty($academics->image)?$academics->image:old('image')}}" />
                                 <span class="text-danger">@error('image'){{$message}} @enderror</span>
@@ -83,7 +83,7 @@
                             <div class="form-group">
                                 <input type="file" name="pdf" class="input_class inline-block" id="pdf" autocomplete="off" value="{{old('pdf')}}" />
                                 @if($academics->pdf)
-                                <a href="{{ URL::asset('/admin/upload/academic/pdf/'.$academics->pdf)}}" target="_blank">View PDF</a>
+                                <a href="{{ URL::asset('public//admin/upload/academic/pdf/'.$academics->pdf)}}" target="_blank">View PDF</a>
                                 @endif
                                 <input type="hidden" name="oldpdf" class="input_class w-50 inline-block" value="{{ !empty($academics->pdf)?$academics->pdf:old('pdf')}}" />
                                 <span class="text-danger">@error('pdf'){{$message}} @enderror</span>

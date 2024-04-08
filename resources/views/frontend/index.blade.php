@@ -27,12 +27,12 @@
       <div class="swiper-wrapper align-items-center">
         @foreach ($sliders as $slider)
         @if(!empty($slider->url))
-        <div class="swiper-slide"><a href="{{$slider->url}}" img src="{{ URL::asset('admin/upload/slider/' . $slider->image)}}" class="img-fluid" alt=""></a></div>
+        <div class="swiper-slide"><a href="{{$slider->url}}" img src="{{ URL::asset('public/admin/upload/slider/' . $slider->image)}}" class="img-fluid" alt=""></a></div>
         <!-- <div class="swiper-slide"><img src="{{url('frontend/assets/img/Group 1594.jpg')}}" class="img-fluid" alt=""></div>
         <div class="swiper-slide"><img src="{{url('frontend/assets/img/banner.jpg')}}" class="img-fluid" alt=""></div>
         <div class="swiper-slide"><img src="{{url('frontend/assets/img/banner-2.jpg')}}" class="img-fluid" alt=""></div> -->
         @else
-        <div class="swiper-slide"><img src="{{ URL::asset('admin/upload/slider/' . $slider->image)}}" class="img-fluid" alt=""></div>
+        <div class="swiper-slide"><img src="{{ URL::asset('public/admin/upload/slider/' . $slider->image)}}" class="img-fluid" alt=""></div>
         @endif
         @endforeach
       </div>
@@ -47,18 +47,18 @@
         @foreach ($notifications as $notification)
         @if ($notification->notificationtype == 1)
         @if ($notification->menutype == 1)
-        <h6><img src="{{url('frontend/assets/img/new.gif')}}">
-          <a href="{{url('/admin/upload/notification/' . $notification->image) }}" target="_blank">
+        <h6><img src="{{url('public/frontend/assets/img/new.gif')}}">
+          <a href="{{url('/public/admin/upload/notification/' . $notification->image) }}" target="_blank">
             {{ $notification->title }}</a>
         </h6>
         @elseif ($notification->menutype == 2)
-        <h6><img src="{{url('frontend/assets/img/new.gif')}}">
-          <a href="{{url('/admin/upload/notification/' . $notification->fileupload) }}">
+        <h6><img src="{{url('public/frontend/assets/img/new.gif')}}">
+          <a href="{{url('/public/admin/upload/notification/' . $notification->fileupload) }}">
             {{ $notification->title }}</a>
         </h6>
         @elseif ($notification->menutype == 3)
-        <h6><img src="{{url('frontend/assets/img/new.gif')}}">
-          <a href="{{url('/frontend/' . $notification->url)}}">
+        <h6><img src="{{url('public/frontend/assets/img/new.gif')}}">
+          <a href="{{url('/public/frontend/' . $notification->url)}}">
             {{ $notification->title }} </a>
         </h6>
         @endif
@@ -84,13 +84,13 @@
             @foreach ($notifications as $notification)
             @if ($notification->notificationtype == 2)
             @if ($notification->menutype == 1)
-            <li><a href="{{url('/admin/upload/notification/' . $notification->image) }}">
+            <li><a href="{{url('/public/admin/upload/notification/' . $notification->image) }}">
                 {{$notification->title }}</a></li> 
             @elseif ($notification->menutype == 2)
-            <li><a href="{{url('/admin/upload/notification/' . $notification->fileupload) }}">
+            <li><a href="{{url('/public/admin/upload/notification/' . $notification->fileupload) }}">
                 {{$notification->title }}</a></li> 
             @elseif ($notification->menutype == 3)
-            <li><a href="{{url('/frontend/' . $notification->url) }}">
+            <li><a href="{{url('/public/frontend/' . $notification->url) }}">
                 {{$notification->title }}</a></li> 
             @endif
             @endif
@@ -134,7 +134,7 @@
           <div class="about-image col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
             <!-- <img src="assets/img/acharyaji.jpg" class="img-fluid" alt=""> -->
             <!-- <div id="mask1"> -->
-            <img src="{{url('frontend/assets/img/acharya-ji.webp')}}" class="img-fluid" alt="">
+            <img src="{{url('public/frontend/assets/img/acharya-ji.webp')}}" class="img-fluid" alt="">
             <!-- </div> -->
           </div>
 
@@ -147,7 +147,7 @@
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="goal-img col-lg-5 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="{{url('frontend/assets/img/baba.png')}}" class="img-fluid" alt="">
+            <img src="{{url('public/frontend/assets/img/baba.png')}}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-7 goal-content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
             <div class="content">
@@ -161,7 +161,7 @@
                 awakened and conscious scholars who will be able to change the course of the flow of the current times.
               </p>
               <div class="text-center text-lg-start">
-                <a href="{{url('frontend/introduction')}}" class="btn-read-more d-inline-flex align-items-center justify-content-center">
+                <a href="{{url('public/frontend/introduction')}}" class="btn-read-more d-inline-flex align-items-center justify-content-center">
                   <span>READ MORE</span>
                   <i class="bi bi-arrow-right"></i>
                 </a>
@@ -179,7 +179,7 @@
             <div class="carousel-item active">
               <div class="row">
                 <div class="col-lg-6 swamiji">
-                  <img src="{{url('frontend/assets/img/msg-from-swami-ji.webp')}}" class="d-block w-100" alt="...">
+                  <img src="{{url('public/frontend/assets/img/msg-from-swami-ji.webp')}}" class="d-block w-100" alt="...">
                 </div>
 
                 <div class="msg-swamiji col-lg-6">
@@ -195,7 +195,7 @@
                     famous German scholar Max Muller, English scholar G.W. Leitner and the then British Government,</p>
 
                   <div class="text-center text-lg-start">
-                    <a href="{{url('frontend/message-from-swamiji')}}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                    <a href="{{url('public/frontend/message-from-swamiji')}}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
                       <span>READ MORE</span>
                       <i class="bi bi-arrow-right"></i>
                     </a>
@@ -206,7 +206,7 @@
             <div class="carousel-item">
               <div class="row">
                 <div class="col-lg-6">
-                  <img src="{{url('frontend/assets/img/msg-from-acharyaji.jpg')}}" class="d-block w-100" alt="...">
+                  <img src="{{url('public/frontend/assets/img/msg-from-acharyaji.jpg')}}" class="d-block w-100" alt="...">
                 </div>
                 <div class="msg-swamiji col-lg-6">
                   <h2>Message from Acharyaji Ji</h2>
@@ -254,7 +254,7 @@ foreach($home_gallery as $h_gallery)
           <div class="tile-wrapper">
             <div class="image-container">
               <div class="event">
-                <img src="{{URL::asset('admin/upload/homegallery/'.$h_gallery->image)}}" class="img-fluid" alt="">
+                <img src="{{URL::asset('public/admin/upload/homegallery/'.$h_gallery->image)}}" class="img-fluid" alt="">
               </div>
               <div class="overlay">
                 <div class="img-btn">

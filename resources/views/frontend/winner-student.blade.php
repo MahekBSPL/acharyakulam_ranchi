@@ -4,11 +4,11 @@
 <body>
     <main id="main">
         <div class="banner">
-            <img src="assets/img/Mask Group 108.jpg" class="img-fluid" alt="banner">
+        <img src="{{url('public/frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
             <div class="banner-inr breadcrumbs">
                 <h1>winner student</h1>
                 <h5>
-                    <a href="index.php">Home</a> / <span>Winner Students</span>
+                    <a  href="{{url('/')}}">Home</a> / <span>Winner Students</span>
                 </h5>
             </div>
         </div>

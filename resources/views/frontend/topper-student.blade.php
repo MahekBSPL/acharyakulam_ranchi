@@ -4,11 +4,11 @@
 <body>
   <main id="main">
     <div class="banner">
-      <img src="assets/img/Mask Group 108.jpg" class="img-fluid" alt="banner">
+    <img src="{{url('public/frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
       <div class="banner-inr breadcrumbs">
         <h1>Topper Students Lists</h1>
         <h5>
-          <a href="index.php">Home</a> / <span>Academics</span>
+          <a  href="{{url('/')}}">Home</a> / <span>Academics</span>
         </h5>
       </div>
     </div>
@@ -23,9 +23,9 @@
           <h2><?=$row->title?></h2>
           <span class="topper-student-pdf">
             <div class="eye">
-              <a href="{{URL::asset('admin/upload/topperstudent/pdf/'.$row->pdf)}}"><img src="assets/img/eye.png" alt=""></a>
-              <a href="{{URL::asset('admin/upload/topperstudent/pdf/'.$row->pdf)}}" download="" target="blank"><img
-                  src="assets/img/pdf.png" alt=""></a>
+              <a href="{{URL::asset('/public/admin/upload/topperstudent/pdf/'.$row->pdf)}}"><img src="{{URL::asset('public/frontend/assets/img/eye.png')}}" alt=""></a>
+              <a href="{{URL::asset('/public/admin/upload/topperstudent/pdf/'.$row->pdf)}}" download="" target="blank"><img
+                  src="{{URL::asset('public/frontend/assets/img/pdf.png')}}" alt=""></a>
             </div>
           </span>
         </div>
@@ -46,7 +46,7 @@
             {
             ?>
              <div class="<?=$class?>">
-            <img src="{{URL::asset('admin/upload/topperstudent/image/'.$img->image)}}">
+            <img src="{{URL::asset('public/admin/upload/topperstudent/image/'.$img->image)}}">
             </div>
             <?php }?>
         </div>

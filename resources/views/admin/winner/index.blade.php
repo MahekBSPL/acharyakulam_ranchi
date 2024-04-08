@@ -50,12 +50,12 @@
                                            
                                             <td>
                                                 @if(!empty($row->image))
-                                                <img src="{{ URL::asset('admin/upload/winner/'.$row->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
+                                                <img src="{{ URL::asset('public/admin/upload/winner/'.$row->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
                                                 @else
                                                 _____
                                                 @endif
                                             </td>
-                                            <td><a href="{{ URL::asset('/admin/upload/winner/'.$row->image)}}" target="_blank"><i class="fas fa-eye"></i></a></td>
+                                            <td><a href="{{ URL::asset('/public/admin/upload/winner/'.$row->image)}}" target="_blank"><i class="fas fa-eye"></i></a></td>
                                             <td><?php echo $row->order??0; ?> <i id="{{$row->id}}"
                                                     onclick="editcatpos(this);" class="far editbut fa-edit"></i>
                                                 <span id="winner_postion_{{$row->id}}" style="display:none">

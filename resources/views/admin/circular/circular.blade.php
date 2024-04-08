@@ -48,7 +48,7 @@
                                             <td>{{$circular->name}}</td>
                                             <td>
                                                 @if(!empty($circular->pdf))
-                                                <a href="{{ URL::asset('/admin/upload/circular/'.$circular->pdf)}}" target="_blank">View PDF</a>
+                                                <a href="{{ URL::asset('/public/admin/upload/circular/'.$circular->pdf)}}" target="_blank">View PDF</a>
                                                 @else
                                                 -
                                                 @endif

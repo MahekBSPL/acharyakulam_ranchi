@@ -65,12 +65,12 @@
                                             </td>
                                             <td>
                                                 @if(!empty($slider->image))
-                                                <img src="{{ URL::asset('admin/upload/slider/'.$slider->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
+                                                <img src="{{ URL::asset('public/admin/upload/slider/'.$slider->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
                                                 @else
                                                 _____
                                                 @endif
                                             </td>
-                                            <td><a href="{{ URL::asset('/admin/upload/slider/'.$slider->image)}}" target="_blank"><i class="fas fa-eye"></i></a></td>
+                                            <td><a href="{{ URL::asset('/public/admin/upload/slider/'.$slider->image)}}" target="_blank"><i class="fas fa-eye"></i></a></td>
                                             <td>
                                                 <form action="{{ route('slider.destroy',$slider->id) }}" method="POST">
                                                     <!-- <a class="btn btn-primary" href="{{ route('slider.edit',$slider->id) }}">Edit</a> -->

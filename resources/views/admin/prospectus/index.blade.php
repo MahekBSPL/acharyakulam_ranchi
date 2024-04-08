@@ -48,19 +48,19 @@
                                             <td>{{$row->title}}</td>
                                             <td>
                                                 @if(!empty($row->pdf))
-                                                <a href="{{ URL::asset('/admin/upload/prospectus/pdf/'.$row->pdf)}}" target="_blank">View PDF</a>
+                                                <a href="{{ URL::asset('/public/admin/upload/prospectus/pdf/'.$row->pdf)}}" target="_blank">View PDF</a>
                                                 @else
                                                 _____
                                                 @endif
                                             </td>
                                             <td>
                                                 @if(!empty($row->image))
-                                                <img src="{{ URL::asset('/admin/upload/prospectus/image/'.$row->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
+                                                <img src="{{ URL::asset('/public/admin/upload/prospectus/image/'.$row->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
                                                 @else
                                                 _____
                                                 @endif
                                             </td>
-                                            <td><a href="{{ URL::asset('/admin/upload/prospectus/image/'.$row->image)}}" target="_blank"><i class="fas fa-eye"></i></a></td>
+                                            <td><a href="{{ URL::asset('/public/admin/upload/prospectus/image/'.$row->image)}}" target="_blank"><i class="fas fa-eye"></i></a></td>
                                             <td>
                                                 <form action="{{ route('prospectus.destroy',$row->id) }}" method="POST">
                                                     <a class="btn btn-primary" href="{{ route('prospectus.edit', $row->id) }}">
@@ -98,6 +98,6 @@
         new DataTable('#prospectustable');
     });
 </script>
-<script src="{{ URL::asset('/assets/modules/jquery.min.js')}}"></script>
-<script src="{{ URL::asset('/assets/js/page/validate.js')}}"></script>
+<script src="{{ URL::asset('/public/assets/modules/jquery.min.js')}}"></script>
+<script src="{{ URL::asset('/public/assets/js/page/validate.js')}}"></script>
 @endsection

@@ -13,11 +13,11 @@
 <body>
   <main id="main">
     <div class="banner">
-      <img src="assets/img/Mask Group 108.jpg" class="img-fluid" alt="banner">
+    <img src="{{url('public/frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
       <div class="banner-inr breadcrumbs">
         <h1>Events</h1>
         <h5>
-          <a href="index.php">Home</a> / <span>Events</span>
+          <a href="{{url('/')}}">Home</a> / <span>Events</span>
         </h5>
       </div>
     </div>
@@ -41,7 +41,7 @@ foreach($result as $row)
 
           <div class="col-lg-4" data-aos="zoom-out" data-aos-delay="200">
          
-            <img src="{{ URL::asset('admin/upload/event/'.$row->image)}}" class="img-fluid" alt="">
+            <img src="{{ URL::asset('/public/admin/upload/event/'.$row->image)}}" class="img-fluid" alt="">
           </div>
         
          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">

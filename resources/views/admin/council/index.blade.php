@@ -61,12 +61,12 @@
                                           
                                             <td>
                                                 @if(!empty($council->image))
-                                                <img src="{{ URL::asset('admin/upload/council/'.$council->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
+                                                <img src="{{ URL::asset('public/admin/upload/council/'.$council->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
                                                 @else
                                                 _____
                                                 @endif
                                             </td>
-                                            <td><a href="{{ URL::asset('/admin/upload/council/'.$council->image)}}" target="_blank"><i class="fas fa-eye"></i></a></td>
+                                            <td><a href="{{ URL::asset('/public/admin/upload/council/'.$council->image)}}" target="_blank"><i class="fas fa-eye"></i></a></td>
                                             <td>
                                                 <form action="{{ route('council.destroy',$council->id) }}" method="POST">
                                               

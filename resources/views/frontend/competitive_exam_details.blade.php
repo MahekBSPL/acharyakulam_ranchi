@@ -5,11 +5,11 @@
 
   <main id="main">
     <div class="banner">
-      <img src="{{url('frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
+      <img src="{{url('public/frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
       <div class="banner-inr breadcrumbs">
         <h1>Participation in Competitive Exams <?=$participation->year?></h1>
         <h5>
-          <a href="{{url('frontend/index')}}">Home</a> / <span>Academics</span>
+          <a href="{{url('/')}}">Home</a> / <span>Academics</span>
         </h5>
       </div>
     </div>
@@ -22,9 +22,9 @@
           @foreach ($competitiveExam as $competitive)
           <div class="col-md-4 exam">
             <h6>{{$competitive->name}}</h6>
-            <img src="{{url('frontend/assets/img/Group 1448.png')}}" alt="">
+            <img src="{{url('public/frontend/assets/img/Group 1448.png')}}" alt="">
             <div class="participate">
-              <a href="{{url('/admin/upload/competitiveExam/'.$competitive->pdf)}}" download="" target="_blank"> <img src="{{url('frontend/assets/img/pdf.png')}}" alt=""> </a>
+              <a href="{{url('public/admin/upload/competitiveExam/'.$competitive->pdf)}}" download="" target="_blank"> <img src="{{url('public/frontend/assets/img/pdf.png')}}" alt=""> </a>
             </div>
           </div>
           @endforeach

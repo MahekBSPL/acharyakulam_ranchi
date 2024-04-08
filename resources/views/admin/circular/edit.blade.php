@@ -49,7 +49,7 @@
                                 <input type="file" name="pdf" class="input_class inline-block" id="pdf" autocomplete="off" value="{{old('pdf')}}" />
                                 @if($circulars->pdf)
 
-                                <a href="{{ URL::asset('/admin/upload/circular/'.$circulars->pdf)}}" target="_blank">View PDF</a>
+                                <a href="{{ URL::asset('/public/admin/upload/circular/'.$circulars->pdf)}}" target="_blank">View PDF</a>
                                 @endif
                                 <input type="hidden" name="oldpdf" class="input_class w-50 inline-block" value="{{ !empty($circulars->pdf)?$circulars->pdf:old('pdf')}}" />
                                 <span class="text-danger">@error('pdf'){{$message}} @enderror</span>

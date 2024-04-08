@@ -263,11 +263,12 @@ ol {
 </style>
   <main id="main">
     <div class="banner">
-      <img src="assets/img/Mask Group 108.jpg" class="img-fluid" alt="banner">
+    <img src="{{url('public/frontend/assets/img/Mask Group 108.jpg')}}" class="img-fluid" alt="banner">
       <div class="banner-inr breadcrumbs">
         <h1>Apply for Jobs</h1>
         <h5>
-          <a href="index.php">Home</a> / <span>Careers</span>
+        <a href="{{url('/')}}">Home</a> / <span>Careers</span>
+       
         </h5>
       </div>
     </div>

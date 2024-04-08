@@ -72,8 +72,8 @@
                                                </td>
                                             <td>
                                                 @if(!empty($row->thumbnail))
-                                                <a href="{{ URL::asset('/admin/upload/photoGallery/thumbnail/'.$row->thumbnail) }}" target="_blank">
-                                                <img src="{{ URL::asset('/admin/upload/photoGallery/thumbnail/'.$row->thumbnail)}}"
+                                                <a href="{{ URL::asset('/public/admin/upload/photoGallery/thumbnail/'.$row->thumbnail) }}" target="_blank">
+                                                <img src="{{ URL::asset('/public/admin/upload/photoGallery/thumbnail/'.$row->thumbnail)}}"
                                                     style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
                                                 @else
                                                 _____
