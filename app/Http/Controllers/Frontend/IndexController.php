@@ -158,7 +158,7 @@ class IndexController extends Controller
 
     public function academics()
     {
-        $academics = Academic::get()->groupBy('year');
+        $academics = Academic::orderBy('year', 'desc')->get()->groupBy('year');
         return view('frontend/academics',compact('academics'));
     }
 
